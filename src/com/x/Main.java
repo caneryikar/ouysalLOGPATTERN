@@ -19,6 +19,8 @@ import com.x.testsuite.TestCase;
 import com.x.testsuite.TestSuite;
 
 public class Main {
+	
+	private static List<TestCase> testCaseList;
 
 	public static TestCase loadTestCase(File file) throws Exception {
 
@@ -96,27 +98,97 @@ public class Main {
 		return testSuiteList;
 	}
 
+	private static boolean isTestCaseStart(String line) {
+		return line.contains("Running TestCase [");
+	}
+
+	private static boolean isTestCaseFinish(String line) {
+		return line.contains("Finished Running TestCase [");
+	}
+
+	private static TestCase findTestCase(String line) {
+
+		TestCase found = null;
+		for (TestCase testCase : testCaseList) {
+			if (line.contains("Running TestCase [" + testCase.toString() + "]") || 
+				line.contains("Finished Running TestCase [" + testCase.toString() + "]")) {
+				found = testCase;
+				break;
+			}
+		}
+
+		return found;
+	}
+
+	private static boolean isHTTPRequest(String line) {
+		return line.endsWith("HTTP/1.1[\\r][\\n]\"");
+	}
+
+	private static void readJunk(BufferedReader bufferedReader) throws Exception {
+
+		String testCaseRunningText = "Running tests in the project";
+		String line;
+
+		while ((line = bufferedReader.readLine()) != null) {
+			if (line.contains(testCaseRunningText)) {
+				System.out.println(line);
+				break;
+			}
+		}
+	}
+
+	private static HTTPRequest parseHTTPRequest(String line) {
+		System.out.println(line);
+		String[] parts = line.substring(line.indexOf("\"")).replace("\"", "").split(" ");
+		HTTPRequest request = new HTTPRequest();
+		request.setMethod(parts[0]);
+		request.setMethod(parts[1]);
+		return request;
+	}
+
+	private static TestCaseExecution readTestCase(TestCase testCase, BufferedReader bufferedReader) throws Exception {
+
+		TestCaseExecution testCaseExecution = new TestCaseExecution();
+		testCaseExecution.setTestCase(testCase);
+
+		String line;
+
+		while ((line = bufferedReader.readLine()) != null) {
+
+			if (isTestCaseFinish(line)) {
+				TestCase finishedTestCase =  findTestCase(line);
+				if (finishedTestCase == testCase) {
+					break;					
+				}
+			} else if (isHTTPRequest(line)) {
+				testCaseExecution.getRequestList().add(parseHTTPRequest(line));
+			}
+		}
+
+		return testCaseExecution;
+	}
+
 	public static List<TestCaseExecution> readFromFile(String path) throws Exception {
 
-		String testStartText = "Running tests in the project";
+		List<TestCaseExecution> testCaseExecutionList = new ArrayList<TestCaseExecution>();
 
-		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
 			String line;
 
-			boolean testLinesStarted = false;
-			while ((line = br.readLine()) != null) {
-				
-				if (!testLinesStarted) {
-					if (line.contains(testStartText)) {
-						System.out.println(line);
-						testLinesStarted = true;						
-					}
-				}
+			readJunk(bufferedReader);
 
-				if (testLinesStarted) {
-					// TODO:
+			while ((line = bufferedReader.readLine()) != null) {
+
+				if (isTestCaseStart(line)) {
+					TestCase testCase = findTestCase(line);
+					if (testCase == null) {
+						continue;
+					}
+					TestCaseExecution testCaseExecution = readTestCase(testCase, bufferedReader);
+					testCaseExecutionList.add(testCaseExecution);
 				}
 			}
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -125,16 +197,16 @@ public class Main {
 			e.printStackTrace();
 		}				
 
-		return null;
+		return testCaseExecutionList;
 	}
 	
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
-		String resourcesPath = "C:/Users/ealiyik/Desktop/JAVA/resources/resources";
+		String resourcesPath = "C:/Users/eoguuys/Desktop/caner/resources/resources";
 		List<TestSuite> testSuiteList = loadTestSuites(resourcesPath);
 	
-		List<TestCase> testCaseList = new ArrayList<TestCase>();
+		testCaseList = new ArrayList<TestCase>();
 		for (TestSuite testSuite : testSuiteList) {
 			for (TestCase testCase : testSuite.getTestCaseList()) {
 				testCaseList.add(testCase);
@@ -147,8 +219,16 @@ public class Main {
 
 		// TODO:
 		
-		String outputPath = "C:/Users/ealiyik/Desktop/JAVA/consoleText.txt";
-		List<TestCaseExecution> testCaseExecutionList = readFromFile(outputPath); 
-		System.out.println(testCaseExecutionList);
+		String outputPath = "C:/Users/eoguuys/Desktop/caner/consoleText.txt";
+		List<TestCaseExecution> testCaseExecutionList = readFromFile(outputPath);
+
+		int counter = 0;
+		if (testCaseExecutionList != null) {
+			for (TestCaseExecution testCaseExecution : testCaseExecutionList) {
+				System.out.println(testCaseExecution.getTestCase().toString() + " - " + testCaseExecution.getRequestList().size());
+				counter += testCaseExecution.getRequestList().size();
+			}
+			System.out.println("request size:" + counter);
+		}
 	}
 }

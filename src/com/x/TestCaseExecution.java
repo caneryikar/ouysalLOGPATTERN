@@ -1,11 +1,15 @@
 package com.x;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.x.testsuite.TestCase;
 
 public class TestCaseExecution {
 
 	private TestCase testCase;
 	private Double duration;
+	private List<HTTPRequest> requestList = new ArrayList<HTTPRequest>();
 
 	public TestCase getTestCase() {
 		return testCase;
@@ -21,5 +25,9 @@ public class TestCaseExecution {
 
 	public void setDuration(Double duration) {
 		this.duration = duration;
+	}
+
+	public List<HTTPRequest> getRequestList() {
+		return requestList;
 	}
 }
