@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="5aea9125-929b-48a1-b154-3aae88e330c8" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Remove an Aggregated Product Reservation Item from BI" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="5aea9125-929b-48a1-b154-3aae88e330c8fileName">Remove-an-Aggregated-Product-Reservation-Item-from-BI</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Remove an Aggregated Product Reservation Item from BI" id="c0bc4d48-4416-44d2-b8f7-2d31cdf02191">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/productReservation/{biId}/aggregatedItems/{aggregatedItemId}" methodName="Remove an Aggregated Product Reservation Item from BI" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Remove an Aggregated Product Reservation Item from BI" id="3521c02d-760c-41fa-ba16-a69e453f1d47" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="aggregatedItemId" value="${#TestCase#req_aggregatedItemId}"/>
+          <con:entry key="biId" value="${#TestCase#req_biId}"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="0cddcbed-f94a-4c23-8c28-e7a71c14bc27">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpStatus</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Remove an Aggregated Product Reservation Item from BI</con:sourceStep>
+        <con:sourcePath>['status']</con:sourcePath>
+        <con:targetType>res_httpStatus</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>aggregatedItemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Remove an Aggregated Product Reservation Item from BI</con:sourceStep>
+        <con:sourcePath>['id']</con:sourcePath>
+        <con:targetType>res_aggreatedItemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_aggregatedItemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_httpStatus</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_aggreatedItemId</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>c0bc4d48-4416-44d2-b8f7-2d31cdf02191</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

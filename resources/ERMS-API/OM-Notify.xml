@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="OM Notify" path="/notificationManagement/notify" id="5e69278f-e0bf-467c-9816-beb1bb87e589" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="dcb6abba-3c4e-45d6-9e83-fa22ac9cf805fileName">userUpdate</con:setting>
+    <con:setting id="5e69278f-e0bf-467c-9816-beb1bb87e589fileName">OM-Notify</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="notify" path="{biId}" id="ffd7154d-3632-4956-953d-66a3b04b732f">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="9f89dee9-abc3-4d49-9847-101439cc1e1b" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="fe1d9e8b-ea72-43db-acf2-dfe775bf0dcd" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+</con:resource>

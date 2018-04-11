@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="7751d823-f552-4ea7-819f-cc6c6819b16b" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add product reservation item with serial number" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="7751d823-f552-4ea7-819f-cc6c6819b16bfileName">Add-product-reservation-item-with-serial-number</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Add product reservation item with serial number" id="0f918bbd-4063-403f-9cfc-f8d293bc7c53">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/productReservation/{biId}/item" methodName="Add product reservation item by serial number" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Add product reservation item with serial number" id="d6681f3d-9d51-4861-a38c-c97a8ad04eb5" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJFUk1TX1NZU1RFTV9BdXRoelByb2ZpbGUiLCJ2ZXJzaW9uIjoidjEiLCJwYXJ0eV9pZCI6IjEyMyJ9fQ.wPkZKoUs47osZN6K-iP9wXxjSFMZNQKC6UIChyYrKg3toxPKXzE9QHE6uYPOBTzfBsVhyVxgCCaQo2is56vXMvddlGnmQpNsRrYiUa9pIRI-knK3qzVmGgYqSpXds9-I1XQJfDvl5WgseQN7VLe41XtF1XG8LIYCIhKGtuITyyE" xmlns="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+	"fromSalesOrganizationId": "${#TestCase#req_fromSalesOrgId}",
+	"fromPlaceId": "${#TestCase#req_fromPlaceId}",
+	"product":
+	{
+	   "id":"${#TestCase#req_productId}"
+	},
+	"placeId": ${#TestCase#req_fromPlaceId},
+	"productId":${#TestCase#req_productId},
+	"quantity":${#TestCase#req_productQuantity},
+	"startSerialNumber": ${#TestCase#req_startSerial},
+	"serialNumber": "${#TestCase#req_startSerial}",
+	"productInformation":
+	{
+		"startSerialNumber": "${#TestCase#req_startSerial}",
+	    "quantity":"${#TestCase#req_productQuantity}"
+	}
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/productReservation/item</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="8528fced-f78e-4689-a41d-39f85ec6ab0e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_newProductId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add product reservation item with serial number</con:sourceStep>
+        <con:sourcePath>product.id</con:sourcePath>
+        <con:targetType>res_newProductId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_itemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add product reservation item with serial number</con:sourceStep>
+        <con:sourcePath>id</con:sourcePath>
+        <con:targetType>res_itemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>status</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Add product reservation item with serial number</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_httpStatus</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add product reservation item with serial number</con:sourceStep>
+        <con:sourcePath>$['code']</con:sourcePath>
+        <con:targetType>res_errorCode</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_productId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productQuantity</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_startSerial</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_fromSalesOrgId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_fromPlaceId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_httpStatus</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_newProductId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_itemId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_quantity</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorCode</con:name>
+      <con:value>404</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

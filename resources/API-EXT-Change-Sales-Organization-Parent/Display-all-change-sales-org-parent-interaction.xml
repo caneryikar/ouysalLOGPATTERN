@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="efd90377-3096-4237-bb4d-a2cab7b91169" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display all change sales org parent interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="efd90377-3096-4237-bb4d-a2cab7b91169fileName">Display-all-change-sales-org-parent-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Display all change sales org parent interaction- Request 1" id="4f3c79c3-a888-4f55-a3e6-f4aae8f07468">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/changeSalesOrganizationParent" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display all change sales org parent interaction- Request 1" id="32f7c904-4d37-4fc6-a42e-4671c9d0e42c" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="11629bed-8d1a-45e2-9d8a-29a46b5175f4">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>headerCode</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display all change sales org parent interaction- Request 1</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_headerCode</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>items</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display all change sales org parent interaction- Request 1</con:sourceStep>
+        <con:sourcePath>$['items']</con:sourcePath>
+        <con:targetType>res_items</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>res_headerCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_items</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

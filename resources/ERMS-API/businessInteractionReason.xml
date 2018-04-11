@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="businessInteractionReason" path="/businessInteractionReason" id="24769565-1efc-4482-bf65-fc4ec82ae400" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="ee8b9486-8f18-48d5-9cab-e2ef9d51ee9efileName">ext_businessInteractionReason</con:setting>
+    <con:setting id="24769565-1efc-4482-bf65-fc4ec82ae400fileName">businessInteractionReason</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>biType</con:name>
+      <con:value/>
+      <con:style>QUERY</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+  </con:parameters>
+  <con:resource name="getBusinessInteractionReasonByCode" path="code/{reasonCode}" id="d9a2a288-5239-4098-a413-074cbf47045d">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>reasonCode</con:name>
+        <con:value>reasonCode</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>reasonCode</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="dbcdd883-4c6b-4d16-bbd1-8d53c7d119d8" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.BiReasonResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:reas="http://localhost/erms/retailManagement/v1/businessInteractionReason/code/reasonCodeForInventory">reas:Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="c224be27-b79e-4e4c-b485-252c627902f0" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="reasonCode" value="${#TestCase#req_reasonCode}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="create" path="" id="6e349253-1178-47cc-a484-f9b7286d30cb">
+    <con:settings/>
+    <con:parameters/>
+    <con:method name="Method 1" id="698c6b15-0275-4ad2-9bb9-a0ed62247662" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>400</con:status>
+        <con:params/>
+        <con:element xmlns:bus="http://localhost/erms/v1/businessInteractionReason">bus:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="96e43812-e5a7-4302-8622-eae17b422c6f" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+    "biType" : ${#TestCase#req_biType} ,
+    "reasonCode": "${#TestCase#req_reasonCode}" ,
+    "description" : "${#TestCase#req_description}" ,
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:method name="getBusinessInteractionReasonByBiType" id="fe9bb613-c410-4ff5-b4da-bdd2b110e0dd" method="GET">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.BiReasonResponse.1.json#"</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element>Response</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="24e6cd09-64aa-4aac-b778-328a8b14da11" mediaType="application/json">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <entry key="biType" value="{biType}" xmlns="http://eviware.com/soapui/config"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>biType</con:entry>
+      </con:parameterOrder>
+    </con:request>
+  </con:method>
+</con:resource>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="ext_incomingProductRequest" path="/incomingProductRequest" id="f394e3cd-a61b-4b3b-aa5f-12993535956c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f394e3cd-a61b-4b3b-aa5f-12993535956cfileName">ext_incomingProductRequest</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="fulfill" path="{biId}/fulfill" id="155e5e8c-3da1-4ff8-888c-8585dbda7508">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="e117bcfb-33e7-4af6-8297-8db6efcf41de" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="43c2d72d-7f11-4cdc-94df-1487a0b0da6d" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+  "userRoleId":"2",
+  "salesOrganizationRoleId":"1",
+  "businessInteractionSpecificationCode":"PRD_TRANSFER_WITHOUT_CONFIRMATION"
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getBiItems" path="" id="5a0ad6e1-0ed8-4abc-9262-be6ffca614cc">
+    <con:settings/>
+    <con:parameters/>
+    <con:method name="Method 1" id="fe23bac9-d94f-43a0-be0e-f01f199dc9ce" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="6e6f2700-6ac3-4a35-9335-e448c80e0354" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getSingleBiItem" path="{biId}" id="a7f75d33-240f-4996-84f7-f714be60e1d8">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value/>
+        <con:style>TEMPLATE</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="378ec4d9-906b-43a9-9751-e0489cf8caf2" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:biid="http://localhost/erms/retailManagement/v1/incomingProductRequest/biId">biid:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="b1689256-e903-411a-b71b-b707b9a8b241" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="biId" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getSingleItemOfBi" path="{biId}/items/{itemId}" id="38c32119-4cdf-4b08-b1e9-036da9e4595a">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+      <con:parameter>
+        <con:name>itemId</con:name>
+        <con:value>itemId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>itemId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="322d9387-b115-425f-95b5-e4a59178091a" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://localhost/erms/retailManagement/v1/incomingProductRequest/biId/items/itemId">item:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="99f0507b-e688-43a7-9d3e-a4010d5872e4" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+</con:resource>

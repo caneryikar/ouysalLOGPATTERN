@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="30c02776-87e2-45ad-845a-ed1456c62cf7" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create product specification relationship" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="30c02776-87e2-45ad-845a-ed1456c62cf7fileName">Create-product-specification-relationship</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Create product specification relationship" id="be49ed87-ddf3-4040-8607-281c6c1946fe">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/productSpecRelationShip" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Create product specification relationship" id="ad45b33f-3677-4ed8-afa4-c006d0a2d01f" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{  
+   "productSpecification":{  
+      "id":${#TestCase#req_productSpecId},
+      "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO"
+   },
+   "relatedProductSpecification":{  
+      "id":${#TestCase#req_relatedProductSpecId},
+      "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO"
+   },
+   "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.IncludesProductSpecRelationshipDTO",
+   "userRoleId":${#TestCase#req_userRoleId},
+   "salesOrganizationRoleId":${#TestCase#req_salesOrgRoleId}
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="c0a4c965-1741-49e2-b7fe-450cf2bc6117">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Create product specification relationship</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_productSpecId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedProductSpecId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrgRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

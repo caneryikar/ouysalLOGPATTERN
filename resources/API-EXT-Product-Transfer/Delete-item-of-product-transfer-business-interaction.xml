@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="63708784-cde5-4c2d-80cc-466d959db6ad" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Delete item of product transfer business interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="63708784-cde5-4c2d-80cc-466d959db6adfileName">Delete-item-of-product-transfer-business-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Delete item of product transfer business interaction" id="ce5ae543-3790-45e0-81d8-af9e1db14ef8">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/productTransfer/{biId}/items/{itemId}" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Delete item of product transfer business interaction" id="02294211-50b2-48e4-8314-17cedc444732" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="itemId" value="${#TestCase#req_itemId}"/>
+          <con:entry key="biId" value="${#TestCase#req_biId}"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="6fa24aae-6807-4f1d-94ff-9d05a63bfe19">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Delete item of product transfer business interaction</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Delete item of product transfer business interaction</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_itemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Delete item of product transfer business interaction</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_itemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_itemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

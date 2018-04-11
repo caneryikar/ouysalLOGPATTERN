@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="59f4ff49-0696-46b4-a0fa-ff1eeb875f29" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display single user role by id(internal)" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="7a8f3d27-0fc1-479b-95a1-1a237d5f73f5fileName">Display-single-user-role-by-external-id</con:setting>
+    <con:setting id="59f4ff49-0696-46b4-a0fa-ff1eeb875f29fileName">Display-single-user-role-by-id%28internal%29</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Display single user role by external id" id="1624e9dd-2915-4648-90aa-4d7ec40cf2f4">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/userRole/{id}" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display single user role by external id" id="160d5827-0fe9-4761-96bb-6dbf77b66f2b" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="externalId" value=""/>
+          <con:entry key="id" value="${#TestCase#req_userRoleId}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>externalId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="030c9648-3549-4a66-8ae4-e59dd745195a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display single user role by external id</con:sourceStep>
+        <con:sourcePath>['id']</con:sourcePath>
+        <con:targetType>res_id</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>name</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display single user role by external id</con:sourceStep>
+        <con:sourcePath>['name']</con:sourcePath>
+        <con:targetType>res_name</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>status</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display single user role by external id</con:sourceStep>
+        <con:sourcePath>['status']</con:sourcePath>
+        <con:targetType>res_status</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_status</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_id</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_name</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>030c9648-3549-4a66-8ae4-e59dd745195a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

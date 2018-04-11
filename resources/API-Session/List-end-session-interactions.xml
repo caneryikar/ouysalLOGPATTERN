@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="5e66e552-70ce-4dab-8a09-d527ae3dda2a" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="List end session interactions" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="5e66e552-70ce-4dab-8a09-d527ae3dda2afileName">List-end-session-interactions</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="displayAll" id="92d1d56f-a377-4050-aec3-a54f360bbf93">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/endSession" methodName="displayAll" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="displayAll" id="9c368947-f7c2-4228-bb75-e73f3d4f0e09" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="cafb128e-1a5b-4bd3-8caf-bd38767369d4">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpStatus</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>displayAll</con:sourceStep>
+        <con:sourcePath>['status']</con:sourcePath>
+        <con:targetType>res_httpStatus</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>response</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>displayAll</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>response</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>res_httpStatus</con:name>
+    </con:property>
+    <con:property>
+      <con:name>response</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="12a76b1d-482a-4d1a-90f8-9173c8c082f0" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Upload Item File with dynamic file name" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="80aceab1-3f39-40bb-b945-f6bb316725d7fileName">Upload-Item-File</con:setting>
+    <con:setting id="12a76b1d-482a-4d1a-90f8-9173c8c082f0fileName">Upload-Item-File-with-dynamic-file-name</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="uploadItemFile" id="5853e1d4-65c3-4bcb-bd82-f25141850215">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/{biName}/{biId}/uploadItemFile" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="uploadItemFile" id="63a8baa9-ce80-4f95-88fd-5fe3e532aebb" mediaType="multipart/form-data" postQueryString="true">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:attachment>
+          <con:name>stockin.csv</con:name>
+          <con:contentType>application/octet-stream</con:contentType>
+          <con:contentId>createfile.csv</con:contentId>
+          <con:url>./createfile.csv</con:url>
+          <con:id>37f42680-6a15-4e80-a623-8d172335bec5</con:id>
+        </con:attachment>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="fileName" value="${#TestCase#req_fileName}"/>
+          <con:entry key="file" value="file:createfile.csv"/>
+          <con:entry key="biName" value="${#TestCase#req_biName}"/>
+          <con:entry key="biId" value="${#TestCase#req_biId}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biName</con:entry>
+          <con:entry>biId</con:entry>
+          <con:entry>file</con:entry>
+          <con:entry>fileName</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer response" id="a8104f7f-dd39-49ac-b29f-480af132b596">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>status</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>uploadItemFile</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_status</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>uploadItemFile</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>JSONPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>uploadItemFile</con:sourceStep>
+        <con:sourcePath>$['code']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>JSONPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biName</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_status</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_fileName</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

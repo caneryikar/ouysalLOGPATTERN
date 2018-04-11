@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="0920d4f6-3a4d-4224-9e4d-88d0aa234bc1" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display add postal address item list" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="0920d4f6-3a4d-4224-9e4d-88d0aa234bc1fileName">Display-add-postal-address-item-list</con:setting>
+  </con:settings>
+  <con:testStep type="restrequest" name="Display add postal address item list" id="bbdca265-1bc8-43cd-816a-b09b87cf5eed">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/manageContactMedium/{biId}/addPostalAddressItems" methodName="getAddPostalAddressItemList" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display add postal address item list" id="6eb16972-743a-472d-a432-7fa755b1ed0e" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="b5190157-3783-49d3-8419-81e085172edb">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display add postal address item list</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

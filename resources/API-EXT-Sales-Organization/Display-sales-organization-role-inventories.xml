@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="47e581a8-56d2-4dc7-99d8-fd7ca4c3b9e7" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display sales organization role inventories and return incoming place id" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="47e581a8-56d2-4dc7-99d8-fd7ca4c3b9e7fileName">Display-sales-organization-role-inventories</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Display sales org role inventories" id="2792c577-ea38-42a3-9179-a113f804ecb8">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/salesOrganizationRole/{soId}/inventories" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display sales org role inventories" id="a6085ff1-5fc8-447d-974c-ec0ff3f54522" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InVzZXItZGY5OWE0NDktYjYwYi00Y2UxLWFmMTYtMjhlOTY0ZmFlMjAxIn19.f8VQ4wqkDa_E1gQoMhGl90omLD2U5_rQXjKHi7mYrkZs_cbMyBuWIt18B0pAHDcgyVXCqPUJtLEwRXedtt1RExW7EXOq9uALPZ2bxHXmLD8ro_o7_xhVE-NbJPK6M7MY22Eeu9Sa9HjzKbvpl41877wgYs5avDV2T7R-p3u5Vyc"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="35"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/salesOrganizationRole/inventories</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="soId" value="${#TestCase#req_id}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>soId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="6610ebeb-e3bd-4592-8701-448c5b4e1c0a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false" disabled="true">
+        <con:name>incomingInventoryPlaceId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display sales org role inventories</con:sourceStep>
+        <con:sourcePath>$[0]['place']['id']</con:sourcePath>
+        <con:targetType>res_incomingInventoryPlaceId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display sales org role inventories</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>response</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display sales org role inventories</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>response</con:targetType>
+        <con:targetStep>Properties</con:targetStep>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="properties" name="Properties" id="1826ef0d-e173-4f2f-8f52-7070ebbc0cd2">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>incomingInventoryId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>dasdasd</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen for sorting incoming inventory place" id="f6e3a2df-c5d9-4a97-9404-9a15c5f23a6c">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>import net.sf.json.groovy.*;
+
+def items = context.expand( '${Display sales org role inventories#Response}' )
+//def serializedProductId = context.expand( '${Get serialized productId by specId#res_productId}' )
+//def serializedWithoutRangeProductId = context.expand( '${Get serializedWoRange productId by serialText#res_productId}' )
+//def boxId = context.expand( '${Get Box productId by serialText#res_productId}' )
+//def biId = context.expand( '${Get confirmation biId#res_biId}' )
+def json = new JsonSlurper().parseText(items);
+
+for (int i=0; i &lt; json.size(); i++){
+
+	if (json[i].partyRoleSpecification.inventoryType == "Incoming" ) {
+		
+testRunner.testCase.testSteps['Properties'].setPropertyValue("incomingInventoryId",json[i].place.id.toString());
+
+									
+
+}
+
+
+}</script>
+        </con:configuration>
+        <con:name>serializedProductItemId</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>true</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 2" id="135514bc-1b39-4bdc-82ad-f3e8cc5bf350">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>invId</con:name>
+        <con:sourceType>incomingInventoryId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_incomingInventoryPlaceId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_id</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_incomingInventoryPlaceId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>response</con:name>
+      <con:value>{"code":"404","description":"HTTP 404 Not Found","errorDetails":"HTTP 404 Not Found","errorMessage":"404","httpStatusCode":"404","httpStatusCodeDescription":"HTTP 404 Not Found"}</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>2792c577-ea38-42a3-9179-a113f804ecb8</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>f6e3a2df-c5d9-4a97-9404-9a15c5f23a6c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>135514bc-1b39-4bdc-82ad-f3e8cc5bf350</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>1826ef0d-e173-4f2f-8f52-7070ebbc0cd2</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

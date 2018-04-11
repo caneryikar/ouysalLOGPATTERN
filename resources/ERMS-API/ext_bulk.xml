@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="ext_bulk" path="/bulk" id="23462a37-ac1e-4b25-8729-61aa4f4eed94" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="23462a37-ac1e-4b25-8729-61aa4f4eed94fileName">ext_bulk</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="payment" path="/payment" id="f96cffd3-b365-47db-b852-12de9371fc83">
+    <con:settings/>
+    <con:parameters/>
+    <con:resource name="addItem" path="{biId}/items" id="609262bc-3eb2-4ce9-8a55-9604e5529db4">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>biId</con:name>
+          <con:value>biId</con:value>
+          <con:style>TEMPLATE</con:style>
+          <con:default>biId</con:default>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="Method 1" id="be925188-4e03-43d5-82b9-f487d9516e20" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:request name="Request 1" id="d6f8b2b2-5819-4968-969c-838af5c04f00" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>${#Project#Endpoint}</con:endpoint>
+          <con:request>{ 
+	"itemCreateList":
+		[
+			{
+				"paymentType": "CA",
+				"itemOrder" : 1,
+				"transactionAmount":
+				{
+					"roundedAmount":270.45,
+					"notRoundedAmount" :270.4512,
+					"currency": "USD"
+				},
+				"convertedAmount":
+				{
+					"roundedAmount":268.45,
+					"notRoundedAmount" :268.4512,
+					"currency": "EUR"
+				},
+				"transactionDate":"2016-12-01T10:20:46.176+01:00",
+			    "transactionId":"1"
+			},
+			{
+				"paymentType": "CC",
+				"itemOrder" : 1,
+				"transactionAmount":
+				{
+					"roundedAmount":350.45,
+					"notRoundedAmount" :350.4512,
+					"currency": "USD"
+				},
+				"convertedAmount":
+				{
+					"roundedAmount":348.45,
+					"notRoundedAmount" :348.4512,
+					"currency": "EUR"
+				},
+				"transactionDate":"2016-12-01T10:20:46.176+01:00",
+				"transactionId":"2"
+			}
+		]
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="bulkItem" path="{biId}/items" id="609262bc-3eb2-4ce9-8a55-9604e5529db4">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>biId</con:name>
+          <con:value>biId</con:value>
+          <con:style>TEMPLATE</con:style>
+          <con:default>biId</con:default>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="Method 1" id="be925188-4e03-43d5-82b9-f487d9516e20" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:request name="Request 1" id="d6f8b2b2-5819-4968-969c-838af5c04f00" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>${#Project#Endpoint}</con:endpoint>
+          <con:request>{ 
+	"itemCreateList":
+		[
+			{
+				"paymentType": "CA",
+				"itemOrder" : 1,
+				"transactionAmount":
+				{
+					"roundedAmount":270.45,
+					"notRoundedAmount" :270.4512,
+					"currency": "USD"
+				},
+				"convertedAmount":
+				{
+					"roundedAmount":268.45,
+					"notRoundedAmount" :268.4512,
+					"currency": "EUR"
+				},
+				"transactionDate":"2016-12-01T10:20:46.176+01:00",
+			    "transactionId":"1"
+			},
+			{
+				"paymentType": "CC",
+				"itemOrder" : 1,
+				"transactionAmount":
+				{
+					"roundedAmount":350.45,
+					"notRoundedAmount" :350.4512,
+					"currency": "USD"
+				},
+				"convertedAmount":
+				{
+					"roundedAmount":348.45,
+					"notRoundedAmount" :348.4512,
+					"currency": "EUR"
+				},
+				"transactionDate":"2016-12-01T10:20:46.176+01:00",
+				"transactionId":"2"
+			}
+		],
+	"itemDeleteList": 
+		[
+			{
+				"biItemId" : 28                                                   
+			}
+		],
+	"itemUpdateList": 
+		[
+			{
+			"paymentType": "CC",
+			"transactionAmount": 
+				{
+					"notRoundedAmount": 350.4512,
+					"roundedAmount": 350.45,
+					"currency": "USD"
+				},
+			"convertedAmount": 
+				{
+					"notRoundedAmount": 348.4512,
+					"roundedAmount": 348.45,
+					"currency": "EUR"
+				},
+			"itemOrder": 2,
+			"transactionDate": "2016-12-01T09:20:46.176Z",
+			"transactionId": "3",
+			"biItemId": 30
+			}
+		]
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:resource>
+  <con:resource name="sales" path="sales" id="3076ccac-7d6e-44a0-864b-25f30c4448f2">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:resource name="addItems" path="{biId}/items" id="b1bbc2b3-14ae-4d64-9acf-beffd1bf2a39">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>biId</con:name>
+          <con:value>biId</con:value>
+          <con:style>TEMPLATE</con:style>
+          <con:default>biId</con:default>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="Method 1" id="2e8c5565-e993-4157-a1ff-31cde33febac" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:request name="Request 1" id="fb83a096-70ad-4fab-a57f-8aa23f26deed" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+          <con:request>{
+  "itemCreateList": [
+    {
+      "productSpecificationExternalId": "${#TestCase#req_nonSerializedProductSpecExtId}",
+      "quantity": ${
+        #TestCase#req_nonSerializedProductSalesQuantity
+      },
+      "placeId": "${#TestCase#req_nonSerializedProductPlaceId}",
+      "characteristics": [
+        {
+          "key": "${#TestCase#req_nonSerializedProductSpecCharExtId1}",
+          "value": "${#TestCase#req_nonSerializedProductSpecCharValueExtId1}"
+        },
+        {
+          "key": "${#TestCase#req_nonSerializedProductSpecCharExtId2}",
+          "value": "${#TestCase#req_nonSerializedProductSpecCharValueExtId2}"
+        },
+        {
+          "key": "${#TestCase#req_nonSerializedProductSpecCharExtId3}",
+          "value": "${#TestCase#req_nonSerializedProductSpecCharValueExtId3}"
+        }
+      ]
+    },
+    {
+      "productSpecificationExternalId": "${#TestCase#req_serializedProductSpecExtId}",
+      "quantity": ${
+        #TestCase#req_serializedProductSalesQuantity
+      },
+      "placeId": "${#TestCase#req_serializedProductPlaceId}",
+      "characteristics": [
+        {
+          "key": "${#TestCase#req_serializedProductSpecCharExtId1}",
+          "value": "${#TestCase#req_serializedProductSpecCharValueExtId1}"
+        },
+        {
+          "key": "${#TestCase#req_serializedProductSpecCharExtId2}",
+          "value": "${#TestCase#req_serializedProductSpecCharValueExtId2}"
+        },
+        {
+          "key": "${#TestCase#req_serializedProductSpecCharExtId3}",
+          "value": "${#TestCase#req_serializedProductSpecCharValueExtId3}"
+        }
+      ]
+    },
+    {
+      "productSpecificationExternalId": "${#TestCase#req_serializedWithoutRangeProductSpecExtId}",
+      "quantity": ${
+        #TestCase#req_serializedWithoutRangeProductSalesQuantity
+      },
+      "placeId": "${#TestCase#req_serializedWithoutRangeProductPlaceId}",
+      "characteristics": [
+        {
+          "key": "${#TestCase#req_serializedWithoutRangeProductSpecCharExtId1}",
+          "value": "${#TestCase#req_serializedWithoutRangeProductSpecCharValueExtId1}"
+        },
+        {
+          "key": "${#TestCase#req_serializedWithoutRangeProductSpecCharExtId2}",
+          "value": "${#TestCase#req_serializedWithoutRangeProductSpecCharValueExtId2}"
+        },
+        {
+          "key": "${#TestCase#req_serializedWithoutRangeProductSpecCharExtId3}",
+          "value": "${#TestCase#req_serializedWithoutRangeProductSpecCharValueExtId3}"
+        }
+      ]
+    }
+  ]
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="deleteItems" path="{biId}/items" id="8d3eb6b4-8105-44d1-81fd-49596d3ff8ce">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>biId</con:name>
+          <con:value>biId</con:value>
+          <con:style>TEMPLATE</con:style>
+          <con:default>biId</con:default>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="Method 1" id="e45e32b1-e052-4437-97fa-129592879461" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:request name="Request 1" id="15c6633d-f6d4-4c60-9c6f-78d4b1d26e43" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+          <con:request>{
+  "itemDeleteList": [
+    {
+      "biItemId": ${#TestCase#req_firstItemId}
+    },
+	    {
+      "biItemId": ${#TestCase#req_secondItemId}
+    },
+	    {
+      "biItemId": ${#TestCase#req_thirdItemId}
+    }
+  ]
+}</con:request>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:resource>
+</con:resource>

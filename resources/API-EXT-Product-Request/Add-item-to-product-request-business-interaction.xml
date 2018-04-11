@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="a4b5bddf-23b5-43c2-8a86-166b833509de" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add item to product request business interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="a4b5bddf-23b5-43c2-8a86-166b833509defileName">Add-item-to-product-request-business-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Add item to product request business interaction" id="61cc1450-4178-4be6-b511-2650b8652ddd">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/productRequest/{biId}/items" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Add item to product request business interaction" id="c429eba6-82b3-4f39-b889-4a471797bb0f" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{  
+	"productInformation":{  
+		"productSpecificationExternalId":"${#TestCase#req_productSpecExtId}",
+		"quantity":${#TestCase#req_quantity}
+	},
+	"characteristicValues":[{  
+		"id":"${#TestCase#req_characteristicValuesId}",
+		"productSpecCharacteristicValue":{  
+			"externalId":"${#TestCase#req_productSpecCharValueExtId}",
+			"value":"${#TestCase#req_productSpecCharValue}"
+		}
+	}]
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="3988509e-bde8-42d0-8c5c-e2af5df5bbc9">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Add item to product request business interaction</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add item to product request business interaction</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_itemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add item to product request business interaction</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecExtId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_quantity</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_characteristicValuesId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecCharValueExtId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_itemId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecCharValue</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

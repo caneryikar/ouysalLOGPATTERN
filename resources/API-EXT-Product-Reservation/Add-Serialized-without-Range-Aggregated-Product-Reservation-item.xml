@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="07adefdf-5c48-4caf-b503-770f8835881e" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add Serialized without Range Aggregated Product Reservation item" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="154b5249-e8ec-45ab-8c7c-17744b4f1ceefileName">Add-an-Aggregated-Product-Reservation-Item</con:setting>
+    <con:setting id="07adefdf-5c48-4caf-b503-770f8835881efileName">Add-Serialized-without-Range-Aggregated-Product-Reservation-item</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Add Serialized without Range Aggregated Product Reservation item" id="bc4f03ea-b2b4-4c4b-afc9-afb155e05042">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/productReservation/{biId}/aggregatedItems" methodName="Add Serialized Aggregated Product Reservation item" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Add Serialized without Range Aggregated Product Reservation item" id="d6681f3d-9d51-4861-a38c-c97a8ad04eb5" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+	"externalSystem" : "${#TestCase#req_externalSystem}",
+	"productSpecificationExternalId" : "${#TestCase#req_productSpecificationExternalId}",
+	"placeId" : "${#TestCase#req_placeId}",
+	"fromSalesOrganizationRoleId": "${#TestCase#req_fromSalesOrganizationId}",
+	"quantity" : "${#TestCase#req_quantity}",
+	"status" : "${#TestCase#req_status}",
+	"characteristicList" : [
+            {
+         "key": "4",
+         "value": "2-EXT"
+      },
+            {
+         "key": "5",
+         "value": "5-EXT"
+      },
+            {
+         "key": "6",
+         "value": "10-EXT"
+      }
+	]
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="ffbcef6f-47d1-48c4-b2a9-b88a842e52e6">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpStatus</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Add Serialized without Range Aggregated Product Reservation item</con:sourceStep>
+        <con:sourcePath>['status']</con:sourcePath>
+        <con:targetType>res_httpStatus</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add Serialized without Range Aggregated Product Reservation item</con:sourceStep>
+        <con:sourcePath>['id']</con:sourcePath>
+        <con:targetType>res_itemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add Serialized without Range Aggregated Product Reservation item</con:sourceStep>
+        <con:sourcePath>['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_externalSystem</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecificationExternalId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_placeId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_quantity</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_status</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_itemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_httpStatus</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_fromSalesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

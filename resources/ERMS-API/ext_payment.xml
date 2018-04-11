@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="ext_payment" path="/payment" id="f98711c5-ef88-4b51-97ce-e7dda444719b" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f98711c5-ef88-4b51-97ce-e7dda444719bfileName">ext_payment</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="addItem" path="{biId}/items" id="eb1e0c75-c15b-4739-97ba-3e6c8dfe1dda">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="9099d725-9a08-4b9e-a0f3-de46bdcb1ba4" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://vmx-erms022/erms/retailManagement/v1/payment/item">item:Fault</con:element>
+      </con:representation>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>text/html;charset=ISO-8859-1</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element>html</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="817686fa-fbba-476e-87b8-0236abe00f6b" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+    "paymentType": "1",
+    "itemOrder" :1,
+    "creditCardInfo":
+    {
+    	"creditCardNumber": 1212121,
+        "bank": 111,
+        "chequeNumber" : sds
+    },
+    "transactionAmount":
+    {
+        "roundedAmount":15,
+        "notRoundedAmount" :15,
+        "currency": "EUR"
+    },
+    "convertedAmount":
+    {
+        "roundedAmount":15,
+        "notRoundedAmount" :15,
+        "currency":"EUR" 
+    },
+    "transactionDate":"2016-12-01T10:20:46.176+01:00"
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:parameterOrder/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="deleteItem" path="{paymentId}/items/{paymentItemId}" id="7de4236c-ea2a-4422-a7f4-b30171674357">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>paymentId</con:name>
+        <con:value>paymentId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>paymentId</con:default>
+      </con:parameter>
+      <con:parameter>
+        <con:name>paymentItemId</con:name>
+        <con:value>paymentItemId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>paymentItemId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="3ce71424-66fb-4466-ae24-f216529d4154" method="DELETE">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="6ef83972-a6e6-4cc4-a3b9-0f19cb5895b5" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>paymentId</con:entry>
+          <con:entry>paymentItemId</con:entry>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="submit" path="{biId}/submit" id="917615ce-124d-4a74-bb4f-bb35aa92cb83">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="fc9a9922-faf2-4011-a659-d3ed50b717ac" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="beec9232-a6af-491d-bd12-7434b113c019" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="cancel" path="{biId}/cancel" id="06fd5962-659a-4610-a4ae-8950ef607b4e">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="6408c383-4d22-49cf-8b10-0d719a78985b" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="ba2b6532-a7a1-41ad-88f9-0d118806278d" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="displaySinglePayment" path="{biId}" id="c4fd5cd6-2657-4b7c-9b83-5a4539ff5b8a">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="ae4beb15-4e63-4226-9bef-3fe2aeb50ae1" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="c38a4a6b-66cf-4f84-a89e-83369d95c50b" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="displayAllItems" path="{paymentId}/items" id="265f861c-d8af-447b-a800-cd1a2f40a71a">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>paymentId</con:name>
+        <con:value>paymentId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>paymentId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="830ad8e7-cc90-4745-b77e-5aced8209430" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="e9e0777c-b5f5-48d8-bfcf-2e79537f19fe" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>paymentId</con:entry>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="displaySingleItem" path="{paymentId}/items/{itemId}" id="22ebeeb6-4205-4a83-aef9-0fd1d25988a3">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>paymentId</con:name>
+        <con:value>paymentId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>paymentId</con:default>
+      </con:parameter>
+      <con:parameter>
+        <con:name>itemId</con:name>
+        <con:value/>
+        <con:style>TEMPLATE</con:style>
+        <con:default/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="e9ad92d7-c3fd-484e-a264-93c5839b4b5e" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="b93ac8dc-b99e-4a82-94ca-b6c57d538ca7" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="itemId" value="itemId"/>
+          <con:entry key="biId" value=""/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>paymentId</con:entry>
+          <con:entry>itemId</con:entry>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="updateItem" path="{biId}/items/{itemId}" id="9dfd9f48-9615-4961-9814-ffd32e8368fe">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+      <con:parameter>
+        <con:name>itemId</con:name>
+        <con:value>itemId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>itemId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="0bf249a5-9477-45b7-a55c-6747477b09ea" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="b857dc30-6945-4b5a-bff1-7d083283ef70" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+    "paymentType": 1,
+    "itemOrder" :1,
+    "creditCardInfo":
+    {
+    	"creditCardNumber": 1212121,
+        "bank": 111,
+        "chequeNumber" : sds
+    },
+    "transactionAmount":
+    {
+        "roundedAmount":40,
+        "notRoundedAmount" :40,
+        "currency": "EUR"
+    },
+    "convertedAmount":
+    {
+        "roundedAmount":40,
+        "notRoundedAmount" :40,
+        "currency":"EUR" 
+    }
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+          <con:entry>itemId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="bulkItem" path="{biId}/items" id="eb1e0c75-c15b-4739-97ba-3e6c8dfe1dda">
+    <con:settings>
+      <con:setting id="eb1e0c75-c15b-4739-97ba-3e6c8dfe1ddafileName">ext_bulk</con:setting>
+    </con:settings>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="9099d725-9a08-4b9e-a0f3-de46bdcb1ba4" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://vmx-erms022/erms/retailManagement/v1/payment/item">item:Fault</con:element>
+      </con:representation>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>text/html;charset=ISO-8859-1</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element>html</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="817686fa-fbba-476e-87b8-0236abe00f6b" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{ 
+	"itemCreateList":
+		[
+			{
+				"paymentType": "CA",
+				"itemOrder" : 1,
+				"transactionAmount":
+				{
+					"roundedAmount":270.45,
+					"notRoundedAmount" :270.4512,
+					"currency": "USD"
+				},
+				"convertedAmount":
+				{
+					"roundedAmount":268.45,
+					"notRoundedAmount" :268.4512,
+					"currency": "EUR"
+				},
+				"transactionDate":"2016-12-01T10:20:46.176+01:00",
+			    "transactionId":"1"
+			},
+			{
+				"paymentType": "CC",
+				"itemOrder" : 1,
+				"transactionAmount":
+				{
+					"roundedAmount":350.45,
+					"notRoundedAmount" :350.4512,
+					"currency": "USD"
+				},
+				"convertedAmount":
+				{
+					"roundedAmount":348.45,
+					"notRoundedAmount" :348.4512,
+					"currency": "EUR"
+				},
+				"transactionDate":"2016-12-01T10:20:46.176+01:00",
+				"transactionId":"2"
+			},
+			{
+				"paymentType": "DD",
+				"itemOrder" : 2,
+				"transactionAmount":
+				{
+					"roundedAmount":150.45,
+					"notRoundedAmount" :150.4512,
+					"currency": "USD"
+				},
+				"convertedAmount":
+				{
+					"roundedAmount":248.45,
+					"notRoundedAmount" :248.4512,
+					"currency": "EUR"
+				},
+				"transactionDate":"2016-12-01T10:20:46.176+01:00",
+				"transactionId":"3"
+			}
+		],
+	"itemDeleteList": 
+		[
+			{
+				"biItemId" : 28                                                   
+			},
+			{
+				"biItemId" : 29                                                   
+			}
+		],
+	"itemUpdateList": 
+		[
+			{
+			"paymentType": "CC",
+			"transactionAmount": 
+				{
+					"notRoundedAmount": 350.4512,
+					"roundedAmount": 350.45,
+					"currency": "USD"
+				},
+			"convertedAmount": 
+				{
+					"notRoundedAmount": 348.4512,
+					"roundedAmount": 348.45,
+					"currency": "EUR"
+				},
+			"itemOrder": 2,
+			"transactionDate": "2016-12-01T09:20:46.176Z",
+			"transactionId": "3",
+			"biItemId": 30
+			}
+		]
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="revertBI" path="{biId}/revert" id="b40904f9-71eb-4319-91ca-7c2c522bcf12">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>id</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>id</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="6758ad42-6c8c-43b2-b18f-61068015f477" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="69160e68-cec2-48df-8e0f-91993549045c" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="biId" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:method name="createPayment" id="fd44c8c9-8a5d-4afe-9d39-9a62df677add" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:request name="Request 1" id="a2746e2f-cced-49a3-9acf-102d37245dfb" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+      <con:request>{
+	"userRoleId": "66",
+	"salesOrganizationRoleId": "17",
+	"businessInteractionSpecificationCode":"PAYMENTBISPEC",
+	"note":"some notes about bi"
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+      <con:parameterOrder/>
+    </con:request>
+  </con:method>
+  <con:method name="displayAllPayments" id="d1ef1007-c0ec-4f4c-83ac-f024d12e04f7" method="GET">
+    <con:settings/>
+    <con:parameters/>
+    <con:request name="Request 1" id="a8f6cd1b-29c1-4759-8edd-1fad7360aa2f" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>${#Project#Endpoint}</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+      <con:parameterOrder/>
+    </con:request>
+  </con:method>
+</con:resource>

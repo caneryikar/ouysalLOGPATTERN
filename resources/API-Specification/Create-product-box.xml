@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="a5dc87ed-f71e-4bb9-922b-02939fb29a98" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create product box" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="a5dc87ed-f71e-4bb9-922b-02939fb29a98fileName">Create-product-box</con:setting>
+  </con:settings>
+  <con:testStep type="restrequest" name="CreateBox - Request 1" id="61d4121a-225c-4baf-bf32-851a54e3cdb6">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/productSpecification" methodName="CreateBox" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="CreateBox - Request 1" id="9405bab6-c090-45a7-9096-34686594a6b9" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{  
+   "externalReference":{  
+      "externalId":"${#TestCase#req_externalId}"
+   },
+   "info":{  
+      "name":"${#TestCase#req_name}",
+      "description":"${#TestCase#req_desc}"
+      },
+   "article":"${#TestCase#req_productSpecArticle}",
+   "code":"${#TestCase#req_productSpecCode}",
+   "status":"${#TestCase#req_status}",
+   "productTrackingType":"${#TestCase#req_productTrackingType}",
+   "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.BoxProductSpecDTO",
+   "userRoleId":"${#TestCase#req_userRoleId}",
+   "salesOrganizationRoleId":"${#TestCase#req_salesOrganizationRoleId}"
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/productSpecification</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="d751999b-ac35-47bc-a143-fc225024d582">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>CreateBox - Request 1</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_id</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>CreateBox - Request 1</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>CreateBox - Request 1</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_externalId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_name</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_desc</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecArticle</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_status</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productTrackingType</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrganizationRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_id</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>500</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value>500</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

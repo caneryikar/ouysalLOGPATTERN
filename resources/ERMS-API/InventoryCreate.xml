@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="inventoryCreate" path="/inventoryCreate" id="2fd09e0a-d57d-43af-ae6a-2deee079dde1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="2fd09e0a-d57d-43af-ae6a-2deee079dde1fileName">inventoryCreate</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="addItem" path="{biId}/item" id="bed615bb-a695-4482-89ad-13ddbcd4d773">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="POST" id="4970214c-6757-4c62-bb9e-e4d79fb2ff03" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>201</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://localhost/erms/v1/inventoryCreate/94/item">item:Response</con:element>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>400 404</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://localhost/erms/v1/inventoryCreate/94/item">item:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="8bb81ff7-3871-4e91-929a-5d017a5212c0" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+    "type": "com.ericsson.bss.rm.erms.core.entity.dto.bi.terminal.CreateInventoryBIItemDTO",
+    "name": "Holland Lost Inventory",
+    "externalId": "holland.lost",
+    "party":{
+       "type":"com.ericsson.bss.rm.erms.core.entity.dto.party.OrganizationDTO",
+       "name":"Holland Lost Inventory"
+    },
+    "inventoryRoleSpec":{"id":6},
+    "salesOrganizationRoleId":4
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="submit" path="{biId}/submit" id="20d31579-f473-466e-add1-725db71a053a">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="POST" id="590bcff0-912e-46d2-9fbb-4ac23d3c5c89" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>400 404</con:status>
+        <con:params/>
+        <con:element xmlns:sub="http://localhost/erms/v1/inventoryCreate/121/submit">sub:Fault</con:element>
+      </con:representation>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:sub="http://localhost/erms/v1/inventoryCreate/121/submit">sub:Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="3d02b3d2-7764-416e-a1d6-9dd33cb6ccee" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="{biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:method name="createInventoryBi" id="2ee285d7-92b1-449e-be38-144d93829e91" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="FAULT">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>400 404</con:status>
+      <con:params/>
+      <con:element xmlns:inv="http://localhost/erms/v1/inventoryCreate">inv:Fault</con:element>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType xsi:nil="true"/>
+      <con:status>0</con:status>
+      <con:params/>
+      <con:element>data</con:element>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType xsi:nil="true"/>
+      <con:status>0</con:status>
+      <con:params/>
+      <con:element>data</con:element>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>201</con:status>
+      <con:params/>
+      <con:element xmlns:inv="http://localhost/erms/v1/inventoryCreate">inv:Response</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="9a5b199e-5448-4fb1-b7e9-05a13a283157" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#Endpoint}</con:endpoint>
+      <con:request>{
+    "createdByUserRoleId": "${#TestCase#req_createdByUserRoleId}",
+   "createdBySalesOrganizationId": "${#TestCase#req_createdBySalesOrganizationId}",
+    "type": "com.ericsson.bss.rm.erms.core.entity.dto.bi.terminal.InventoryCreateBIDTO",
+    "userRoleId": 10,
+    "salesOrganizationRoleId": 8,
+  "businessInteractionSpec":{"code":"INVCREATEBISPEC"}
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+</con:resource>

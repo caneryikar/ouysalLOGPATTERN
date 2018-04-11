@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="f2dfe812-6688-4810-9496-6e29fa4ab16c" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add starter pack item to stock -in bi with prod spec ext id" searchProperties="true" timeout="10000" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="6bd1934a-177f-4060-ae9c-cb6238b88203fileName">Add-serialized-item-to-stock--in-business-interaction</con:setting>
+    <con:setting id="f2dfe812-6688-4810-9496-6e29fa4ab16cfileName">Add-starter-pack-item-to-stock--in-bi-with-prod-spec-ext-id</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Add starter pack item" id="cd6523ff-588f-4e89-bd98-90c590cd2fd2">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockin/{biId}/items" methodName="addSerializedItem" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Add starter pack item" id="942908e4-d9e2-4459-ac4c-a9afc661a11e" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+   "productSpecificationExternalId": "${#TestCase#req_prodSpecExtId}",
+   "quantity": ${#TestCase#req_quantity},
+   "placeId": "${#TestCase#req_placeId}",
+   "productStatus": ${#TestCase#req_prodStatus},
+   "description": "${#TestCase#req_description}",
+   "serialNumber": "${#TestCase#req_startSerialNumber}",
+   "characteristics":    [
+   ]
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/stockin/biId%3E/items</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="d8073fe6-9781-4339-9cf3-b33a7d0fbe01">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add starter pack item</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_itemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Add starter pack item</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add starter pack item</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecExtId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_quantity</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_placeId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodStatus</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_description</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_startSerialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_itemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>2488b616-db28-48db-b8ad-a51c41bee2ef</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

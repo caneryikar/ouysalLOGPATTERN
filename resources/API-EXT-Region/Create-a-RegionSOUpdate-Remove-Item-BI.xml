@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="e143e337-34d1-42fb-a60a-60e30539511c" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create a RegionSOUpdate Remove Item BI" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="631e71e3-f0f5-40c4-9f5f-dd742d979999fileName">Create-region</con:setting>
+    <con:setting id="dbfcc8bb-3f7f-4e01-a3ae-19ee8ac3b414fileName">Create-a-RegionSOUpdate-BI</con:setting>
+    <con:setting id="50e4ac22-77f7-4f39-9077-5e416bd41d26fileName">Create-a-RegionSOUpdate-Add-Item-BI</con:setting>
+    <con:setting id="e143e337-34d1-42fb-a60a-60e30539511cfileName">Create-a-RegionSOUpdate-Remove-Item-BI</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="removeItem" id="c7277b3f-af3c-4615-b746-48dca4abd522">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/salesorganization/region/{id}/items/remove" methodName="removeItem" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="removeItem" id="1b1b6443-9fbd-47e3-b0b7-3d95d386dfe6" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+  "regionId" : "${#TestCase#req_regionId}"
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="id" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>id</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="3a4c3350-0adf-4aa3-b83b-30bb50636394">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>removeItem</con:sourceStep>
+        <con:sourcePath>['id']</con:sourcePath>
+        <con:targetType>res_itemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpStatus</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>removeItem</con:sourceStep>
+        <con:sourcePath>['status']</con:sourcePath>
+        <con:targetType>res_httpStatus</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>removeItem</con:sourceStep>
+        <con:sourcePath>['code']</con:sourcePath>
+        <con:targetType>res_errorCode</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>res_httpStatus</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_itemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_regionId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_biId</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>5094c6c7-edec-4dd8-aeb0-3dc207a62479</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>5e1f60f8-a9e9-4c6f-9d97-88d09623f088</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>c7277b3f-af3c-4615-b746-48dca4abd522</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

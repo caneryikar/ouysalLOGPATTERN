@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="ba62bbc7-bd97-43ee-898b-d8ac6af425e9" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display Single Characteristic Owner Role Char Use" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="ba62bbc7-bd97-43ee-898b-d8ac6af425e9fileName">Display-Single-Characteristic-Owner-Role-Char-Use</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Display Single Characteristic Owner Role Char Use" id="daac4b01-0947-4f66-a12c-301ebf743d6d">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/profileSpecCharUse/{Id}" methodName="getSingleCharacteristicOwnerRoleCharUseExt" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display Single Characteristic Owner Role Char Use" id="fb39053d-438a-421f-a932-edca491cdd07" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InU5NTZlZTZlOC04N2M4LTQxMGQtYTlkOS1jODJkOTIwYzhmZmYifX0.z2gkC6p8No9RZlrT_uQ4a8zMNX_4mc8RlfC5j1yrnw6tL_-XnbbkwP2u56ja2v09x9qK3AFNtNONxZQ94bV5Ssozht6afA577kTmVkB1wj21x7MiEheH7MqLdjVgngebTqM8S-rqA8iuy8JI1PsS4AqBsBWb5HS3tKXsGLywAWY"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="177"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+  "info": {
+    "name": "${#TestCase#req_infoName}",
+    "description": "${#TestCase#req_infoDescription}"
+  },
+  "characteristicValueType": "${#TestCase#req_characteristicValueType}",
+  "type": "com.ericsson.bss.rm.erms.core.entity.dto.characteristics.CharacteristicCreateDTO"
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/characteristics/</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="Id" value="${#TestCase#req_characteristicOwnerRoleCharUseId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>Id</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property transfer" id="a783b8c2-5817-49fc-b5db-256963d37df5">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display Single Characteristic Owner Role Char Use</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_ErrorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Single Characteristic Owner Role Char Use</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>res_characteristicOwnerRoleSpecId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Single Characteristic Owner Role Char Use</con:sourceStep>
+        <con:sourcePath>$['profileSpecId']</con:sourcePath>
+        <con:targetType>res_characteristicOwnerRoleSpecId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_characteristicId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Single Characteristic Owner Role Char Use</con:sourceStep>
+        <con:sourcePath>$['globalCharacteristicSpecificationId']</con:sourcePath>
+        <con:targetType>res_characteristicId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_infoDesc</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Single Characteristic Owner Role Char Use</con:sourceStep>
+        <con:sourcePath>$['description']</con:sourcePath>
+        <con:targetType>res_infoDesc</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_infoName</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Single Characteristic Owner Role Char Use</con:sourceStep>
+        <con:sourcePath>$['name']</con:sourcePath>
+        <con:targetType>res_infoName</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_isMandatory</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Single Characteristic Owner Role Char Use</con:sourceStep>
+        <con:sourcePath>$['isMandatory']</con:sourcePath>
+        <con:targetType>res_isMandatory</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_isUnique</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Single Characteristic Owner Role Char Use</con:sourceStep>
+        <con:sourcePath>$['isUnique']</con:sourcePath>
+        <con:targetType>res_isUnique</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_characteristicOwnerRoleCharUseId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">23</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_characteristicOwnerRoleSpecId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">39</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_characteristicId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">36</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_infoName</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">NameOfSizeCharListType - d9c7541d-4882-467e-9eec-3288ab89189f</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_infoDesc</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">SizeCharDescriptionForList</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">200</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_isMandatory</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">true</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_isUnique</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">false</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

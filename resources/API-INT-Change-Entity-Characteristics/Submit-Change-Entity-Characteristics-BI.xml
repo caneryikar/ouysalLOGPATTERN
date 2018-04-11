@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="f3b1f08b-56d7-44c7-a128-a9f6794e7619" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Submit Change Entity Characteristics BI" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f3b1f08b-56d7-44c7-a128-a9f6794e7619fileName">Submit-Change-Entity-Characteristics-BI</con:setting>
+  </con:settings>
+  <con:testStep type="restrequest" name="Submit Change Entity Characteristics BI" id="5e5bc502-a626-4de1-ac41-d0b132cfd07f">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/changeEntityCharacteristics/{biId}/submit" methodName="submit" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Submit Change Entity Characteristics BI" id="9d126b64-b403-4bed-b6d7-9d3c4893355c" mediaType="application/json" postQueryString="false">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property transfer" id="5f50a884-1012-4618-8e85-58edc1d9f7a6">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Submit Change Entity Characteristics BI</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Submit Change Entity Characteristics BI</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

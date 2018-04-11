@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="080f0d17-75de-4298-b319-a299dc83bbba" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create user role business interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="080f0d17-75de-4298-b319-a299dc83bbbafileName">Create-user-role-business-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Create user role business interaction" id="94d6f9ba-55a4-40b8-9304-355e74f9c582">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/createUserRole" methodName="createBI" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Create user role business interaction" id="fbe286f8-95cc-4922-b5a7-3061d3456ad7" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+   "userRoleId": "${#TestCase#req_userRoleId}",
+   "salesOrganizationRoleId": "${#TestCase#req_soRoleId}",
+   "businessInteractionSpecificationCode": "${#TestCase#req_biSpecCode}"
+  
+}</con:request>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/createUserRole</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:parameterOrder/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Transfer response id to test case res_id" id="07a518ad-f8ce-4fa2-a813-43b8d3e20653">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create user role business interaction</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create user role business interaction</con:sourceStep>
+        <con:sourcePath>$['code']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create user role business interaction</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpCode</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Create user role business interaction</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_httpCode</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value>276</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_soRoleId</con:name>
+      <con:value>274</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_biSpecCode</con:name>
+      <con:value>USERCREATEBISPEC</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_biId</con:name>
+      <con:value>1176</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_httpCode</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>07a518ad-f8ce-4fa2-a813-43b8d3e20653</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

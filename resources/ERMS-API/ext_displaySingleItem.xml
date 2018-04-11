@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="ext_displaySingleItem" path="/changeProductStatus/{biId}/items/{itemId}" id="b1c98bb0-be48-49f4-8396-e5baab721a4d" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="b1c98bb0-be48-49f4-8396-e5baab721a4dfileName">ext_displaySingleItem</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>biId</con:name>
+      <con:value>biId</con:value>
+      <con:style>TEMPLATE</con:style>
+      <con:default>biId</con:default>
+    </con:parameter>
+    <con:parameter>
+      <con:name>itemId</con:name>
+      <con:value>itemId</con:value>
+      <con:style>TEMPLATE</con:style>
+      <con:default>itemId</con:default>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="Method 1" id="893e139e-5a24-4c09-ac62-864494585300" method="GET">
+    <con:settings/>
+    <con:parameters/>
+    <con:request name="Request 1" id="d3284284-f3d6-4bc1-8ba7-ef2c470b9167" mediaType="application/json">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="itemId" value="${#TestCase#itemId}"/>
+        <con:entry key="biId" value="${#TestCase#biId}"/>
+      </con:parameters>
+    </con:request>
+  </con:method>
+</con:resource>

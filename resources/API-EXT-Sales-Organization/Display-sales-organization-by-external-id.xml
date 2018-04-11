@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="dcc5b52e-c2ba-4e8d-89b1-ba422b7eb16a" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display sales organization by external id" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="dcc5b52e-c2ba-4e8d-89b1-ba422b7eb16afileName">Display-sales-organization-by-external-id</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Display sales organization by external id" id="99f370a0-be52-40f6-b31f-d80576863c7d">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/salesOrganizationRole" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display sales organization by external id" id="e2824c93-8684-4579-9808-8118fedcdab6" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/v1/salesOrganizationRole</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="externalId" value="${#TestCase#req_salesOrgRoleExternalId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>externalId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="d835b26a-01df-436f-90ec-62a8231cb862">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display sales organization by external id</con:sourceStep>
+        <con:sourcePath>$[0]['id']</con:sourcePath>
+        <con:targetType>res_salesOrgRoleId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_salesOrgRoleExternalId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_salesOrgRoleId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

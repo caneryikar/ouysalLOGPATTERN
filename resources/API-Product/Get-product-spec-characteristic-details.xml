@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="fe5dc834-b7fe-407f-944e-e2bf3fecc7c9" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Get product spec characteristic details" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="fe5dc834-b7fe-407f-944e-e2bf3fecc7c9fileName">Get-product-spec-characteristic-details</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="getDetails - Request 1" id="233fe63d-7b66-4002-8e8c-205f8a50e821">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/productSpecCharacteristic/details" methodName="getDetails" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="getDetails - Request 1" id="8154fe34-b8ca-4d77-a938-95213d602fe5" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="createdBySalesOrganizationId" value="${#TestCase#createdBySalesOrganizationId}"/>
+          <con:entry key="productSpecCharUseBelongsTo" value="${#TestCase#productSpecCharUseBelongsTo}"/>
+          <con:entry key="createdForSalesOrganizationRoleId" value="${#TestCase#createdForSalesOrganizationRoleId}"/>
+          <con:entry key="createdByUserRoleId" value="${#TestCase#createdByUserRoleId}"/>
+          <con:entry key="productSpecId" value="${#TestCase#productSpecId}"/>
+          <con:entry key="_ts" value="${#TestCase#_ts}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>_ts</con:entry>
+          <con:entry>createdBySalesOrganizationId</con:entry>
+          <con:entry>createdByUserRoleId</con:entry>
+          <con:entry>createdForSalesOrganizationRoleId</con:entry>
+          <con:entry>productSpecCharUseBelongsTo</con:entry>
+          <con:entry>productSpecId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="2f57b355-2bb5-45c7-b582-318d9b497ea3">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>response</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>getDetails - Request 1</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_response</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>valueType</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>getDetails - Request 1</con:sourceStep>
+        <con:sourcePath>$[0]['productSpecCharacteristic']['productCharacteristicValueType']</con:sourcePath>
+        <con:targetType>res_valueType</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>res_response</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>_ts</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>createdBySalesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>createdByUserRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>createdForSalesOrganizationRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>productSpecCharUseBelongsTo</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>productSpecId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_valueType</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="4d761ead-81d6-4c2e-8b4c-053c2a800280" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create and submit terminal business interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="4d761ead-81d6-4c2e-8b4c-053c2a800280fileName">Create-and-submit-terminal-business-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="transfer" name="Property Transfer" id="0a9c300e-05f7-4736-b413-6470c08fafd4">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>req_createdByUserRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create terminal business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>req_createdBySalesOrgRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Create terminal business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create terminal business interaction" id="03af294d-5819-464e-a784-c17379aae461">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>dd134965-c927-42c2-b77c-aa9898d86735</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>276</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>274</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 1" id="9edf686f-f792-4292-86be-d90d5eff9318">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create terminal business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add item to create terminal business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>externalId</con:name>
+        <con:sourceType>req_externalId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_externalId</con:targetType>
+        <con:targetStep>Add item to create terminal business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgId</con:name>
+        <con:sourceType>req_salesOrgRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_salesOrgId</con:targetType>
+        <con:targetStep>Add item to create terminal business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add item to create terminal business interaction" id="c8235913-48b5-4ca4-b676-b00baa4dc3d2">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>c2cf8d8e-d749-4306-b31a-9517cd1e26d6</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_externalId</con:name>
+          <con:value>ext-t-13</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgId</con:name>
+          <con:value>274</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_biItemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_biItemId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 2" id="5dc5918d-d41e-4676-90e8-beab8a3ef4f9">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Add item to create terminal business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit craete terminal business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit craete terminal business interaction" id="34c9e5cd-377b-49e7-b461-43a14bf0c526">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>b9362f84-1b88-4f7e-ac73-8b5c3f0927c8</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 3" id="536f850e-dbe4-4fb5-a5e9-693fdc8ddc6e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Submit craete terminal business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>externalId</con:name>
+        <con:sourceType>req_externalId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_terminalExternalId</con:targetType>
+        <con:targetStep>Display terminal by external id</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display terminal by external id" id="9e3f2d41-2166-4321-8094-74d7ec0756af">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>e8d60225-3e58-4dad-a26a-02c8220df3f4</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_terminalExternalId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_terminalId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_terminalId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 4" id="e6a20fed-b669-4f16-9def-63459d1e898f">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>terminalId</con:name>
+        <con:sourceType>res_terminalId</con:sourceType>
+        <con:sourceStep>Display terminal by external id</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_terminalId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>terminalExternalId</con:name>
+        <con:sourceType>req_externalId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>res_externalId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_createdByUserRoleId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_createdBySalesOrgRoleId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrgRoleId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_externalId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_biId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_externalId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_terminalId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>9edf686f-f792-4292-86be-d90d5eff9318</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>5dc5918d-d41e-4676-90e8-beab8a3ef4f9</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>0a9c300e-05f7-4736-b413-6470c08fafd4</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>03af294d-5819-464e-a784-c17379aae461</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>c8235913-48b5-4ca4-b676-b00baa4dc3d2</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>34c9e5cd-377b-49e7-b461-43a14bf0c526</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>536f850e-dbe4-4fb5-a5e9-693fdc8ddc6e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>9e3f2d41-2166-4321-8094-74d7ec0756af</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e6a20fed-b669-4f16-9def-63459d1e898f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

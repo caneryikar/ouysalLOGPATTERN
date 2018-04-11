@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="ext_stockOutItems" path="/stockout/{biId}/items" id="884fcc49-c85e-498f-a927-6243901c0f9f" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="884fcc49-c85e-498f-a927-6243901c0f9ffileName">ext_displayStockOutItems</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>biId</con:name>
+      <con:value>biId</con:value>
+      <con:style>TEMPLATE</con:style>
+      <con:default>biId</con:default>
+    </con:parameter>
+  </con:parameters>
+  <con:resource name="displayBiItem" path="/{itemId}" id="c97a4499-8eb5-410b-b7a6-da5c52606072">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+      <con:parameter>
+        <con:name>itemId</con:name>
+        <con:value>itemId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>itemId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="displayBiItemMethod" id="6af0a053-35a2-42a2-a647-cf333e290686" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="da093ac2-d1d7-44b2-9409-19b1b164c414" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="itemId" value="${#TestCase#itemId}"/>
+          <con:entry key="biId" value="${#TestCase#req_biId}"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:method name="displayBiItems" id="6aa05ab1-630a-4f02-8d95-22c09131a737" method="GET">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.StockOutItemResponse.1.json#"</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element>Response</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="5a43b748-0990-42bb-8354-5f6e2988b11a" mediaType="application/json">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+      </con:parameters>
+    </con:request>
+  </con:method>
+</con:resource>

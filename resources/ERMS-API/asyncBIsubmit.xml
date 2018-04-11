@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="asyncBIsubmit" path="/command/stages/" id="60486180-0920-461a-ba72-6c14563222e5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="60486180-0920-461a-ba72-6c14563222e5fileName">asyncBIsubmit</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>biId</con:name>
+      <con:value/>
+      <con:style>TEMPLATE</con:style>
+      <con:default/>
+    </con:parameter>
+    <con:parameter>
+      <con:name>type</con:name>
+      <con:style>QUERY</con:style>
+    </con:parameter>
+  </con:parameters>
+  <con:resource name="Display staging BIs" path="{biId}" id="c80a55d5-9f92-4d82-804d-d52de4e4ba87">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="bfad7b37-25b6-431d-8bc6-cf75d4c6b00f" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="ebf507ee-89f1-4da6-9ff1-04468790f8e5" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+</con:resource>

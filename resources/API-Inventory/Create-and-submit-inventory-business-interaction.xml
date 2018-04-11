@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="d15adc59-c80c-4126-aad4-25f0f3e24960" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create and submit inventory business interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="d15adc59-c80c-4126-aad4-25f0f3e24960fileName">Create-and-submit-inventory-business-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="calltestcase" name="Create inventory role spec" id="c8068fa8-1c76-4370-b0a8-f6f24ce71b14">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>d3c553c2-ee0e-4673-9378-de9f389297e5</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_name</con:name>
+          <con:value>irs-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_inventoryType</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>250</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpCode</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_id</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="064cd2bd-5ea4-45b5-818d-36cc6b2c9e6f">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>req_createdByUserRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create inventory role business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>req_createdBySalesOrgRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Create inventory role business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>createdByUserRoleId</con:name>
+        <con:sourceType>req_createdByUserRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_createdByUserRoleId</con:targetType>
+        <con:targetStep>Create inventory role business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:type>XPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>createdBySalesOrgRoleId</con:name>
+        <con:sourceType>req_createdBySalesOrgRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath xsi:nil="true"/>
+        <con:targetType>req_createdBySalesOrganizationId</con:targetType>
+        <con:targetStep>Create inventory role business interaction</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>XPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create inventory role business interaction" id="a9554fda-4214-4c30-a04b-d5d3a6a341a7">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>c11a7f92-e5d2-48ab-a0f3-bd2d5a50f16e</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>276</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>274</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>446</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_createdByUserRoleId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_createdBySalesOrganizationId</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 1" id="05e0f9b5-ce9a-4f0e-9ec6-b87d68160f44">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create inventory role business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add item to create inventory role business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>req_salesOrgRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Add item to create inventory role business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>externalId</con:name>
+        <con:sourceType>req_externalId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_externalId</con:targetType>
+        <con:targetStep>Add item to create inventory role business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventoryRoleSpecId</con:name>
+        <con:sourceType>res_id</con:sourceType>
+        <con:sourceStep>Create inventory role spec</con:sourceStep>
+        <con:targetType>req_inventoryRoleSpecId</con:targetType>
+        <con:targetStep>Add item to create inventory role business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add item to create inventory role business interaction" id="b46c037d-5402-4364-9edc-fd4f482fed66">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>5914d943-4fee-4e49-8a96-e100db78b91d</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>446</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>274</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_externalId</con:name>
+          <con:value>ext-i-5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_inventoryRoleSpecId</con:name>
+          <con:value>250</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>446</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biItemId</con:name>
+          <con:value>231</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_biItemId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 2" id="9cd3c21d-b546-4f0e-85de-89ff9d7cba06">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Add item to create inventory role business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit create inventory role business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit create inventory role business interaction" id="a360041d-fa15-4f48-949b-3d200ab5cb5c">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>4b662a54-bf53-477d-81f6-3d67402303b0</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>446</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>446</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 3" id="b64b23d5-231a-46c0-800e-f7000eae92d5">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>externalId</con:name>
+        <con:sourceType>req_externalId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_externalId</con:targetType>
+        <con:targetStep>Get inventory role by external id</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Submit create inventory role business interaction</con:sourceStep>
+        <con:targetType>res_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Get inventory role by external id" id="5aa62f36-31c6-4c09-b881-02a4814f47e4">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>30deab9a-5e89-4e83-bffc-b2baeb340967</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_externalId</con:name>
+          <con:value>ext-i-5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_inventoryRoleId</con:name>
+          <con:value>81</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_inventoryRoleId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 4" id="f7b7b6dd-81c6-43f7-be02-5ad3aa2cf1f9">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventoryRoleId</con:name>
+        <con:sourceType>res_inventoryRoleId</con:sourceType>
+        <con:sourceStep>Get inventory role by external id</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_inventoryRoleId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_createdByUserRoleId</con:name>
+      <con:value>276</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_createdBySalesOrgRoleId</con:name>
+      <con:value>274</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrgRoleId</con:name>
+      <con:value>274</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_externalId</con:name>
+      <con:value>ext-i-5</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_inventoryRoleId</con:name>
+      <con:value>81</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_biId</con:name>
+      <con:value>446</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>c8068fa8-1c76-4370-b0a8-f6f24ce71b14</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>064cd2bd-5ea4-45b5-818d-36cc6b2c9e6f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>05e0f9b5-ce9a-4f0e-9ec6-b87d68160f44</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>9cd3c21d-b546-4f0e-85de-89ff9d7cba06</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a9554fda-4214-4c30-a04b-d5d3a6a341a7</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>b46c037d-5402-4364-9edc-fd4f482fed66</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a360041d-fa15-4f48-949b-3d200ab5cb5c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>b64b23d5-231a-46c0-800e-f7000eae92d5</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>5aa62f36-31c6-4c09-b881-02a4814f47e4</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>f7b7b6dd-81c6-43f7-be02-5ad3aa2cf1f9</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

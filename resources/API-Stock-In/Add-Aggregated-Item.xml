@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="4174c50e-482c-468d-99de-45a57e0c462a" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add Aggregated Item - sim" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="4174c50e-482c-468d-99de-45a57e0c462afileName">Add-Aggregated-Item</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Method 1 - Request 1" id="c1721b45-2e74-412a-aa18-b997b51c8ed0">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockin/{biId}/aggregatedItems" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Method 1 - Request 1" id="51c6a1de-f15d-4ec8-a3fa-2743f1cf6df9" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+	"businessInteractionId": "${#TestCase#req_biId}",
+	"productInformation": {
+		"type": "com.ericsson.bss.rm.erms.core.entity.dto.product.ProductInformationDTO",
+		"productSpecification": {
+			"id": 7,
+			"code": "CODE-SIM-1",
+			"article": "ARR-SIM-1",
+			"externalReference": {
+				"externalId": "EXT-SIM-1"
+			},
+			"info": {
+				"name": "SIM",
+				"description": "SIM"
+			},
+			"replicationInfo": {
+				"isReplicated": false
+			},
+			"returnPeriod": {
+				"value": 1,
+				"unit": "Year"
+			},
+			"serialNumberFormat": "SIM-XXXXXXXXXX",
+			"status": "Active",
+			"valueType": 1,
+			"versionInfo": {
+				"versionNumber": 1000000
+			},
+			"warrantyPeriod": {
+				"value": 1,
+				"unit": "Year"
+			},
+			"productTrackingType": "Serialized",
+			"isSerialized": true,
+			"dynamicMap": {},
+			"type": "com.ericsson.bss.rm.erms.core.entity.dto.product.SIMSpecDTO",
+			"characteristicList": [{
+					"selectedValue": {
+						"name": "32MB",
+						"id": 20
+					},
+					"name": "SIM Memory",
+					"id": 6,
+					"specCharUseId": 11,
+					"charValueType": "LIST",
+					"values": [{
+							"name": "32MB",
+							"id": 20
+						}
+					]
+				}
+			]
+		},
+		"quantity": 1,
+		"status": 1,
+		"description": "SIM",
+		"batchId": "1"
+	},
+//	"purchaseDate": "2018-01-08T00:00:00+0300",
+	"vendorName": "Vendor",
+	"toPartyRoleId": "${#TestCase#req_soId}",
+	"characteristicValues": [{
+			"productSpecCharUse": {
+				"id": 11,
+				"productSpecCharacteristic": {
+					"id": 6,
+					"info": {
+						"name": "SIM Memory"
+					}
+				}
+			},
+			"productSpecCharacteristicValue": {
+				"id": 20,
+				"value": "32MB",
+				"productSpecChar": {
+					"id": 6
+				}
+			},
+			"value": null,
+			"productCharacteristicValueType": "LIST"
+		}
+	],
+	"type": "com.ericsson.bss.rm.erms.core.entity.dto.bi.gen2.stockin.AggregatedCreateStockInItemDTO",
+	"toPlaceId":"${#TestCase#req_placeId}",
+	"createdByUserRoleId": "${#TestCase#req_userId}",
+	"createdBySalesOrganizationId": "${#TestCase#req_soId}",
+	"createdForSalesOrganizationRoleId": "${#TestCase#req_soId}"
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="462ed946-c3ce-49b0-9ef8-184d043284e2">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_status</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Method 1 - Request 1</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_status</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Method 1 - Request 1</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Method 1 - Request 1</con:sourceStep>
+        <con:sourcePath>$['code']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Method 1 - Request 1</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_id</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_placeId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_userId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_soId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_id</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_status</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

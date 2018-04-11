@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="7dc5e586-8a4d-45b5-ac73-36187114233d" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create product reservation interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="7dc5e586-8a4d-45b5-ac73-36187114233dfileName">Create-product-reservation-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Create product reservation interaction" id="87fae2ec-681a-48c4-a17a-b46b469cf378">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/productReservation" methodName="Create product reservation interaction" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Create product reservation interaction" id="7cbeeda4-5ebe-4dd2-87b7-3350ca8b8230" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+    "createdByUserRoleId": "${#TestCase#req_userId}",
+    "createdBySalesOrganizationId": "${#TestCase#req_soId}",
+    "type": "com.ericsson.bss.rm.erms.core.entity.dto.bi.product.ProductReservationCreateDTO",
+    "userRoleId": "${#TestCase#req_userId}",
+    "createdForSalesOrganizationRoleId": "${#TestCase#req_soId}",
+    "reservationPeriod":{
+    	"value": "${#TestCase#req_reservationPeriodValue}",
+    	"unit":"${#TestCase#req_reservationPeriodUnit}"
+    },
+	"businessInteractionSpec":{"code": "${#TestCase#req_biSpecCode}"}
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer response" id="e17c6d14-b2e5-4bad-8129-54921236f806">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_biId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create product reservation interaction</con:sourceStep>
+        <con:sourcePath>id</con:sourcePath>
+        <con:targetType>res_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create product reservation interaction</con:sourceStep>
+        <con:sourcePath>$['code']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>status</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Create product reservation interaction</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_httpStatus</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_userId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_soId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_reservationPeriodValue</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_reservationPeriodUnit</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_biSpecCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_httpStatus</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>e17c6d14-b2e5-4bad-8129-54921236f806</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

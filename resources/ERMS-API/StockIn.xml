@@ -1,0 +1,1831 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="stockIn" path="/stockin" id="25bf07b6-d645-40dc-9a44-35b511a5342d" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="25bf07b6-d645-40dc-9a44-35b511a5342dfileName">StockIn</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="stockInAddItem" path="{biId}/item" id="5499c085-72e5-4822-bd03-e31dc08df99e">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="9bcc6cbb-d39d-4abc-8d29-44b086bd4cff" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>400 404</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://localhost/erms/v1/stockin/0/item">item:Fault</con:element>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>201</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://localhost/erms/v1/stockin/494/item">item:Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="7eeaa5c1-336a-4d64-b8a6-ef7c01dd3788" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+  "productInformation": {
+    "type": "com.ericsson.bss.rm.erms.core.entity.dto.product.ProductInformationDTO",
+    "productSpecification": {
+      "id": ${#TestSuite#nonSerializedProducSpecId},
+      "type": "com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO"
+    },
+    "quantity": "${#TestSuite#quantity}",
+    "startSerialNumber": "0",
+    "serialText": "",
+    "endSerialNumber": "0",
+    "status": 1,
+    "characteristicDescription": "characteristicDescription",
+    "description": "description",
+    "isPaired":"${#TestSuite#isPairedTrue}"
+  },
+  "toPartyRoleId": ${#TestSuite#salesOrganizationId},
+    "characteristicValues": [
+    {
+      "productSpecCharUse": {
+        "id": ${#TestSuite#productSpecCharUseId},
+        "productSpecCharacteristic": {
+          "id": ${#TestSuite#productSpecCharId}
+        }
+      },
+      "productSpecCharacteristicValue": {
+        "id": ${#TestSuite#productSpecCharValueId},
+        "productSpecChar": {
+                 "id": ${#TestSuite#productSpecCharId}
+		}
+      }
+    }
+  ],
+  "toPlaceId": ${#TestSuite#salesOrganizationIncmongInventoryPlaceId},
+  "type": "com.ericsson.bss.rm.erms.core.entity.dto.bi.CreateStockInBIDTO",
+  "userRoleId": ${#TestSuite#userId},
+  "salesOrganizationRoleId": ${#TestSuite#salesOrganizationId}
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="stockInSubmit" path="{biId}/submit" id="d1b77810-4a42-47ee-8442-dd692dbb7e1e">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="SubmitStockIn" id="7644fe12-c3aa-414a-b997-f0ad88ae0a04" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>400 404</con:status>
+        <con:params/>
+        <con:element xmlns:sub="http://localhost/erms/v1/stockin/0/submit">sub:Fault</con:element>
+      </con:representation>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:sub="http://localhost/erms/v1/stockin/biId/submit">sub:Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="d39a273f-e012-41b5-98ed-022e0a0b4a71" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="stockInCancel" path="{biId}/cancel" id="6be99e1c-5b93-4878-810a-70ba4554209f">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value/>
+        <con:style>TEMPLATE</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="CancelStockInItem" id="98c57845-85da-4121-929a-b318351295d5" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:can="http://localhost/erms/v1/stockin/529/cancel">can:Response</con:element>
+      </con:representation>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>400</con:status>
+        <con:params/>
+        <con:element xmlns:can="http://localhost/erms/v1/stockin/529/cancel">can:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="34adc156-a7a9-42e7-881a-996ca2b801fb" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestSuite#biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="stockInDisplay" path="{biId}" id="36038335-37e2-42fb-a08a-ca2a5d7d1624">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="DisplaySingleStockInBI" id="60e01fcb-4ead-4509-bc56-fa483b701e09" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:ns="http://localhost/erms/v1/stockin/582">ns:Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="dce25745-5abb-46c0-aed5-85d5bcb281d1" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestSuite#biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="stockInDisplayItems" path="{biId}/item" id="78ad02ae-7521-4cce-9a82-e9e486096003">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="DisplayAllItemsOfBI" id="b09538d0-2240-4fec-832b-64b1b9217b0a" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="4fd15b18-91cc-47a8-aa9f-6cd5c34683b0" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="stockInSerializedCharacteristic" path="{biId}/stockInSerializedCharacteristic" id="06e82c71-3b1e-4849-9ee5-310a31b444cc">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="addSerializedProdCharValue" id="f4631976-e44f-44e7-8add-05cb054e64f7" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="a3e58051-e313-4623-985f-d071225a19dc" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+
+  "salesOrganizationRoleId": 10006,
+  "userRoleId":10016,
+  "serializedProductCharValueList": [
+  	{"productSpecCharUse": {"id": 15}, "serialNumber": "1005", "value": "5"}
+  	]
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="serialProductRelationship" path="{biId}/serialProductRelationship" id="61023f05-e8e4-4a9d-8e4f-62093528ad39">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="7bde7dac-6e49-4a94-857a-2e279dfe8082" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="82f00bed-c761-4239-a06d-9157c9cfb1e0" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+  "productSpecification": {
+    "id": 10,
+    "code": "CODE-STARTERPACK-1",
+    "article": "ARR-STARTERPACK-1",
+    "externalReference": {
+      "externalId": "EXT-STARTERPACK-1"
+    },
+    "info": {
+      "name": "STARTERPACK",
+      "description": "STARTERPACK"
+    },
+    "replicationInfo": {
+      "isReplicated": false
+    },
+    "returnPeriod": {
+      "value": 1,
+      "unit": "Year"
+    },
+    "serialNumberFormat": "STARTERPACK-XXXXXXXXXX",
+    "status": "Active",
+    "valueType": 1,
+    "versionInfo": {
+      "versionNumber": 1000000
+    },
+    "warrantyPeriod": {
+      "value": 1,
+      "unit": "Year"
+    },
+    "productTrackingType": "Serialized",
+    "isSerialized": true,
+    "type": "com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO"
+  },
+  "serialNumber": "80649277",
+  "relatedProductSpecification": {
+    "id": 7,
+    "code": "CODE-SIM-1",
+    "article": "ARR-SIM-1",
+    "externalReference": {
+      "externalId": "EXT-SIM-1"
+    },
+    "info": {
+      "name": "SIM",
+      "description": "SIM"
+    },
+    "replicationInfo": {
+      "isReplicated": false
+    },
+    "returnPeriod": {
+      "value": 1,
+      "unit": "Year"
+    },
+    "serialNumberFormat": "SIM-XXXXXXXXXX",
+    "status": "Active",
+    "valueType": 1,
+    "versionInfo": {
+      "versionNumber": 1000000
+    },
+    "warrantyPeriod": {
+      "value": 1,
+      "unit": "Year"
+    },
+    "productTrackingType": "Serialized",
+    "isSerialized": true,
+    "type": "com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO"
+  },
+  "relatedSerialNumber": "80649278",
+  "userRoleId": 133,
+  "salesOrganizationRoleId": 131
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="stockInAddBoxItem" path="stockin2/{biId}/Items" id="a8f17886-04e8-4a7f-8a80-f87e30e0b47b">
+    <con:settings>
+      <con:setting id="a8f17886-04e8-4a7f-8a80-f87e30e0b47bfileName">userUpdate</con:setting>
+    </con:settings>
+    <con:parameters/>
+    <con:method name="Method 1" id="a548d619-a481-4611-bb35-29b7970383ae" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="3d2b1c46-c6ee-48c2-82fc-79c9e0e1a1be" mediaType="application/json" postQueryString="false">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="createStockInForBox v2" path="" id="c6e2be9d-f610-44a3-86e4-c68173588444">
+    <con:settings/>
+    <con:parameters/>
+    <con:method name="Method 1" id="94996f48-aa0b-4fa9-bb5e-613567261689" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>400</con:status>
+        <con:params/>
+        <con:element xmlns:stoc="http://localhost/erms/v1/stockin">stoc:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="8a92619a-9d54-4fb7-bbfb-35c6f6a3fe1a" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+    "type": "com.ericsson.bss.erms.entity.dto.bi.CreateStockInBIDTO",
+    "userRoleId": "${#TestSuite#userId}",
+    "salesOrganizationRoleId": "${#TestSuite#salesOrganizationId}",
+    "fromUserId": "${#TestSuite#userId}",
+    "fromOrganizationId": "${#TestSuite#salesOrganizationId}",
+    "creatorUserRoleId": "${#TestSuite#userId}",
+    "creatorSalesOrganizationRoleId": "${#TestSuite#salesOrganizationId}",
+	"businessInteractionSpec":{"code":"STCKINBISPEC"},
+	"createdByUserRoleId": "${#TestCase#userId}",
+     "createdBySalesOrganizationId": "${#TestCase#salesOrganizationId}"
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="addStockInForBoxItem v2" path="{biId}/item" id="bed7b7f9-801c-4e89-858a-17a747916673">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value/>
+        <con:style>TEMPLATE</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method add item" id="01aa3ea3-a171-4f54-bc7c-3aae76c3ae3e" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://localhost/erms/v1/stockin/item">item:Fault</con:element>
+      </con:representation>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:request name="Request 1" id="7233cc34-5501-4835-b147-812710f67f91" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{  
+   "businessInteractionId":181,
+   "productInformation":{  
+      "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.ProductInformationDTO",
+      "productSpecification":{  
+         "id":10,
+         "code":"myboxw1",
+         "article":"myboxw1",
+         "externalReference":{  
+            "externalId":"myboxw1"
+         },
+         "info":{  
+            "name":"myboxw",
+            "description":"myboxw1"
+         },
+         "status":"Active",
+         "productTrackingType":"SerializedWithoutRange",
+         "productSpecType":"Box",
+         "isSerialized":true,
+         "dynamicMap":{  
+
+         },
+         "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.BoxProductSpecDTO",
+         "characteristicList":[  
+
+         ]
+      },
+      "quantity":1,
+      "startSerialNumber":0,
+      "serialText":"123",
+      "endSerialNumber":0,
+      "status":1,
+      "characteristicDescription":"",
+      "description":"myboxw1"
+   },
+   "characteristicValues":[  
+
+   ],
+   "type":"com.ericsson.bss.rm.erms.core.entity.dto.bi.gen2.stockin.CreateBoxStockInBIItemDTO",
+   "userRoleId":61,
+   "salesOrganizationRoleId":15
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="biId" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="addStockInForBoxItem2 v2" path="{biId}/item" id="52ccd5fb-58a8-4a1f-96f3-b1e3352c3129">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value/>
+        <con:style>TEMPLATE</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="fe815655-ecf5-467a-91f9-38357590d6d8" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="687fb007-4e2f-4007-b340-a2d34917c574" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{  
+   "businessInteractionId":181,
+   "parentBusinessInteractionItemId":208,
+   "productInformation":{  
+      "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.ProductInformationDTO",
+      "productSpecification":{  
+         "id":2,
+         "code":"CODE-GALAXYNOTE4-1",
+         "article":"ARR-GALAXYNOTE4-1",
+         "externalReference":{  
+            "externalId":"EXT-GALAXYNOTE4-1"
+         },
+         "info":{  
+            "name":"Galaxy Note 4",
+            "description":"Galaxy Note 4"
+         },
+         "replicationInfo":{  
+            "isReplicated":false
+         },
+         "returnPeriod":{  
+            "value":1,
+            "unit":"Year"
+         },
+         "serialNumberFormat":"GN-XXXXXXXXXX",
+         "status":"Active",
+         "valueType":1,
+         "versionInfo":{  
+            "versionNumber":1000000
+         },
+         "warrantyPeriod":{  
+            "value":1,
+            "unit":"Year"
+         },
+         "productTrackingType":"SerializedWithoutRange",
+         "productSpecType":"Atomic",
+         "isSerialized":true,
+         "dynamicMap":{  
+
+         },
+         "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO",
+         "characteristicList":[  
+            {  
+               "selectedValue":{  
+                  "name":"5.4",
+                  "id":2
+               },
+               "name":"Screen Size",
+               "id":1,
+               "specCharUseId":4,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"5.4",
+                     "id":2
+                  }
+               ]
+            },
+            {  
+               "selectedValue":{  
+                  "name":"32 GB",
+                  "id":5
+               },
+               "name":"Memory",
+               "id":2,
+               "specCharUseId":5,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"32 GB",
+                     "id":5
+                  },
+                  {  
+                     "name":"64 GB",
+                     "id":6
+                  },
+                  {  
+                     "name":"128 GB",
+                     "id":7
+                  }
+               ]
+            },
+            {  
+               "selectedValue":{  
+                  "name":"M10",
+                  "id":10
+               },
+               "name":"Processor",
+               "id":3,
+               "specCharUseId":6,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"M10",
+                     "id":10
+                  },
+                  {  
+                     "name":"M15",
+                     "id":11
+                  }
+               ]
+            }
+         ]
+      },
+      "parentSerialNumberText":"123",
+      "quantity":1,
+      "startSerialNumber":0,
+      "serialText":"123",
+      "endSerialNumber":0,
+      "status":1,
+      "characteristicDescription":"5.4, 32 GB, M10",
+      "description":"Galaxy Note 4"
+   },
+   "characteristicValues":[  
+      {  
+         "productSpecCharUse":{  
+            "id":4,
+            "productSpecCharacteristic":{  
+               "id":1,
+               "info":{  
+                  "name":"Screen Size"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":2,
+            "value":"5.4",
+            "productSpecChar":{  
+               "id":1
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      },
+      {  
+         "productSpecCharUse":{  
+            "id":5,
+            "productSpecCharacteristic":{  
+               "id":2,
+               "info":{  
+                  "name":"Memory"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":5,
+            "value":"32 GB",
+            "productSpecChar":{  
+               "id":2
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      },
+      {  
+         "productSpecCharUse":{  
+            "id":6,
+            "productSpecCharacteristic":{  
+               "id":3,
+               "info":{  
+                  "name":"Processor"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":10,
+            "value":"M10",
+            "productSpecChar":{  
+               "id":3
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      }
+   ],
+   "type":"com.ericsson.bss.rm.erms.core.entity.dto.bi.gen2.stockin.CreateStockInBIItemDTO",
+   "userRoleId":61,
+   "salesOrganizationRoleId":15
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="biId" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="submitStockInForBoxItem v2" path="{biId}/submit" id="98a38261-4387-4187-aa95-418a485faa6c">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value/>
+        <con:style>TEMPLATE</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method submit" id="e1b7a3ff-ae50-4ff8-8357-8f4c122f45d5" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="e3f77762-b977-4c05-9de8-6fd21178629c" mediaType="application/json" postQueryString="false">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="biId" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getStockInForBoxItem v2" path="{biId}/detail" id="908077a3-72c9-4259-97e7-bac5781e9d61">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value/>
+        <con:style>TEMPLATE</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method GetList" id="ba04f2a9-5504-4d6f-8404-de7a4046eca6" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="3b0e2a91-4a21-40a4-8381-4b07d6968193" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="biId" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="addSerializedWithoutRangeItemForBox" path="{biId}/item" id="e8c6d77d-a3d0-4606-97e6-35e2cd9d0540">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="61414292-4b62-429e-ae35-335a54064911" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="c67a715d-1754-4d32-b488-58ad52c2a558" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{  
+   "businessInteractionId":"${#TestCase#req_biId}",
+   "parentBusinessInteractionItemId":"${#TestCase#req_itemId}",
+   "productInformation":{  
+      "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.ProductInformationDTO",
+      "productSpecification":{  
+         "id":"${#TestCase#req_productSpecificationId}",
+         "code":"EXT-GALAXYNOTE4-1",
+         "article":"EXT-GALAXYNOTE4-1",
+         "externalReference":{  
+            "externalId":"EXT-GALAXYNOTE4-1"
+         },
+         "info":{  
+            "name":"Galaxy Note 4",
+            "description":"Galaxy Note 4"
+         },
+         "replicationInfo":{  
+            "isReplicated":false
+         },
+         "returnPeriod":{  
+            "value":1,
+            "unit":"Year"
+         },
+         "serialNumberFormat":"GN-XXXXXXXXXX",
+         "status":"Active",
+         "valueType":1,
+         "versionInfo":{  
+            "versionNumber":1000000
+         },
+         "warrantyPeriod":{  
+            "value":1,
+            "unit":"Year"
+         },
+         "productTrackingType":"${#TestCase#req_productTrackingType}",
+         "productSpecType":"Atomic",
+         "isSerialized":true,
+         "dynamicMap":{  
+
+         },
+         "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO",
+         "characteristicList":[  
+            {  
+               "selectedValue":{  
+                  "name":"5.4",
+                  "id":2
+               },
+               "name":"Screen Size",
+               "id":1,
+               "specCharUseId":4,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"5.4",
+                     "id":2
+                  }
+               ]
+            },
+            {  
+               "selectedValue":{  
+                  "name":"32 GB",
+                  "id":5
+               },
+               "name":"Memory",
+               "id":2,
+               "specCharUseId":5,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"32 GB",
+                     "id":5
+                  },
+                  {  
+                     "name":"64 GB",
+                     "id":6
+                  },
+                  {  
+                     "name":"128 GB",
+                     "id":7
+                  }
+               ]
+            },
+            {  
+               "selectedValue":{  
+                  "name":"M10",
+                  "id":10
+               },
+               "name":"Processor",
+               "id":3,
+               "specCharUseId":6,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"M10",
+                     "id":10
+                  },
+                  {  
+                     "name":"M15",
+                     "id":11
+                  }
+               ]
+            }
+         ]
+      },
+      "parentProductSpecificationId":"${#TestCase#req_parentSpecId}",
+      "parentSerialNumberText":"${#TestCase#req_parentSerialText}",
+      "quantity":"${#TestCase#req_quantity}",
+      "startSerialNumber":"${#TestCase#req_startSerialNumber}",
+      "serialText":"${#TestCase#req_serialNumber}",
+      "endSerialNumber":"${#TestCase#req_endSerialNumber}",
+      "status":1,
+      "characteristicDescription":"5.4, 32 GB, M10",
+      "description":"Galaxy Note 4"
+   },
+   "vendorName":"eeee",
+   "toPartyRoleId":null,
+   "characteristicValues":[  
+      {  
+         "productSpecCharUse":{  
+            "id":4,
+            "productSpecCharacteristic":{  
+               "id":1,
+               "info":{  
+                  "name":"Screen Size"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":2,
+            "value":"5.4",
+            "productSpecChar":{  
+               "id":1
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      },
+      {  
+         "productSpecCharUse":{  
+            "id":5,
+            "productSpecCharacteristic":{  
+               "id":2,
+               "info":{  
+                  "name":"Memory"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":5,
+            "value":"32 GB",
+            "productSpecChar":{  
+               "id":2
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      },
+      {  
+         "productSpecCharUse":{  
+            "id":6,
+            "productSpecCharacteristic":{  
+               "id":3,
+               "info":{  
+                  "name":"Processor"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":11,
+            "value":"M15",
+            "productSpecChar":{  
+               "id":3
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      }
+   ],
+ 
+   "type":"com.ericsson.bss.rm.erms.core.entity.dto.bi.gen2.stockin.CreateStockInBIItemDTO",
+   "toPlaceId": "${#TestCase#req_placeId}",
+   "userRoleId":"${#TestCase#req_userId}",
+   "salesOrganizationRoleId":"${#TestCase#req_soId}"
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="addSerializedItemForBox" path="{biId}/item" id="4989c86b-63c1-4eab-b83c-15863a270126">
+    <con:settings/>
+    <con:parameters/>
+    <con:method name="Method 1" id="25f7f685-5873-4603-ab09-905fea81e051" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="51c6a1de-f15d-4ec8-a3fa-2743f1cf6df9" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{  
+   "businessInteractionId":"${#TestCase#req_biId}",
+   "parentBusinessInteractionItemId":"${#TestCase#req_itemId}",
+   "productInformation":{  
+      "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.ProductInformationDTO",
+      "productSpecification":{  
+         "id":1,
+         "code":"CODE-IPHONE6S-1",
+         "article":"ARR-IPHONE6S-1",
+         "externalReference":{  
+            "externalId":"EXT-IPHONE6S-1"
+         },
+         "info":{  
+            "name":"IPhone 6S",
+            "description":"IPhone 6S"
+         },
+         "replicationInfo":{  
+            "isReplicated":false
+         },
+         "returnPeriod":{  
+            "value":1,
+            "unit":"Year"
+         },
+         "serialNumberFormat":"IPHONE6S-XXXXXXXXXX",
+         "status":"Active",
+         "valueType":1,
+         "versionInfo":{  
+            "versionNumber":1000000
+         },
+         "warrantyPeriod":{  
+            "value":1,
+            "unit":"Year"
+         },
+         "productTrackingType":"Serialized",
+         "isSerialized":true,
+         "dynamicMap":{  
+
+         },
+         "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO",
+         "characteristicList":[  
+            {  
+               "selectedValue":{  
+                  "name":"4.7",
+                  "id":1
+               },
+               "name":"Screen Size",
+               "id":1,
+               "specCharUseId":1,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"4.7",
+                     "id":1
+                  },
+                  {  
+                     "name":"5.4",
+                     "id":2
+                  }
+               ]
+            },
+            {  
+               "selectedValue":{  
+                  "name":"16 GB",
+                  "id":4
+               },
+               "name":"Memory",
+               "id":2,
+               "specCharUseId":2,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"16 GB",
+                     "id":4
+                  },
+                  {  
+                     "name":"32 GB",
+                     "id":5
+                  },
+                  {  
+                     "name":"64 GB",
+                     "id":6
+                  }
+               ]
+            },
+            {  
+               "selectedValue":{  
+                  "name":"A7",
+                  "id":8
+               },
+               "name":"Processor",
+               "id":3,
+               "specCharUseId":3,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"A7",
+                     "id":8
+                  },
+                  {  
+                     "name":"A8",
+                     "id":9
+                  }
+               ]
+            }
+         ]
+      },
+      "parentProductSpecificationId":"${#TestCase#req_parentSpecId}",
+      "parentSerialNumberText":"${#TestCase#req_parentSerialText}",
+      "quantity":"${#TestCase#req_quantity}",
+      "startSerialNumber":"${#TestCase#req_startSerialNumber}",
+      "serialText":"${#TestCase#req_serialNumber}",
+      "endSerialNumber":"${#TestCase#req_endSerialNumber}",
+      "status":1,
+      "characteristicDescription":"4.7, 16 GB, A7",
+      "description":"IPhone 6S"
+   },
+   "toPartyRoleId":null,
+   "characteristicValues":[  
+      {  
+         "productSpecCharUse":{  
+            "id":1,
+            "productSpecCharacteristic":{  
+               "id":1,
+               "info":{  
+                  "name":"Screen Size"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":1,
+            "value":"4.7",
+            "productSpecChar":{  
+               "id":1
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      },
+      {  
+         "productSpecCharUse":{  
+            "id":2,
+            "productSpecCharacteristic":{  
+               "id":2,
+               "info":{  
+                  "name":"Memory"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":4,
+            "value":"16 GB",
+            "productSpecChar":{  
+               "id":2
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      },
+      {  
+         "productSpecCharUse":{  
+            "id":3,
+            "productSpecCharacteristic":{  
+               "id":3,
+               "info":{  
+                  "name":"Processor"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":8,
+            "value":"A7",
+            "productSpecChar":{  
+               "id":3
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      }
+   ]
+
+   "type":"com.ericsson.bss.rm.erms.core.entity.dto.bi.gen2.stockin.CreateStockInBIItemDTO",
+   "toPlaceId": "${#TestCase#req_placeId}",
+   "userRoleId":"${#TestCase#req_userId}",
+   "salesOrganizationRoleId":"${#TestCase#req_soId}"
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="aggregatedItems" path="{biId}/aggregatedItems" id="4989c86b-63c1-4eab-b83c-15863a270126">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:resource name="" path="/{aggregatedItemId}/items" id="500b34a1-6528-4f0b-89f1-b6ae967299a0">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>aggregatedItemId</con:name>
+          <con:value/>
+          <con:style>TEMPLATE</con:style>
+          <con:default/>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="Method 1" id="0a13b80e-8737-4fb0-8ca3-a2bfbcad361b" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:request name="Request 1" id="1b65a405-9459-408f-a421-0340c60ac961" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>${#Project#Endpoint}</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <entry key="aggregatedItemId" value="" xmlns="http://eviware.com/soapui/config"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>biId</con:entry>
+            <con:entry>aggregatedItemId</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="2" path="/{aggregatedItemId}" id="ec37a622-ebb7-4454-b667-b589f9e4cbad">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>aggregatedItemId</con:name>
+          <con:value/>
+          <con:style>TEMPLATE</con:style>
+          <con:default/>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="Method 1" id="0f6e8f65-9771-4129-813a-ad4270f1a00a" method="DELETE">
+        <con:settings/>
+        <con:parameters/>
+        <con:request name="Request 1" id="9d5c947d-f765-4ae2-b6e2-d2315c491bb2" mediaType="application/json" postQueryString="false">
+          <con:settings/>
+          <con:endpoint>${#Project#Endpoint}</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <entry key="aggregatedItemId" value="" xmlns="http://eviware.com/soapui/config"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>biId</con:entry>
+            <con:entry>aggregatedItemId</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:method name="Method 1" id="25f7f685-5873-4603-ab09-905fea81e051" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="51c6a1de-f15d-4ec8-a3fa-2743f1cf6df9" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+	"businessInteractionId": 151,
+	"productInformation": {
+		"type": "com.ericsson.bss.rm.erms.core.entity.dto.product.ProductInformationDTO",
+		"productSpecification": {
+			"id": 7,
+			"code": "CODE-SIM-1",
+			"article": "ARR-SIM-1",
+			"externalReference": {
+				"externalId": "EXT-SIM-1"
+			},
+			"info": {
+				"name": "SIM",
+				"description": "SIM"
+			},
+			"replicationInfo": {
+				"isReplicated": false
+			},
+			"returnPeriod": {
+				"value": 1,
+				"unit": "Year"
+			},
+			"serialNumberFormat": "SIM-XXXXXXXXXX",
+			"status": "Active",
+			"valueType": 1,
+			"versionInfo": {
+				"versionNumber": 1000000
+			},
+			"warrantyPeriod": {
+				"value": 1,
+				"unit": "Year"
+			},
+			"productTrackingType": "Serialized",
+			"isSerialized": true,
+			"dynamicMap": {},
+			"type": "com.ericsson.bss.rm.erms.core.entity.dto.product.SIMSpecDTO",
+			"characteristicList": [{
+					"selectedValue": {
+						"name": "32MB",
+						"id": 20
+					},
+					"name": "SIM Memory",
+					"id": 6,
+					"specCharUseId": 11,
+					"charValueType": "LIST",
+					"values": [{
+							"name": "32MB",
+							"id": 20
+						}
+					]
+				}
+			]
+		},
+		"quantity": 1,
+		"status": 1,
+		"description": "SIM",
+		"batchId": "1"
+	},
+	"purchaseDate": "2018-01-08T00:00:00+0300",
+	"vendorName": "Vendor",
+	"toPartyRoleId": 3,
+	"characteristicValues": [{
+			"productSpecCharUse": {
+				"id": 11,
+				"productSpecCharacteristic": {
+					"id": 6,
+					"info": {
+						"name": "SIM Memory"
+					}
+				}
+			},
+			"productSpecCharacteristicValue": {
+				"id": 20,
+				"value": "32MB",
+				"productSpecChar": {
+					"id": 6
+				}
+			},
+			"value": null,
+			"productCharacteristicValueType": "LIST"
+		}
+	],
+	"type": "com.ericsson.bss.rm.erms.core.entity.dto.bi.gen2.stockin.AggregatedCreateStockInItemDTO",
+	"toPlaceId": 4,
+	"createdByUserRoleId": 5,
+	"createdBySalesOrganizationId": 3,
+	"createdForSalesOrganizationRoleId": 3
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="updateRequestedQuantity" path="{biId}/updateRequestedQuantity" id="4989c86b-63c1-4eab-b83c-15863a270126">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="25f7f685-5873-4603-ab09-905fea81e051" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="51c6a1de-f15d-4ec8-a3fa-2743f1cf6df9" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+	"aggregatedItemId": 228,
+	"requestedQuantity": "39708472",
+	"createdByUserRoleId": 5,
+	"createdBySalesOrganizationId": 3,
+	"createdForSalesOrganizationRoleId": 3
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getProductItemListOfAggregatedItem" path="{biId}/getProductItemListOfAggregatedItem" id="4989c86b-63c1-4eab-b83c-15863a270126">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="25f7f685-5873-4603-ab09-905fea81e051" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="51c6a1de-f15d-4ec8-a3fa-2743f1cf6df9" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+	"businessInteractionId": 151,
+	"productInformation": {
+		"type": "com.ericsson.bss.rm.erms.core.entity.dto.product.ProductInformationDTO",
+		"productSpecification": {
+			"id": 7,
+			"code": "CODE-SIM-1",
+			"article": "ARR-SIM-1",
+			"externalReference": {
+				"externalId": "EXT-SIM-1"
+			},
+			"info": {
+				"name": "SIM",
+				"description": "SIM"
+			},
+			"replicationInfo": {
+				"isReplicated": false
+			},
+			"returnPeriod": {
+				"value": 1,
+				"unit": "Year"
+			},
+			"serialNumberFormat": "SIM-XXXXXXXXXX",
+			"status": "Active",
+			"valueType": 1,
+			"versionInfo": {
+				"versionNumber": 1000000
+			},
+			"warrantyPeriod": {
+				"value": 1,
+				"unit": "Year"
+			},
+			"productTrackingType": "Serialized",
+			"isSerialized": true,
+			"dynamicMap": {},
+			"type": "com.ericsson.bss.rm.erms.core.entity.dto.product.SIMSpecDTO",
+			"characteristicList": [{
+					"selectedValue": {
+						"name": "32MB",
+						"id": 20
+					},
+					"name": "SIM Memory",
+					"id": 6,
+					"specCharUseId": 11,
+					"charValueType": "LIST",
+					"values": [{
+							"name": "32MB",
+							"id": 20
+						}
+					]
+				}
+			]
+		},
+		"quantity": 1,
+		"status": 1,
+		"description": "SIM",
+		"batchId": "1"
+	},
+	"purchaseDate": "2018-01-08T00:00:00+0300",
+	"vendorName": "Vendor",
+	"toPartyRoleId": 3,
+	"characteristicValues": [{
+			"productSpecCharUse": {
+				"id": 11,
+				"productSpecCharacteristic": {
+					"id": 6,
+					"info": {
+						"name": "SIM Memory"
+					}
+				}
+			},
+			"productSpecCharacteristicValue": {
+				"id": 20,
+				"value": "32MB",
+				"productSpecChar": {
+					"id": 6
+				}
+			},
+			"value": null,
+			"productCharacteristicValueType": "LIST"
+		}
+	],
+	"type": "com.ericsson.bss.rm.erms.core.entity.dto.bi.gen2.stockin.AggregatedCreateStockInItemDTO",
+	"toPlaceId": 4,
+	"createdByUserRoleId": 5,
+	"createdBySalesOrganizationId": 3,
+	"createdForSalesOrganizationRoleId": 3
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="submitSerialNumbers" path="{biId}/submitSerialNumbers" id="d1b77810-4a42-47ee-8442-dd692dbb7e1e">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="submitSerialNumbers" id="7644fe12-c3aa-414a-b997-f0ad88ae0a04" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>400 404</con:status>
+        <con:params/>
+        <con:element xmlns:sub="http://localhost/erms/v1/stockin/0/submit">sub:Fault</con:element>
+      </con:representation>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:sub="http://localhost/erms/v1/stockin/biId/submit">sub:Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="d39a273f-e012-41b5-98ed-022e0a0b4a71" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="itemMedia" path="/{req_biId}/itemMedia/" id="36038335-37e2-42fb-a08a-ca2a5d7d1624">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>req_biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+      <con:parameter>
+        <con:name>req_createdBySalesOrganizationId</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter>
+        <con:name>req_createdByUserRoleId</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter>
+        <con:name>req_createdForSalesOrganizationRoleId</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter>
+        <con:name>fileType</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="itemMedia" id="60e01fcb-4ead-4509-bc56-fa483b701e09" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:ns="http://localhost/erms/v1/stockin/582">ns:Response</con:element>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:v1="http://localhost/erms/v1">v1:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="dce25745-5abb-46c0-aed5-85d5bcb281d1" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJFUk1TX0FETUlOX0F1dGh6UHJvZmlsZSIsInZlcnNpb24iOiJ2MSIsInBhcnR5X2lkIjoiMTIzIiwiZXh0ZXJuYWxfdXNlcm5hbWUiOiJ1c2VyLTc5ZTRhZjAxLTJjZWItNGYwYi05ZWY2LWZmOGM5MzRjNmQxMCJ9fQ.DW8zAN_mBRzibqC02HJp7zht3Ft78cBU9fDzH7DXYjjaTAKdbUAWz5Mjx0mi8ul2tbRxoA136yyfRYaI0k94eZlI39DGpjb03gPB1yGDLLyb9j6Xt19Jaei8jLQOqUBX1SNFWhQao4QwyYWZ54iJWpst3zJghu_aA9fMTJwenPo"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="6"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/v1/stockin/itemMedia/</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="req_createdBySalesOrganizationId" value="${#TestSuite#req_createdBySalesOrganizationId}"/>
+          <con:entry key="req_createdByUserRoleId" value="${#TestSuite#req_createdByUserRoleId}"/>
+          <con:entry key="req_biId" value="${#TestSuite#req_biId}"/>
+          <con:entry key="req_createdForSalesOrganizationRoleId" value="${#TestSuite#rreq_createdForSalesOrganizationRoleId}"/>
+          <con:entry key="fileType" value="STCKIN_ITEM"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>req_createdBySalesOrganizationId</con:entry>
+          <con:entry>req_createdByUserRoleId</con:entry>
+          <con:entry>req_createdForSalesOrganizationRoleId</con:entry>
+          <con:entry>req_biId</con:entry>
+          <con:entry>fileType</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="itemStage" path="/{req_biId}/itemStage/{req_stageId}" id="36038335-37e2-42fb-a08a-ca2a5d7d1624">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>req_biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+      <con:parameter>
+        <con:name>req_createdBySalesOrganizationId</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter>
+        <con:name>req_createdByUserRoleId</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter>
+        <con:name>req_createdForSalesOrganizationRoleId</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter>
+        <con:name>req_stageId</con:name>
+        <con:value/>
+        <con:style>TEMPLATE</con:style>
+        <con:default/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="itemStage" id="60e01fcb-4ead-4509-bc56-fa483b701e09" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:ns="http://localhost/erms/v1/stockin/582">ns:Response</con:element>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:v1="http://localhost/erms/v1">v1:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="dce25745-5abb-46c0-aed5-85d5bcb281d1" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJFUk1TX0FETUlOX0F1dGh6UHJvZmlsZSIsInZlcnNpb24iOiJ2MSIsInBhcnR5X2lkIjoiMTIzIiwiZXh0ZXJuYWxfdXNlcm5hbWUiOiJ1c2VyLTc5ZTRhZjAxLTJjZWItNGYwYi05ZWY2LWZmOGM5MzRjNmQxMCJ9fQ.DW8zAN_mBRzibqC02HJp7zht3Ft78cBU9fDzH7DXYjjaTAKdbUAWz5Mjx0mi8ul2tbRxoA136yyfRYaI0k94eZlI39DGpjb03gPB1yGDLLyb9j6Xt19Jaei8jLQOqUBX1SNFWhQao4QwyYWZ54iJWpst3zJghu_aA9fMTJwenPo"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="6"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/v1/stockin/itemMedia/</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="req_createdBySalesOrganizationId" value="${#TestSuite#req_createdBySalesOrganizationId}"/>
+          <con:entry key="req_createdByUserRoleId" value="${#TestSuite#req_createdByUserRoleId}"/>
+          <con:entry key="req_stageId" value="${#TestSuite#req_stageId}"/>
+          <con:entry key="req_biId" value="${#TestSuite#req_biId}"/>
+          <con:entry key="req_createdForSalesOrganizationRoleId" value="${#TestSuite#rreq_createdForSalesOrganizationRoleId}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>req_createdBySalesOrganizationId</con:entry>
+          <con:entry>req_createdByUserRoleId</con:entry>
+          <con:entry>req_createdForSalesOrganizationRoleId</con:entry>
+          <con:entry>req_biId</con:entry>
+          <con:entry>req_stageId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:method name="CreateStockInInteraction" id="9fae1a1c-232b-42d6-a2a1-fed39d07d654" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:representation type="FAULT">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>400</con:status>
+      <con:params/>
+      <con:element xmlns:stoc="http://localhost/erms/v1/stockin">stoc:Fault</con:element>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>201</con:status>
+      <con:params/>
+      <con:element xmlns:stoc="http://localhost/erms/v1/stockin">stoc:Response</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="ba25cbb9-5bd0-4e5e-ba6c-1d8c65665280" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#Endpoint}</con:endpoint>
+      <con:request>{
+    "type": "com.ericsson.bss.erms.entity.dto.bi.CreateStockInBIDTO",
+    "userRoleId": "${#TestSuite#userId}",
+    "salesOrganizationRoleId": "${#TestSuite#salesOrganizationId}",
+    "fromUserId": "${#TestSuite#userId}",
+    "fromOrganizationId": "${#TestSuite#salesOrganizationId}",
+    "creatorUserRoleId": "${#TestSuite#userId}",
+    "creatorSalesOrganizationRoleId": "${#TestSuite#salesOrganizationId}",
+	"businessInteractionSpec":{"code":"BISPECCODE"}
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+  <con:method name="DisplayAllStockInBI" id="9c65ec21-8b48-46a6-9e8f-b6c1e997fef1" method="GET">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element>Response</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="9364687e-f1e7-46d9-97e1-4946d8e3b6dc" mediaType="application/json">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#Endpoint}</con:endpoint>
+      <con:request/>
+      <con:originalUri>http://localhost/erms/v1/stockin</con:originalUri>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+</con:resource>

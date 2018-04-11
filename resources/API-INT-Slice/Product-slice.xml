@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="92bf0ca6-cb84-4020-a810-a800c5a62e46" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Product slice" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="92bf0ca6-cb84-4020-a810-a800c5a62e46fileName">Product-slice</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Slice product" id="634ef3c6-7000-4f16-a048-5aa428c78fde">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/sliceProduct" methodName="SliceProduct" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Slice product" id="d0a38573-b933-4d79-8631-c5d5b90ea126" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+    "productId": "${#TestCase#req_productId}",
+    "quantity": "${#TestCase#req_quantity}",
+    "startSerialNumber": "${#TestCase#req_startSerial}"
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/sliceProduct</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer productId" id="6731d135-21ff-44f9-b729-b75372f81997">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Slice product</con:sourceStep>
+        <con:sourcePath>id</con:sourcePath>
+        <con:targetType>res_newProductId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Slice product</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_quantity</con:name>
+        <con:sourceType>req_quantity</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>res_quantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_startSerial</con:name>
+        <con:sourceType>req_startSerial</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_startSerial</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Slice product</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_productId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_quantity</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_startSerial</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_newProductId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_startSerial</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_quantity</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>6731d135-21ff-44f9-b729-b75372f81997</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

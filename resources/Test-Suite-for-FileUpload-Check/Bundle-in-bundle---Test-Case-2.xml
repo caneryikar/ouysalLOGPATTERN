@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="2a2146ae-a31b-40b3-808d-428b0695a798" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Bundle in bundle - Test Case 2" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="2a2146ae-a31b-40b3-808d-428b0695a798fileName">Bundle-in-bundle---Test-Case-2</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Properties" id="d6fbe55d-c6a0-44ec-81da-dd4946dcff38">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>biId</con:name>
+          <con:value>${#[Test Suite for Bundle in Bundle#TestCase 2#Create stock-out business interaction]#res_biId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>productId</con:name>
+          <con:value>${#[Test Suite for Bundle in Bundle#TestCase 2#Get Box productId by specId]#res_productId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>quantity</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>reason</con:name>
+          <con:value>Sales</con:value>
+        </con:property>
+        <con:property>
+          <con:name>stockOutReasonDescription</con:name>
+          <con:value>SalesDescription</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. -Adding item to BI which does not exist 2" id="df079579-3f52-4917-9c26-26d578651fdc">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>biId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add serializedBox to stock out bi 2</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productId</con:name>
+        <con:sourceType>productId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_productId</con:targetType>
+        <con:targetStep>Add serializedBox to stock out bi 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>quantity</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_quantity</con:targetType>
+        <con:targetStep>Add serializedBox to stock out bi 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>reason</con:name>
+        <con:sourceType>reason</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_stockOutReasonType</con:targetType>
+        <con:targetStep>Add serializedBox to stock out bi 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>stockOutReasonDescription</con:name>
+        <con:sourceType>stockOutReasonDescription</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_stockOutReasonDescription</con:targetType>
+        <con:targetStep>Add serializedBox to stock out bi 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add serializedBox to stock out bi 2" id="70b36802-598c-4a42-9fc3-63596b695e1d">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>05624b1e-0210-4665-8bbc-54bbc0be39c0</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>${#[Test Suite for Bundle in Bundle#TestCase 2#Create stock-out business interaction]#res_biId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productId</con:name>
+          <con:value>${#[Test Suite for Bundle in Bundle#TestCase 2#Get Box productId by specId]#res_productId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>PRODUCT_WITH_ID_ALREADY_LOCKED_BY_BI_WITH_ID</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_serialNumber</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_quantity</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_stockOutReasonType</con:name>
+          <con:value>Sales</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_stockOutReasonDescription</con:name>
+          <con:value>SalesDescription</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_new_product_id</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_new_product_id</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion box added to stock out bi" id="d6ecb128-32fb-43de-bfef-a7e3bddb4076">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>6de91c4e-e681-4798-bc86-27b7912a46aa</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>70b36802-598c-4a42-9fc3-63596b695e1d</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="56c37afb-c989-4a73-ab24-ce90bc80ac72">
+          <con:configuration>
+            <token>201</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>d2ec9991-3730-4d78-afe7-18798989ec34</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>70b36802-598c-4a42-9fc3-63596b695e1d</con:sourceId>
+        <con:propertyName>res_itemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="3f1c3ba4-98a0-4aa6-9f2e-60969e2d097d">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. - Delete item of stock out bi" id="0b9579d0-2db7-4db3-a142-384073395da5">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>biId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Delete item of stock out bi</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>res_itemId</con:sourceType>
+        <con:sourceStep>Add serializedBox to stock out bi 2</con:sourceStep>
+        <con:targetType>req_itemId</con:targetType>
+        <con:targetStep>Delete item of stock out bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Delete item of stock out bi" id="0f64df18-47bf-4744-ab87-4c18f94cbbc7">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>bccdd447-0a75-4474-8bc9-fa822e114224</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>20671</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_itemId</con:name>
+          <con:value>3769</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_headerCode</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_headerCode</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion box deleted from bi" id="3d48acfd-a9bb-4a7c-9537-00dee3e70230">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>ae02fdd7-4f11-43bb-8f75-3c321a287ffb</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>0f64df18-47bf-4744-ab87-4c18f94cbbc7</con:sourceId>
+        <con:propertyName>res_headerCode</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="74bb2f51-6726-4adf-8414-0722edfc2b32">
+          <con:configuration>
+            <token>200</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. - Display items of stock out bi" id="24308b0f-5748-45d7-8c99-1b5df838ec8b">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>biId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Display items of stock out bi</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display items of stock out bi" id="d9043a51-9473-4636-b4e5-b43a9b88f58b">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>6667f206-8494-405c-a243-a3c102438a0d</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>20671</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_firstItemQuantity</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_firstItemProductId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_firstItemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_secondItemQuantity</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_secondItemProductId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_secondItemId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_firstItemQuantity</con:entry>
+        <con:entry>res_firstItemProductId</con:entry>
+        <con:entry>res_firstItemId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion items inside box are removed from stockOut bi" id="74373985-6b1a-416e-b9cc-71426add5384">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>8f7d366f-6a69-43fc-9429-0d637baccff6</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>d9043a51-9473-4636-b4e5-b43a9b88f58b</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="e4ce2558-3ee8-4213-826f-2c35c4adc921">
+          <con:configuration>
+            <token>200</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>4f9cf5fb-b6f1-4602-ab66-a1f83213ab1c</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>d9043a51-9473-4636-b4e5-b43a9b88f58b</con:sourceId>
+        <con:propertyName>res_firstItemQuantity</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="d2a29bbc-aba9-4687-a981-c17323bad3f3">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>b4b155be-af07-40f9-ac71-2cb46c799777</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>d9043a51-9473-4636-b4e5-b43a9b88f58b</con:sourceId>
+        <con:propertyName>res_firstItemProductId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 3" id="e8a6a9d1-330d-41c5-a9a6-85e77fb935de">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>98f9cf14-12bb-4fc7-ba45-338c3e3d6bb2</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>d9043a51-9473-4636-b4e5-b43a9b88f58b</con:sourceId>
+        <con:propertyName>res_firstItemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 4" id="37561ad8-09f5-470d-994d-04ce89669e37">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="7dd6d3d5-fb6a-49fd-9043-a94f5f3402a7" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display product by serial text and product spec ext id" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="7dd6d3d5-fb6a-49fd-9043-a94f5f3402a7fileName">Display-product-by-serial-text</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="transfer" name="Property Transfer 2" id="cc6ecd7d-c5ca-45c9-9f5d-c0a43c43998a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrganizationId</con:name>
+        <con:sourceType>UserSo</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>salesOrganizationId</con:targetType>
+        <con:targetStep>Display product by serial text and product spec ext id</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Display product by serial text and product spec ext id" id="2b3fb1fe-1c25-4570-9551-01e4b83c9d63">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/product" methodName="DisplayProductBySerialText" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display product by serial text and product spec ext id" id="70f87037-5a32-43b3-983c-94a239b5fae5" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/product</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="productSpecificationExternalId" value="${#TestCase#req_prodSpecExtId}"/>
+          <con:entry key="productSerialText" value="${#TestCase#req_productSerialText}"/>
+          <con:entry key="placeId" value=""/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>productSerialText</con:entry>
+          <con:entry>productSpecificationExternalId</con:entry>
+          <con:entry>salesOrganizationId</con:entry>
+          <con:entry>placeId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="c079a1cd-7825-4091-94ff-34db1f893a69">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display product by serial text and product spec ext id</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product by serial text and product spec ext id</con:sourceStep>
+        <con:sourcePath>$[0]['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product by serial text and product spec ext id</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_productId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productSerialText</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product by serial text and product spec ext id</con:sourceStep>
+        <con:sourcePath>[0].productInformation.serialNumber</con:sourcePath>
+        <con:targetType>res_productSerialText</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>charExtId1</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product by serial text and product spec ext id</con:sourceStep>
+        <con:sourcePath>[0].characteristicValueUses[0].characteristic.externalId</con:sourcePath>
+        <con:targetType>res_charExtId1</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>charExtId2</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product by serial text and product spec ext id</con:sourceStep>
+        <con:sourcePath>[0].characteristicValueUses[1].characteristic.externalId</con:sourcePath>
+        <con:targetType>res_charExtId2</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>charExtId3</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product by serial text and product spec ext id</con:sourceStep>
+        <con:sourcePath>[0].characteristicValueUses[2].characteristic.externalId</con:sourcePath>
+        <con:targetType>res_charExtId3</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>charValueExtId1</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product by serial text and product spec ext id</con:sourceStep>
+        <con:sourcePath>[0].characteristicValueUses[0].characteristicValue.externalId</con:sourcePath>
+        <con:targetType>res_charValueExtId1</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>charValueExtId2</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product by serial text and product spec ext id</con:sourceStep>
+        <con:sourcePath>[0].characteristicValueUses[1].characteristicValue.externalId</con:sourcePath>
+        <con:targetType>res_charValueExtId2</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>charValueExtId3</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product by serial text and product spec ext id</con:sourceStep>
+        <con:sourcePath>[0].characteristicValueUses[2].characteristicValue.externalId</con:sourcePath>
+        <con:targetType>res_charValueExtId3</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>serializedCharExtId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product by serial text and product spec ext id</con:sourceStep>
+        <con:sourcePath>[0].characteristicValueUses[3].characteristic.externalId</con:sourcePath>
+        <con:targetType>res_serializedCharExtId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>serializedCharValue</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product by serial text and product spec ext id</con:sourceStep>
+        <con:sourcePath>[0].characteristicValueUses[3].characteristicValue.value</con:sourcePath>
+        <con:targetType>res_serializedCharValue</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_productSerialText</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecExtId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_productId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_charExtId1</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_charExtId2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_charExtId3</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_charValueExtId1</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_charValueExtId2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_charValueExtId3</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_serializedCharExtId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_serializedCharValue</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_productSerialText</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

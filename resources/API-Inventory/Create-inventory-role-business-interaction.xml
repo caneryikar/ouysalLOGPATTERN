@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="c11a7f92-e5d2-48ab-a0f3-bd2d5a50f16e" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create inventory role business interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="c11a7f92-e5d2-48ab-a0f3-bd2d5a50f16efileName">Create-inventory-role-business-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Create inventory role business interaction" id="c85abaae-b729-4448-b710-b4cca61a1cd6">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/inventoryCreate" methodName="createInventoryBi" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Create inventory role business interaction" id="9a5b199e-5448-4fb1-b7e9-05a13a283157" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJFUk1TX0FETUlOX0F1dGh6UHJvZmlsZSIsInZlcnNpb24iOiJ2MSIsInBhcnR5X2lkIjoiMTIzIiwiZXh0ZXJuYWxfdXNlcm5hbWUiOiJ1ZmRmMDRiZGQtZGE4ZS00NDJjLThlNTUtNTI2ODMwOGUxNmNmIn19.ILkv5ilBdlem7sLoR7GEPmUFshoeFnZwooqJ84LJV8i3ccpYbY-ZECYs0WrYmDvxbLNSBQF1LPEmbh6FeZXM5V05grn3wAzsQacSfJRkzgoIJ94iHMZiyaGM0CKKiBPiICzfgNqCE0UR7QeUldAA0HLtj_R7uilruXNdHxvQyfI"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="272"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+   "createdByUserRoleId": "${#TestCase#req_createdByUserRoleId}",
+   "createdBySalesOrganizationId": "${#TestCase#req_createdBySalesOrganizationId}",
+   "type": "com.ericsson.bss.rm.erms.core.entity.dto.bi.terminal.InventoryCreateBIDTO",
+   "userRoleId": "${#TestCase#req_userRoleId}",
+   "createdForSalesOrganizationRoleId": "${#TestCase#req_salesOrgRoleId}",
+   "businessInteractionSpec": {"code": "SO_CREATE_INV_CREATE"}
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/inventoryCreate</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="2118fe3f-c1ec-49a3-beea-e250374ef2f2">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create inventory role business interaction</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value>276</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrgRoleId</con:name>
+      <con:value>274</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_biId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_createdByUserRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_createdBySalesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="2a528d8b-5b13-4d95-87ac-42a9644387c3" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add item to stock-in business interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="2a528d8b-5b13-4d95-87ac-42a9644387c3fileName">Add-item-to-stock-in-business-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Add item to stock-in business interaction" id="e2ff7733-1fa6-49f0-9318-7ee36ecc8b00">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockin/{biId}/items" methodName="addItem" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Add item to stock-in business interaction" id="942908e4-d9e2-4459-ac4c-a9afc661a11e" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+   "productSpecificationExternalId": "${#TestCase#req_prodSpecExternalId}",
+   "quantity": ${#TestCase#req_quantity},
+   "serialNumber": "${#TestCase#req_serialNumber}",
+   "placeId": "${#TestCase#req_placeId}",
+   "productStatus": ${#TestCase#req_productStatus},
+   "description": "${#TestCase#req_description}",
+   "startSerialNumber": ${#TestCase#req_startSerial},
+   "characteristics": []
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/stockin/biId%3E/items</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Transfer response id to res_id" id="d949215d-88a5-4222-8c36-fc8a845af826">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add item to stock-in business interaction</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_id</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>startSerial</con:name>
+        <con:sourceType>req_startSerial</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_startSerial</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>endSerial</con:name>
+        <con:sourceType>req_endSerial</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_endSerial</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add item to stock-in business interaction</con:sourceStep>
+        <con:sourcePath>$['code']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>req_quantity</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_quantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add item to stock-in business interaction</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value>1190</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecExternalId</con:name>
+      <con:value>EXT-APPLMOUSE-1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_quantity</con:name>
+      <con:value>50</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_placeId</con:name>
+      <con:value>31</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_productStatus</con:name>
+      <con:value>1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_description</con:name>
+      <con:value>Apple Mouse</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_id</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecCharUseId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecCharId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecCharValueId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_isPaired</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_startSerial</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_endSerial</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_startSerial</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_endSerial</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_quantity</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_serialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>e2ff7733-1fa6-49f0-9318-7ee36ecc8b00</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d949215d-88a5-4222-8c36-fc8a845af826</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

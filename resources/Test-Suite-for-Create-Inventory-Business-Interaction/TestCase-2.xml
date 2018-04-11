@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="0a72f797-076b-4d5c-8b01-dea609f78b8e" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TestCase 2" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="0a72f797-076b-4d5c-8b01-dea609f78b8efileName">TestCase-2</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Given properties for the test case" id="781498ca-7e8b-4f9e-87f2-6c76bb2a17cf">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>biId</con:name>
+          <con:value>3290</con:value>
+        </con:property>
+        <con:property>
+          <con:name>biSpecCode</con:name>
+          <con:value>INVROLEBISPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>erroMessageBINotFound</con:name>
+          <con:value>BI_WITH_ID_NOT_FOUND</con:value>
+        </con:property>
+        <con:property>
+          <con:name>errorMessageInvalidState</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+        <con:property>
+          <con:name>httpCode200</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>httpCode201</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>httpCode400</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>inventoryExtId</con:name>
+          <con:value>inventoryExtId-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>inventoryName</con:name>
+          <con:value>inventoryName-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>inventoryType</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>organizationName</con:name>
+          <con:value>organizationName-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>soExtId</con:name>
+          <con:value>sales-dd259d9a-20ed-42cd-913e-47727327a02e</con:value>
+        </con:property>
+        <con:property>
+          <con:name>soId</con:name>
+          <con:value>1300</con:value>
+        </con:property>
+        <con:property>
+          <con:name>userId</con:name>
+          <con:value>1302</con:value>
+        </con:property>
+        <con:property>
+          <con:name>zero</con:name>
+          <con:value>0</con:value>
+        </con:property>
+        <con:property>
+          <con:name>null</con:name>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="04154d81-fa48-44dd-8dab-d83596779665">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userToken</con:name>
+        <con:sourceType>null</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>AuthorizationUser</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userSo</con:name>
+        <con:sourceType>null</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:targetType>UserSo</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create user and so" id="0901d7bd-b427-420c-975a-1095c2a39f34">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>b74217bc-b1f9-4207-9e50-6b2f68674c57</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_soId</con:name>
+          <con:value>1300</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_userId</con:name>
+          <con:value>1302</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_terminalId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_inventoryId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_placeId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_soExtId</con:name>
+          <con:value>sales-dd259d9a-20ed-42cd-913e-47727327a02e</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_incomingPlaceId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_userLastName</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_userName</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_soId</con:entry>
+        <con:entry>res_userId</con:entry>
+        <con:entry>res_soExtId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion create user and so" id="82a27e95-adf7-46f0-a772-db3ae55b2b51">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>4cdba7a2-5847-4f08-9519-63d7c8b2d985</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>0901d7bd-b427-420c-975a-1095c2a39f34</con:sourceId>
+        <con:propertyName>res_userId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="03ebf80c-9776-4cfb-8a7c-d5c2d2014a71">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>47028b90-3b23-4562-858c-9eae58bc4ea5</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>0901d7bd-b427-420c-975a-1095c2a39f34</con:sourceId>
+        <con:propertyName>res_soExtId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 3" id="ca3c1bfa-7d60-4ef8-8923-87e376070eb0">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>0dc34461-cb69-4d1c-8e2b-6958750c2225</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>0901d7bd-b427-420c-975a-1095c2a39f34</con:sourceId>
+        <con:propertyName>res_soId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="6e8686b8-760e-49f1-ab6d-28384fb20e85">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer user and so 2" id="71a93916-df44-48ce-a757-f6f5bb0df810">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userId</con:name>
+        <con:sourceType>res_userId</con:sourceType>
+        <con:sourceStep>Create user and so</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>userId</con:targetType>
+        <con:targetStep>Given properties for the test case</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>res_soId</con:sourceType>
+        <con:sourceStep>Create user and so</con:sourceStep>
+        <con:targetType>soId</con:targetType>
+        <con:targetStep>Given properties for the test case</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soExtId</con:name>
+        <con:sourceType>res_soExtId</con:sourceType>
+        <con:sourceStep>Create user and so</con:sourceStep>
+        <con:targetType>soExtId</con:targetType>
+        <con:targetStep>Given properties for the test case</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set cancel none existing create inventory bi" id="8c192a7f-52a5-4970-bf2f-10972dc504d3">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>zero</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cancel none existing create inventory bi</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cancel none existing create inventory bi" id="7cb756a4-7730-4d72-b472-f00be8fe6ec0">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>dbbb932e-649f-4260-a2ed-bdcdeb996a2a</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>0</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>BI_WITH_ID_NOT_FOUND</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_error</con:name>
+          <con:value>BI_WITH_ID_NOT_FOUND</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpCode</con:name>
+          <con:value>400</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_error</con:entry>
+        <con:entry>res_httpCode</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion cancel none existing bi" id="69251d6f-059e-4ba9-91ba-7e3989d22eca">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>d8facd7e-8098-43af-8387-ba4c17aa26f9</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>7cb756a4-7730-4d72-b472-f00be8fe6ec0</con:sourceId>
+        <con:propertyName>res_httpCode</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="baf2730b-5964-4fff-a462-39cb68554035">
+          <con:configuration>
+            <patternObjectId>781498ca-7e8b-4f9e-87f2-6c76bb2a17cf</patternObjectId>
+            <patternProperty>httpCode400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>01564e38-6b3c-4550-9cab-5d8bd2eeeed3</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>7cb756a4-7730-4d72-b472-f00be8fe6ec0</con:sourceId>
+        <con:propertyName>res_error</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="01e8bccf-fea0-4afb-a87f-89bcd1664949">
+          <con:configuration>
+            <patternObjectId>781498ca-7e8b-4f9e-87f2-6c76bb2a17cf</patternObjectId>
+            <patternProperty>erroMessageBINotFound</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set create inventory" id="413b7011-4088-4b1e-8ca2-c052e2d46dd2">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userId</con:name>
+        <con:sourceType>userId</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userId</con:targetType>
+        <con:targetStep>Create inventory</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>soId</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:targetType>req_soId</con:targetType>
+        <con:targetStep>Create inventory</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soExtId</con:name>
+        <con:sourceType>soExtId</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:targetType>req_soExtId</con:targetType>
+        <con:targetStep>Create inventory</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventoryType</con:name>
+        <con:sourceType>inventoryType</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:targetType>req_inventoryType</con:targetType>
+        <con:targetStep>Create inventory</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create inventory" id="0a69bcd1-45de-415f-8364-1dd632efe354">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>874eeb1a-3f0c-4601-95a7-6522c7479b61</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userId</con:name>
+          <con:value>1302</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value>1300</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_soExtId</con:name>
+          <con:value>sales-dd259d9a-20ed-42cd-913e-47727327a02e</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_inventoryType</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>3289</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_inventorySpecId</con:name>
+          <con:value>1011</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_inventoryId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_placeId</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_inventorySpecId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion create inventory" id="12f49755-2233-47b7-9727-41133cd77a3d">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>b73c6893-bc02-490e-b437-b5c333eef069</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>0a69bcd1-45de-415f-8364-1dd632efe354</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="6ea52b6b-dc10-4579-9b4b-c6e7d05549e4">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer biId" id="61e6a313-f9e3-4bfa-994e-ec24e8b2b40f">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create inventory</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>biId</con:targetType>
+        <con:targetStep>Given properties for the test case</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set cancel closed create inventory bi" id="646b2e91-ff37-4b84-9f12-70cf93490182">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>biId</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cancel closed create inventory bi</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cancel closed create inventory bi" id="e39aa984-60d9-44ae-9e2c-0449bdda2aab">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>dbbb932e-649f-4260-a2ed-bdcdeb996a2a</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>3289</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_error</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpCode</con:name>
+          <con:value>400</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_error</con:entry>
+        <con:entry>res_httpCode</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion cancel closed bi" id="85627840-8c92-47d1-939f-c48c77c7aeba">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>327cb209-f078-4b13-8c10-15888d91407a</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>e39aa984-60d9-44ae-9e2c-0449bdda2aab</con:sourceId>
+        <con:propertyName>res_httpCode</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="23ef0393-93cd-4801-b087-ebe8bb70088a">
+          <con:configuration>
+            <patternObjectId>781498ca-7e8b-4f9e-87f2-6c76bb2a17cf</patternObjectId>
+            <patternProperty>httpCode400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>50c55d5b-e2bc-445d-909d-90645e605788</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>e39aa984-60d9-44ae-9e2c-0449bdda2aab</con:sourceId>
+        <con:propertyName>res_error</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="3523dcc7-4175-4a95-bf32-5f0323953435">
+          <con:configuration>
+            <patternObjectId>781498ca-7e8b-4f9e-87f2-6c76bb2a17cf</patternObjectId>
+            <patternProperty>errorMessageInvalidState</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set create inventory bi success" id="7ca3658a-1be9-4fe3-b810-2fcbead98799">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userId</con:name>
+        <con:sourceType>userId</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userId</con:targetType>
+        <con:targetStep>Create inventory bi success</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>soId</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:targetType>req_soId</con:targetType>
+        <con:targetStep>Create inventory bi success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpecCode</con:name>
+        <con:sourceType>biSpecCode</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:targetType>req_biSpecCode</con:targetType>
+        <con:targetStep>Create inventory bi success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create inventory bi success" id="250e831c-e504-43b2-bf51-eeb5927f06c1">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>e6b86268-7363-4c67-95ba-e1e694536490</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_error</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_userId</con:name>
+          <con:value>1302</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value>1300</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+          <con:value>INVROLEBISPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>3290</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpCode</con:name>
+          <con:value>201</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_error</con:entry>
+        <con:entry>res_httpCode</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion create inventory success" id="06bffb94-c6ab-42bb-ab43-b8176ff4070a">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>7548ea5a-ec99-4929-8e89-50d38dc57885</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>250e831c-e504-43b2-bf51-eeb5927f06c1</con:sourceId>
+        <con:propertyName>res_httpCode</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="0e006dae-a1fc-4172-9a9a-015b5b761696">
+          <con:configuration>
+            <patternObjectId>781498ca-7e8b-4f9e-87f2-6c76bb2a17cf</patternObjectId>
+            <patternProperty>httpCode201</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>465df972-deaf-4084-9688-d23d2a10a973</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>250e831c-e504-43b2-bf51-eeb5927f06c1</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="d6f2b2da-4fe9-4020-a938-cbc606f19e63">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer biId 2" id="a885aff4-cd26-4bd1-abc9-bffea1703b21">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create inventory bi success</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>biId</con:targetType>
+        <con:targetStep>Given properties for the test case</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set cancel create inventory bi" id="196ae594-08e6-4258-b44f-4d26c3edbeed">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>biId</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cancel create inventory bi</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cancel create inventory bi" id="b87eb68c-bfeb-400b-aedb-2aab98bceec3">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>dbbb932e-649f-4260-a2ed-bdcdeb996a2a</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>3290</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_error</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_httpCode</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_error</con:entry>
+        <con:entry>res_httpCode</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion cancel create bi" id="ede350ff-d606-45e2-8307-b43ec4aad090">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>4cc56a90-353c-4f93-8fe6-b8174698f45b</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>b87eb68c-bfeb-400b-aedb-2aab98bceec3</con:sourceId>
+        <con:propertyName>res_httpCode</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="88a5d195-91f0-4db8-befa-08728b7b701e">
+          <con:configuration>
+            <patternObjectId>781498ca-7e8b-4f9e-87f2-6c76bb2a17cf</patternObjectId>
+            <patternProperty>httpCode200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set create inventory bi success 2" id="e6f04078-b94d-4be6-81c4-2813a1e9c41b">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userId</con:name>
+        <con:sourceType>userId</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userId</con:targetType>
+        <con:targetStep>Create inventory bi success 2</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>soId</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:targetType>req_soId</con:targetType>
+        <con:targetStep>Create inventory bi success 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpecCode</con:name>
+        <con:sourceType>biSpecCode</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:targetType>req_biSpecCode</con:targetType>
+        <con:targetStep>Create inventory bi success 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create inventory bi success 2" id="83035dc8-c9d4-4aa5-8618-d64559cb8c0e">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>e6b86268-7363-4c67-95ba-e1e694536490</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userId</con:name>
+          <con:value>1302</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value>1300</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+          <con:value>INVROLEBISPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>3291</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_error</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_httpCode</con:name>
+          <con:value>201</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_error</con:entry>
+        <con:entry>res_httpCode</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion create inventory bi success 2" id="b742bac0-44ae-46f6-895e-a3abfa11cb46">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>170b0c97-b725-409d-96eb-0b20068c4b5f</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>83035dc8-c9d4-4aa5-8618-d64559cb8c0e</con:sourceId>
+        <con:propertyName>res_httpCode</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="d0137a66-893c-445d-9fc2-cc913bed269d">
+          <con:configuration>
+            <patternObjectId>781498ca-7e8b-4f9e-87f2-6c76bb2a17cf</patternObjectId>
+            <patternProperty>httpCode201</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>ca907d26-cef7-45f3-88e4-c513cc8c97b5</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>83035dc8-c9d4-4aa5-8618-d64559cb8c0e</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="b859bfd4-b665-4b12-995a-615ff9e2eb60">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set cancel create inventory bi with body" id="31f6b82d-aebb-4acc-905b-535a8dbc5983">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create inventory bi success 2</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cancel create inventory bi with body</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cancel create inventory bi with body" id="b6d6e942-f79e-4e29-a429-4d5bc8d532cc">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>d71e5f4b-9b16-481d-94ef-b7d0c6751864</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>3291</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_error</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_httpCode</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_error</con:entry>
+        <con:entry>res_httpCode</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion cancel create inventory bi with body" id="1556e751-2883-43a4-99da-e12ea07b30fc">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>5b8cdf22-94ff-4c1d-98ab-e751ee05cc31</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>b6d6e942-f79e-4e29-a429-4d5bc8d532cc</con:sourceId>
+        <con:propertyName>res_httpCode</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="9f9c8ab1-091d-4ae5-acfb-cc227c19f0cb">
+          <con:configuration>
+            <patternObjectId>781498ca-7e8b-4f9e-87f2-6c76bb2a17cf</patternObjectId>
+            <patternProperty>httpCode200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set add inventory item to cancelled bi" id="c5c39299-7c2b-446e-af0b-e4f6fee1c998">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>biId</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add inventory item to cancelled bi</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventoryExtId</con:name>
+        <con:sourceType>inventoryExtId</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:targetType>req_invExtId</con:targetType>
+        <con:targetStep>Add inventory item to cancelled bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventoryName</con:name>
+        <con:sourceType>inventoryName</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:targetType>req_invName</con:targetType>
+        <con:targetStep>Add inventory item to cancelled bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soExtId</con:name>
+        <con:sourceType>soExtId</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:targetType>req_soExtId</con:targetType>
+        <con:targetStep>Add inventory item to cancelled bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventorySpecId</con:name>
+        <con:sourceType>res_inventorySpecId</con:sourceType>
+        <con:sourceStep>Create inventory</con:sourceStep>
+        <con:targetType>req_invSpecId</con:targetType>
+        <con:targetStep>Add inventory item to cancelled bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>organizationName</con:name>
+        <con:sourceType>organizationName</con:sourceType>
+        <con:sourceStep>Given properties for the test case</con:sourceStep>
+        <con:targetType>req_orgName</con:targetType>
+        <con:targetStep>Add inventory item to cancelled bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add inventory item to cancelled bi" id="98f6cb70-050f-4477-a9bb-75fef6be23be">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>6f850a54-86b6-45ae-a0a2-60a76be6cc1c</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_invExtId</con:name>
+          <con:value>inventoryExtId-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_invName</con:name>
+          <con:value>inventoryName-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_soExtId</con:name>
+          <con:value>sales-dd259d9a-20ed-42cd-913e-47727327a02e</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_invSpecId</con:name>
+          <con:value>1011</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_orgName</con:name>
+          <con:value>organizationName-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_error</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>3290</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_invExtId</con:name>
+          <con:value>inventoryExtId-c2de6049-7b57-4e1a-99dd-883b2da6e022</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_invName</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_httpCode</con:name>
+          <con:value>400</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_error</con:entry>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_invExtId</con:entry>
+        <con:entry>res_httpCode</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion add item to cancelled bi" id="a4f96bef-b970-462a-865a-597a127f2b80">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>753dc890-2c7a-40dc-bcc2-f549fe459826</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>98f6cb70-050f-4477-a9bb-75fef6be23be</con:sourceId>
+        <con:propertyName>res_httpCode</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="0db22038-f9e0-4655-99a1-1fdb4798504f">
+          <con:configuration>
+            <patternObjectId>781498ca-7e8b-4f9e-87f2-6c76bb2a17cf</patternObjectId>
+            <patternProperty>httpCode400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>c62a0226-0371-41c3-9cbd-b6517a0b27f8</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>98f6cb70-050f-4477-a9bb-75fef6be23be</con:sourceId>
+        <con:propertyName>res_error</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="8433deb5-3eaa-4e1a-bd82-1afc77bbabd2">
+          <con:configuration>
+            <patternObjectId>781498ca-7e8b-4f9e-87f2-6c76bb2a17cf</patternObjectId>
+            <patternProperty>errorMessageInvalidState</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="e1e2848c-8880-41df-8a5b-83d81998b387" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display stock level" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="ae70f14b-9b62-4330-9f1f-32535bcddc8bfileName">Display-stock-level</con:setting>
+    <con:setting id="e1e2848c-8880-41df-8a5b-83d81998b387fileName">Display-stock-level</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Display stock level" id="44593beb-c309-40ee-a344-ab1046803cbc">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockLevel" methodName="DisplayStockLevelInternal" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display stock level" id="c5d9478c-c340-4e14-b33b-a604333f8cbd" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="productSpecificationExternalId" value="${#TestCase#req_productSpecificationExternalId}"/>
+          <con:entry key="productSpecificationId" value=""/>
+          <con:entry key="productId" value="${#TestCase#req_productId}"/>
+          <con:entry key="productSerialNumber" value=""/>
+          <con:entry key="productSerialText" value=""/>
+          <con:entry key="placeId" value="${#TestCase#req_placeId}"/>
+          <con:entry key="productStatus" value="${#TestCase#req_productStatus}"/>
+          <con:entry key="productSpecCode" value="${#TestCase#req_productSpecCode}"/>
+          <con:entry key="productSpecArticle" value="${#TestCase#req_productSpecArticle}"/>
+          <con:entry key="includeLocked" value="${#TestCase#req_includeLocked}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>placeId</con:entry>
+          <con:entry>productSpecCode</con:entry>
+          <con:entry>productSpecArticle</con:entry>
+          <con:entry>productStatus</con:entry>
+          <con:entry>includeLocked</con:entry>
+          <con:entry>productSpecificationExternalId</con:entry>
+          <con:entry>productId</con:entry>
+          <con:entry>productSerialNumber</con:entry>
+          <con:entry>productSerialText</con:entry>
+          <con:entry>productSpecificationId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer response" id="19ab8a34-817d-448b-b344-0672735ffbd5">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>placeId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display stock level</con:sourceStep>
+        <con:sourcePath>[0].placeId</con:sourcePath>
+        <con:targetType>res_placeId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productSpecificationId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display stock level</con:sourceStep>
+        <con:sourcePath>[0].productSpecificationId</con:sourcePath>
+        <con:targetType>res_productSpecificationId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productSpecificationExternalId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display stock level</con:sourceStep>
+        <con:sourcePath>[0].productSpecificationExternalId</con:sourcePath>
+        <con:targetType>res_productSpecificationExternalId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display stock level</con:sourceStep>
+        <con:sourcePath>[0].quantity</con:sourcePath>
+        <con:targetType>res_quantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrganizationId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display stock level</con:sourceStep>
+        <con:sourcePath>[0].salesOrganizationId</con:sourcePath>
+        <con:targetType>res_salesOrganizationId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>totalQuantity</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display stock level</con:sourceStep>
+        <con:sourcePath>[0].totalQuantity</con:sourcePath>
+        <con:targetType>res_totalQuantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>reservedQuantity</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display stock level</con:sourceStep>
+        <con:sourcePath>[0].reservedQuantity</con:sourcePath>
+        <con:targetType>res_reservedQuantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display stock level</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_placeId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecArticle</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productStatus</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_includeLocked</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecificationExternalId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_placeId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_productSpecificationId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_productSpecificationExternalId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_quantity</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_salesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_totalQuantity</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_reservedQuantity</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_productId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="adc1f22b-f4fd-458a-8a1d-23b02f738a10" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TestCase 1" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="adc1f22b-f4fd-458a-8a1d-23b02f738a10fileName">TestCase-1</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Global Properties" id="bdc7f89f-9a88-42dc-ac9a-c2b9045d7ade">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>nonExistID</con:name>
+          <con:value>-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>http200</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>http404</con:name>
+          <con:value>404</con:value>
+        </con:property>
+        <con:property>
+          <con:name>firstSpec</con:name>
+          <con:value>1</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set display non-exist BI Specification" id="0b5e9801-d7a2-44d3-b877-534756206454">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>nonExistID</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_itemId</con:targetType>
+        <con:targetStep>Display non-exist BI Specification</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display non-exist BI Specification" id="b0c19772-065e-46d3-bcbe-89a2f9c01d64">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>058613b6-b669-4d46-825e-02a4fac99097</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_itemId</con:name>
+          <con:value>-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>404</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>404</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_name</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>404</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>res_name</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert spec not found(error code eksik)" id="3854cbf8-d7e1-47ad-b92c-7f9ecd8c45c0" disabled="true">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set display single BI Specification" id="7c867165-1d10-4916-872c-6eebd1c0f6b3">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>firstSpec</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_itemId</con:targetType>
+        <con:targetStep>Display single BI Specification</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display single BI Specification" id="321b3a34-b039-4f5d-a021-85f79b6f95af">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>058613b6-b669-4d46-825e-02a4fac99097</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_itemId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_name</con:name>
+          <con:value>User Create BI Spec</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>USERCREATEBISPEC</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_name</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert http status OK" id="ee058376-1429-4411-85ad-dbbb0526ee4b" disabled="true">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>e9da67bd-b949-4153-9a37-e97f1d7bb04b</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>321b3a34-b039-4f5d-a021-85f79b6f95af</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="a4a6ee00-e7d6-4964-ac59-c8ba5ffa4cb4">
+          <con:configuration>
+            <patternObjectId>bdc7f89f-9a88-42dc-ac9a-c2b9045d7ade</patternObjectId>
+            <patternProperty>http200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>2cffd61a-6b83-4570-afe2-cd0413da6fd1</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>321b3a34-b039-4f5d-a021-85f79b6f95af</con:sourceId>
+        <con:propertyName>res_id</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="86dcc0fd-ef23-4e39-8112-ce8707d47d73">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display all BI Specification" id="dbcdc2ab-1dfa-4e45-a774-09160d9c67bf">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>2b89e968-cdad-41df-9671-6d0f0c97cb26</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>[{"name":"User Create BI Spec","code":"USERCREATEBISPEC","journaled":true,"specificationType":0,"allowSubmitBIWithoutItem":true,"requiresSession":false,"id":"1"},{"name":"Session End BI Spec","code":"SESSION_END_BISPEC","journaled":true,"specificationType":0,"allowSubmitBIWithoutItem":true,"requiresSession":false,"id":"2"},{"name":"Sales organization change parent bi spec","code":"CHANGE_SO_PARENT","journaled":true,"specificationType":0,"allowSubmitBIWithoutItem":true,"requiresSession":false,"id":"3"},{"name":"Stock In BI Spec","code":"STCKINBISPEC","journaled":true,"specificationType":0,"allowSubmitBIWithoutItem":true,"requiresSession":false,"id":"4"},{"name":"Stockin Bundle BI Spec","code":"STCKINBUNDLEBISPEC","journaled":true,"specificationType":0,"allowSubmitBIWithoutItem":true,"requiresSession":false,"id":"5"},{"name":"Stock out bi spec","code":"STOCK_OUT","journaled":true,"specificationType":0,"allowSubmitBIWithoutItem":true,"requiresSession":false,"id":"6"},{"name":"Sales BI Spec","code":"SALESBISPEC","journaled":true,"specificationType":0,"allowSubmitBIWithoutItem":true,"requiresSession":false,"id":"7"},{"name":"Product return bi spec","code":"PRD_RETURN","journaled":true,"specificationType":0,"allowSubmitBIWithoutItem":true,"requiresSession":false,"id":"8"},{"name":"Return of sales bi spec","code":"RETURN_OF_SALES","journaled":true,"specificationType":0,"allowSubmitBIWithoutItem":true,"requiresSession":false,"id":"9"},{"name":"Refund of Return BI Spec","code":"REFUNDOFRETURNBISPEC","journaled":true,"specificationType":0,"allowSubmitBIWithoutItem":true,"requiresSession":false,"id":"10"}]</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert http status OK 2" id="dba6ad87-baaa-46bc-8bab-edac1ffaca73" disabled="true">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>f4372e97-32e0-4e12-92a7-97374b5bab9c</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>dbcdc2ab-1dfa-4e45-a774-09160d9c67bf</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="dbbb6d65-7f83-4c41-9f47-00425e2cd809">
+          <con:configuration>
+            <patternObjectId>bdc7f89f-9a88-42dc-ac9a-c2b9045d7ade</patternObjectId>
+            <patternProperty>http200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display domains" id="56667d28-c265-486b-b44a-d1a190f9bdaa">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>3e2ec42a-821f-4698-8c1a-d7e181aa430d</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_httpCode</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>[{"domainCode":"CASU","domainDescription":"Change Active Sales Organization Of User"},{"domainCode":"CEC","domainDescription":"Change Entity Characteristics"},{"domainCode":"CONF","domainDescription":"Product Confirmation"},{"domainCode":"CSO","domainDescription":"Change Sales Organizations Of User"},{"domainCode":"CSOP","domainDescription":"Change Sales Organization Parent"},{"domainCode":"CSP","domainDescription":"Create Starter Pack"},{"domainCode":"INV","domainDescription":"Inventory Create"},{"domainCode":"MCM","domainDescription":"Manage Contact Medium"},{"domainCode":"MT","domainDescription":"Money Transfer"},{"domainCode":"MTx","domainDescription":"Monetary Transaction"},{"domainCode":"PAY","domainDescription":"Payment"},{"domainCode":"PP","domainDescription":"Profile Permission"},{"domainCode":"PRQ","domainDescription":"Product Request"},{"domainCode":"PSC","domainDescription":"Product Status Change"},{"domainCode":"PT","domainDescription":"Product Transfer"},{"domainCode":"RCP","domainDescription":"Receipt"},{"domainCode":"REC","domainDescription":"Reconciliation"},{"domainCode":"REF","domainDescription":"Refund"},{"domainCode":"REGSOUPDATEBI","domainDescription":"Region Sales Organization Update"},{"domainCode":"RSP","domainDescription":"Relate Serialized Products"},{"domainCode":"RTRN","domainDescription":"Return"},{"domainCode":"SEN","domainDescription":"End Session"},{"domainCode":"SES","domainDescription":"Session"},{"domainCode":"SLA","domainDescription":"Sales Agreement"},{"domainCode":"SLS","domainDescription":"Sales"},{"domainCode":"SOC","domainDescription":"Sales Organization Create"},{"domainCode":"SOU","domainDescription":"Sales Organization Update"},{"domainCode":"SST","domainDescription":"Start Session"},{"domainCode":"STC","domainDescription":"Status Change"},{"domainCode":"STI","domainDescription":"Stock In"},{"domainCode":"STO","domainDescription":"Stock Out"},{"domainCode":"TRM","domainDescription":"Terminal Create"},{"domainCode":"USR","domainDescription":"User Create"},{"domainCode":"USRU","domainDescription":"User Update"}]</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_httpCode</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion display domains" id="ebd75be8-198c-4f05-a6e9-a51dce5e6337">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>6aba10ab-23ba-4284-a949-54329ad21a27</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>56667d28-c265-486b-b44a-d1a190f9bdaa</con:sourceId>
+        <con:propertyName>res_httpCode</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="5c8e46ea-5847-410e-b854-24382064d1fa">
+          <con:configuration>
+            <patternObjectId>bdc7f89f-9a88-42dc-ac9a-c2b9045d7ade</patternObjectId>
+            <patternProperty>http200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>cb747b82-e733-43a1-94e7-0d08689982de</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>56667d28-c265-486b-b44a-d1a190f9bdaa</con:sourceId>
+        <con:propertyName>response</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="072e902d-ab98-428e-8323-c7d9c5d219ca">
+          <con:configuration>
+            <token>\w+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>7c867165-1d10-4916-872c-6eebd1c0f6b3</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>321b3a34-b039-4f5d-a021-85f79b6f95af</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

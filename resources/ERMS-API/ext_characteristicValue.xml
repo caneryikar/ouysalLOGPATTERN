@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="ext_characteristicValue" path="/globalCharacteristicSpecificationValue" id="4947d587-27bd-43c5-9475-ad61bdaabe68" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="4947d587-27bd-43c5-9475-ad61bdaabe68fileName">ext_characteristicValue</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="getSingleCharacteristicValue" path="{Id}" id="7e3207bc-5dba-4f3f-bd49-a8355da47c44">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>Id</con:name>
+        <con:value>Id</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>Id</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getSingleCharacteristicValueExt" id="5d4f38eb-6746-406b-8d51-7fdc250601dd" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.CharacteristicValueResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:ns="http://localhost/erms/retailManagement/v1/characteristicValue/10">ns:Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="9ea2fac2-95e4-4079-8fa0-a618cd370d24" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="Id" value="${#TestCase#req_characteristicValueId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:method name="getAllCharacteristicValuesExt" id="dc88111a-f9ab-4b07-b43b-e048e03fa592" method="GET">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.CharacteristicValueResponse.1.json#"</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element xmlns:char="http://localhost/erms/retailManagement/v1/characteristicValue">char:Response</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="d7e8a8ba-e542-44c5-8f11-8a268914a0e5" mediaType="application/json">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+</con:resource>

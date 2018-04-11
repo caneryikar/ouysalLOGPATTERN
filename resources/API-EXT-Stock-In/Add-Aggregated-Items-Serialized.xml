@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="56257bd7-ca12-4aa0-bc6c-f7c9fa9bea22" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add Aggregated Items Serialized" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="807517b2-e5dc-4653-81b2-c11a426298cafileName">Add-Aggregated-Items</con:setting>
+    <con:setting id="5b682848-55d0-40d6-a04c-3744672801b3fileName">Add-Aggregated-Items</con:setting>
+    <con:setting id="56257bd7-ca12-4aa0-bc6c-f7c9fa9bea22fileName">Add-Aggregated-Items-Serialized</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="addAggregatedItem - Request 1" id="29a8c6e9-3634-4b35-b2bf-490f68390dd4">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockin/{biId}/aggregatedItems" methodName="addAggregatedItem" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="addAggregatedItem - Request 1" id="d39a273f-e012-41b5-98ed-022e0a0b4a71" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+  "productSpecificationExternalId":"EXT-IPHONE6S-1",
+  "quantity":"${#TestCase#req_quantity}",
+  "toPlaceId":"${#TestCase#req_toPlaceId}",
+  "toSalesOrganizationId":"${#TestCase#req_toSalesOrganizationId}",
+  "status":"1",
+ // "description": "iphone6S",
+ // "startSerialNumber": "${#TestCase#req_startSerialNumber}", 
+ //"endSerialNumber": "${#TestCase#req_endSerialNumber}",
+  "characteristics" : [ 
+    
+      {
+        "key" : "1",
+        "value" : "1-EXT"
+      },
+        {
+        "key" : "2",
+        "value" : "4-EXT"
+      },
+            {
+        "key" : "3",
+        "value" : "8-EXT"
+      }
+    ],
+   "isPaired":false,
+   "vendorName":"Vendor${#TestCase#req_vendor}",
+    "purchaseDate": "${#TestCase#req_purchaseDate}"
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/stockin/biId/submit</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="e1e4cb8e-f1a4-46ec-9f3e-01b212318a04">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false" disabled="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>addAggregatedItem - Request 1</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_id</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>addAggregatedItem - Request 1</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>addAggregatedItem - Request 1</con:sourceStep>
+        <con:sourcePath>$['code']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>status</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>addAggregatedItem - Request 1</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_status</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_toPlaceId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_quantity</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_soId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_purchaseDate</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_status</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_id</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_startSerialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_endSerialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_vendor</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_toSalesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

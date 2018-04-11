@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="e6b7276c-53a3-4825-8734-f8045e409281" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create user role business interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="e6b7276c-53a3-4825-8734-f8045e409281fileName">Create-user-role-business-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Create user role business interaction" id="dd7a1cd1-4102-41e1-97c4-740691ad2304">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/userCreate" methodName="userCreate" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Create user role business interaction" id="fbe286f8-95cc-4922-b5a7-3061d3456ad7" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+	"type": "com.ericsson.bss.rm.erms.core.entity.dto.bi.user.CreateUserBIDTO",
+	"createdByUserRoleId": ${#TestCase#req_userRoleId},
+	"createdBySalesOrganizationId": ${#TestCase#req_salesOrganizationRoleId},
+	"createdForSalesOrganizationRoleId": ${#TestCase#req_salesOrganizationRoleId},
+	"businessInteractionSpec": {
+		"code": "USERCREATEBISPEC"
+	}
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer response" id="e6d2f1cf-3aba-4715-b368-a30d60933aa0">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create user role business interaction</con:sourceStep>
+        <con:sourcePath>$['code']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_biId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create user role business interaction</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_id</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_status</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Create user role business interaction</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_status</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrganizationRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_biSpecCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_id</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_status</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

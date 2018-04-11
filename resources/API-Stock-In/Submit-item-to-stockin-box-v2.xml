@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="29425647-1ef7-481b-8c17-759214617552" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Submit item to stockin box v2" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="2220aeb8-fbdd-42d7-81d0-d4c29e7acff2fileName">Add-item-to-stock-in-for-box-step2</con:setting>
+  <con:setting id="8a020ebb-f043-44cd-83a4-db4cef06a1d3fileName">Add-item-to-stockin-box-v2-step2</con:setting><con:setting id="29425647-1ef7-481b-8c17-759214617552fileName">Submit-item-to-stockin-box-v2</con:setting></con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  
+  <con:testStep type="restrequest" name="Method submit - Request 1 v2" id="63626968-07e3-4793-961e-5978a7a09a8c"><con:settings/><con:config service="ERMS API" resourcePath="/stockin/{biId}/submit" methodName="Method submit" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Method submit - Request 1 v2" id="e3f77762-b977-4c05-9de8-6fd21178629c" mediaType="application/json" postQueryString="false"><con:settings/><con:endpoint>${#Project#Endpoint}</con:endpoint><con:request/><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:parameters><entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>biId</con:entry></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="5fb3a024-3076-4dd2-b181-1d8a11a6ac25">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Method submit - Request 1 v2</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Method submit - Request 1 v2</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>response</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Method submit - Request 1 v2</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>response</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep><con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value>404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>response</con:name>
+      <con:value>{"code":"404","description":"HTTP 404 Not Found","errorDetails":"HTTP 404 Not Found","errorMessage":"404","httpStatusCode":"404","httpStatusCodeDescription":"HTTP 404 Not Found"}</con:value>
+    </con:property>
+    
+    
+    
+    
+  </con:properties>
+  <con:reportParameters/>
+<con:breakPoints><con:testStepId>bbb395d6-2cbf-4f1e-938d-b78906a08848</con:testStepId><con:status>NONE</con:status><con:properties/></con:breakPoints><con:breakPoints><con:testStepId>3470f4f0-4bd8-41ed-80e5-c3f8167086fd</con:testStepId><con:status>NONE</con:status><con:properties/></con:breakPoints><con:breakPoints><con:testStepId>63626968-07e3-4793-961e-5978a7a09a8c</con:testStepId><con:status>NONE</con:status><con:properties/></con:breakPoints></con:testCase>

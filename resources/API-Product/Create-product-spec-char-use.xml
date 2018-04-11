@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="972b3bd1-0047-4db2-8ec6-f1d7b9a0a9b0" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create product spec char use" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="972b3bd1-0047-4db2-8ec6-f1d7b9a0a9b0fileName">Create-product-spec-char-use</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Create product spec char use" id="829fde2c-8c6c-4996-a1f3-bc3e3d17d8dd">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/productSpecCharUse" methodName="CreateProductSpecCharUse" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Create product spec char use" id="ade99861-90e5-4257-bc55-a6fff04b1c18" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+  "externalReference": {
+    "externalId": "${#TestCase#req_productSpecCharUseExtId}"
+  },
+  "productSpecCharUseBelongsTo": "${#TestCase#req_productSpecCharUseBelongsTo}",
+  "productSpecCharacteristic": {
+    "id": "${#TestCase#req_productSpecCharId}",
+    "type": "com.ericsson.bss.rm.erms.core.entity.dto.product.ProductSpecCharCreateDTO",
+    "info": {
+      "name": "${#TestCase#req_productSpecCharUseInfoName}",
+      "description": "${#TestCase#req_productSpecCharUseInfoDesc}"
+    }
+  },
+  "productSpecification": {
+    "id": "${#TestCase#req_productSpecId}",
+    "type": "com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO"
+  },
+  "characteristicType": "${#TestCase#req_characteristicType}",
+  "type": "com.ericsson.bss.rm.erms.core.entity.dto.product.ProductSpecCharUseDTO",
+  "info": {
+    "name": "${#TestCase#req_productSpecCharUseInfoName}",
+    "description": "${#TestCase#req_productSpecCharUseInfoDesc}"
+  },
+  "mandatoryForStockIn": "${#TestCase#req_mandatoryForStockIn}"
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/productSpecCharUse</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer productSpecCharUseId" id="eda9e9fc-e127-4115-8e4b-0ef112e906f8">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productSpecCharUseId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create product spec char use</con:sourceStep>
+        <con:sourcePath>id</con:sourcePath>
+        <con:targetType>res_productSpecCharUseId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Create product spec char use</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productSpecCharUseExtId</con:name>
+        <con:sourceType>req_productSpecCharUseExtId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_productSpecCharUseExtId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create product spec char use</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_productSpecCharId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_productSpecCharUseId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecCharUseExtId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecCharUseBelongsTo</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_characteristicType</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_mandatoryForStockIn</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_productSpecCharUseExtId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecCharUseInfoName</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecCharUseInfoDesc</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="8ae7d8e1-9ae0-4ef7-a94e-882fe9f266c6" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create product status change interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="8ae7d8e1-9ae0-4ef7-a94e-882fe9f266c6fileName">Create-product-status-change-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Create product status change interaction" id="ae935e15-ad71-478b-b461-c07d55d60ef1">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/changeProductStatus" methodName="createBI" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Create product status change interaction" id="bbb9e980-f90d-47a8-8f09-887c9b354b47" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+  "createdForSalesOrganizationRoleId" : "${#TestCase#req_createdForSalesOrg}",
+  "businessInteractionSpec":{"code":"${#TestCase#req_biSpecCode}"},
+  "createdByUserRoleId": "${#TestCase#req_createdByUserRoleId}",
+  "createdBySalesOrganizationId": "${#TestCase#req_createdBySalesOrganizationId}"
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer response" id="15bbb8d6-2f63-4f37-a489-19d77ec15033">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Create product status change interaction</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create product status change interaction</con:sourceStep>
+        <con:sourcePath>id</con:sourcePath>
+        <con:targetType>res_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_createdForSalesOrg</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_biSpecCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_createdByUserRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_createdBySalesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>15bbb8d6-2f63-4f37-a489-19d77ec15033</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

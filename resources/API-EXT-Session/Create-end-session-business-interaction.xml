@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="dc1a7c3e-7636-43aa-9004-8c225ff30f59" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create end session business interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="dc1a7c3e-7636-43aa-9004-8c225ff30f59fileName">Create-end-session-business-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Create end session business interaction" id="73121f6e-ed4a-431e-822d-af1643b2b567">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/endSession" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Create end session business interaction" id="70335210-47bc-41ab-a3fc-85c39636ebb0" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+   "userRoleId": "${#TestCase#req_userRoleId}",
+   "salesOrganizationRoleId": "${#TestCase#req_salesOrgRoleId}",
+   "businessInteractionSpecificationCode": "${#TestCase#req_biSpecCode}"
+}</con:request>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/endSession</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="443b1830-fb50-4fa2-9182-293c91102178">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create end session business interaction</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create end session business interaction</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biSpecCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value>276</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrgRoleId</con:name>
+      <con:value>274</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_biId</con:name>
+      <con:value>371</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

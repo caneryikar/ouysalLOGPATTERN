@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="34291894-2c89-4f19-af95-ede8a888f7a4" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create,Delete and Update bulk payment items" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="34291894-2c89-4f19-af95-ede8a888f7a4fileName">Create%2CDelete-and-Update-bulk-payment-items</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Bulk item request of payment business interaction" id="387df3fd-d871-4b93-954d-ef43fc32809d">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/bulk/payment/{biId}/items" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Bulk item request of payment business interaction" id="817686fa-fbba-476e-87b8-0236abe00f6b" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{ 
+	"itemCreateList":
+		[
+			{
+				"paymentType": "${#TestCase#itemCreateList_paymentType}",
+				"itemOrder" : ${#TestCase#itemCreateList_itemOrder},
+				"transactionAmount":
+				{
+					"roundedAmount":${#TestCase#itemCreateList_transactionRoundedAmount},
+					"notRoundedAmount" :${#TestCase#itemCreateList_transactionNotRoundedAmount},
+					"currency": ${#TestCase#itemCreateList_transactionCurrency}
+				},
+				"convertedAmount":
+				{
+					"roundedAmount":${#TestCase#itemCreateList_convertedRoundedAmount},
+					"notRoundedAmount" :${#TestCase#itemCreateList_convertedNotRoundedAmount},
+					"currency": "${#TestCase#itemCreateList_convertedCurrency}"
+				},
+				"transactionDate":"${#TestCase#itemCreateList_transactionDate}",
+			     "transactionId":"${#TestCase#itemCreateList_transactionId}"
+			},
+			{
+				"paymentType": "${#TestCase#itemCreateList_paymentType2}",
+				"itemOrder" : ${#TestCase#itemCreateList_itemOrder2},
+				"transactionAmount":
+				{
+					"roundedAmount":${#TestCase#itemCreateList_transactionRoundedAmount2},
+					"notRoundedAmount" :${#TestCase#itemCreateList_transactionNotRoundedAmount2},
+					"currency": ${#TestCase#itemCreateList_transactionCurrency2}
+				},
+				"convertedAmount":
+				{
+					"roundedAmount":${#TestCase#itemCreateList_convertedRoundedAmount2},
+					"notRoundedAmount" :${#TestCase#itemCreateList_convertedNotRoundedAmount2},
+					"currency": "${#TestCase#itemCreateList_convertedCurrency2}"
+				},
+				"transactionDate":"${#TestCase#itemCreateList_transactionDate2}",
+			     "transactionId":"${#TestCase#itemCreateList_transactionId2}"
+			}
+		],
+	"itemDeleteList": 
+		[
+			{
+				"biItemId" : ${#TestCase#itemDeleteList_biItemId}                                                   
+			}
+		],
+	"itemUpdateList": 
+		[
+			{
+			"paymentType": "${#TestCase#itemUpdateList_paymentType}",
+			"transactionAmount": 
+				{
+					"notRoundedAmount": ${#TestCase#itemUpdateList_transactionNotRoundedAmount},
+					"roundedAmount": ${#TestCase#itemUpdateList_transactionRoundedAmount},
+					"currency": "${#TestCase#itemUpdateList_transactionCurrency}"
+				},
+			"convertedAmount": 
+				{
+					"notRoundedAmount": ${#TestCase#itemUpdateList_convertedNotRoundedAmount},
+					"roundedAmount": ${#TestCase#itemUpdateList_convertedRoundedAmount},
+					"currency": "${#TestCase#itemUpdateList_convertedCurrency}"
+				},
+			"itemOrder": ${#TestCase#itemUpdateList_itemOrder},
+			"transactionDate": "${#TestCase#itemUpdateList_transactionDate}",
+			"transactionId": "${#TestCase#itemUpdateList_transactionId}",
+			"biItemId": ${#TestCase#itemUpdateList_biItemId}
+			}
+		]
+}</con:request>
+        <con:originalUri>http://vmx-erms022/erms/retailManagement/v1/payment/item</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="51817b87-677b-4458-a1a8-f47d04e04e77">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Bulk item request of payment business interaction</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId1</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Bulk item request of payment business interaction</con:sourceStep>
+        <con:sourcePath>$['itemCreateResponseList'][0]['id']</con:sourcePath>
+        <con:targetType>res_itemId1</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId2</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Bulk item request of payment business interaction</con:sourceStep>
+        <con:sourcePath>$['itemCreateResponseList'][1]['id']</con:sourcePath>
+        <con:targetType>res_itemId2</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Bulk item request of payment business interaction</con:sourceStep>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false" disabled="false">
+        <con:name>itemDeleteId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Bulk item request of payment business interaction</con:sourceStep>
+        <con:sourcePath>$['itemDeleteResponseList'][0]['id']</con:sourcePath>
+        <con:targetType>res_itemId1</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemUpdateId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Bulk item request of payment business interaction</con:sourceStep>
+        <con:sourcePath>$['itemUpdateResponseList'][0]['id']</con:sourcePath>
+        <con:targetType>res_itemId2</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>updatedPaymentType</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Bulk item request of payment business interaction</con:sourceStep>
+        <con:sourcePath>$['itemUpdateResponseList'][0]['paymentType']</con:sourcePath>
+        <con:targetType>res_updatedPaymentType</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>itemCreateList_paymentType</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_itemOrder</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_transactionRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_transactionNotRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_transactionCurrency</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_convertedRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_convertedNotRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_convertedCurrency</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_transactionDate</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_transactionId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_paymentType2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_itemOrder2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_transactionRoundedAmount2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_transactionNotRoundedAmount2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_transactionCurrency2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_convertedRoundedAmount2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_convertedNotRoundedAmount2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_convertedCurrency2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_transactionDate2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemCreateList_transactionId2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemDeleteList_biItemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemUpdateList_paymentType</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemUpdateList_transactionNotRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemUpdateList_transactionRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemUpdateList_transactionCurrency</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemUpdateList_convertedNotRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemUpdateList_convertedRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemUpdateList_convertedCurrency</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemUpdateList_itemOrder</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemUpdateList_transactionDate</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemUpdateList_transactionId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>itemUpdateList_biItemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_itemId1</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_itemId2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_updatedPaymentType</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>9bf3bf72-a6b4-434e-9a06-bf043521331b</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

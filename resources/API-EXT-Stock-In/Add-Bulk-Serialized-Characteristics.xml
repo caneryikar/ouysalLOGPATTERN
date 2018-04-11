@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="cfe0008b-cdf8-4649-89d6-41bf1cab1881" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add Bulk Serialized Characteristics" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="cfe0008b-cdf8-4649-89d6-41bf1cab1881fileName">Add-Bulk-Serialized-Characteristics</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="addBulkSerializedCharacteristics" id="72c4c17f-b43a-4493-abb0-eb4e61a602f7">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockin/{biId}/bulkSerializedCharacteristics" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="addBulkSerializedCharacteristics" id="769f2081-3d2f-4139-973f-99d465a592d0" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+	"items":
+	[{
+	"charUseExternalId": "${#TestCase#req_charUseExternalId1}",
+	"serialNumber": "${#TestCase#req_serialNumber1}",
+	"value": "${#TestCase#req_value1}",
+	"valueExternalId": "${#TestCase#req_valueExternalId1}"
+//	"createdByUserRoleId": ${#TestCase#req_createdByUserRoleId1}
+//	"createdBySalesOrganizationId": ${#TestCase#req_createdBySalesOrganizationId1},
+//	"createdForSalesOrganizationRoleId": ${#TestCase#req_createdForSalesOrganizationRoleId1}
+}, {
+	"charUseExternalId": "${#TestCase#req_charUseExternalId2}",
+	"serialNumber": "${#TestCase#req_serialNumber2}",
+	"value": "${#TestCase#req_value2}",
+	"valueExternalId": "${#TestCase#req_valueExternalId2}"
+//	"createdByUserRoleId": ${#TestCase#req_createdByUserRoleId2},
+//	"createdBySalesOrganizationId": ${#TestCase#req_createdBySalesOrganizationId2},
+//	"createdForSalesOrganizationRoleId": ${#TestCase#req_createdForSalesOrganizationRoleId2}
+}
+	]
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="7cb0e70d-174e-42fd-9d99-84d62c26e1c3">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false" disabled="true">
+        <con:name>itemId</con:name>
+        <con:sourceType xsi:nil="true"/>
+        <con:sourceStep>addSerializedCharacteristics - stockInSerializedCharacteristic</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_itemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>addBulkSerializedCharacteristics</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>addBulkSerializedCharacteristics</con:sourceStep>
+        <con:sourcePath>$['code']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>status</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>addBulkSerializedCharacteristics</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_status</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_charUseExternalId1</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_serialNumber1</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_value1</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_valueExternalId1</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_charUseExternalId2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_serialNumber2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_value2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_valueExternalId2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_status</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

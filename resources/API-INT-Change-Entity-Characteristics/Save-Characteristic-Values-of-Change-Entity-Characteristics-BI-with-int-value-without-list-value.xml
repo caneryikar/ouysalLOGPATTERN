@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="93803d19-461f-4f2e-bfb2-f5af3a918c7d" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Save Characteristic Values of Change Entity Characteristics BI with int value without list value" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="b07c9dcb-94ac-4af8-802b-fb85dbfb8e15fileName">Save-Characteristic-Values-of-Change-Entity-Characteristics-BI</con:setting>
+    <con:setting id="c5564abd-47f7-4bee-85e5-25adcffd67cffileName">Save-Characteristic-Values-of-Change-Entity-Characteristics-BI-for-List-and-Int-values</con:setting>
+    <con:setting id="93803d19-461f-4f2e-bfb2-f5af3a918c7dfileName">Save-Characteristic-Values-of-Change-Entity-Characteristics-BI-with-int-value-without-list-value</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Save Characteristic Values of Change Entity Characteristics BI for List and Int values" id="69021cd2-d63f-4a73-9f12-62580cd2c878">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/changeEntityCharacteristics/{biId}/entityCharacteristicValues" methodName="saveCharacteristicValues" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Save Characteristic Values of Change Entity Characteristics BI for List and Int values" id="fa8a9b7e-993a-47c5-9444-347a1cb86975" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+  "id": "${#TestCase#req_biId}",
+  "characteristicValues": [
+		{
+			"globalCharacteristicSpecification": {
+				"id": ${#TestCase#req_characteristicIdForList},
+				"name": "${#TestCase#req_characteristicNameForList}"
+			},
+			"profileSpecCharUse": {
+				"id": ${#TestCase#req_characteristicOwnerRoleCharUseIdForList},
+				"isMandatory": ${#TestCase#req_characteristicOwnerRoleCharUseIsMandatoryForList}
+			},
+			"characteristicValueType": "${#TestCase#req_characteristicValueTypeForList}"
+		},
+		{
+			"globalCharacteristicSpecification": {
+				"id": ${#TestCase#req_characteristicIdForInt},
+				"name": "${#TestCase#req_characteristicNameForInt}"
+			},
+			"profileSpecCharUse": {
+				"id": ${#TestCase#req_characteristicOwnerRoleCharUseIdForInt},
+				"isMandatory": ${#TestCase#req_characteristicOwnerRoleCharUseIsMandatoryForInt}
+			},
+			"characteristicValueType": "${#TestCase#req_characteristicValueTypeForInt}",
+			"value": "${#TestCase#req_characteristicValueForInt}"
+		}
+	],
+	
+  "profileSpec": {
+    "soRoleSpec": {
+      "id": ${#TestCase#req_soRoleSpecId},
+      "type": "com.ericsson.bss.rm.erms.core.entity.dto.salesorganization.SalesOrganizationRoleSpecDTO"
+    },
+    "id": ${#TestCase#req_charOwnerRoleSpecId},
+    "type": "com.ericsson.bss.rm.erms.core.entity.dto.characteristics.SOProfileSpecDTO"
+  },
+  
+  "profile": {
+    "soRole": {
+      "id": ${#TestCase#req_soRoleId},
+      "type": "com.ericsson.bss.rm.erms.core.entity.dto.salesorganization.CentralWarehouseDTO"
+    },
+    "id": ${#TestCase#req_charOwnerRoleId},
+    "profileSpec": {
+      "soRoleSpec": {
+        "id": ${#TestCase#req_soRoleSpecId},
+        "type": "com.ericsson.bss.rm.erms.core.entity.dto.salesorganization.SalesOrganizationRoleSpecDTO"
+      },
+      "id": ${#TestCase#req_charOwnerRoleSpecId},
+      "type": "com.ericsson.bss.rm.erms.core.entity.dto.characteristics.SOProfileSpecDTO"
+    },
+    "type": "com.ericsson.bss.rm.erms.core.entity.dto.characteristics.SOProfileDTO"
+  },
+  
+  "businessInteractionSpec": {
+    "code": "${#TestCase#req_biSpecCode}"
+  },
+  "createdBySalesOrganizationId": "${#TestCase#req_soId}",
+  "createdByUserRoleId": "${#TestCase#req_userId}",
+  "createdForSalesOrganizationRoleId" : "${#TestCase#req_soId}",
+  "description": "${#TestCase#req_description}",
+  "type": "com.ericsson.bss.rm.erms.core.entity.dto.bi.changeentitycharacteristics.CreateChangeEntityCharacteristicsBIDTO"
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property transfer" id="72de64f3-53a0-4eb1-affd-da6a5e42cad2">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Save Characteristic Values of Change Entity Characteristics BI for List and Int values</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Save Characteristic Values of Change Entity Characteristics BI for List and Int values</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_charOwnerRoleId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Save Characteristic Values of Change Entity Characteristics BI for List and Int values</con:sourceStep>
+        <con:sourcePath>$['profile'].id</con:sourcePath>
+        <con:targetType>res_charOwnerRoleId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_charOwnerRoleSpecId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Save Characteristic Values of Change Entity Characteristics BI for List and Int values</con:sourceStep>
+        <con:sourcePath>$['profileSpec'].id</con:sourcePath>
+        <con:targetType>res_charOwnerRoleSpecId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_biSpecCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_characteristicIdForInt</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_characteristicIdForList</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_characteristicNameForInt</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_characteristicNameForList</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_characteristicOwnerRoleCharUseIdForInt</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_characteristicOwnerRoleCharUseIdForList</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_characteristicOwnerRoleCharUseIsMandatoryForInt</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_characteristicOwnerRoleCharUseIsMandatoryForList</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_characteristicValueForInt</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_characteristicValueTypeForInt</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_characteristicValueTypeForList</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_charOwnerRoleSpecId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_soId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_userId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_charOwnerRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_charOwnerRoleSpecId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_description</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_soRoleSpecId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_soRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_charOwnerRoleId</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

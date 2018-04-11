@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="updateStockOut" path="/stockout/{biId}/item/{itemId}" id="a0724592-8bf1-4fab-a013-5c62a1109cab" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="a0724592-8bf1-4fab-a013-5c62a1109cabfileName">updateStockOut</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>biId</con:name>
+      <con:value>biId</con:value>
+      <con:style>TEMPLATE</con:style>
+      <con:default>biId</con:default>
+    </con:parameter>
+    <con:parameter>
+      <con:name>itemId</con:name>
+      <con:value>itemId</con:value>
+      <con:style>TEMPLATE</con:style>
+      <con:default>itemId</con:default>
+    </con:parameter>
+  </con:parameters>
+  <con:method name="Method 1" id="516a4a46-801e-4892-b006-c08717093324" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:representation type="FAULT">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+      <con:element xmlns:item="http://localhost/erms/v1/stockout/biId/item/itemId">item:Fault</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="d112a31d-e61d-41a1-9bb8-df4b742d26ae" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#Endpoint}</con:endpoint>
+      <con:request>{
+    "type": "com.ericsson.bss.erms.entity.dto.bi.CreateStockOutItemDTO",
+    "toPlaceId": 2,
+    "productInformation":
+    {
+        "productSpecification":
+        {
+            "type": "com.ericsson.bss.erms.entity.dto.product.AtomicProductSpecDTO",
+            "id": 1
+        },
+        "status": 1,
+        "startSerialNumber": 500,
+        "endSerialNumber": 501,
+        "quantity": 2
+    },
+    "characteristicHashCode": "IPHONE6S Char Hash",
+    "product":
+    {
+        "id": 44
+    },
+    "stockReasonType":1
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+</con:resource>

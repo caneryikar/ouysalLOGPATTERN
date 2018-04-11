@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="2d3ba26f-f40c-4586-8be9-57c502ff8dff" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display product by id" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="2d3ba26f-f40c-4586-8be9-57c502ff8dfffileName">Display-product-by-id</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="transfer" name="Property Transfer 2" id="c7537e4d-7fa4-4ab4-874a-ab3b79f29266">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrganizationId</con:name>
+        <con:sourceType>UserSo</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>salesOrganizationId</con:targetType>
+        <con:targetStep>Display product by id</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Display product by id" id="27342878-555c-4161-815c-392a9dea5f4b">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/product" methodName="DisplayProductById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display product by id" id="70f87037-5a32-43b3-983c-94a239b5fae5" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="productSpecificationExternalId" value="${#TestCase#req_prodSpecExtId}"/>
+          <con:entry key="productId" value="${#TestCase#req_productId}"/>
+          <con:entry key="includeLocked" value="${#TestCase#req_includeLocked}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>productId</con:entry>
+          <con:entry>productSpecificationExternalId</con:entry>
+          <con:entry>salesOrganizationId</con:entry>
+          <con:entry>includeLocked</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="ed6900f0-c80e-4fa8-862b-44f046b13436">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display product by id</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display product by id</con:sourceStep>
+        <con:sourcePath>$[0]['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product by id</con:sourceStep>
+        <con:sourcePath>$[0]['id']</con:sourcePath>
+        <con:targetType>res_productId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>batchId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product by id</con:sourceStep>
+        <con:sourcePath>$[0]['productInformation'].['batchId']</con:sourcePath>
+        <con:targetType>res_batchId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_productId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecExtId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_includeLocked</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_productId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_batchId</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="productSpecification" path="/productSpecification" id="7fd8dd73-9ff0-47b2-9972-f3cde60f0581" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="7fd8dd73-9ff0-47b2-9972-f3cde60f0581fileName">ProductSpecification</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="createBox" path="" id="01860ade-e68e-42d6-aa1c-48af8e3cb516">
+    <con:settings/>
+    <con:parameters/>
+    <con:method name="CreateBox" id="48851916-b9dc-49a4-8050-0d31da951abf" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>500</con:status>
+        <con:params/>
+        <con:element xmlns:prod="http://localhost/erms/v1/productSpecification">prod:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="9405bab6-c090-45a7-9096-34686594a6b9" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{  
+   "externalReference":{  
+      "externalId":"myboxw1"
+   },
+   "info":{  
+      "name":"myboxw",
+      "description":"myboxw1"
+   },
+   "article":"myboxw1",
+   "code":"myboxw1",
+   "status":"Active",
+   "productTrackingType":"SerializedWithoutRange",
+   "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.BoxProductSpecDTO",
+   "userRoleId":61,
+   "salesOrganizationRoleId":15
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:method name="CreateProductSpecification" id="4869088c-5417-4f60-aad3-cf73b7279be6" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>201</con:status>
+      <con:params/>
+      <con:element xmlns:prod="http://localhost/erms/v1/productSpecification">prod:Response</con:element>
+    </con:representation>
+    <con:representation type="FAULT">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>400 500</con:status>
+      <con:params/>
+      <con:element xmlns:prod="http://localhost/erms/v1/productSpecification">prod:Fault</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="bc526390-b1ae-49f1-ade3-a69698edd8d5" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#Endpoint}</con:endpoint>
+      <con:request>{  
+   "code":"NONSERIALIZEDPRODUCTSPEC-CODE-${#TestSuite#entityId}",
+   "article":"NONSERIALIZEDPRODUCTSPEC-ARTICLE-${#TestSuite#entityId}",
+   "externalReference":{  
+      "externalId":"NONSERIALIZEDPRODUCTSPEC-EXTID-${#TestSuite#entityId}"
+   },
+   "info":{  
+      "name":"NONSERIALIZEDPRODUCTSPEC-NAME-${#TestSuite#entityId}",
+      "description":"NONSERIALIZEDPRODUCTSPEC-DESC-${#TestSuite#entityId}"
+   },
+   "replicationInfo":{  
+      "isReplicated":false
+   },
+   "returnPeriod":{  
+      "value":1,
+      "unit":"Year"
+   },
+   "serialNumberFormat":"serialNumberFormat-XXXXXXXXXX",
+   "status":"Deactive",
+   "valueType":1,
+   "versionInfo":{  
+      "versionNumber":1000000
+   },
+   "warrantyPeriod":{  
+      "value":1,
+      "unit":"Year"
+   },
+   "productTrackingType":"NonSerialized",
+   "isSerialized":false,
+   "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO"
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+</con:resource>

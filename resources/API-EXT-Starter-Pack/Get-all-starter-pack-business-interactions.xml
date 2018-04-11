@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="34547028-bc5e-400a-975d-cb8c9625003e" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Get all starter pack business interactions" searchProperties="true" timeout="10000" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="34547028-bc5e-400a-975d-cb8c9625003efileName">Get-all-starter-pack-business-interactions</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Get all starter pack business interactions" id="3903a60b-df10-4d96-b89e-8846df1e7f2d">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/createStarterPack" methodName="getAllStarterPackBIs" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Get all starter pack business interactions" id="e72e702b-8697-4c6d-8abf-791cb903902f" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/createStarterPack</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="59b2b821-7c9a-4de8-9059-65a1c4ed582f">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>response</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get all starter pack business interactions</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>response</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get all starter pack business interactions</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>response</con:name>
+      <con:value>[{"businessInteractionType":21,"code":"CSP-69","description":"Starter Pack BI is created at [ROOT ORGANIZATION] by [ADMIN USER]","mainState":"Draft","state":"Draft","createdDate":"2017-02-22T08:27:54.000Z","id":"69"},{"businessInteractionType":21,"code":"CSP-68","description":"Starter Pack BI is created at [ROOT ORGANIZATION] by [ADMIN USER]","mainState":"Draft","state":"Draft","createdDate":"2017-02-22T08:26:24.000Z","id":"68"}]</con:value>
+    </con:property>
+    <con:property>
+      <con:name>errorMessage</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>3903a60b-df10-4d96-b89e-8846df1e7f2d</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

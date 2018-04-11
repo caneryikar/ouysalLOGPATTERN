@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="10226e64-6d79-4340-8f59-cf5fcc28334d" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create nonserialized product with product spec external id" searchProperties="true" timeout="10000" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="56f075ad-bc39-4cc9-87a9-4814a7e18864fileName">Create-serialized-product</con:setting>
+    <con:setting id="8830624a-9a7e-46e4-942f-82f97cf0cf5bfileName">Create-serialized-without-range-product-with-product-spec-external-id</con:setting>
+    <con:setting id="10226e64-6d79-4340-8f59-cf5fcc28334dfileName">Create-nonserialized-without-range-product-with-product-spec-external-id</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="transfer" name="Set given properties for the test steps" id="981d523f-cbba-486c-860e-df27ad81f37d">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productSpecExtId</con:name>
+        <con:sourceType>req_prodSpecExtId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>prodSpecExtId</con:targetType>
+        <con:targetStep>Given properties for the test steps</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="properties" name="Given properties for the test steps" id="7e64f353-0ec0-490b-aad8-d39bd299e248">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>biSpec</con:name>
+          <con:value>STCKINBISPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>prodSpecExtId</con:name>
+          <con:value/>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set create stock in bi parameters" id="e3ba5764-d07c-4ff6-a742-5398f86d87d6">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>req_userRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create stockIn Interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>req_salesOrgRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_soRoleId</con:targetType>
+        <con:targetStep>Create stockIn Interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpec</con:name>
+        <con:sourceType>biSpec</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_biSpecCode</con:targetType>
+        <con:targetStep>Create stockIn Interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create stockIn Interaction" id="adcce3ff-ffdd-4b14-8a2b-5540932ae683">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>bba3ce34-4cc5-41fb-98a0-894988e91181</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>614</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_soRoleId</con:name>
+          <con:value>612</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+          <con:value>STCKINBISPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>1785</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set add item parameters" id="7aa0140e-0bf3-4cfe-be8f-93a508252d99">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create stockIn Interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add nonserialized product item to stock in bi</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>prodSpecExtId</con:name>
+        <con:sourceType>req_prodSpecExtId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_prodSpecExtId</con:targetType>
+        <con:targetStep>Add nonserialized product item to stock in bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>placeId</con:name>
+        <con:sourceType>req_placeId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_placeId</con:targetType>
+        <con:targetStep>Add nonserialized product item to stock in bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>description</con:name>
+        <con:sourceType>req_description</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_description</con:targetType>
+        <con:targetStep>Add nonserialized product item to stock in bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>serialText</con:name>
+        <con:sourceType>req_serialText</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_serialText</con:targetType>
+        <con:targetStep>Add nonserialized product item to stock in bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>charExtId1</con:name>
+        <con:sourceType>req_charExtId1</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_charExtId1</con:targetType>
+        <con:targetStep>Add nonserialized product item to stock in bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>charValueExtId1</con:name>
+        <con:sourceType>req_charValueExtId1</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_charValueExtId1</con:targetType>
+        <con:targetStep>Add nonserialized product item to stock in bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productStatus</con:name>
+        <con:sourceType>req_prodStatus</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_prodStatus</con:targetType>
+        <con:targetStep>Add nonserialized product item to stock in bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>req_quantity</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_quantity</con:targetType>
+        <con:targetStep>Add nonserialized product item to stock in bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add nonserialized product item to stock in bi" id="b0b2bcde-a8f9-4678-a199-ecb504883015">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>1df0a954-3f76-4a4e-bd4b-aa3504f4ccf7</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>1785</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_prodSpecExtId</con:name>
+          <con:value>EXT-APPLMOUSE-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_placeId</con:name>
+          <con:value>306</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_description</con:name>
+          <con:value>sdsd</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_charExtId1</con:name>
+          <con:value>5-EXT</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_charValueExtId1</con:name>
+          <con:value>17-EXT</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_serialText</con:name>
+          <con:value>sdsdsd</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_prodStatus</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_quantity</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_batchId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties/>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set submit stockin bi id" id="62217ed2-8ec5-4c32-8884-55c005fd5f54">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create stockIn Interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit stock in business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit stock in business interaction" id="b7f38fd0-f56b-4c0e-9747-5c4abad5d3e5">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>56922495-462d-40b3-b5c9-0eaea60d8504</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>1785</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set product spec ext id  and serial text to query" id="586da9cb-57a0-4070-9cf0-b68a341d5076">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>placeId</con:name>
+        <con:sourceType>req_placeId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_placeId</con:targetType>
+        <con:targetStep>Get product by spec ext id and place id</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>prodSpecExtId</con:name>
+        <con:sourceType>prodSpecExtId</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_prodSpecExtId</con:targetType>
+        <con:targetStep>Get product by spec ext id and place id</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productStatus</con:name>
+        <con:sourceType>req_prodStatus</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_productStatus</con:targetType>
+        <con:targetStep>Get product by spec ext id and place id</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Get product by spec ext id and place id" id="00c880fa-4b93-44d0-8d07-1ba1cac5e3a1">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>c8ecc8e4-f948-4b6c-8c74-f734fb40dce3</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_productId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_prodSpecExtId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_placeId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_productStatus</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSerialNumber</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSerialText</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_productStatus</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_productId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set product id  to test case" id="3802c15e-fbda-4bd5-887f-1edaa6db8aee">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productId</con:name>
+        <con:sourceType>res_productId</con:sourceType>
+        <con:sourceStep>Get product by spec ext id and place id</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_productId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">614</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrgRoleId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">612</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecExtId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">EXT-APPLMOUSE-1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_placeId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">306</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_prodStatus</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_description</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">sdsd</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_serialText</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">sdsdsd</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_charExtId1</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">5-EXT</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_charValueExtId1</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">17-EXT</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_productId</con:name>
+      <con:value>554</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_quantity</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>b7f38fd0-f56b-4c0e-9747-5c4abad5d3e5</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="a94d4447-78c9-4431-8023-3389383bdf3a" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TestCase - Duplicate Detection" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="a94d4447-78c9-4431-8023-3389383bdf3afileName">TestCase---Duplicate-Detection</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="transfer" name="Set default user role and sales org" id="1eef1341-4a3c-45b1-a6e7-01c4ee1e1808">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>DefaultUserRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>userRoleId</con:targetType>
+        <con:targetStep>Properties</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>salesOrgRoleId</con:targetType>
+        <con:targetStep>Properties</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="properties" name="Properties" id="1fca3b32-f8d2-49f2-aec6-60284d9cf546">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>userRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>salesOrgRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>firstExternalId</con:name>
+          <con:value>so-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>secondExternalId</con:name>
+          <con:value>so-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>salesOrgRoleSpecId</con:name>
+          <con:value>so-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>globalUniqueRequestId</con:name>
+          <con:value>ew0KICAiZ2xvYmFsVW5pcXVlUmVxdWVzdElkIiA6ICJmNDdhYzEwYi01OGNjLTQzNzItYTU2Ny0wZTAyYjJjM2Q0NzkiLA0KICAidGltZXN0YW1wIjogIjIwMTctMDItMTZUMTk6MjA6MzAuNDUrMDE6MDAiDQp9</con:value>
+        </con:property>
+        <con:property>
+          <con:name>salesOrgSpecName</con:name>
+          <con:value>so-role-spec-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>salesOrgSpecPlaceUsageType</con:name>
+          <con:value>0</con:value>
+        </con:property>
+        <con:property>
+          <con:name>null</con:name>
+        </con:property>
+        <con:property>
+          <con:name>true</con:name>
+          <con:value>true</con:value>
+        </con:property>
+        <con:property>
+          <con:name>false</con:name>
+          <con:value>false</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 6" id="d4960219-abec-4eae-8fb4-29df9d82276c">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soSpecName</con:name>
+        <con:sourceType>salesOrgSpecName</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_name</con:targetType>
+        <con:targetStep>Create sales org specification</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soSpecPlaceUsageType</con:name>
+        <con:sourceType>salesOrgSpecPlaceUsageType</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_placeUsageType</con:targetType>
+        <con:targetStep>Create sales org specification</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create sales org specification" id="e05e3367-1686-4f2b-bc86-edee23d26b12">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>72b6edb4-5311-4bc4-9381-ad6be5e3c3cd</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_name</con:name>
+          <con:value>so-role-spec-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_placeUsageType</con:name>
+          <con:value>0</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>14</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_id</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Sales org spec is created successfuly" id="b7b01f23-40ca-47a6-9158-e8bd4daabf63">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="76b2259e-2ccc-4562-91be-cf99d646ae0e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>userRoleId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create sales org bi with global unique request id</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Create sales org bi with global unique request id</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>externalId</con:name>
+        <con:sourceType>firstExternalId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_externalId</con:targetType>
+        <con:targetStep>Create sales org bi with global unique request id</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleSpec</con:name>
+        <con:sourceType>res_id</con:sourceType>
+        <con:sourceStep>Create sales org specification</con:sourceStep>
+        <con:targetType>req_salesOrgRoleSpecId</con:targetType>
+        <con:targetStep>Create sales org bi with global unique request id</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>globalUniqueRequestId</con:name>
+        <con:sourceType>globalUniqueRequestId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_globalUniqueRequestId</con:targetType>
+        <con:targetStep>Create sales org bi with global unique request id</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userToken</con:name>
+        <con:sourceType>null</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>AuthorizationUser</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userSo</con:name>
+        <con:sourceType>null</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>UserSo</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create sales org bi with global unique request id" id="30203065-aea1-4f65-a519-aa90e0cc7647">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a6961972-ad0d-4344-affe-e84e95c5c2c3</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_externalId</con:name>
+          <con:value>so-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleSpecId</con:name>
+          <con:value>14</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soExtId</con:name>
+          <con:value>so-de151cf0-865f-4e9a-b3f8-8864a473dfa3</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_globalUniqueRequestId</con:name>
+          <con:value>ew0KICAiZ2xvYmFsVW5pcXVlUmVxdWVzdElkIiA6ICJmNDdhYzEwYi01OGNjLTQzNzItYTU2Ny0wZTAyYjJjM2Q0NzkiLA0KICAidGltZXN0YW1wIjogIjIwMTctMDItMTZUMTk6MjA6MzAuNDUrMDE6MDAiDQp9</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_soExtId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 2" id="2ef6a3b1-8bad-4892-a98f-ce8903d5872a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create sales org bi with global unique request id</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_firstBiId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>userRoleId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create sales org bi with same global unique request id</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Create sales org bi with same global unique request id</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>externalId</con:name>
+        <con:sourceType>firstExternalId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>res_soExtId</con:targetType>
+        <con:targetStep>Create sales org bi with same global unique request id</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgSpec</con:name>
+        <con:sourceType>res_id</con:sourceType>
+        <con:sourceStep>Create sales org specification</con:sourceStep>
+        <con:targetType>req_salesOrgRoleSpecId</con:targetType>
+        <con:targetStep>Create sales org bi with same global unique request id</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>globalUniqueIdentifier</con:name>
+        <con:sourceType>globalUniqueRequestId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_globalUniqueRequestId</con:targetType>
+        <con:targetStep>Create sales org bi with same global unique request id</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="First sales org create bi is created successfuly" id="0f0cfe7d-a575-40a4-8ed6-3d3e38584ded">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>9a25e7b2-0a20-47bb-84c2-5b315ca9fc0e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>30203065-aea1-4f65-a519-aa90e0cc7647</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="93ea9912-a5ed-4a7d-89d7-b2f1db874d6b">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create sales org bi with same global unique request id" id="3002b76a-03cc-4eba-942f-ea5fbacda674">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a6961972-ad0d-4344-affe-e84e95c5c2c3</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_externalId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleSpecId</con:name>
+          <con:value>14</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>211</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soExtId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_globalUniqueRequestId</con:name>
+          <con:value>ew0KICAiZ2xvYmFsVW5pcXVlUmVxdWVzdElkIiA6ICJmNDdhYzEwYi01OGNjLTQzNzItYTU2Ny0wZTAyYjJjM2Q0NzkiLA0KICAidGltZXN0YW1wIjogIjIwMTctMDItMTZUMTk6MjA6MzAuNDUrMDE6MDAiDQp9</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_soExtId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 3" id="64be1bc1-2133-48a6-822f-ce42c53d558c">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create sales org bi with same global unique request id</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_secondBiId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Second sales org create bi is created successfuly" id="ba3accdf-8bd9-4cda-af49-b22b1d7808b5">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>152eb0fd-68ce-4ed0-95ef-599babdc05db</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3002b76a-03cc-4eba-942f-ea5fbacda674</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="28f661b5-6973-4627-b144-f142b82ec487">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="First and second bi are same" id="8cca75e3-4db7-43d5-a149-ad729a29c0f4">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>fdf89d78-d201-4cd1-9d10-16c73fedc497</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>a94d4447-78c9-4431-8023-3389383bdf3a</con:sourceId>
+        <con:propertyName>res_secondBiId</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="a7a93923-38ad-41ae-ab88-17ce4cedf7d3">
+          <con:configuration>
+            <patternObjectId>30203065-aea1-4f65-a519-aa90e0cc7647</patternObjectId>
+            <patternProperty>res_biId</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set update duplicate detection false" id="49bae432-5a41-4a0f-8e4f-fe88546769cc">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>status</con:name>
+        <con:sourceType>false</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_status</con:targetType>
+        <con:targetStep>Update duplicate detection false</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Update duplicate detection false" id="8e998174-c9b2-40de-9f39-25c08fb98589">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>01103dc4-a163-4622-882e-97de53410edb</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>Ok</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_status</con:name>
+          <con:value>false</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="Run duplicate detection false case?" id="045f5aff-58bb-4c6d-8421-6310e846e452">
+    <con:settings/>
+    <con:config>
+      <script>def response = context.testCase.testSteps["Update duplicate detection false"].getPropertyValue("res_code")
+
+if (response == "200") {
+	testRunner.testCase.getTestStepByName("Property Transfer 4").disabled = false;
+	testRunner.testCase.getTestStepByName("Create sales org bi with global unique false").disabled = false;
+	testRunner.testCase.getTestStepByName("Property Transfer 5").disabled = false;
+	testRunner.testCase.getTestStepByName("Third sales org create bi is created successfuly").disabled = false;
+	testRunner.testCase.getTestStepByName("Assertion check bi id different").disabled = false;
+}else {
+	testRunner.testCase.getTestStepByName("Property Transfer 4").disabled = true;
+	testRunner.testCase.getTestStepByName("Create sales org bi with global unique false").disabled = true;
+	testRunner.testCase.getTestStepByName("Property Transfer 5").disabled = true;
+	testRunner.testCase.getTestStepByName("Third sales org create bi is created successfuly").disabled = true;
+	testRunner.testCase.getTestStepByName("Assertion check bi id different").disabled = true;
+}</script>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 4" id="a7ed04a3-4ffb-44bc-96c2-3fdb7a42f2d1">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>userRoleId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create sales org bi with global unique false</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Create sales org bi with global unique false</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>externalId</con:name>
+        <con:sourceType>secondExternalId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_externalId</con:targetType>
+        <con:targetStep>Create sales org bi with global unique false</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgSpec</con:name>
+        <con:sourceType>res_id</con:sourceType>
+        <con:sourceStep>Create sales org specification</con:sourceStep>
+        <con:targetType>req_salesOrgRoleSpecId</con:targetType>
+        <con:targetStep>Create sales org bi with global unique false</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>globalUnique</con:name>
+        <con:sourceType>globalUniqueRequestId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_globalUniqueRequestId</con:targetType>
+        <con:targetStep>Create sales org bi with global unique false</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create sales org bi with global unique false" id="7f643249-8993-4085-be12-7c3dcdda82c9">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a6961972-ad0d-4344-affe-e84e95c5c2c3</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_externalId</con:name>
+          <con:value>so-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleSpecId</con:name>
+          <con:value>13</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>191</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soExtId</con:name>
+          <con:value>so-28463f2d-bfb4-480c-a88b-f89cceae4b59</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_globalUniqueRequestId</con:name>
+          <con:value>ew0KICAiZ2xvYmFsVW5pcXVlUmVxdWVzdElkIiA6ICJmNDdhYzEwYi01OGNjLTQzNzItYTU2Ny0wZTAyYjJjM2Q0NzkiLA0KICAidGltZXN0YW1wIjogIjIwMTctMDItMTZUMTk6MjA6MzAuNDUrMDE6MDAiDQp9</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_soExtId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 5" id="e7be6a2c-f944-4566-8cbe-e889d3857b48">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create sales org bi with global unique false</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_thirdBiId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Third sales org create bi is created successfuly" id="b534e049-51f8-4a5e-ad5f-b9b1020af767">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>70eb62b6-dfeb-4488-b160-420c5da1ee22</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>7f643249-8993-4085-be12-7c3dcdda82c9</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="28a47661-bba7-4f7e-bce1-f881e47f0bf9">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="groovy" name="Assertion check bi id different" id="900f7ced-806e-467a-bbfe-2861f4e42190">
+    <con:settings/>
+    <con:config>
+      <script>def res_biId2 = context.expand( '${Create sales org bi with same global unique request id#res_biId}' )
+def res_biId3 = context.expand( '${Create sales org bi with global unique false#res_biId}' )
+
+assert res_biId2 != res_biId3</script>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>res_firstBiId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">201</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_secondBiId</con:name>
+      <con:value>211</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_thirdBiId</con:name>
+      <con:value>191</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>76b2259e-2ccc-4562-91be-cf99d646ae0e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>8e998174-c9b2-40de-9f39-25c08fb98589</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

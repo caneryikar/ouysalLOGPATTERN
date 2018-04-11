@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="ext_moneyTransfer" path="/moneyTransfer" id="3161974f-9eaf-4abd-85d4-0baea9b6f193" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="095596d8-84dc-4c5a-94aa-c7c9285b885bfileName">moneyTransfer</con:setting>
+    <con:setting id="3161974f-9eaf-4abd-85d4-0baea9b6f193fileName">ext_moneyTransfer</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="addItem" path="{biId}/item" id="c1bb55f7-98d2-4b24-89f4-faacde54f067">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="addItem" id="ce8c6135-926b-42bd-8df7-9021fa31a15f" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>400</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://localhost/erms/v1/moneyTransfer/1000000000/item">item:Fault</con:element>
+      </con:representation>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>text/html;charset=ISO-8859-1</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element>html</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="ddba9ebc-7d46-4347-9752-cfeb8bb134db" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+    "fromAccountId":3,
+    "toAccountId":4,
+    "amount":{
+        "notRoundedAmount":100,
+        "currency": "EUR",
+        "roundedAmount": 101
+    }
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="e3681c8d-4b2f-45c5-945e-6889952d63d1">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="submit" path="{biId}/submit" id="b39cd2ca-ccb5-45c1-8071-edcadd314d5f">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="submit" id="8c862bbe-80ea-4316-9f4c-9087d21abb20" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404 400</con:status>
+        <con:params/>
+        <con:element xmlns:sub="http://localhost/erms/v1/moneyTransfer/submit">sub:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="13574b92-3ded-49d4-bd71-e7dd36a8b0b0" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="e3681c8d-4b2f-45c5-945e-6889952d63d1">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="cancel" path="{biId}/cancel" id="70b4d1a0-0bbe-4ff5-9f31-b3a87b4a6d91">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="cancel" id="0233908e-e0f3-4b23-858f-a2428975cb5e" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.EntityResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:can="http://localhost/erms/retailManagement/v1/moneyTransfer/93/cancel">can:Response</con:element>
+      </con:representation>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:can="http://localhost/erms/retailManagement/v1/moneyTransfer/93/cancel">can:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="1b1b6443-9fbd-47e3-b0b7-3d95d386dfe6" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="e3681c8d-4b2f-45c5-945e-6889952d63d1">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="displaySingle" path="{biId}" id="4e155df2-c43d-46d4-b706-7dc30bb4280e">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>id</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>id</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="displaySingle" id="57c71ccd-67b8-4b87-8393-530a0d9930ff" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:id="http://localhost/erms/v1/moneyTransfer/id">id:Fault</con:element>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:id="http://localhost/erms/v1/moneyTransfer/id">id:Response</con:element>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.MoneyTransferResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:ns="http://vmx-erms008/erms/retailManagement/v1/moneyTransfer/20436">ns:Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="e3f18a66-adeb-4c62-941a-624caa49f005" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://vmx-erms008/erms/retailManagement/v1/moneyTransfer/20436</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="biId" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="e3681c8d-4b2f-45c5-945e-6889952d63d1">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="displayAll" path="" id="4e155df2-c43d-46d4-b706-7dc30bb4280e">
+    <con:settings/>
+    <con:parameters/>
+    <con:method name="displayAll" id="57c71ccd-67b8-4b87-8393-530a0d9930ff" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:id="http://localhost/erms/v1/moneyTransfer/id">id:Fault</con:element>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:id="http://localhost/erms/v1/moneyTransfer/id">id:Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="e3f18a66-adeb-4c62-941a-624caa49f005" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:parameterOrder/>
+        <con:environmentSpec>
+          <con:entry environmentId="e3681c8d-4b2f-45c5-945e-6889952d63d1">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="displayAllItems" path="{biId}/items/" id="7a9a6a0a-4e6c-4e1e-b306-9500c32fb291">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="displayAllItems" id="8811a9c2-b268-4a72-878e-dce5bc5b44c3" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://vmx-erms008/erms/v1/moneyTransfer/20550/items/">item:Fault</con:element>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.MoneyTransferItemResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://vmx-erms008/erms/v1/moneyTransfer/20550/items/">item:Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="3ee09c50-c218-42f8-9708-8c764e6ac900" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="e3681c8d-4b2f-45c5-945e-6889952d63d1">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="displaySingleItem" path="{biId}/items/{itemId}" id="7a9a6a0a-4e6c-4e1e-b306-9500c32fb291">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+      <con:parameter>
+        <con:name>itemId</con:name>
+        <con:value/>
+        <con:style>TEMPLATE</con:style>
+        <con:default/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="displaySingleItem" id="8811a9c2-b268-4a72-878e-dce5bc5b44c3" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="3ee09c50-c218-42f8-9708-8c764e6ac900" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="itemId" value="itemId" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+          <con:entry>itemId</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="e3681c8d-4b2f-45c5-945e-6889952d63d1">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="createItem" path="{biId}/items" id="c0f88e83-a35b-4dda-a47d-bd78f97a05c1">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="createItem" id="e92e8dca-749e-4c6f-b63f-7917902b3ad6" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>text/html;charset=ISO-8859-1</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element>html</con:element>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404 400</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://localhost/erms/v1/moneyTransfer/items">item:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="79c574db-48e6-4d4c-8b7d-7de81f70d7e6" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+   "fromAccountId": "30060",
+   "toAccountId": "30061",
+   "amount": 1010.9,
+   "currency": "EUR",
+   "roundedAmount": 1011
+}</con:request>
+        <con:originalUri>http://vmx-erms008/erms/v1/moneyTransfer/biId/items</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="20304" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="e3681c8d-4b2f-45c5-945e-6889952d63d1">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="deleteItem" path="/{id}/items/{itemId}" id="40a7ef22-e348-45d7-865c-000d2f65f03d">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>id</con:name>
+        <con:value>id</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>id</con:default>
+      </con:parameter>
+      <con:parameter>
+        <con:name>itemId</con:name>
+        <con:value>itemId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>itemId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="deleteItem" id="7171d287-f535-46bc-b356-7d84a01095fa" method="DELETE">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>405 400</con:status>
+        <con:params/>
+        <con:element xmlns:ns="http://localhost/erms/retailManagement/v1/moneyTransfer/10385/items/307">ns:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="1c278e48-f4ae-42bc-9dbb-3f0d95f524b2" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="e3681c8d-4b2f-45c5-945e-6889952d63d1">
+            <con:authProfile>No Authorization</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:method name="createBI" id="d99c824e-d975-4b86-a52f-a2876bbdb3e7" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>201</con:status>
+      <con:params/>
+      <con:element xmlns:mon="http://localhost/erms/v1/moneyTransfer">mon:Response</con:element>
+    </con:representation>
+    <con:representation type="FAULT">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>400 404 500 406</con:status>
+      <con:params/>
+      <con:element xmlns:mon="http://localhost/erms/v1/moneyTransfer">mon:Fault</con:element>
+    </con:representation>
+    <con:representation type="FAULT">
+      <con:mediaType>text/html;charset=ISO-8859-1</con:mediaType>
+      <con:status>404</con:status>
+      <con:params/>
+      <con:element>html</con:element>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.EntityResponse.1.json#"</con:mediaType>
+      <con:status>201</con:status>
+      <con:params/>
+      <con:element xmlns:mon="http://localhost/erms/retailManagement/v1/moneyTransfer">mon:Response</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="8c71b51a-13e2-41da-99d0-d4ec4f544c07" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+      <con:request>{
+	"userRoleId": "${#TestCase#req_userRoleId}",
+	"salesOrganizationRoleId": "${#TestCase#req_salesOrganizationRoleId}",
+	"businessInteractionSpecificationCode":"MONEYTRSPECCODE"
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+      <con:environmentSpec>
+        <con:entry environmentId="e3681c8d-4b2f-45c5-945e-6889952d63d1">
+          <con:authProfile>No Authorization</con:authProfile>
+        </con:entry>
+      </con:environmentSpec>
+    </con:request>
+  </con:method>
+</con:resource>

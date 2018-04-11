@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="ef1ecdf4-8483-46d8-a3c9-87064bd44ad2" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Delete permission by Id" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="ef1ecdf4-8483-46d8-a3c9-87064bd44ad2fileName">Delete-permission-by-Id</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="transfer" name="Property Transfer" id="ea2432ab-c53a-4651-8fdd-f3a55e926fbb">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>action</con:name>
+        <con:sourceType>req_action</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>actionCode</con:targetType>
+        <con:targetStep>Properties</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="properties" name="Properties" id="c56c3c42-2c36-41ed-a8d2-8537b42ce31d">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>actionCode</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>actionName</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>itemDeleteId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Get Permission Ids" id="baf4a84c-cc6c-4673-9eae-aba12033f3ae">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a2d00e03-8a9d-46ec-92ef-bf1171ae0ae6</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>[{"id":205,"profile":"CSR","domain":"TRM","domainDescription":"Terminal Create","action":"TRM.Create","actionDescription":"Terminal Create Create","condition":"NullCondition","conditionDescription":"Always","scope":"PermitAllScope","scopeDescription":"Permit All","dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.profilepermissions.ProfilePermissionDTO"}]</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen for permission Id get" id="94910c0e-01e0-487a-b93e-6769e244154f">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>import net.sf.json.groovy.*;
+
+def items = context.expand( '${Get Permission Ids#response}' )
+def serializedProductId = context.expand( '${Properties#actionCode}' )
+
+def json = new JsonSlurper().parseText (items);
+
+
+for (int i=0; i &lt; json.size(); i++){
+	
+if (json[i].action == serializedProductId) {
+testRunner.testCase.testSteps['Properties'].setPropertyValue("itemDeleteId",json[i].id.toString());																		
+}
+}</script>
+        </con:configuration>
+        <con:name>serializedProductItemId</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 22" id="18119d7b-c348-4116-b148-48583cbd62c4">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userId</con:name>
+        <con:sourceType>req_userId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_UserId</con:targetType>
+        <con:targetStep>Delete permission</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>req_soId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_SoId</con:targetType>
+        <con:targetStep>Delete permission</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>action</con:name>
+        <con:sourceType>req_action</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_Action</con:targetType>
+        <con:targetStep>Delete permission</con:targetStep>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>itemDeleteId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_profilePermissionId</con:targetType>
+        <con:targetStep>Delete permission</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>createdForSalesOrg</con:name>
+        <con:sourceType>req_createdForSalesOrg</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_createdForSalesOrg</con:targetType>
+        <con:targetStep>Delete permission</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Delete permission" id="6cef26a2-889a-4e4b-82bd-2c0a70b7d925">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>9dc64ca0-6f8b-41a4-b0fe-b7a7de992507</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_UserId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_SoId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_Domain</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_Action</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>req_Scope</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_Profile</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_Condition</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>404</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessageCreate</con:name>
+          <con:value>DESERIALIZATION_ERRROR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessageAdd</con:name>
+          <con:value>404</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessageSubmit</con:name>
+          <con:value>404</con:value>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>{"code":"404","description":"HTTP 404 Not Found","errorDetails":"HTTP 404 Not Found","errorMessage":"404","httpStatusCode":"404","httpStatusCodeDescription":"HTTP 404 Not Found"}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_profilePermissionId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_createdForSalesOrg</con:name>
+          <con:value/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessageCreate</con:entry>
+        <con:entry>res_errorMessageAdd</con:entry>
+        <con:entry>res_errorMessageSubmit</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 23" id="1afa1de6-6d58-4746-bdb8-6a21b77d91d2">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>res_code</con:sourceType>
+        <con:sourceStep>Delete permission</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>res_errorMessageSubmit</con:sourceType>
+        <con:sourceStep>Delete permission</con:sourceStep>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_action</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_soId</con:name>
+      <con:value>1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_userId</con:name>
+      <con:value>2</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_createdForSalesOrg</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>baf4a84c-cc6c-4673-9eae-aba12033f3ae</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>6cef26a2-889a-4e4b-82bd-2c0a70b7d925</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

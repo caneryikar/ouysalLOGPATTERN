@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="396fdbf0-490d-4349-bccd-2fd8fc92ed2f" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create sales organization bi dynamic without party role type" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="d75ceaa7-d489-49da-a665-e41d6517551dfileName">Create-sales-organization-business-interaction</con:setting>
+    <con:setting id="c8bbdc99-c082-4770-9cf7-0a3fa3c301dffileName">Create-sales-organization-business-interaction</con:setting>
+    <con:setting id="484a544a-d1e8-4f62-bb0a-d41d4a74dea8fileName">Create-sales-organization-bi-for-CWH</con:setting>
+    <con:setting id="396fdbf0-490d-4349-bccd-2fd8fc92ed2ffileName">Create-sales-organization-bi-dynamic-without-party-role-type</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Create sales organization business interaction" id="e303b31a-2c9c-44fc-bf5b-db8e69e8fd82">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/createSalesOrganizationRole" methodName="createSoBI" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Create sales organization business interaction" id="c6bc1f6f-bf10-41c2-8c6a-fdb89e649d39" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+   "userRoleId": "${#TestCase#req_userRoleId}",
+   "salesOrganizationRoleId": "${#TestCase#req_salesOrgRoleId}",
+   "businessInteractionSpecificationCode": "${#TestCase#req_biSpecCode}",
+   "name": "${#TestCase#req_soName}",
+   "externalId": "${#TestCase#req_externalId}",
+   "partyType": "${#TestCase#req_partyType}",
+   "salesOrganizationRoleSpecificationId": "${#TestCase#req_salesOrgRoleSpecId}",
+   "siteId": "1"
+}</con:request>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/salesOrganizationCreate</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="8d0deaa5-3fc4-4ad1-b70a-0476a8d0fcd4">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Create sales organization business interaction</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_errorMsg</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create sales organization business interaction</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMsg</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value>276</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrgRoleId</con:name>
+      <con:value>274</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_externalId</con:name>
+      <con:value>ext-s-1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrgRoleSpecId</con:name>
+      <con:value>1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_biSpecCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_partyType</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_soName</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMsg</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

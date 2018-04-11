@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="userUpdate" path="/userUpdate" id="dcb6abba-3c4e-45d6-9e83-fa22ac9cf805" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="dcb6abba-3c4e-45d6-9e83-fa22ac9cf805fileName">userUpdate</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="submit" path="{biId}/submit" id="ffd7154d-3632-4956-953d-66a3b04b732f">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="9f89dee9-abc3-4d49-9847-101439cc1e1b" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="fe1d9e8b-ea72-43db-acf2-dfe775bf0dcd" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:method name="Method 1" id="78446eab-6cc4-4dbc-8b4c-55b86128f154" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:request name="Request 1" id="8f65f9d0-55e1-41c6-91db-2139fc28f656" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#Endpoint}</con:endpoint>
+      <con:request>{
+	"userRoleId": "${#TestCase#req_userRoleId}",
+	"salesOrganizationRoleId": "${#TestCase#req_salesOrganizationRoleId}",
+	"businessInteractionSpec": {
+		"code": "${#TestCase#req_biSpecCode}"
+	},
+	"relatedUserRoleId": "${#TestCase#req_relatedUserRoleId}",
+	"newEmail": "${#TestCase#req_newMailAddress}",
+	"newFirstName": "${#TestCase#req_newFirstName}",
+	"newForceToUseSession": ${#TestCase#req_newForceToUseSession},
+	"newGender": "${#TestCase#req_newGender}",
+	"newLastName": "${#TestCase#req_newLastName}",
+	"newMiddleName": "${#TestCase#req_newMiddleName}",
+	"newUserName": "${#TestCase#req_newUserName}"
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+</con:resource>

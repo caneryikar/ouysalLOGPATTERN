@@ -1,0 +1,936 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="16d8a61e-3fd2-42b2-bc91-6bcdac56ce92" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create sim product" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="9a512a60-c40a-4287-8d07-22256534e42ffileName">Create-product</con:setting>
+    <con:setting id="16d8a61e-3fd2-42b2-bc91-6bcdac56ce92fileName">Create-SIM-product</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Given properties for the test steps" id="e47b845d-0de5-4a0d-9608-4806d80aec26">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>prodSpecId</con:name>
+          <con:value>7</con:value>
+        </con:property>
+        <con:property>
+          <con:name>quantity</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>nonSellableStatus</con:name>
+          <con:value>4</con:value>
+        </con:property>
+        <con:property>
+          <con:name>prodSpecCharUseId</con:name>
+          <con:value>11</con:value>
+        </con:property>
+        <con:property>
+          <con:name>prodSpecCharId</con:name>
+          <con:value>6</con:value>
+        </con:property>
+        <con:property>
+          <con:name>prodSpecCharValueId</con:name>
+          <con:value>20</con:value>
+        </con:property>
+        <con:property>
+          <con:name>simProductSpecExtId</con:name>
+          <con:value>EXT-SIM-1</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set userId" id="e7f4a7fb-bf92-4da5-b3f8-2c705ced2f9c">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userId</con:name>
+        <con:sourceType>req_userRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userId</con:targetType>
+        <con:targetStep>Get userExtId by userId</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Get userExtId by userId" id="9ded4dc1-06e1-4f93-8d73-a1b571dc5e55">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>d8d05d28-853c-4d2d-890e-bd00afa7c45c</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_userId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_userStatus</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_externalId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_firstName</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_lastName</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_middleName</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_gender</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_name</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_email</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_forceToUseSession</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_status</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_externalId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set userExtId" id="f5a0be31-4d4f-45e5-9138-adffe9dafbb0">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userExtId</con:name>
+        <con:sourceType>res_externalId</con:sourceType>
+        <con:sourceStep>Get userExtId by userId</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_externalUserRole</con:targetType>
+        <con:targetStep>Generate userToken</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Generate userToken" id="a609c969-2075-40c7-9f1f-231d6a077d8a">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>2b029c44-82ae-4533-b473-9cec05e9a4d4</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>response</con:name>
+        </con:property>
+        <con:property>
+          <con:name>code</con:name>
+        </con:property>
+        <con:property>
+          <con:name>errorMessage</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_externalUserRole</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>response</con:entry>
+        <con:entry>code</con:entry>
+        <con:entry>errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set start session business interaction" id="2ce33b07-9cfb-442f-8c49-aec105b64199">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>terminalId</con:name>
+        <con:sourceType>req_terminalId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_terminalId</con:targetType>
+        <con:targetStep>Create and submit start session business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>req_soRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Create and submit start session business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userId</con:name>
+        <con:sourceType>req_userRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create and submit start session business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userSo</con:name>
+        <con:sourceType>req_soRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>UserSo</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create and submit start session business interaction" id="ac10cbee-927b-4331-bd7d-788aee7c35a9">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a8bc6612-7b48-44cc-84ed-0b76bc1c8f6d</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_terminalId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create stockIn Interaction" id="e35bda47-4bc8-47a9-aa6d-f30e48769d14">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>bba3ce34-4cc5-41fb-98a0-894988e91181</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>${#TestCase#req_userRoleId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_soRoleId</con:name>
+          <con:value>${#TestCase#req_soRoleId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+          <con:value>STCKINBISPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>USER_NOT_ACTIVE_OR_EXISTS</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="Auto generate start and serial numbers" id="8e8dd69c-13cd-4baf-b5c6-51eb5afd6e57">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>def startSerial=new Random(System.currentTimeMillis()).nextInt(999999) + 1000000000000000000;
+testRunner.testCase.setPropertyValue("res_startSerial",startSerial.toString());
+return startSerial+"1";</script>
+        </con:configuration>
+        <con:name>startSerial</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>true</con:shared>
+      </con:property>
+      <con:property type="Script">
+        <con:configuration>
+          <script>def startSerial = context.expand( '${#TestCase#res_startSerial}' )
+endSerial= startSerial as Long
+endSerial+=1
+testRunner.testCase.setPropertyValue("res_endSerial",endSerial.toString());
+return endSerial.toString()+"1";</script>
+        </con:configuration>
+        <con:name>endSerial</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>true</con:shared>
+      </con:property>
+      <con:property type="Script">
+        <con:configuration>
+          <script>def serialText1=new Random(System.currentTimeMillis()).nextInt(999999) + 100000000000000000;
+testRunner.testCase.setPropertyValue("res_serialText1",serialText1.toString());
+return serialText1+"1";</script>
+        </con:configuration>
+        <con:name>serialText1</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>true</con:shared>
+      </con:property>
+      <con:property type="Script">
+        <con:configuration>
+          <script>def serialText1 = context.expand( '${#TestCase#res_serialText1}' )
+serialText2= serialText1 as Long
+serialText2+=1
+testRunner.testCase.setPropertyValue("res_serialText2",serialText2.toString());
+return serialText2.toString()+"1";</script>
+        </con:configuration>
+        <con:name>serialText2</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>true</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set sim item properties" id="465f06b3-6b19-4445-bf32-656ca88ef147">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="false" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>prodSpecId</con:name>
+        <con:sourceType>prodSpecId</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_productSpecId</con:targetType>
+        <con:targetStep>Add sim item to stock in business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>quantity</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_quantity</con:targetType>
+        <con:targetStep>Add sim item to stock in business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>startSerial</con:name>
+        <con:sourceType>res_startSerial</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_startSerialNumber</con:targetType>
+        <con:targetStep>Add sim item to stock in business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>endSerial</con:name>
+        <con:sourceType>res_endSerial</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_endSerialNumber</con:targetType>
+        <con:targetStep>Add sim item to stock in business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>status</con:name>
+        <con:sourceType>nonSellableStatus</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_status</con:targetType>
+        <con:targetStep>Add sim item to stock in business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>prodSpecCharUseId</con:name>
+        <con:sourceType>prodSpecCharUseId</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_productSpecCharUseId</con:targetType>
+        <con:targetStep>Add sim item to stock in business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>prodSpecCharId</con:name>
+        <con:sourceType>prodSpecCharId</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_productSpecCharId</con:targetType>
+        <con:targetStep>Add sim item to stock in business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>prodSpecCharValueId</con:name>
+        <con:sourceType>prodSpecCharValueId</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_productSpecCharValueId</con:targetType>
+        <con:targetStep>Add sim item to stock in business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>req_userRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_userId</con:targetType>
+        <con:targetStep>Add sim item to stock in business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soRoleId</con:name>
+        <con:sourceType>req_soRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_soId</con:targetType>
+        <con:targetStep>Add sim item to stock in business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>placeId</con:name>
+        <con:sourceType>req_placeId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_toPlaceId</con:targetType>
+        <con:targetStep>Add sim item to stock in business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create stockIn Interaction</con:sourceStep>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add sim item to stock in business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add sim item to stock in business interaction" id="b4f1b113-e52f-4b83-a280-53133dfad6f5">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>38b220d1-2da5-45e1-b7c1-6cc9b00cf0c5</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_quantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_status</con:name>
+          <con:value>4</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecId</con:name>
+          <con:value>7</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_startSerialNumber</con:name>
+          <con:value>100000000000359366</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_serialText</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_endSerialNumber</con:name>
+          <con:value>100000000000359370</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_isPaired</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecCharUseId</con:name>
+          <con:value>14</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecCharId</con:name>
+          <con:value>6</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecCharValueId</con:name>
+          <con:value>20</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toPlaceId</con:name>
+          <con:value>114</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userId</con:name>
+          <con:value>228</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value>226</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_description</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>404</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="DataSource" id="f30d926c-d24e-4693-bdc3-12428ac21c79">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Grid">
+        <con:configuration>
+          <check><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry></xml-fragment>]]></check>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1111</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">12</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1111</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">13</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">14</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1111</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">12</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1111</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">13</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">14</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">2222</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">12</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">2222</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">13</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}2</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">14</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">2222</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">12</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">2222</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">13</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}2</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">14</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">3333</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">12</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">3333</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">13</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}3</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">14</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">3333</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">12</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">3333</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">13</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}3</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">14</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">4444</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">12</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">4444</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">13</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}4</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">14</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">4444</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">12</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">4444</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">13</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}4</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">14</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5555</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">12</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5555</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">13</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_startSerial}5</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">14</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5555</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">12</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5555</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">13</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#res_endSerial}5</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">14</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+        </con:configuration>
+      </con:dataSource>
+      <con:property>serialNumber</con:property>
+      <con:property>characteristicValue</con:property>
+      <con:property>prodSpecCharUseId</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set serialized product characteristic parameters" id="876fffd4-8d1f-4c37-8bd3-7d698573fea6">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>req_userRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Add serialized product characteristics</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soRoleId</con:name>
+        <con:sourceType>req_soRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Add serialized product characteristics</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>prodSpecCharUseId</con:name>
+        <con:sourceType>prodSpecCharUseId</con:sourceType>
+        <con:sourceStep>DataSource</con:sourceStep>
+        <con:targetType>req_prodSpecCharUseId</con:targetType>
+        <con:targetStep>Add serialized product characteristics</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>serialNumber</con:name>
+        <con:sourceType>serialNumber</con:sourceType>
+        <con:sourceStep>DataSource</con:sourceStep>
+        <con:targetType>req_serialNumber</con:targetType>
+        <con:targetStep>Add serialized product characteristics</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>characteristicValue</con:name>
+        <con:sourceType>characteristicValue</con:sourceType>
+        <con:sourceStep>DataSource</con:sourceStep>
+        <con:targetType>req_charValue</con:targetType>
+        <con:targetStep>Add serialized product characteristics</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create stockIn Interaction</con:sourceStep>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add serialized product characteristics</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add serialized product characteristics" id="412ecad5-22cf-4299-bfdd-ea31d1fe16f4">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>721ffe0a-3707-4db3-aecb-1eaf27cce156</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>228</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>226</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_prodSpecCharUseId</con:name>
+          <con:value>17</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_serialNumber</con:name>
+          <con:value>${#TestCase#res_endSerial}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_charValue</con:name>
+          <con:value>${#TestCase#req_endSerial}1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>{"code":"404","description":"HTTP 404 Not Found","errorDetails":"HTTP 404 Not Found","errorMessage":"404","httpStatusCode":"404","httpStatusCodeDescription":"HTTP 404 Not Found"}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="DataSource Loop" id="6380c6e5-9742-4936-a623-5e7d953278ad">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>DataSource</dataSourceStep>
+      <targetStep>Set serialized product characteristic parameters</targetStep>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set bi id to submit" id="2a6ae941-60b8-4007-a17f-304b2d38325c">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create stockIn Interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit stock in business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit stock in business interaction" id="360783ed-78b5-427d-b5d6-9020812ed75a">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>56922495-462d-40b3-b5c9-0eaea60d8504</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>404</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set response code" id="e390bd14-bfeb-483c-bf97-e64805d25bf7">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>res_code</con:sourceType>
+        <con:sourceStep>Submit stock in business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set display product id" id="f169145e-f8e0-4781-a35b-5382be310e54">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>serialNumber</con:name>
+        <con:sourceType>startSerial</con:sourceType>
+        <con:sourceStep>Auto generate start and serial numbers</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_productSerialNumber</con:targetType>
+        <con:targetStep>Display product id</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productSpecExtId</con:name>
+        <con:sourceType>simProductSpecExtId</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_prodSpecExtId</con:targetType>
+        <con:targetStep>Display product id</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display product id" id="0ac295f8-31af-49e4-8f67-ee488424f473">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ff39403d-fc07-4856-b846-7d260e2ccf9a</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_productSerialNumber</con:name>
+          <con:value>1000000000003593661</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_prodSpecExtId</con:name>
+          <con:value>EXT-SIM-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_productId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_status</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_startSerial</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_charExtId1</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_charExtId2</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_charExtId3</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_charValueExtId1</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_charValueExtId2</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_charValueExtId3</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_serializedCharExtId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_serializedCharValue</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_productId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="5ba22715-34c5-4b86-8cf2-fe00f027ea17">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productId</con:name>
+        <con:sourceType>res_productId</con:sourceType>
+        <con:sourceStep>Display product id</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_simProductId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>startSerialWithParity</con:name>
+        <con:sourceType>startSerial</con:sourceType>
+        <con:sourceStep>Auto generate start and serial numbers</con:sourceStep>
+        <con:targetType>res_startSerial</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>endSerialWithParity</con:name>
+        <con:sourceType>endSerial</con:sourceType>
+        <con:sourceStep>Auto generate start and serial numbers</con:sourceStep>
+        <con:targetType>res_endSerial</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>serialText1</con:name>
+        <con:sourceType>serialText1</con:sourceType>
+        <con:sourceStep>Auto generate start and serial numbers</con:sourceStep>
+        <con:targetType>res_serialText1</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>serialText2</con:name>
+        <con:sourceType>serialText2</con:sourceType>
+        <con:sourceStep>Auto generate start and serial numbers</con:sourceStep>
+        <con:targetType>res_serialText2</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_terminalId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value>2</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_soRoleId</con:name>
+      <con:value>1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_placeId</con:name>
+      <con:value>114</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_startSerial</con:name>
+      <con:value>100000000000365536</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_endSerial</con:name>
+      <con:value>100000000000365537</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_simProductId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_serialText1</con:name>
+      <con:value>100000000000045839</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_serialText2</con:name>
+      <con:value>100000000000045840</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>8e628e5e-a3e6-4180-943f-b0e590b54fa5</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>fa53810e-0c65-48fe-996f-cea42d4b9b29</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e47b845d-0de5-4a0d-9608-4806d80aec26</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e35bda47-4bc8-47a9-aa6d-f30e48769d14</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>412ecad5-22cf-4299-bfdd-ea31d1fe16f4</con:testStepId>
+    <con:status>ENABLED</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>876fffd4-8d1f-4c37-8bd3-7d698573fea6</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>8e8dd69c-13cd-4baf-b5c6-51eb5afd6e57</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>6380c6e5-9742-4936-a623-5e7d953278ad</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>f30d926c-d24e-4693-bdc3-12428ac21c79</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>465f06b3-6b19-4445-bf32-656ca88ef147</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>b4f1b113-e52f-4b83-a280-53133dfad6f5</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>360783ed-78b5-427d-b5d6-9020812ed75a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>2a6ae941-60b8-4007-a17f-304b2d38325c</con:testStepId>
+    <con:status>ENABLED</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e390bd14-bfeb-483c-bf97-e64805d25bf7</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>2ce33b07-9cfb-442f-8c49-aec105b64199</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

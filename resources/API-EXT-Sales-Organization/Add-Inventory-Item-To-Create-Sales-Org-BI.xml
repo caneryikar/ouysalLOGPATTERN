@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="3b34a6f1-84b5-4bdc-aae1-aef233f96d85" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add Inventory Item To Create Sales Org BI" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="3b34a6f1-84b5-4bdc-aae1-aef233f96d85fileName">Add-Inventory-Item-To-Create-Sales-Org-BI</con:setting>
+  </con:settings>
+  <con:testStep type="restrequest" name="Add Inventory Item To Create Sales Org BI" id="f05459fc-ddf9-45d6-9ef0-7f1b559e65eb">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/createSalesOrganizationRole/{biId}/inventoryItems" methodName="addInventoryItem" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Add Inventory Item To Create Sales Org BI" id="50274097-8662-4e0a-bd46-292e4fe8a6af" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+   "name": "${#TestCase#req_inventoryName}",
+   "externalId": "${#TestCase#req_externalId}",
+   "inventoryRoleSpecificationId": "${#TestCase#req_inventoryRoleSpecId}"
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="ef218f31-574a-47f8-b908-d09d6d59d91c">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Add Inventory Item To Create Sales Org BI</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_errorMsg</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add Inventory Item To Create Sales Org BI</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_item_id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add Inventory Item To Create Sales Org BI</con:sourceStep>
+        <con:sourcePath>id</con:sourcePath>
+        <con:targetType>res_itemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_externalId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_inventoryName</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_inventoryRoleSpecId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_itemId</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

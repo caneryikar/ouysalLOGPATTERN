@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="cdc799db-2e2e-41a9-845c-ac9db55fa562" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display a single stock out item" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="cdc799db-2e2e-41a9-845c-ac9db55fa562fileName">Display-a-single-stock-out-item</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Display a single stock out item" id="0d250a5b-e940-49ca-ac23-13d242020ee9">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockOutItem/{itemId}" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display a single stock out item" id="0a0f7b5a-b97f-497f-a7de-f749dec46420" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="itemId" value="${#TestCase#req_itemId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="98413c09-c55b-4736-ba7e-458341d791ce">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>headerCode</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display a single stock out item</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_headerCode</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantityInfo</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display a single stock out item</con:sourceStep>
+        <con:sourcePath>$['productInformation'].quantity</con:sourcePath>
+        <con:targetType>res_quantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_itemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_headerCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_quantity</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

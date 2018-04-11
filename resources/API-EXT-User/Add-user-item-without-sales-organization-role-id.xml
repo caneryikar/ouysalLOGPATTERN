@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="e1ce7ee1-4f1b-4f2e-9f2e-abd372e52686" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add user item without sales organization role id" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="82436617-bc41-4ae8-a2b5-d31a80ed4e9bfileName">Add-item-to-user-create-business-interaction</con:setting>
+    <con:setting id="e1ce7ee1-4f1b-4f2e-9f2e-abd372e52686fileName">Add-user-item-without-sales-organization-role-id</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Add item to user create business interaction" id="a62c997c-5913-4d34-bb9a-777ab61e5c76">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/createUserRole/{biId}/items" methodName="addItem" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Add item to user create business interaction" id="11772051-2f89-4088-9639-3539195075f7" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+   "name": "${#TestCase#req_name}",
+   "externalId": "${#TestCase#req_externalId}",
+   "userRoleSpecificationId": "${#TestCase#req_userRoleSpecId}",
+   "forceToUseSession": false,
+   "individual":    {
+      "firstName": "${#TestCase#req_indFirstName}",
+      "lastName": "${#TestCase#req_indLastName}",
+      "name": "${#TestCase#req_indName}"
+   }
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/userCreate/biId/item</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Transfer response id to test case res_id" id="49c57644-b54e-4c6b-94a1-5ea4ff59a0a5">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add item to user create business interaction</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_id</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add item to user create business interaction</con:sourceStep>
+        <con:sourcePath>$['code']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add item to user create business interaction</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>externalId</con:name>
+        <con:sourceType>req_externalId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>res_externalId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpCode</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Add item to user create business interaction</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_httpCode</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value>1176</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_name</con:name>
+      <con:value>User 1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_externalId</con:name>
+      <con:value>USR-1-extId</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_userRoleSpecId</con:name>
+      <con:value>15</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_externalId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_indFirstName</con:name>
+      <con:value>John</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_indLastName</con:name>
+      <con:value>Smith</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_indName</con:name>
+      <con:value>John Smith</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_id</con:name>
+      <con:value>933</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_forceToUseSession</con:name>
+      <con:value>false</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_httpCode</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>30190384-932f-431f-b986-d338c2bd2efe</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

@@ -1,0 +1,1347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="40b71252-26de-4cb5-a999-b97d176eb949" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Stock-out - Test Case 5" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="40b71252-26de-4cb5-a999-b97d176eb949fileName">Stock-out---Test-Case-5</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Properties" id="3b6ab959-ce9b-4ccc-ac25-7c76b847d725">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>productSpecExtId</con:name>
+          <con:value>EXT-APPLMOUSE-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>placeId</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Given properties for the test steps]#placeId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>productStatus</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Given properties for the test steps]#sellableStatus}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>serializedProductSpecExtId</con:name>
+          <con:value>EXT-IPHONE6S-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>newProductId-serialized</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Add serialized product success]#res_new_product_id}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>serializedWithoutRangeSpecExtId</con:name>
+          <con:value>EXT-GALAXYNOTE4-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>newProductId-serializedWithoutRange</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Add serialized without range product success]#res_new_product_id}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>stockInQuantity</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Given properties for the test steps]#stockInQuantity}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>quantityZero</con:name>
+          <con:value>0</con:value>
+        </con:property>
+        <con:property>
+          <con:name>biId</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Create stockout bi with approval spec success with external system]#res_biId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>extSystem-key</con:name>
+          <con:value>externalSystem key info</con:value>
+        </con:property>
+        <con:property>
+          <con:name>itemId</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Add nonserialized product success]#res_itemId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>stockInQuantityScript</con:name>
+          <con:value>486</con:value>
+        </con:property>
+        <con:property>
+          <con:name>placeBinId</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Create initial data and products with bin]#binPlaceId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>userSo</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Create initial data and products]#salesOrgRoleId}</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen stockInQuantity" id="292e382f-584b-49a3-b385-c2944a3245df">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>def stockInQuantity = context.expand( '${Properties#stockInQuantity}' )
+
+testRunner.testCase.testSteps['Properties'].setPropertyValue("stockInQuantityScript",stockInQuantity);</script>
+        </con:configuration>
+        <con:name>stockInQuantity</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T for getting new nonserialized product info after revert" id="43e9f1c5-b92b-413f-a577-c19ead7e6872">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productSpecExtId</con:name>
+        <con:sourceType>productSpecExtId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_prodSpecExtId</con:targetType>
+        <con:targetStep>Get product by prod spec ext id, place id and status after revert</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>placeId</con:name>
+        <con:sourceType>placeId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_placeId</con:targetType>
+        <con:targetStep>Get product by prod spec ext id, place id and status after revert</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false" disabled="false">
+        <con:name>productStatus</con:name>
+        <con:sourceType>productStatus</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_productStatus</con:targetType>
+        <con:targetStep>Get product by prod spec ext id, place id and status after revert</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userSo</con:name>
+        <con:sourceType>userSo</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>UserSo</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Get product by prod spec ext id, place id and status after revert" id="66b91c7e-c890-4711-9723-67ca638dced9">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>c8ecc8e4-f948-4b6c-8c74-f734fb40dce3</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_placeId</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Given properties for the test steps]#placeId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_prodSpecExtId</con:name>
+          <con:value>EXT-APPLMOUSE-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_productId</con:name>
+          <con:value>370</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+          <con:value>486</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productStatus</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Given properties for the test steps]#sellableStatus}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productSerialNumber</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_productSerialText</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_productStatus</con:name>
+          <con:value>Sellable</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_productId</con:entry>
+        <con:entry>res_quantity</con:entry>
+        <con:entry>res_productStatus</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for getting new nonserialized product info after revert" id="7546eaeb-705c-4027-8fdd-ec0b1e4540b2">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>496f18cb-901a-4d9b-a022-522691761390</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>66b91c7e-c890-4711-9723-67ca638dced9</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="565aba5c-3f4d-484e-b6ed-8c772b0b11a5">
+          <con:configuration>
+            <patternText>200</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>2796144f-682a-47de-9e5f-e138adce1689</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>66b91c7e-c890-4711-9723-67ca638dced9</con:sourceId>
+        <con:propertyName>res_quantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="stockInQuantity" id="8bb4f8c0-f7d2-4e2c-9e91-74f00b9211e3">
+          <con:configuration>
+            <patternObjectId>3b6ab959-ce9b-4ccc-ac25-7c76b847d725</patternObjectId>
+            <patternProperty>stockInQuantityScript</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>5b705600-816a-4710-90f1-47300f7ea18c</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>66b91c7e-c890-4711-9723-67ca638dced9</con:sourceId>
+        <con:propertyName>res_productId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="4f1376a3-a5d0-4418-938b-a92deca6fe51">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. for stock level and lock control after revert" id="925b489e-ff3f-4d61-8d18-5f6d3ea06c5a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productSpecExtId</con:name>
+        <con:sourceType>productSpecExtId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_productSpecificationExternalId</con:targetType>
+        <con:targetStep>Display product stock level for nonserialized pr after revert</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>placeId</con:name>
+        <con:sourceType>placeId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_placeId</con:targetType>
+        <con:targetStep>Display product stock level for nonserialized pr after revert</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>new_product_id</con:name>
+        <con:sourceType>res_productId</con:sourceType>
+        <con:sourceStep>Get product by prod spec ext id, place id and status after revert</con:sourceStep>
+        <con:targetType>req_productId</con:targetType>
+        <con:targetStep>Display product by id for nonserialized pr lock after revert</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>productSpecExtIdSerialized</con:name>
+        <con:sourceType>serializedProductSpecExtId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_productSpecificationExternalId</con:targetType>
+        <con:targetStep>Display product stock level for serialized pr after revert</con:targetStep>
+        <con:targetPath/>
+        <con:type>XPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>placeId2</con:name>
+        <con:sourceType>placeId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath xsi:nil="true"/>
+        <con:targetType>req_placeId</con:targetType>
+        <con:targetStep>Display product stock level for serialized pr after revert</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>XPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>new_product_id_Serialized</con:name>
+        <con:sourceType>newProductId-serialized</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath xsi:nil="true"/>
+        <con:targetType>req_productId</con:targetType>
+        <con:targetStep>Display product by id for serialized pr lock after revert</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>XPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>productSpecExtIdSerializedWithoutRange</con:name>
+        <con:sourceType>serializedWithoutRangeSpecExtId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_productSpecificationExternalId</con:targetType>
+        <con:targetStep>Display product stock level for serialized without range pr after revert</con:targetStep>
+        <con:targetPath/>
+        <con:type>XPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>placeId3</con:name>
+        <con:sourceType>placeId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath xsi:nil="true"/>
+        <con:targetType>req_placeId</con:targetType>
+        <con:targetStep>Display product stock level for serialized without range pr after revert</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>XPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>new_product_id_SerializedWithoutRange</con:name>
+        <con:sourceType>newProductId-serializedWithoutRange</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath xsi:nil="true"/>
+        <con:targetType>req_productId</con:targetType>
+        <con:targetStep>Display product by id for serialized without range pr lock after revert</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>XPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display product stock level for nonserialized pr after revert" id="67535744-7503-407f-9fde-04e8c86705ad">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ae70f14b-9b62-4330-9f1f-32535bcddc8b</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_placeId</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Given properties for the test steps]#placeId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecCode</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecArticle</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productStatus</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_includeLocked</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecificationExternalId</con:name>
+          <con:value>EXT-APPLMOUSE-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_placeId</con:name>
+          <con:value>176</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_productSpecificationId</con:name>
+          <con:value>3</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_productSpecificationExternalId</con:name>
+          <con:value>EXT-APPLMOUSE-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+          <con:value>486</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrganizationId</con:name>
+          <con:value>334</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_totalQuantity</con:name>
+          <con:value>486</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_reservedQuantity</con:name>
+          <con:value>0</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productId</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSerialNumber</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSerialText</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecificationId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_parentSerialNumberText</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_batchId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_country</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_state</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_city</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_regionId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_fullResponse</con:name>
+          <con:value>[{"placeId":"176","productSpecificationId":"3","productSpecificationName":"Apple Mouse","productStatus":1,"productSpecificationExternalId":"EXT-APPLMOUSE-1","quantity":486,"totalQuantity":486,"reservedQuantity":0,"salesOrganizationId":"334","characteristicValueUses":[{"characteristic":{"externalId":"5-EXT","name":"Mouse Button Count","description":"Mouse Button Count","id":"5"},"characteristicValue":{"externalId":"17-EXT","value":"1","id":"17"}}]}]</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_placeId</con:entry>
+        <con:entry>res_productSpecificationId</con:entry>
+        <con:entry>res_productSpecificationExternalId</con:entry>
+        <con:entry>res_quantity</con:entry>
+        <con:entry>res_salesOrganizationId</con:entry>
+        <con:entry>res_totalQuantity</con:entry>
+        <con:entry>res_reservedQuantity</con:entry>
+        <con:entry>res_fullResponse</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display product by id for nonserialized pr lock after revert" id="dd25e9d8-1349-44ed-80d0-4fe7759c5022">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>102e2d7b-c4cf-4f53-b777-f08cad671a15</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_productId</con:name>
+          <con:value>370</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>370</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_lockedByBiId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_lockedByBiItemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_prodSpecExtId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_startSerialNumber</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_endSerialNumber</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+          <con:value>486</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_lockedByBiId</con:entry>
+        <con:entry>res_lockedByBiItemId</con:entry>
+        <con:entry>res_startSerialNumber</con:entry>
+        <con:entry>res_endSerialNumber</con:entry>
+        <con:entry>res_quantity</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display product stock level for serialized pr after revert" id="27c0d505-4e8a-4b78-8547-9c0640a4f476">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ae70f14b-9b62-4330-9f1f-32535bcddc8b</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_placeId</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Given properties for the test steps]#placeId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecCode</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecArticle</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productStatus</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_includeLocked</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecificationExternalId</con:name>
+          <con:value>EXT-IPHONE6S-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_placeId</con:name>
+          <con:value>176</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_productSpecificationId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_productSpecificationExternalId</con:name>
+          <con:value>EXT-IPHONE6S-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+          <con:value>486</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrganizationId</con:name>
+          <con:value>334</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_totalQuantity</con:name>
+          <con:value>486</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_reservedQuantity</con:name>
+          <con:value>0</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSerialNumber</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSerialText</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecificationId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_parentSerialNumberText</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_batchId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_country</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_state</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_city</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_regionId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_fullResponse</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_placeId</con:entry>
+        <con:entry>res_productSpecificationId</con:entry>
+        <con:entry>res_productSpecificationExternalId</con:entry>
+        <con:entry>res_quantity</con:entry>
+        <con:entry>res_salesOrganizationId</con:entry>
+        <con:entry>res_totalQuantity</con:entry>
+        <con:entry>res_reservedQuantity</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display product by id for serialized pr lock after revert" id="84f0de34-0c88-4f3e-a7cb-45900e12d273">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>102e2d7b-c4cf-4f53-b777-f08cad671a15</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_productId</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Add serialized product success]#res_new_product_id}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>358</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_lockedByBiId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_lockedByBiItemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_prodSpecExtId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_startSerialNumber</con:name>
+          <con:value>29272386</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_endSerialNumber</con:name>
+          <con:value>29272871</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+          <con:value>486</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_lockedByBiId</con:entry>
+        <con:entry>res_lockedByBiItemId</con:entry>
+        <con:entry>res_startSerialNumber</con:entry>
+        <con:entry>res_endSerialNumber</con:entry>
+        <con:entry>res_quantity</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display product stock level for serialized without range pr after revert" id="f5787f45-82b0-4651-83ce-188bbcadc900">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ae70f14b-9b62-4330-9f1f-32535bcddc8b</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_placeId</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Given properties for the test steps]#placeId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecCode</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecArticle</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productStatus</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_includeLocked</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecificationExternalId</con:name>
+          <con:value>EXT-GALAXYNOTE4-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_placeId</con:name>
+          <con:value>176</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_productSpecificationId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_productSpecificationExternalId</con:name>
+          <con:value>EXT-GALAXYNOTE4-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrganizationId</con:name>
+          <con:value>334</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_totalQuantity</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_reservedQuantity</con:name>
+          <con:value>0</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSerialNumber</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSerialText</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecificationId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_parentSerialNumberText</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_batchId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_country</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_state</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_city</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_regionId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_fullResponse</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_placeId</con:entry>
+        <con:entry>res_productSpecificationId</con:entry>
+        <con:entry>res_productSpecificationExternalId</con:entry>
+        <con:entry>res_quantity</con:entry>
+        <con:entry>res_salesOrganizationId</con:entry>
+        <con:entry>res_totalQuantity</con:entry>
+        <con:entry>res_reservedQuantity</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display product by id for serialized without range pr lock after revert" id="14b1c08a-5779-41ad-a5c7-6203d15868fa">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>102e2d7b-c4cf-4f53-b777-f08cad671a15</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_productId</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Add serialized without range product success]#res_new_product_id}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>359</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_lockedByBiId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_lockedByBiItemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_prodSpecExtId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_startSerialNumber</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_endSerialNumber</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+          <con:value>1</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_lockedByBiId</con:entry>
+        <con:entry>res_lockedByBiItemId</con:entry>
+        <con:entry>res_startSerialNumber</con:entry>
+        <con:entry>res_endSerialNumber</con:entry>
+        <con:entry>res_quantity</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for stock level and lock control after revert" id="aefab58c-bb5d-4228-b87d-570e142ae0c0">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>2e540289-2d25-473d-a4d6-e55452504656</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>67535744-7503-407f-9fde-04e8c86705ad</con:sourceId>
+        <con:propertyName>res_totalQuantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="total quantity nonserialized" id="fceff86a-e42f-4345-92b2-66241a0792d4">
+          <con:configuration>
+            <patternObjectId>3b6ab959-ce9b-4ccc-ac25-7c76b847d725</patternObjectId>
+            <patternProperty>stockInQuantityScript</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>70e1241a-9e89-43e1-861f-92ec398779f7</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>67535744-7503-407f-9fde-04e8c86705ad</con:sourceId>
+        <con:propertyName>res_reservedQuantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="reserved quantity nonserialized" id="92c792bd-016b-47c6-9b44-08cfca9b77b7">
+          <con:configuration>
+            <patternObjectId>3b6ab959-ce9b-4ccc-ac25-7c76b847d725</patternObjectId>
+            <patternProperty>quantityZero</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>e7d90625-1e28-411a-8dde-ef9c0e20217b</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>67535744-7503-407f-9fde-04e8c86705ad</con:sourceId>
+        <con:propertyName>res_quantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="available quantity nonserialized" id="4f0e760b-55fa-4059-948e-756690f96985">
+          <con:configuration>
+            <patternObjectId>3b6ab959-ce9b-4ccc-ac25-7c76b847d725</patternObjectId>
+            <patternProperty>stockInQuantityScript</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>eb2c7920-b204-42a0-b17a-b8ba0ada383b</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>dd25e9d8-1349-44ed-80d0-4fe7759c5022</con:sourceId>
+        <con:propertyName>res_lockedByBiId</con:propertyName>
+        <con:assertion type="Simple Contains" name="bi lock" id="19e51b1f-16f1-4491-9c5d-a901b7b986f4">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>4be8ca0f-35ef-4f2f-ab29-6f31e7dfb193</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>dd25e9d8-1349-44ed-80d0-4fe7759c5022</con:sourceId>
+        <con:propertyName>res_lockedByBiItemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="bi item lock" id="e7077302-8a48-40ac-8072-1762dc2ebda8">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>a41c4fa3-c5f4-4fb8-94a7-0c19a5de7105</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>dd25e9d8-1349-44ed-80d0-4fe7759c5022</con:sourceId>
+        <con:propertyName>res_quantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="quantity nonserialized" id="f5f78dfb-a68e-4a83-9b7b-7193f1462095">
+          <con:configuration>
+            <patternObjectId>3b6ab959-ce9b-4ccc-ac25-7c76b847d725</patternObjectId>
+            <patternProperty>stockInQuantityScript</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>0c0bf58a-2f14-46e2-9e7a-37dd2634f59b</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>27c0d505-4e8a-4b78-8547-9c0640a4f476</con:sourceId>
+        <con:propertyName>res_totalQuantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="total quantity serialized" id="98f764b9-e7ef-45dc-9783-e13fb4d6f8e5">
+          <con:configuration>
+            <patternObjectId>3b6ab959-ce9b-4ccc-ac25-7c76b847d725</patternObjectId>
+            <patternProperty>stockInQuantityScript</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>0d7b727f-2020-468a-b8b1-47c631fdf17e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>27c0d505-4e8a-4b78-8547-9c0640a4f476</con:sourceId>
+        <con:propertyName>res_reservedQuantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="reserved quantity serialized" id="b73978c1-3f10-47e0-8934-1aa7ceff5b3d">
+          <con:configuration>
+            <patternObjectId>3b6ab959-ce9b-4ccc-ac25-7c76b847d725</patternObjectId>
+            <patternProperty>quantityZero</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>a14d4ef7-55f1-4c5f-a0c7-b22dd8aea198</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>27c0d505-4e8a-4b78-8547-9c0640a4f476</con:sourceId>
+        <con:propertyName>res_quantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="available quantity serialized" id="5ea6e781-05dd-467a-8d43-f86b402059aa">
+          <con:configuration>
+            <patternObjectId>3b6ab959-ce9b-4ccc-ac25-7c76b847d725</patternObjectId>
+            <patternProperty>stockInQuantityScript</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>72deea5a-4e48-4df2-a520-72bcf7df6a05</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>84f0de34-0c88-4f3e-a7cb-45900e12d273</con:sourceId>
+        <con:propertyName>res_lockedByBiId</con:propertyName>
+        <con:assertion type="Simple Contains" name="bi lock 2" id="171a9d3e-d933-474c-aa0a-8e1476bada4b">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>d477cc4c-5cdf-46a3-93b4-61e2599e9894</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>84f0de34-0c88-4f3e-a7cb-45900e12d273</con:sourceId>
+        <con:propertyName>res_lockedByBiItemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="bi item lock 2" id="59e41cf2-0051-4c7d-8d88-92f9a7a180ce">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>9ca0f6f8-06b5-4694-9192-b3fe91caab53</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>84f0de34-0c88-4f3e-a7cb-45900e12d273</con:sourceId>
+        <con:propertyName>res_quantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="quantity serialized" id="31975756-02ad-42b9-825b-70760841d820">
+          <con:configuration>
+            <patternObjectId>3b6ab959-ce9b-4ccc-ac25-7c76b847d725</patternObjectId>
+            <patternProperty>stockInQuantityScript</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>5d810764-7ed5-48c0-ad5b-5622c8034a25</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f5787f45-82b0-4651-83ce-188bbcadc900</con:sourceId>
+        <con:propertyName>res_totalQuantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="total quantity without range" id="67a66e44-188a-4479-8f06-054f0da353e2">
+          <con:configuration>
+            <patternText>1</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>2b05fd64-3384-482b-a813-bef6915930fd</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f5787f45-82b0-4651-83ce-188bbcadc900</con:sourceId>
+        <con:propertyName>res_reservedQuantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="reserved quantity without range" id="68723c0f-2834-4af0-a013-144a4bfcf376">
+          <con:configuration>
+            <patternObjectId>3b6ab959-ce9b-4ccc-ac25-7c76b847d725</patternObjectId>
+            <patternProperty>quantityZero</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>5114dc53-773c-4dd2-b55c-f78c845fe5c1</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f5787f45-82b0-4651-83ce-188bbcadc900</con:sourceId>
+        <con:propertyName>res_quantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="available quantity without range" id="16a24916-3735-45a2-85a1-d63092b76a47">
+          <con:configuration>
+            <patternText>1</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>5c6c30b5-5eac-40aa-832b-53d393b8cad4</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>14b1c08a-5779-41ad-a5c7-6203d15868fa</con:sourceId>
+        <con:propertyName>res_lockedByBiId</con:propertyName>
+        <con:assertion type="Simple Contains" name="bi lock 3" id="06591ea4-e6f6-4fef-a61d-99caf4850362">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>7dbd5deb-0bf9-45f4-ab27-7d9e388384e0</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>14b1c08a-5779-41ad-a5c7-6203d15868fa</con:sourceId>
+        <con:propertyName>res_lockedByBiItemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="bi item lock 3" id="2a6cd8d4-ae5f-4c32-b58a-f6ad59805a8e">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>7a76367e-b84d-4c87-b0da-531abd7dd04e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>14b1c08a-5779-41ad-a5c7-6203d15868fa</con:sourceId>
+        <con:propertyName>res_quantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="quantity without range" id="9577a878-dbdb-4bf1-bb6e-3c0114c575a5">
+          <con:configuration>
+            <patternText>1</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T for displaying a single stock out bi after revert" id="067d8a1f-0708-462e-859d-1f8ceddea9f4">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>biId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Display a single stock out bi after revert</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display a single stock out bi after revert" id="ee4facbb-0678-4d09-b9f3-b5f4f07ea8e3">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>b26c29e4-8386-4cb1-b869-b135718eede8</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Create stockout bi with approval spec success with external system]#res_biId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_mainState</con:name>
+          <con:value>Closed</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_state</con:name>
+          <con:value>Reverted</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_tag1TransactionId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_tag2CorrelationId</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_mainState</con:entry>
+        <con:entry>res_state</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for displaying a single stock out bi after revert" id="df8c872b-be75-4ecd-91eb-4d70ba2f4320">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>e3213cfe-be8c-4b18-ad8a-bbf882b31b9a</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>ee4facbb-0678-4d09-b9f3-b5f4f07ea8e3</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="380d1f73-e664-4c86-be3a-10137d490f90">
+          <con:configuration>
+            <token>200</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>202ad05e-beb4-472a-a005-c0029c5fe654</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>ee4facbb-0678-4d09-b9f3-b5f4f07ea8e3</con:sourceId>
+        <con:propertyName>res_mainState</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="7242f3fc-7c00-4021-9a9a-056e17503922">
+          <con:configuration>
+            <token>Closed</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>cac8b825-9642-4853-9f8c-35e5fb2b114d</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>ee4facbb-0678-4d09-b9f3-b5f4f07ea8e3</con:sourceId>
+        <con:propertyName>res_state</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 3" id="664e81b2-c4e5-4833-99d1-efd797a7618c">
+          <con:configuration>
+            <token>Reverted</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T for reverting stock out bi which is reverted" id="23978628-98b1-46d0-b306-bcf85d3a974d">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>biId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Revert stock out bi which is reverted</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>externalSystem</con:name>
+        <con:sourceType>extSystem-key</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_externalSystem</con:targetType>
+        <con:targetStep>Revert stock out bi which is reverted</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>biId2</con:name>
+        <con:sourceType>biId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Revert stock out bi item which is reverted</con:targetStep>
+        <con:targetPath/>
+        <con:type>XPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>itemId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_itemId</con:targetType>
+        <con:targetStep>Revert stock out bi item which is reverted</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>externalSystem2</con:name>
+        <con:sourceType>extSystem-key</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath xsi:nil="true"/>
+        <con:targetType>req_externalSystem</con:targetType>
+        <con:targetStep>Revert stock out bi item which is reverted</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>XPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Revert stock out bi which is reverted" id="ffa7f8c8-c72a-4357-8485-b3f2e7ce9602">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>398fafc6-2bcd-4994-acb9-5944360e27ac</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Create stockout bi with approval spec success with external system]#res_biId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_externalSystem</con:name>
+          <con:value>externalSystem key info</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>INVALID_BI_STATE</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Revert stock out bi item which is reverted" id="9c11b905-b90b-423d-9b63-8a12e96df528">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>7e35d584-d5e5-4fb1-a912-757a4f622174</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Create stockout bi with approval spec success with external system]#res_biId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemId</con:name>
+          <con:value>${#[Test Suite for Stock-Out Business Interaction#TestCase 5#Add nonserialized product success]#res_itemId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_externalSystem</con:name>
+          <con:value>externalSystem key info</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>INVALID_BI_STATE</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion cannot revert stock out bi which is reverted" id="53fd01b4-abfb-4c71-84d6-cce1f6063e36">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>0ec590f1-da7b-42a0-888f-16c72ade74d3</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>ffa7f8c8-c72a-4357-8485-b3f2e7ce9602</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="1d6f39d8-26b6-4cf1-b81f-1772a5b3ae40">
+          <con:configuration>
+            <patternText>400</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>24996d11-0126-445e-bebe-9be67e735ceb</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>ffa7f8c8-c72a-4357-8485-b3f2e7ce9602</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="8f0beac9-2ae9-4769-94e1-62898c81b86c">
+          <con:configuration>
+            <token>INVALID_BI_STATE</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>5c7ab2eb-35b1-4ca9-957f-9550f17d86b2</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>9c11b905-b90b-423d-9b63-8a12e96df528</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="0b1d85a5-bead-4122-b054-1fa5af737135">
+          <con:configuration>
+            <patternText>400</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>e9620fdc-1b04-4a11-bb03-277d34ef41ce</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>9c11b905-b90b-423d-9b63-8a12e96df528</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="e734e311-0131-4cd7-b46b-a733d6e22eda">
+          <con:configuration>
+            <token>INVALID_BI_STATE</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen enable/disable" id="556c79b4-02b2-4476-9a15-416bb2ae30ba" disabled="true">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>import com.eviware.soapui.model.testsuite.TestRunner.Status
+
+			
+			//testRunner.testCase.getTestStepByName( "P.T. - Create and submit sales org with user, inventory and terminal" ).disabled = true;  
+
+//Test Suite for Stock-Out Business Interaction#TestCase 5#DataGen startSerial
+
+//testRunner.[Test Suite for Stock-Out Business Interaction].[TestCase 5].[DataGen startSerial].disabled = true;
+//testRunner.testSuite["Test Suite for Stock-Out Business Interaction"].testCases["DataGen startSerial"].disabled = true;
+get TestCase def tc = testRunner.testCase.testSuite.project.testSuites["Test Suite for Stock-Out Business Interaction"] .testCases["DataGen startSerial"]</script>
+        </con:configuration>
+        <con:name>stockOutTC5</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>43e9f1c5-b92b-413f-a577-c19ead7e6872</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>556c79b4-02b2-4476-9a15-416bb2ae30ba</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

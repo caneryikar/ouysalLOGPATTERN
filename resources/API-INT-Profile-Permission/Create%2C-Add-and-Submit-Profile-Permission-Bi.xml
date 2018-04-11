@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="7598e6a9-915e-450f-9530-8976eb29de47" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create, Add and Submit Profile Permission Bi" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="7598e6a9-915e-450f-9530-8976eb29de47fileName">Create%2C-Add-and-Submit-Profile-Permission-Bi</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Properties" id="fae3fec3-dd38-463d-bb3e-1b75651dc83d">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>condition_OrgTypeRWH</con:name>
+          <con:value>OrgTypeRWHCondition</con:value>
+        </con:property>
+        <con:property>
+          <con:name>condition_DealerOrShop</con:name>
+          <con:value>OrganizationTypeDealerOrShopCondition</con:value>
+        </con:property>
+        <con:property>
+          <con:name>condition_Null</con:name>
+          <con:value>NullCondition</con:value>
+        </con:property>
+        <con:property>
+          <con:name>domain_SalesOrganization</con:name>
+          <con:value>SOC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>action_CreateSalesOrganization</con:name>
+          <con:value>SOC.Create</con:value>
+        </con:property>
+        <con:property>
+          <con:name>profile_CSR</con:name>
+          <con:value>CSR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>scope_Null</con:name>
+          <con:value>NullScope</con:value>
+        </con:property>
+        <con:property>
+          <con:name>null</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>random-SoextId</con:name>
+          <con:value>ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>createUser_biSpecCode</con:name>
+          <con:value>USERCREATEBISPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>random_userExtId</con:name>
+          <con:value>ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>domain_User</con:name>
+          <con:value>USR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>action_CreateUser</con:name>
+          <con:value>USR.Create</con:value>
+        </con:property>
+        <con:property>
+          <con:name>random_inventoryExtId</con:name>
+          <con:value>ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>random_terminalExtId</con:name>
+          <con:value>ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>product_transfer_biSpec</con:name>
+          <con:value>PRD_TRANSFER</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="3d671cb9-be38-4db1-b11b-a4668a1738b1">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userId</con:name>
+        <con:sourceType>req_UserId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userId</con:targetType>
+        <con:targetStep>Create profile permission bi</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>req_SoId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_soId</con:targetType>
+        <con:targetStep>Create profile permission bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userSo</con:name>
+        <con:sourceType>req_SoId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>UserSo</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>createdForSalesOrg</con:name>
+        <con:sourceType>req_createdForSalesOrg</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_createdForSalesOrg</con:targetType>
+        <con:targetStep>Create profile permission bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create profile permission bi" id="24950530-da49-4cb3-a896-b4c8f696c619">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a758dd18-2bbc-44a0-9a04-e28732549eea</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>30761</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_createdForSalesOrg</con:name>
+          <con:value>${#Project#DefaultSalesOrganizationRoleId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>res_biId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 3" id="be5f2748-7ef4-4012-a92d-255605dc3690">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>domain</con:name>
+        <con:sourceType>req_Domain</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_domain</con:targetType>
+        <con:targetStep>Add item to create permission</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>action</con:name>
+        <con:sourceType>req_Action</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_action</con:targetType>
+        <con:targetStep>Add item to create permission</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>profile</con:name>
+        <con:sourceType>req_Profile</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_profile</con:targetType>
+        <con:targetStep>Add item to create permission</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>condition</con:name>
+        <con:sourceType>req_Condition</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_condition</con:targetType>
+        <con:targetStep>Add item to create permission</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>scope</con:name>
+        <con:sourceType>req_Scope</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_scope</con:targetType>
+        <con:targetStep>Add item to create permission</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userId</con:name>
+        <con:sourceType>req_UserId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_userId</con:targetType>
+        <con:targetStep>Add item to create permission</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>req_SoId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_soId</con:targetType>
+        <con:targetStep>Add item to create permission</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create profile permission bi</con:sourceStep>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add item to create permission</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorCreate</con:name>
+        <con:sourceType>res_errorMessage</con:sourceType>
+        <con:sourceStep>Create profile permission bi</con:sourceStep>
+        <con:targetType>res_errorMessageCreate</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add item to create permission" id="a3e1f2ca-a279-4e68-ab55-4a9765df8da8">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>5a605ff2-6242-41b9-81c0-43eb6b944bd9</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_domain</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_action</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_profile</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_condition</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_scope</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_userId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>{}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>30761</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 4" id="e20aab55-aca3-45b5-a572-80fd48036bec">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create profile permission bi</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit permission</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorAdd</con:name>
+        <con:sourceType>res_errorMessage</con:sourceType>
+        <con:sourceStep>Add item to create permission</con:sourceStep>
+        <con:targetType>res_errorMessageAdd</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit permission" id="9ec4a3fe-f969-4fdf-9d9d-1c8dc0855c07">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>c9c4405f-4b70-4e2a-8cf2-79512a00c934</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>30761</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>BI_CANNOT_SUBMIT_WITHOUT_ITEM</con:value>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>{"code":"BI_CANNOT_SUBMIT_WITHOUT_ITEM","description":"BI_CANNOT_SUBMIT_WITHOUT_ITEM","errorDetails":"BI_CANNOT_SUBMIT_WITHOUT_ITEM","errorMessage":"BI_CANNOT_SUBMIT_WITHOUT_ITEM","httpStatusCode":"BI_CANNOT_SUBMIT_WITHOUT_ITEM","httpStatusCodeDescription":"BI_CANNOT_SUBMIT_WITHOUT_ITEM"}</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 8" id="4d6ebcd8-3b1e-4533-8ac7-c21a6a69ed61">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorSubmit</con:name>
+        <con:sourceType>res_errorMessage</con:sourceType>
+        <con:sourceStep>Submit permission</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_errorMessageSubmit</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>res_code</con:sourceType>
+        <con:sourceStep>Submit permission</con:sourceStep>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>response</con:name>
+        <con:sourceType>response</con:sourceType>
+        <con:sourceStep>Submit permission</con:sourceStep>
+        <con:targetType>response</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_UserId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_SoId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_Domain</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_Action</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_Scope</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_Profile</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_Condition</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>400</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessageCreate</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessageAdd</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessageSubmit</con:name>
+      <con:value>BI_CANNOT_SUBMIT_WITHOUT_ITEM</con:value>
+    </con:property>
+    <con:property>
+      <con:name>response</con:name>
+      <con:value>{"code":"BI_CANNOT_SUBMIT_WITHOUT_ITEM","description":"BI_CANNOT_SUBMIT_WITHOUT_ITEM","errorDetails":"BI_CANNOT_SUBMIT_WITHOUT_ITEM","errorMessage":"BI_CANNOT_SUBMIT_WITHOUT_ITEM","httpStatusCode":"BI_CANNOT_SUBMIT_WITHOUT_ITEM","httpStatusCodeDescription":"BI_CANNOT_SUBMIT_WITHOUT_ITEM"}</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_createdForSalesOrg</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>9ec4a3fe-f969-4fdf-9d9d-1c8dc0855c07</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

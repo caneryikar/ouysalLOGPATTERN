@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="4232756a-5480-43fb-b111-621130a60f6d" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display Single Characteristic Owner Role By Characteristic Owner Role Id" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="4232756a-5480-43fb-b111-621130a60f6dfileName">Display-Single-Characteristic-Owner-Role-By-Characteristic-Owner-Role-Id</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Display Single Characteristic Owner Role By Characteristic Owner Role Id" id="ae132885-9a54-4f50-8aaf-48b30e3df3db">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/profile" methodName="getSingleCharacteristicOwnerRoleByCharacteristicOwnerRoleId" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display Single Characteristic Owner Role By Characteristic Owner Role Id" id="174eea19-aa7a-447f-a219-8ace73759f0b" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJFUk1TX0FETUlOX0F1dGh6UHJvZmlsZSIsInZlcnNpb24iOiJ2MSIsInBhcnR5X2lkIjoiMTIzIiwiZXh0ZXJuYWxfdXNlcm5hbWUiOiJ1NWZjYTNmMzMtNTljNi00NTBmLWE2YTctNTU2ODg4MTE4ZDY2In19.lLidcU2N9Z3FPb56FYtLrgA825Jcea-K3_rirYaM1nJTArNz7jSAL7W8bD7dychjigToiIdvrgrCh3wihBN3HyyzMBYH6e5sM1sSigAVFwhMJAQHz3iLRkd2Yhl7AHoA5_5nhyE6LVPmCXW1_Xs6b4PMJDwqRSiOgVibs7Q7UKo"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="27"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/v1/characteristicOwnerRole</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="profileId" value="${#TestCase#req_characteristicOwnerRoleId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>profileId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="ee25a6bf-ca51-4b97-9835-195eee367c26">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display Single Characteristic Owner Role By Characteristic Owner Role Id</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_ErrorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Single Characteristic Owner Role By Characteristic Owner Role Id</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_soRoleId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Single Characteristic Owner Role By Characteristic Owner Role Id</con:sourceStep>
+        <con:sourcePath>[0]['soRole'].id</con:sourcePath>
+        <con:targetType>res_soRoleId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_charOwnerRoleSpecId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Single Characteristic Owner Role By Characteristic Owner Role Id</con:sourceStep>
+        <con:sourcePath>[0]['profileSpec'].id</con:sourcePath>
+        <con:targetType>res_charOwnerRoleSpecId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>characteristicOwnerRoleName</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Single Characteristic Owner Role By Characteristic Owner Role Id</con:sourceStep>
+        <con:sourcePath>[0]['name']</con:sourcePath>
+        <con:targetType>res_characteristicOwnerRoleName</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_characteristicOwnerRoleId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">7</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">200</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_soRoleId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_charOwnerRoleSpecId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_characteristicOwnerRoleName</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">SO- ROOT ORGANIZATION</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

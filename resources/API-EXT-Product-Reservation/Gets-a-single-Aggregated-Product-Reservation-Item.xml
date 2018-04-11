@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="0c82ca28-d0a1-477d-b9aa-8d2cb6a4e477" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Gets a single Aggregated Product Reservation Item" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="0c82ca28-d0a1-477d-b9aa-8d2cb6a4e477fileName">Gets-a-single-Aggregated-Product-Reservation-Item</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Gets a single Aggregated Product Reservation Item" id="74466d6a-b0cf-47bd-85e8-2e6a7a59c33e">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/productReservation/{biId}/aggregatedItems/{aggregatedItemId}" methodName="Gets a single Aggregated Product Reservation Item" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Gets a single Aggregated Product Reservation Item" id="009a3f9d-6329-4956-87c5-e7cd142df1a6" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="aggregatedItemId" value="${#TestCase#req_aggregatedItemId}"/>
+          <con:entry key="biId" value="${#TestCase#req_biId}"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="7757c4d2-5b51-4db2-911a-1b809dd02012">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpStatus</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Gets a single Aggregated Product Reservation Item</con:sourceStep>
+        <con:sourcePath>['status']</con:sourcePath>
+        <con:targetType>res_httpStatus</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>requestedQuantity</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Gets a single Aggregated Product Reservation Item</con:sourceStep>
+        <con:sourcePath>['requestedQuantity']</con:sourcePath>
+        <con:targetType>res_requestedQuantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Gets a single Aggregated Product Reservation Item</con:sourceStep>
+        <con:sourcePath>['quantity']</con:sourcePath>
+        <con:targetType>res_quantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_aggregatedItemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_httpStatus</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_requestedQuantity</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_quantity</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

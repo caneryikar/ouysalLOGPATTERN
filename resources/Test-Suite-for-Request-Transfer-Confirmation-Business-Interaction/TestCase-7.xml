@@ -1,0 +1,3291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="08106a27-d696-48fe-a50d-d32e2c0d6295" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TestCase 7" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="03389433-14c5-4ddc-a9d5-164a4a76b7ddfileName">TestCase-2</con:setting>
+    <con:setting id="3f748c16-b532-4869-8be2-0468e0652b5cfileName">TestCase-6</con:setting>
+    <con:setting id="08106a27-d696-48fe-a50d-d32e2c0d6295fileName">TestCase-7</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Properties" id="1f99690e-f257-419c-a506-152d0cca1476">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>req_quantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+          <con:value>PRD_TRANSFER</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_quantity0</con:name>
+          <con:value>0</con:value>
+        </con:property>
+        <con:property>
+          <con:name>placeIdNull</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>error_product_locked</con:name>
+          <con:value>PRODUCT_WITH_ID_ALREADY_LOCKED_BY_BI_WITH_ID</con:value>
+        </con:property>
+        <con:property>
+          <con:name>error_invalid_state_operation</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+        <con:property>
+          <con:name>error_PRODUCT_WITH_SPEC_EXTERNAL_ID_AND_SERIAL_NUMBER_NOT_BE_FOUND</con:name>
+          <con:value>PRODUCT_WITH_SPEC_EXTERNAL_ID_AND_SERIAL_NUMBER_NOT_BE_FOUND</con:value>
+        </con:property>
+        <con:property>
+          <con:name>fakeSerialNo</con:name>
+          <con:value>12312312</con:value>
+        </con:property>
+        <con:property>
+          <con:name>error_BI_MUST_BE_IN_DRAFT_STATE</con:name>
+          <con:value>BI_MUST_BE_IN_DRAFT_STATE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>error_REQUESTED_INPUT_AND_PRODUCT_NOT_EQUAL</con:name>
+          <con:value>REQUESTED_INPUT_AND_PRODUCT_NOT_EQUAL</con:value>
+        </con:property>
+        <con:property>
+          <con:name>error_NO_PRODUCT_SPEC_FOUND_WITH_PROVIDED_EXTERNAL_ID</con:name>
+          <con:value>NO_PRODUCT_SPEC_FOUND_WITH_PROVIDED_EXTERNAL_ID</con:value>
+        </con:property>
+        <con:property>
+          <con:name>quantity5</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>quantity1</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>middleItemSerialNo</con:name>
+          <con:value>${=${Create initial data#serializedProductStartSerialNumber}+2}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>firstItem</con:name>
+          <con:value>1708</con:value>
+        </con:property>
+        <con:property>
+          <con:name>secondItem</con:name>
+          <con:value>1710</con:value>
+        </con:property>
+        <con:property>
+          <con:name>thirdItem</con:name>
+          <con:value>1711</con:value>
+        </con:property>
+        <con:property>
+          <con:name>error_BI_MUST_BE_IN_DRAFT_OR_ONGOING_STATE</con:name>
+          <con:value>BI_MUST_BE_IN_DRAFT_OR_ONGOING_STATE</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 10" id="5c7aa9b0-4d35-4080-a613-5c865bdeaabf">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>req_quantity</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_quantity</con:targetType>
+        <con:targetStep>Create initial data</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity2</con:name>
+        <con:sourceType>req_quantity</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_quantity</con:targetType>
+        <con:targetStep>Create initial data 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create initial data" id="05b7fb45-7b2b-4619-8fa7-2dd00e2cff36">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>5e4beeb6-f397-47ec-8202-d19549f54f59</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>userRoleId</con:name>
+          <con:value>317</con:value>
+        </con:property>
+        <con:property>
+          <con:name>salesOrgRoleId</con:name>
+          <con:value>315</con:value>
+        </con:property>
+        <con:property>
+          <con:name>placeId</con:name>
+          <con:value>160</con:value>
+        </con:property>
+        <con:property>
+          <con:name>inventoryId</con:name>
+          <con:value>318</con:value>
+        </con:property>
+        <con:property>
+          <con:name>terminalId</con:name>
+          <con:value>79</con:value>
+        </con:property>
+        <con:property>
+          <con:name>serializedProductId</con:name>
+          <con:value>303</con:value>
+        </con:property>
+        <con:property>
+          <con:name>serializedWithoutRangeProductId</con:name>
+          <con:value>304</con:value>
+        </con:property>
+        <con:property>
+          <con:name>nonSerializedProductId</con:name>
+          <con:value>305</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_nonSerializedProductSpecCode</con:name>
+          <con:value>CODE-APPLMOUSE-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_serializedProductSpecCode</con:name>
+          <con:value>CODE-IPHONE6S-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_serializedWithoutRangeProductSpecCode</con:name>
+          <con:value>CODE-GALAXYNOTE4-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_quantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>serializedProductStartSerialNumber</con:name>
+          <con:value>31485908</con:value>
+        </con:property>
+        <con:property>
+          <con:name>serializedWithoutRangeProductSerialText</con:name>
+          <con:value>59380204</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_nonSerializedProductSpecExtId</con:name>
+          <con:value>EXT-APPLMOUSE-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_serializedProductSpecExtId</con:name>
+          <con:value>EXT-IPHONE6S-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_serializedWithoutRangeSpecExtId</con:name>
+          <con:value>EXT-GALAXYNOTE4-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>userToken</con:name>
+          <con:value>Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InVhMGM3MzU1Ny1jNjk0LTQ0MGMtYjcyYS01OGZjMjVhZGUyOWYifX0.yLQPYlvEhe_9mhBzgHOySS1IIYIpMLdlbNLKE-t4cqTC--BHNWCpGYMZl950iwvUfWbzNDRRqJvg-bBzrQbUpTrEAj-RPr-DCXIDq9TLBnOljxqxIPxSqyLyDm3NaAkv4He0gLPHphnkQ2EBXxsKtJ6BbXHP3wSy_azbCSDSFjM</con:value>
+        </con:property>
+        <con:property>
+          <con:name>userIntToken</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>userRoleId</con:entry>
+        <con:entry>salesOrgRoleId</con:entry>
+        <con:entry>placeId</con:entry>
+        <con:entry>inventoryId</con:entry>
+        <con:entry>terminalId</con:entry>
+        <con:entry>serializedProductId</con:entry>
+        <con:entry>serializedWithoutRangeProductId</con:entry>
+        <con:entry>nonSerializedProductId</con:entry>
+        <con:entry>serializedProductStartSerialNumber</con:entry>
+        <con:entry>serializedWithoutRangeProductSerialText</con:entry>
+        <con:entry>res_nonSerializedProductSpecCode</con:entry>
+        <con:entry>res_serializedProductSpecCode</con:entry>
+        <con:entry>res_serializedWithoutRangeProductSpecCode</con:entry>
+        <con:entry>res_nonSerializedProductSpecExtId</con:entry>
+        <con:entry>res_serializedProductSpecExtId</con:entry>
+        <con:entry>res_serializedWithoutRangeSpecExtId</con:entry>
+        <con:entry>userToken</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion test step return values" id="1722b1ee-7152-483e-8ce5-b574105b3a5b">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>b1b8f1c0-30ff-45dc-9f71-3301b41b760c</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>05b7fb45-7b2b-4619-8fa7-2dd00e2cff36</con:sourceId>
+        <con:propertyName>userRoleId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="9b0c17dd-eaa5-4978-ac0f-7f7a734f8e71">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>56137eb7-dae0-4ff8-9655-5cb4d7ac2f19</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>05b7fb45-7b2b-4619-8fa7-2dd00e2cff36</con:sourceId>
+        <con:propertyName>salesOrgRoleId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="11c9ad37-343c-40e5-bf67-e76affb32181">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>eac00541-8a2a-4916-aeb4-9a1893731666</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>05b7fb45-7b2b-4619-8fa7-2dd00e2cff36</con:sourceId>
+        <con:propertyName>serializedProductId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 3" id="7db7226d-9e80-459f-9273-d6f4f7a43976">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>8917f06c-a39a-4353-9d3c-34e484e1a61d</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>05b7fb45-7b2b-4619-8fa7-2dd00e2cff36</con:sourceId>
+        <con:propertyName>serializedWithoutRangeProductId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 4" id="14e523f4-eb2e-4b69-b4da-f256e0b04966">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>70760cf9-17b2-45a3-a00a-1aa582824944</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>05b7fb45-7b2b-4619-8fa7-2dd00e2cff36</con:sourceId>
+        <con:propertyName>nonSerializedProductId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 5" id="d0a62737-6641-4453-a556-693b811cfacf">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>63bd7912-d378-4021-a225-94033e1a5d6a</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>05b7fb45-7b2b-4619-8fa7-2dd00e2cff36</con:sourceId>
+        <con:propertyName>placeId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 6" id="eb54dcb8-2f90-485b-a657-48d86b52acd4">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create initial data 2" id="65450319-67d7-44e3-bbf6-2bb45f0ef0c7">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>5e4beeb6-f397-47ec-8202-d19549f54f59</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>userRoleId</con:name>
+          <con:value>321</con:value>
+        </con:property>
+        <con:property>
+          <con:name>salesOrgRoleId</con:name>
+          <con:value>319</con:value>
+        </con:property>
+        <con:property>
+          <con:name>placeId</con:name>
+          <con:value>162</con:value>
+        </con:property>
+        <con:property>
+          <con:name>inventoryId</con:name>
+          <con:value>322</con:value>
+        </con:property>
+        <con:property>
+          <con:name>terminalId</con:name>
+          <con:value>80</con:value>
+        </con:property>
+        <con:property>
+          <con:name>serializedProductId</con:name>
+          <con:value>306</con:value>
+        </con:property>
+        <con:property>
+          <con:name>serializedWithoutRangeProductId</con:name>
+          <con:value>307</con:value>
+        </con:property>
+        <con:property>
+          <con:name>nonSerializedProductId</con:name>
+          <con:value>308</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_nonSerializedProductSpecCode</con:name>
+          <con:value>CODE-APPLMOUSE-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_serializedProductSpecCode</con:name>
+          <con:value>CODE-IPHONE6S-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_serializedWithoutRangeProductSpecCode</con:name>
+          <con:value>CODE-GALAXYNOTE4-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_quantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>serializedProductStartSerialNumber</con:name>
+        </con:property>
+        <con:property>
+          <con:name>serializedWithoutRangeProductSerialText</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_nonSerializedProductSpecExtId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_serializedProductSpecExtId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_serializedWithoutRangeSpecExtId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>userToken</con:name>
+          <con:value>Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InVkYzVlYmQ3Ny1kOWU5LTQ0MmUtYWU1OC04Zjc3MGU0ZGY4ZGIifX0.GqdAmFmNoqahesROfxrkchOprRFabl2X3ROMxe3dowwPknQPVLcVRrPlnnxp7uK9O3va6-nAXGE3i2YtWJSJDrgPdZOKrSFRl9G1KBt_6yEPTMDPzX2rtualD4OoS1U_FaEo4kIP0npPN4rT5-scm4B2yAFn8WXquAAqF7ZerCM</con:value>
+        </con:property>
+        <con:property>
+          <con:name>userIntToken</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>userRoleId</con:entry>
+        <con:entry>salesOrgRoleId</con:entry>
+        <con:entry>placeId</con:entry>
+        <con:entry>inventoryId</con:entry>
+        <con:entry>terminalId</con:entry>
+        <con:entry>serializedProductId</con:entry>
+        <con:entry>serializedWithoutRangeProductId</con:entry>
+        <con:entry>nonSerializedProductId</con:entry>
+        <con:entry>res_nonSerializedProductSpecCode</con:entry>
+        <con:entry>res_serializedProductSpecCode</con:entry>
+        <con:entry>res_serializedWithoutRangeProductSpecCode</con:entry>
+        <con:entry>userToken</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion test step return values 2" id="8360be58-d73a-4891-871b-fad8ef96b990">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>67e4f054-a4fb-49a9-996f-21c9755187a5</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>65450319-67d7-44e3-bbf6-2bb45f0ef0c7</con:sourceId>
+        <con:propertyName>userRoleId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="9431e8ad-8a25-407f-843b-11e900bf1d0a">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>b418d78c-6aa4-4e27-a54e-b5e79762dc28</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>65450319-67d7-44e3-bbf6-2bb45f0ef0c7</con:sourceId>
+        <con:propertyName>salesOrgRoleId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="c375f978-ae92-419a-b29e-642b74797ea6">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>13188c1b-2c71-437d-953c-026c2552a584</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>65450319-67d7-44e3-bbf6-2bb45f0ef0c7</con:sourceId>
+        <con:propertyName>serializedProductId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 3" id="52c53651-de4f-4517-827e-f2142976731d">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>cd388c67-8a51-43c7-9f70-d73369450e9e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>65450319-67d7-44e3-bbf6-2bb45f0ef0c7</con:sourceId>
+        <con:propertyName>serializedWithoutRangeProductId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 4" id="2a66afc4-4766-473f-acc8-1cfe804fef65">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>a8a56445-3b37-434e-8c7e-3c4daf6040a6</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>65450319-67d7-44e3-bbf6-2bb45f0ef0c7</con:sourceId>
+        <con:propertyName>nonSerializedProductId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 5" id="c3fc9292-5038-4b7c-9916-1135de213ea6">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>868fb5d8-333f-4ef3-ba51-ca5de4f32af3</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>65450319-67d7-44e3-bbf6-2bb45f0ef0c7</con:sourceId>
+        <con:propertyName>placeId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 6" id="304ff308-0174-4808-85c1-a36faeb1ae6a">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 2" id="a1556c21-6679-40c2-b484-c3ff1510c47f">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_userRoleId</con:name>
+        <con:sourceType>userRoleId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create product transfer business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_salesOrgRoleId</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Create product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_biSpecCode</con:name>
+        <con:sourceType>req_biSpecCode</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_biSpecCode</con:targetType>
+        <con:targetStep>Create product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userToken</con:name>
+        <con:sourceType>userToken</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>AuthorizationUser</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userSo</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>UserSo</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>req_fromSo</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_fromSalesOrganizationId</con:targetType>
+        <con:targetStep>Create product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create product transfer business interaction" id="750b194e-923e-4d26-85f1-bd33f54c92eb">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>0eaadb51-eaa4-48ba-82d0-42592e2839fc</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>317</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>315</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+          <con:value>PRD_TRANSFER</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>11391</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_fromSalesOrganizationId</con:name>
+          <con:value>315</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_biId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion res_code and res_biId 2" id="0df3436c-6d99-4d73-9ea4-4e3f97ea979f">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>24d47b63-3493-4ec0-aaf5-08270c7f6e7a</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>750b194e-923e-4d26-85f1-bd33f54c92eb</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="cdffc05a-2113-43e9-a5cd-ae8e5ae119c7">
+          <con:configuration>
+            <patternText>201</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>914b0b55-a78e-4c18-b44e-44a7eff1fb47</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>750b194e-923e-4d26-85f1-bd33f54c92eb</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="15159525-4835-47ac-890a-131f71fbecb6">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="DataSource for add item step" id="8487cdb4-46af-4e13-bad0-7f37febafad7">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Grid">
+        <con:configuration>
+          <check>&lt;con:entry xmlns:con="http://eviware.com/soapui/config">true&lt;/con:entry></check>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">5</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">201</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Create initial data#salesOrgRoleId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Create initial data#placeId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Create initial data 2#salesOrgRoleId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Properties#placeIdNull}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Create initial data#nonSerializedProductId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+        </con:configuration>
+      </con:dataSource>
+      <con:property>quantity</con:property>
+      <con:property>status</con:property>
+      <con:property>fromSalesOrg</con:property>
+      <con:property>fromPlaceId</con:property>
+      <con:property>toSalesOrg</con:property>
+      <con:property>toPlaceId</con:property>
+      <con:property>productId</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 3" id="cee3a708-cbd1-40b4-9a29-1ddf4a2ef3ee">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create product transfer business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add item to product transfer business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromSalesOrgId</con:name>
+        <con:sourceType>fromSalesOrg</con:sourceType>
+        <con:sourceStep>DataSource for add item step</con:sourceStep>
+        <con:targetType>req_fromSalesOrgId</con:targetType>
+        <con:targetStep>Add item to product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromPlaceId</con:name>
+        <con:sourceType>fromPlaceId</con:sourceType>
+        <con:sourceStep>DataSource for add item step</con:sourceStep>
+        <con:targetType>req_fromPlaceId</con:targetType>
+        <con:targetStep>Add item to product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toSalesOrgId</con:name>
+        <con:sourceType>toSalesOrg</con:sourceType>
+        <con:sourceStep>DataSource for add item step</con:sourceStep>
+        <con:targetType>req_toSalesOrgId</con:targetType>
+        <con:targetStep>Add item to product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toPlaceId</con:name>
+        <con:sourceType>placeIdNull</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_toPlaceId</con:targetType>
+        <con:targetStep>Add item to product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productId</con:name>
+        <con:sourceType>productId</con:sourceType>
+        <con:sourceStep>DataSource for add item step</con:sourceStep>
+        <con:targetType>req_productId</con:targetType>
+        <con:targetStep>Add item to product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>quantity</con:sourceType>
+        <con:sourceStep>DataSource for add item step</con:sourceStep>
+        <con:targetType>req_quantity</con:targetType>
+        <con:targetStep>Add item to product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add item to product transfer business interaction" id="c3c4a96b-2670-4f16-8ea1-3599849ed499">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>7c4acae7-b767-466d-bd0c-dd74ed4387da</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>11391</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromSalesOrgId</con:name>
+          <con:value>${Create initial data#salesOrgRoleId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromPlaceId</con:name>
+          <con:value>${Create initial data#placeId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toSalesOrgId</con:name>
+          <con:value>${Create initial data 2#salesOrgRoleId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toPlaceId</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>req_productId</con:name>
+          <con:value>${Create initial data#nonSerializedProductId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_quantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value>1700</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_error_message</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_itemId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion res_code and res_itemId 3" id="091037b9-d35a-4aac-99be-c7d614cf616e">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>b12f076c-0374-457e-95b5-63f42f3374a9</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>c3c4a96b-2670-4f16-8ea1-3599849ed499</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="6c5cf68e-aaf8-4aa4-a709-88b3c758fb8d">
+          <con:configuration>
+            <patternObjectId>8487cdb4-46af-4e13-bad0-7f37febafad7</patternObjectId>
+            <patternProperty>status</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>ee6409d0-73a9-416c-8192-367d91501cf1</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>c3c4a96b-2670-4f16-8ea1-3599849ed499</con:sourceId>
+        <con:propertyName>res_itemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="ccd04446-3d07-435e-b86f-f931d65c8be4">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 8" id="12e7e121-c60f-45c9-8862-e8ba759b567a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create product transfer business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cancel draft product transfer bi</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="ae325bc5-be63-4756-86e6-f68627222f09">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>req_biId</con:sourceType>
+        <con:sourceStep>Add item to product transfer business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Display product transfer business interaction single item</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>res_itemId</con:sourceType>
+        <con:sourceStep>Add item to product transfer business interaction</con:sourceStep>
+        <con:targetType>req_itemId</con:targetType>
+        <con:targetStep>Display product transfer business interaction single item</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display product transfer business interaction single item" id="8799431a-0efc-4e0b-8666-af84e75635da">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>540131b9-266a-4c94-968d-0cc0eaf6c492</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>11391</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemId</con:name>
+          <con:value>1700</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_productId</con:name>
+          <con:value>305</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value>1700</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_quantity</con:entry>
+        <con:entry>res_productId</con:entry>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 11" id="5cd7377f-c828-4a06-9a9d-24fcda6c5569">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productId</con:name>
+        <con:sourceType>res_productId</con:sourceType>
+        <con:sourceStep>Display product transfer business interaction single item</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_productId</con:targetType>
+        <con:targetStep>Display lockedBy</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display lockedBy" id="b53e8646-a718-4806-b825-513c51fe6e62">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>102e2d7b-c4cf-4f53-b777-f08cad671a15</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_productId</con:name>
+          <con:value>305</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>305</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_lockedByBiId</con:name>
+          <con:value>11391</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_lockedByBiItemId</con:name>
+          <con:value>1700</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_prodSpecExtId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_startSerialNumber</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_endSerialNumber</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_lockedByBiId</con:entry>
+        <con:entry>res_lockedByBiItemId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion lockedByBiId and lockedByItemId" id="958803aa-78a9-4b76-a834-0f0b8ea66163">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>d22214e2-658e-48f4-afcf-08db3e76e5fc</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>b53e8646-a718-4806-b825-513c51fe6e62</con:sourceId>
+        <con:propertyName>res_lockedByBiId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="03f8ffa6-c753-4a8d-9026-7ab404b037de">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>adceba4f-f401-48dd-b4ee-c8e9fc537233</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>b53e8646-a718-4806-b825-513c51fe6e62</con:sourceId>
+        <con:propertyName>res_lockedByBiItemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="0ad483b8-d9df-47ef-a1e9-2f4d852c2c05">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="stock level property transfer" id="d69a3b78-13d3-4f86-bb0a-6e85d3598ab6">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>placeId</con:name>
+        <con:sourceType>fromPlaceId</con:sourceType>
+        <con:sourceStep>DataSource for add item step</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_placeId</con:targetType>
+        <con:targetStep>Display stock level</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productSpecExtId</con:name>
+        <con:sourceType>res_nonSerializedProductSpecExtId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_productSpecificationExternalId</con:targetType>
+        <con:targetStep>Display stock level</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display stock level" id="a670538c-4065-4e14-93ae-cf88205fa777">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ae70f14b-9b62-4330-9f1f-32535bcddc8b</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_placeId</con:name>
+          <con:value>${Create initial data#placeId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecCode</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecArticle</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productStatus</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_includeLocked</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecificationExternalId</con:name>
+          <con:value>EXT-APPLMOUSE-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_placeId</con:name>
+          <con:value>160</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_productSpecificationId</con:name>
+          <con:value>3</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_productSpecificationExternalId</con:name>
+          <con:value>EXT-APPLMOUSE-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+          <con:value>0</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrganizationId</con:name>
+          <con:value>315</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_totalQuantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_reservedQuantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSerialNumber</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSerialText</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecificationId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_parentSerialNumberText</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_batchId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_country</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_state</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_city</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_regionId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_fullResponse</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_placeId</con:entry>
+        <con:entry>res_productSpecificationId</con:entry>
+        <con:entry>res_productSpecificationExternalId</con:entry>
+        <con:entry>res_quantity</con:entry>
+        <con:entry>res_salesOrganizationId</con:entry>
+        <con:entry>res_totalQuantity</con:entry>
+        <con:entry>res_reservedQuantity</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion reservedQuantity is 1" id="03792be5-a3e1-4926-a0da-57eb37f3bc3d">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>86611e71-8027-40e7-ba64-24afe5eb995e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>a670538c-4065-4e14-93ae-cf88205fa777</con:sourceId>
+        <con:propertyName>res_reservedQuantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="cdc3ae09-c781-4efd-beda-04c0fa832d10">
+          <con:configuration>
+            <patternObjectId>c3c4a96b-2670-4f16-8ea1-3599849ed499</patternObjectId>
+            <patternProperty>req_quantity</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 9 2" id="228996b1-28b7-41e2-bd02-a7531985c7b9">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create product transfer business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cannot Add locked item to product transfer business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromSalesOrgId</con:name>
+        <con:sourceType>fromSalesOrg</con:sourceType>
+        <con:sourceStep>DataSource for add item step</con:sourceStep>
+        <con:targetType>req_fromSalesOrgId</con:targetType>
+        <con:targetStep>Cannot Add locked item to product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromPlaceId</con:name>
+        <con:sourceType>fromPlaceId</con:sourceType>
+        <con:sourceStep>DataSource for add item step</con:sourceStep>
+        <con:targetType>req_fromPlaceId</con:targetType>
+        <con:targetStep>Cannot Add locked item to product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toSalesOrgId</con:name>
+        <con:sourceType>toSalesOrg</con:sourceType>
+        <con:sourceStep>DataSource for add item step</con:sourceStep>
+        <con:targetType>req_toSalesOrgId</con:targetType>
+        <con:targetStep>Cannot Add locked item to product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toPlaceId</con:name>
+        <con:sourceType>toPlaceId</con:sourceType>
+        <con:sourceStep>DataSource for add item step</con:sourceStep>
+        <con:targetType>req_toPlaceId</con:targetType>
+        <con:targetStep>Cannot Add locked item to product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productId</con:name>
+        <con:sourceType>res_productId</con:sourceType>
+        <con:sourceStep>Display product transfer business interaction single item</con:sourceStep>
+        <con:targetType>req_productId</con:targetType>
+        <con:targetStep>Cannot Add locked item to product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>quantity</con:sourceType>
+        <con:sourceStep>DataSource for add item step</con:sourceStep>
+        <con:targetType>req_quantity</con:targetType>
+        <con:targetStep>Cannot Add locked item to product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cannot Add locked item to product transfer business interaction" id="84469bdf-efae-45cb-b343-5ad72d83fdb6">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>7c4acae7-b767-466d-bd0c-dd74ed4387da</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>11391</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromSalesOrgId</con:name>
+          <con:value>${Create initial data#salesOrgRoleId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromPlaceId</con:name>
+          <con:value>${Create initial data#placeId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toSalesOrgId</con:name>
+          <con:value>${Create initial data 2#salesOrgRoleId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toPlaceId</con:name>
+          <con:value>${Properties#placeIdNull}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productId</con:name>
+          <con:value>305</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_quantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_error_message</con:name>
+          <con:value>PRODUCT_WITH_ID_ALREADY_LOCKED_BY_BI_WITH_ID</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_error_message</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion cannot add locked item" id="31a95932-d8cd-4901-80d6-ffe242290f3a">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>118a945a-0181-4175-9439-2f34f4385d84</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>84469bdf-efae-45cb-b343-5ad72d83fdb6</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="8f19f312-6c2a-4835-b203-4cfb4e0e2f7c">
+          <con:configuration>
+            <token>400</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>2faa1629-3c2b-4e44-85d7-123294972bce</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>84469bdf-efae-45cb-b343-5ad72d83fdb6</con:sourceId>
+        <con:propertyName>res_error_message</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="e1898607-eab4-4884-838f-dc81b14a4d4d">
+          <con:configuration>
+            <patternObjectId>1f99690e-f257-419c-a506-152d0cca1476</patternObjectId>
+            <patternProperty>error_product_locked</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cancel draft product transfer bi" id="4354cbcd-c3cf-48cb-bcb0-b19e7ac27a03">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a4fbe711-149e-4662-aae7-e3a44e40cf7f</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>11391</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>11391</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_createdUserId</con:name>
+          <con:value>317</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_creatdSalesOrgId</con:name>
+          <con:value>315</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_state</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_mainState</con:name>
+          <con:value>0</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_createdUserId</con:entry>
+        <con:entry>res_creatdSalesOrgId</con:entry>
+        <con:entry>res_state</con:entry>
+        <con:entry>res_mainState</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion return values" id="f9e52fda-4848-40d1-93c4-a5de662814fc">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>338bb5f5-3c07-4603-b07d-13db0f5a1148</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>4354cbcd-c3cf-48cb-bcb0-b19e7ac27a03</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="e3006f1d-a2c2-412c-bef0-37b59a667915">
+          <con:configuration>
+            <patternText>200</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>5ae2de59-3b77-4c27-b2d4-fdc50463659f</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>4354cbcd-c3cf-48cb-bcb0-b19e7ac27a03</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="31393e2f-2d8f-40ce-aadf-55575fe921ac">
+          <con:configuration>
+            <patternObjectId>4354cbcd-c3cf-48cb-bcb0-b19e7ac27a03</patternObjectId>
+            <patternProperty>req_biId</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>8e240ea4-00f3-4470-8045-0094129665b0</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>4354cbcd-c3cf-48cb-bcb0-b19e7ac27a03</con:sourceId>
+        <con:propertyName>res_createdUserId</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 3" id="fcc13139-6898-497c-beef-f2045cbd138c">
+          <con:configuration>
+            <patternObjectId>750b194e-923e-4d26-85f1-bd33f54c92eb</patternObjectId>
+            <patternProperty>req_userRoleId</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>31c3d71d-ab0a-408e-8b21-c330c4d5d4fb</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>4354cbcd-c3cf-48cb-bcb0-b19e7ac27a03</con:sourceId>
+        <con:propertyName>res_creatdSalesOrgId</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 4" id="b9474a1b-14aa-4d2a-8c93-a5cefc7a185c">
+          <con:configuration>
+            <patternObjectId>750b194e-923e-4d26-85f1-bd33f54c92eb</patternObjectId>
+            <patternProperty>req_salesOrgRoleId</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>73a7c8da-0f5e-494b-a1ea-faa4e148c613</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>4354cbcd-c3cf-48cb-bcb0-b19e7ac27a03</con:sourceId>
+        <con:propertyName>res_state</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 5" id="cae51ee7-838f-4be3-84dc-afdc88d77955">
+          <con:configuration>
+            <patternText>1</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>a33732d7-6f5e-4c5d-a597-fe6ad5a8e76e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>4354cbcd-c3cf-48cb-bcb0-b19e7ac27a03</con:sourceId>
+        <con:propertyName>res_mainState</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 6" id="bbf931ed-d780-4768-96b1-69a1eb7d71b9">
+          <con:configuration>
+            <patternText>0</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="stock level property transfer2" id="fbc6c86c-d5b2-42bb-bfed-7c0665c108f2">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>placeId</con:name>
+        <con:sourceType>fromPlaceId</con:sourceType>
+        <con:sourceStep>DataSource for add item step</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_placeId</con:targetType>
+        <con:targetStep>Display stock level</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productSpecExtId</con:name>
+        <con:sourceType>res_nonSerializedProductSpecExtId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_productSpecificationExternalId</con:targetType>
+        <con:targetStep>Display stock level</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display stock level2" id="68a6b410-b3c7-47a1-aaae-77619fdd812f">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ae70f14b-9b62-4330-9f1f-32535bcddc8b</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_placeId</con:name>
+          <con:value>${Create initial data#placeId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecCode</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecArticle</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productStatus</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_includeLocked</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecificationExternalId</con:name>
+          <con:value>EXT-APPLMOUSE-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_placeId</con:name>
+          <con:value>160</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_productSpecificationId</con:name>
+          <con:value>3</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_productSpecificationExternalId</con:name>
+          <con:value>EXT-APPLMOUSE-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrganizationId</con:name>
+          <con:value>315</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_totalQuantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_reservedQuantity</con:name>
+          <con:value>0</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSerialNumber</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSerialText</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_productSpecificationId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_parentSerialNumberText</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_batchId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_country</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_state</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_city</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_regionId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_fullResponse</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_placeId</con:entry>
+        <con:entry>res_productSpecificationId</con:entry>
+        <con:entry>res_productSpecificationExternalId</con:entry>
+        <con:entry>res_quantity</con:entry>
+        <con:entry>res_salesOrganizationId</con:entry>
+        <con:entry>res_totalQuantity</con:entry>
+        <con:entry>res_reservedQuantity</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion reserverdQuantity is 0" id="9494e919-0206-490c-a168-ac6a5c8593e4">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>9aea6588-498f-4a01-9995-155729a058f5</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>68a6b410-b3c7-47a1-aaae-77619fdd812f</con:sourceId>
+        <con:propertyName>res_reservedQuantity</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="98436d7f-4fb6-4be3-9cec-54838e589f71">
+          <con:configuration>
+            <patternObjectId>1f99690e-f257-419c-a506-152d0cca1476</patternObjectId>
+            <patternProperty>req_quantity0</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="property Transfer 12" id="81fa4af2-7bb2-4da8-b683-2bf0475797ab">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>req_biId</con:sourceType>
+        <con:sourceStep>Add item to product transfer business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Display product transfer business interaction single item2</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>res_itemId</con:sourceType>
+        <con:sourceStep>Add item to product transfer business interaction</con:sourceStep>
+        <con:targetType>req_itemId</con:targetType>
+        <con:targetStep>Display product transfer business interaction single item2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display product transfer business interaction single item2" id="f476e56f-1700-4751-bfd5-0752ab1f3a51">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>540131b9-266a-4c94-968d-0cc0eaf6c492</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>11391</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemId</con:name>
+          <con:value>1700</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_productId</con:name>
+          <con:value>305</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value>1700</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_quantity</con:entry>
+        <con:entry>res_productId</con:entry>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 13" id="82a7875d-e85e-4e4c-af1d-8fb77e37f2c7">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productId</con:name>
+        <con:sourceType>res_productId</con:sourceType>
+        <con:sourceStep>Display product transfer business interaction single item2</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_productId</con:targetType>
+        <con:targetStep>Display lockedBy2</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display lockedBy2" id="a9b55557-1368-4a3d-bb18-7a8ea51d58c3">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>102e2d7b-c4cf-4f53-b777-f08cad671a15</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_productId</con:name>
+          <con:value>305</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>305</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_lockedByBiId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_lockedByBiItemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_prodSpecExtId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_startSerialNumber</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_endSerialNumber</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_quantity</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_lockedByBiId</con:entry>
+        <con:entry>res_lockedByBiItemId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion lockedById and lockedByItemId equals null" id="7d4d2cac-d4bc-462a-b4e3-a25d8232a4d5">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>e04df7f7-8d79-49eb-b019-880f10362a9c</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>a9b55557-1368-4a3d-bb18-7a8ea51d58c3</con:sourceId>
+        <con:propertyName>res_lockedByBiId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="d4455a70-3a76-4033-94e7-f2272e3fadf4">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>2c0dd950-b30e-4956-9053-2df11a1d6322</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>a9b55557-1368-4a3d-bb18-7a8ea51d58c3</con:sourceId>
+        <con:propertyName>res_lockedByBiItemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="b81abe0d-3576-433b-b4ed-70fe86bcd90e">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>dac8e83b-b529-4274-a876-1774c805be84</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>a9b55557-1368-4a3d-bb18-7a8ea51d58c3</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 3" id="e33afd51-cda5-4bbc-ad3d-5c1a42464ed2">
+          <con:configuration>
+            <token>200</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 9" id="15d99000-de40-4569-b8e2-1464d7abfe44">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Cancel draft product transfer bi</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cannot add item to cancelled product transfer business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromSalesOrgId</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_fromSalesOrgId</con:targetType>
+        <con:targetStep>Cannot add item to cancelled product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromPlaceId</con:name>
+        <con:sourceType>placeId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_fromPlaceId</con:targetType>
+        <con:targetStep>Cannot add item to cancelled product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toSalesOrgId</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Create initial data 2</con:sourceStep>
+        <con:targetType>req_toSalesOrgId</con:targetType>
+        <con:targetStep>Cannot add item to cancelled product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toPlaceId</con:name>
+        <con:sourceType>placeId</con:sourceType>
+        <con:sourceStep>Create initial data 2</con:sourceStep>
+        <con:targetType>req_toPlaceId</con:targetType>
+        <con:targetStep>Cannot add item to cancelled product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productId</con:name>
+        <con:sourceType>nonSerializedProductId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_productId</con:targetType>
+        <con:targetStep>Cannot add item to cancelled product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>req_quantity</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_quantity</con:targetType>
+        <con:targetStep>Cannot add item to cancelled product transfer business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cannot add item to cancelled product transfer business interaction" id="c6f9beff-67bf-413f-a815-0910ef8eb7c2">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>7c4acae7-b767-466d-bd0c-dd74ed4387da</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>11391</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromSalesOrgId</con:name>
+          <con:value>315</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromPlaceId</con:name>
+          <con:value>160</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toSalesOrgId</con:name>
+          <con:value>319</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toPlaceId</con:name>
+          <con:value>162</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_productId</con:name>
+          <con:value>305</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_quantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_error_message</con:name>
+          <con:value>BI_MUST_BE_IN_DRAFT_OR_ONGOING_STATE</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_error_message</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion res_code and res_biId 6" id="3f60629f-46ac-4cb5-9d39-fa1580702abe">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>0ec818c0-413a-44a7-876d-c2168f940fad</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>c6f9beff-67bf-413f-a815-0910ef8eb7c2</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="d9eca985-e5d3-4fb7-b03c-9b23a2e72130">
+          <con:configuration>
+            <patternText>400</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>fa3d91b0-aa5c-4032-9422-1a8caa4acaaf</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>c6f9beff-67bf-413f-a815-0910ef8eb7c2</con:sourceId>
+        <con:propertyName>res_itemId</con:propertyName>
+        <con:assertion type="Simple NotContains" name="Not Contains" id="a827cf65-e226-47dc-80ca-b6e4ac6bf503">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>7a5507f4-5857-4413-901d-a7932321e078</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>c6f9beff-67bf-413f-a815-0910ef8eb7c2</con:sourceId>
+        <con:propertyName>res_error_message</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="de90648e-ce70-43a3-9f05-dfc5174f3473">
+          <con:configuration>
+            <patternObjectId>1f99690e-f257-419c-a506-152d0cca1476</patternObjectId>
+            <patternProperty>error_BI_MUST_BE_IN_DRAFT_OR_ONGOING_STATE</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 15" id="3cdd67a1-eaed-4bc7-99db-a444aff8189a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_userRoleId</con:name>
+        <con:sourceType>userRoleId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create product transfer business interaction 2</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_salesOrgRoleId</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Create product transfer business interaction 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_biSpecCode</con:name>
+        <con:sourceType>req_biSpecCode</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_biSpecCode</con:targetType>
+        <con:targetStep>Create product transfer business interaction 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>req_fromSo</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_fromSalesOrganizationId</con:targetType>
+        <con:targetStep>Create product transfer business interaction 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create product transfer business interaction 2" id="b3846398-f473-4e79-aa64-9e78e2e4922d">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>0eaadb51-eaa4-48ba-82d0-42592e2839fc</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>317</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>315</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+          <con:value>PRD_TRANSFER</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>11401</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_fromSalesOrganizationId</con:name>
+          <con:value>315</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_biId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 17" id="b39a88a9-6372-4652-9ff3-0c4553bb2158">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create product transfer business interaction 2</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cannot Add item with extId and serialNo</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromSalesOrgId</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_fromSalesOrgId</con:targetType>
+        <con:targetStep>Cannot Add item with extId and serialNo</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromPlaceId</con:name>
+        <con:sourceType>placeId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_fromPlaceId</con:targetType>
+        <con:targetStep>Cannot Add item with extId and serialNo</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toSalesOrgId</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Create initial data 2</con:sourceStep>
+        <con:targetType>req_toSalesOrgId</con:targetType>
+        <con:targetStep>Cannot Add item with extId and serialNo</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toPlaceId</con:name>
+        <con:sourceType>placeIdNull</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_toPlaceId</con:targetType>
+        <con:targetStep>Cannot Add item with extId and serialNo</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>req_quantity</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_quantity</con:targetType>
+        <con:targetStep>Cannot Add item with extId and serialNo</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>serialNumber</con:name>
+        <con:sourceType>fakeSerialNo</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_serialNumber</con:targetType>
+        <con:targetStep>Cannot Add item with extId and serialNo</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>externalId</con:name>
+        <con:sourceType>res_serializedProductSpecExtId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_externalId</con:targetType>
+        <con:targetStep>Cannot Add item with extId and serialNo</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cannot Add item with extId and serialNo" id="67cb401d-1da2-4f71-877d-5a3931364079">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ed21e813-4a6e-42bb-9bff-f24c2b543599</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>11401</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromSalesOrgId</con:name>
+          <con:value>315</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromPlaceId</con:name>
+          <con:value>160</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toSalesOrgId</con:name>
+          <con:value>319</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toPlaceId</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>req_quantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_error_message</con:name>
+          <con:value>REQUESTED_INPUT_AND_PRODUCT_NOT_EQUAL</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_externalId</con:name>
+          <con:value>EXT-IPHONE6S-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_serialNumber</con:name>
+          <con:value>12312312</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_error_message</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion cannot add with wrong serialNo" id="c73a2115-f0d2-4aca-9dc1-02775fe09a85">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>29a9347b-c3ce-4e0b-945d-473a32e968c8</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>67cb401d-1da2-4f71-877d-5a3931364079</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="4acc54b3-4182-4b24-a413-f9a9cf31b2eb">
+          <con:configuration>
+            <token>400</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>false</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>6e44933f-a01d-4cdc-a5c5-5bb80b6bf2ee</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>67cb401d-1da2-4f71-877d-5a3931364079</con:sourceId>
+        <con:propertyName>res_error_message</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="e3fce29a-f307-449b-afe9-7c4b2fd3dee2">
+          <con:configuration>
+            <patternObjectId>1f99690e-f257-419c-a506-152d0cca1476</patternObjectId>
+            <patternProperty>error_REQUESTED_INPUT_AND_PRODUCT_NOT_EQUAL</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 19" id="d3a8b1c9-23d9-403e-a4fc-0e53b066d407">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create product transfer business interaction 2</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cannot Add item with  wrong extId</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromSalesOrgId</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_fromSalesOrgId</con:targetType>
+        <con:targetStep>Cannot Add item with  wrong extId</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromPlaceId</con:name>
+        <con:sourceType>placeId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_fromPlaceId</con:targetType>
+        <con:targetStep>Cannot Add item with  wrong extId</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toSalesOrgId</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Create initial data 2</con:sourceStep>
+        <con:targetType>req_toSalesOrgId</con:targetType>
+        <con:targetStep>Cannot Add item with  wrong extId</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toPlaceId</con:name>
+        <con:sourceType>placeIdNull</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_toPlaceId</con:targetType>
+        <con:targetStep>Cannot Add item with  wrong extId</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>req_quantity</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_quantity</con:targetType>
+        <con:targetStep>Cannot Add item with  wrong extId</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>serialNumber</con:name>
+        <con:sourceType>serializedProductStartSerialNumber</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_serialNumber</con:targetType>
+        <con:targetStep>Cannot Add item with  wrong extId</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>externalId</con:name>
+        <con:sourceType>fakeSerialNo</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_externalId</con:targetType>
+        <con:targetStep>Cannot Add item with  wrong extId</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cannot Add item with  wrong extId" id="3ebf4667-dcb4-43dd-9c61-5c790b5252ef">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ed21e813-4a6e-42bb-9bff-f24c2b543599</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>11401</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromSalesOrgId</con:name>
+          <con:value>315</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromPlaceId</con:name>
+          <con:value>160</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toSalesOrgId</con:name>
+          <con:value>319</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toPlaceId</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>req_quantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_error_message</con:name>
+          <con:value>NO_PRODUCT_SPEC_FOUND_WITH_PROVIDED_EXTERNAL_ID</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_externalId</con:name>
+          <con:value>12312312</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_serialNumber</con:name>
+          <con:value>31485908</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_error_message</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion cannot add item with wrong externalId" id="7c2ca8be-0032-4b1c-8cb1-40758ad66f43">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>ebc4690c-a4be-4e6e-bb01-89cbe51f7807</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3ebf4667-dcb4-43dd-9c61-5c790b5252ef</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="cd74c71d-9250-4628-b17d-7863e1123e20">
+          <con:configuration>
+            <token>400</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>false</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>bf4a8bbc-85d3-4065-833d-5145f685cdb0</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3ebf4667-dcb4-43dd-9c61-5c790b5252ef</con:sourceId>
+        <con:propertyName>res_itemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="74c22c34-9820-485b-9c50-ca3151900c7d">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>2fe10a0c-f85c-423b-92fd-e1064bf7bfcf</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3ebf4667-dcb4-43dd-9c61-5c790b5252ef</con:sourceId>
+        <con:propertyName>res_error_message</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="b2cbb171-fcb5-4498-8230-6e7108696ac3">
+          <con:configuration>
+            <patternObjectId>1f99690e-f257-419c-a506-152d0cca1476</patternObjectId>
+            <patternProperty>error_NO_PRODUCT_SPEC_FOUND_WITH_PROVIDED_EXTERNAL_ID</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 16" id="49ab5cb2-87a3-43bc-b4aa-ffbdaef80e40">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create product transfer business interaction 2</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add item with extId and serialNo</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromSalesOrgId</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_fromSalesOrgId</con:targetType>
+        <con:targetStep>Add item with extId and serialNo</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromPlaceId</con:name>
+        <con:sourceType>placeId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_fromPlaceId</con:targetType>
+        <con:targetStep>Add item with extId and serialNo</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toSalesOrgId</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Create initial data 2</con:sourceStep>
+        <con:targetType>req_toSalesOrgId</con:targetType>
+        <con:targetStep>Add item with extId and serialNo</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toPlaceId</con:name>
+        <con:sourceType>placeIdNull</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_toPlaceId</con:targetType>
+        <con:targetStep>Add item with extId and serialNo</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>req_quantity</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_quantity</con:targetType>
+        <con:targetStep>Add item with extId and serialNo</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>serialNumber</con:name>
+        <con:sourceType>serializedProductStartSerialNumber</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_serialNumber</con:targetType>
+        <con:targetStep>Add item with extId and serialNo</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>externalId</con:name>
+        <con:sourceType>res_serializedProductSpecExtId</con:sourceType>
+        <con:sourceStep>Create initial data</con:sourceStep>
+        <con:targetType>req_externalId</con:targetType>
+        <con:targetStep>Add item with extId and serialNo</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add item with extId and serialNo" id="043b34de-c80f-4b94-964c-38ac3b529e43">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ed21e813-4a6e-42bb-9bff-f24c2b543599</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>11401</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromSalesOrgId</con:name>
+          <con:value>315</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromPlaceId</con:name>
+          <con:value>160</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toSalesOrgId</con:name>
+          <con:value>319</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toPlaceId</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>req_quantity</con:name>
+          <con:value>5</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value>1704</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_error_message</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_externalId</con:name>
+          <con:value>EXT-IPHONE6S-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_serialNumber</con:name>
+          <con:value>31485908</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_error_message</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion items successfuly added with extId and serialNo" id="cf4d649b-0c97-4ee5-b8e0-d825ca05dca7">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>b3716258-73e6-45af-b4ea-3f1c26368d41</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>043b34de-c80f-4b94-964c-38ac3b529e43</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="17334b86-3599-4d6f-b142-fcc61f27d257">
+          <con:configuration>
+            <token>201</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>false</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>fb1fa7f7-e14f-4d23-828b-b9916f8eb27f</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>043b34de-c80f-4b94-964c-38ac3b529e43</con:sourceId>
+        <con:propertyName>res_error_message</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="3bc58fe2-1021-46aa-bdbd-df65d6be204e">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>b66afad1-0e34-4556-9949-de8c644c7385</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>043b34de-c80f-4b94-964c-38ac3b529e43</con:sourceId>
+        <con:propertyName>res_itemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 3" id="6a85cbcd-46b4-4274-8af6-976c0cc226d2">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 14" id="5308de3f-b306-4e1d-8741-3d919b926aee">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create product transfer business interaction 2</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit product transfer business interaction 2</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit product transfer business interaction 2" id="c27ae438-e4c2-4fe5-8184-fb62ae551dc6">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a5a4c9dc-43ee-430a-815c-f07265bcdeae</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>11401</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>11401</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion items successfully submitted" id="8956bf88-44d6-46fb-9765-d8ac49725df9">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>21871338-c0bd-4926-aa94-228cb2a074b9</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>c27ae438-e4c2-4fe5-8184-fb62ae551dc6</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="a4a9b6aa-ee39-4303-9c58-0ab18d699ab9">
+          <con:configuration>
+            <token>200</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>false</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>5570e876-d80e-4cb2-ad4a-0bbf93602d71</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>c27ae438-e4c2-4fe5-8184-fb62ae551dc6</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="85a5aa02-cff3-4ac0-9d53-e4e9e5f7e9a0">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 26" id="4f74a00f-3973-4d9b-8f17-b46a2547ffb5">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Submit product transfer business interaction 2</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Get product confirmation biId</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Get product confirmation biId" id="138c2bdd-1711-4671-8206-6b4dc5332104">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ef277f63-a633-4e33-b502-0841956de395</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>11401</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>11431</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion confirmation biId successfully retrieved" id="b2849a7f-31a2-4f02-98a5-3e7c223c8e84">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>020a3da3-4286-44bc-8738-bc4a1e32f1b8</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>138c2bdd-1711-4671-8206-6b4dc5332104</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="73bd2e2a-fcfd-4461-81c5-380fd05a0d6b">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>545e510b-6e05-4484-8eed-abf28e7ddc6e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>138c2bdd-1711-4671-8206-6b4dc5332104</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="03a0b87e-8f65-4a14-8a0d-f91fb071c94c">
+          <con:configuration>
+            <token>200</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>false</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>16ff3ff1-c9b1-4c33-bceb-4098ac17c6dd</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>138c2bdd-1711-4671-8206-6b4dc5332104</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 3" id="d30bcc23-be90-420b-aef5-0764c591912e">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 28" id="f7b91409-5b01-4d3c-913e-d2cadb95dc47">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Get product confirmation biId</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Display product confirmation business interaction items and return items</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display product confirmation business interaction items and return items" id="f520880e-54d5-4b2e-a97f-40cd1aa468d0">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ffe40710-1904-476d-aebf-b212fd943e92</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>11431</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_items</con:name>
+          <con:value>[{"quantity":5,"productId":"303","lockerInfo":{"lockerBIId":11401,"lockerBIItemId":1704},"id":"1708"}]</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_items</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion confirmation items returned successfully" id="d71c3ca2-e49b-4e20-b994-989c15c9496e">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>f69b5493-ad08-4a3e-a49f-1bdddc53d8af</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f520880e-54d5-4b2e-a97f-40cd1aa468d0</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="97c093cb-3905-4187-8b85-5cb4b13367bf">
+          <con:configuration>
+            <token>200</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>false</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>fe214573-d3dd-485c-a448-912e6b978776</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f520880e-54d5-4b2e-a97f-40cd1aa468d0</con:sourceId>
+        <con:propertyName>res_items</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="82bbf1d2-45d2-4269-93ff-beb5d0fdddee">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 39" id="ad67749e-7686-4240-a89c-84d996f5e75c">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>quantity1</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_quantity</con:targetType>
+        <con:targetStep>Slice 3rd item for auto slice control</con:targetStep>
+        <con:targetPath/>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="true">
+        <con:name>itemId</con:name>
+        <con:sourceType>res_items</con:sourceType>
+        <con:sourceStep>Display product confirmation business interaction items and return items</con:sourceStep>
+        <con:sourcePath>[0]['id']</con:sourcePath>
+        <con:targetType>req_confItemId</con:targetType>
+        <con:targetStep>Slice 3rd item for auto slice control</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>serialNo</con:name>
+        <con:sourceType>middleItemSerialNo</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_serialNumber</con:targetType>
+        <con:targetStep>Slice 3rd item for auto slice control</con:targetStep>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Slice 3rd item for auto slice control" id="9c227ecc-c52b-4923-a27b-690d7a5bbd3c">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>51ecaa90-f5ec-4c86-854d-4cb2cfdc01b1</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_quantity</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_confItemId</con:name>
+          <con:value>1708</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_serialNumber</con:name>
+          <con:value>${=${Create initial data#serializedProductStartSerialNumber}+2}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_confItemId</con:name>
+          <con:value>1708</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_confItemId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion middle item successfully sliced" id="29a3c7c2-ce14-4a4f-a1b4-ee93c36ecfe6">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>6d478436-dceb-4134-8bb1-05f6e388a9b6</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>9c227ecc-c52b-4923-a27b-690d7a5bbd3c</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="c6efb1f9-5f8f-4104-a00f-bad05d86a1be">
+          <con:configuration>
+            <token>200</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>false</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>d7a1df68-8e74-4775-b2d1-b4d35acaed22</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>9c227ecc-c52b-4923-a27b-690d7a5bbd3c</con:sourceId>
+        <con:propertyName>res_confItemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="eb192996-5fcf-47cc-8337-fe40b150306d">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 31" id="e6f4b45d-cd2e-4478-8299-008756aec88e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Get product confirmation biId</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Display product confirmation business interaction items after slice</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display product confirmation business interaction items after slice" id="8fe52fbc-1480-4a40-b4b2-f95918beec0a">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ffe40710-1904-476d-aebf-b212fd943e92</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>11431</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_items</con:name>
+          <con:value>[{"quantity":2,"productId":"303","lockerInfo":{"lockerBIId":11401,"lockerBIItemId":1704},"id":"1708"},{"quantity":1,"productId":"309","id":"1710"},{"quantity":2,"productId":"310","id":"1711"}]</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_items</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 40" id="bb33728d-2f84-4256-af3e-0df7bbd34522">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>item1</con:name>
+        <con:sourceType>res_items</con:sourceType>
+        <con:sourceStep>Display product confirmation business interaction items after slice</con:sourceStep>
+        <con:sourcePath>[0]['id']</con:sourcePath>
+        <con:targetType>firstItem</con:targetType>
+        <con:targetStep>Properties</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>item2</con:name>
+        <con:sourceType>res_items</con:sourceType>
+        <con:sourceStep>Display product confirmation business interaction items after slice</con:sourceStep>
+        <con:sourcePath>[1]['id']</con:sourcePath>
+        <con:targetType>secondItem</con:targetType>
+        <con:targetStep>Properties</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>item3</con:name>
+        <con:sourceType>res_items</con:sourceType>
+        <con:sourceStep>Display product confirmation business interaction items after slice</con:sourceStep>
+        <con:sourcePath>[2]['id']</con:sourcePath>
+        <con:targetType>thirdItem</con:targetType>
+        <con:targetStep>Properties</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion auto slice is successful" id="6d3292be-d9d3-4483-8a58-70f34d86e0b5">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>4abfd100-c35e-466f-b2f5-a62c3ef452cf</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>1f99690e-f257-419c-a506-152d0cca1476</con:sourceId>
+        <con:propertyName>firstItem</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="a01dc202-ca3e-4378-94c5-b487e04cf492">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>1c22355c-47cf-40ee-86b0-a03f5e2e1a9e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>1f99690e-f257-419c-a506-152d0cca1476</con:sourceId>
+        <con:propertyName>secondItem</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="770d65dd-832f-43e4-ae3c-c9ac694d082d">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>fece6322-d9ff-4ecf-ab84-f9a9c8c862c1</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>1f99690e-f257-419c-a506-152d0cca1476</con:sourceId>
+        <con:propertyName>thirdItem</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 3" id="fb9849aa-5475-4052-9f37-70d4ef506375">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>e898154a-1ce8-41c9-9610-543fd39d63dd</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>8fe52fbc-1480-4a40-b4b2-f95918beec0a</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 4" id="5867a1a3-a2c7-4fd9-ac1c-3476b7bbcef2">
+          <con:configuration>
+            <token>200</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>false</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>9aca2755-2c66-4c74-a9fa-d95843f164aa</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>2a39075a-e7b1-4d40-b85d-7e4abbeaf140</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>ed59cc8f-7673-4df5-8db7-044022c2fd9f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>66b98ec8-526f-4283-8643-b21077b76304</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e7375c05-f573-4654-b04a-200a838f6081</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>5b74f572-7c89-45ab-ab83-e2871132601f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>ae464085-fbbb-4cab-a91b-be5291f8e138</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e09848e1-ec12-4e86-9773-b33c670023c0</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e93983ef-cf28-461f-846d-08b113c9340a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>6f6bbace-e8f5-46f6-8f04-eb5282579763</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>123d1eea-17a8-4bfe-a703-6001158339ed</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e0f9d7d6-a985-4fda-83a8-b057837ac569</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>f9d6b0f2-e4a2-47d0-b97e-a35105602f54</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>5341ee84-8e3d-4421-8796-19a69acb9b8c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>2453e776-80f4-4e23-9e1c-cf5cb419e19a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>7e25899a-676c-4ac0-a1e1-b9af1480d930</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>5fc70a72-d625-468c-b412-77fc1d3fe6e2</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>cf05b631-5afe-4c81-9370-927c122eb65c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>da6aa009-e18a-4b0c-89f3-200b981e9dc4</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e896b3a4-4549-4eb9-80a1-4e8456d609c1</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>7b0dafe8-fb1a-4fb8-9ea7-24ac06542e60</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a4695a36-a02c-4716-9560-718b36cae3fa</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>4875ac8b-e2ec-43bd-9fe9-c99652b5529f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a51bfbd8-414b-4888-bbb6-83365d740b16</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e857ef21-7bfd-4cad-9c7a-c97cd2d9fdaa</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>62bda2b1-b402-4cdf-bc80-e80a854bba21</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>b4531371-1a1e-4a69-b271-a124d3f5d804</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>8a1ca096-0053-4980-84ad-3a95331133cb</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>9d58173a-a70a-4fee-b0a9-29b9b1c4b41f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>3c093c69-5444-4656-acf8-fe3cf9d8ef91</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>11704487-be91-4091-b1d7-1b97c99d0059</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>115ce5b7-e56b-4d78-b1d5-43585e4c32a3</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d517a2c2-44d2-415c-9213-831bf9fe031f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>2f4eb7af-db59-4ce9-a107-7107fb6fad07</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>f33cddb5-4d1c-4ef9-bcd4-177f1de72551</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>caf3b8ec-ba63-4b4f-a958-eea18066cec1</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d62e086a-94a1-4ac8-85fb-dfd516326a8b</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>b86e4185-5e7f-49a6-8cb1-a9836a9f104b</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>16d573bb-1ef9-4073-a8fd-240125f5600b</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>ba05ffa1-52cd-457b-a0fc-2aa8ad976b69</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d81f5b00-fe87-4dc3-b1c2-ca3547498a3c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>c90790e5-a0f2-452d-af11-f8e94664d167</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>b9994a54-a916-49ba-875b-147fa1b01110</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>148deb94-db20-467c-88e6-31e10d6c46ff</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>068cabfe-d80e-44cb-984b-1a66d4988fe8</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>81bef30c-bd90-4870-b919-7432410e3b1d</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>959d33dd-4a1d-4e36-b042-7193e69c7549</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>9f805c4a-728e-4b7d-9bde-9096733deba6</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d52227c0-0f1f-47d0-a0fe-02be31536ce5</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>c105e9d8-f9ff-420e-9939-ef52c013c633</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>8da75e2b-fe21-4639-8d01-2f8698ecc67f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>36726660-8624-4ce8-bd86-03d0a45a8822</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>becbbf7f-3359-480c-b802-79b0ccb25356</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>425c7d90-234a-4d3f-a3c1-51d70e437f35</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>5d264e75-b38f-437b-b7a6-1ae4c87203f7</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>1a72e5a2-54ce-46dd-bc1f-5ffe54db8c47</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>1b677e85-119a-48f3-8ea0-125c46df94fe</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>ca28a7de-b6ad-44cc-8c09-8bfb07a9bb53</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>7a173192-f7c8-446d-8063-1776b8a57fec</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a61d0561-677e-4d96-862c-3753f4a38fa1</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>08d9404d-6255-494d-a398-08cab4b2a981</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d7c7f833-0cc0-4a63-9b7d-5dfca4ae0768</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>69d9028c-ba3c-4ffe-8a62-eb8714b63dbb</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>1eedc7e8-73e4-4dc1-ada1-481c96cd3197</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>124117e8-60d0-43b3-956a-26acee4d1328</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>4d3f197e-b097-4710-a1e5-ea64370b90f3</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>bd3729aa-6c16-4600-ad34-91e19a5f6605</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>1d2ed484-892f-43f6-af97-025c67c6bee3</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>c7d83f81-bfd6-4950-a7d8-738878b7e1a5</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a3f5fba1-e33b-455f-8731-e36710b1685f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>1118ec47-a78b-4d99-b682-3bb2407ae11a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>8799431a-0efc-4e0b-8666-af84e75635da</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>b53e8646-a718-4806-b825-513c51fe6e62</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a670538c-4065-4e14-93ae-cf88205fa777</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d69a3b78-13d3-4f86-bb0a-6e85d3598ab6</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>f9e52fda-4848-40d1-93c4-a5de662814fc</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>84469bdf-efae-45cb-b343-5ad72d83fdb6</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>228996b1-28b7-41e2-bd02-a7531985c7b9</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>c27ae438-e4c2-4fe5-8184-fb62ae551dc6</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>8fe52fbc-1480-4a40-b4b2-f95918beec0a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>bb33728d-2f84-4256-af3e-0df7bbd34522</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="f6c39f9b-0c7a-4580-964b-38d54eebc86e" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display Product By Multi SalesOrganizationId" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f6c39f9b-0c7a-4580-964b-38d54eebc86efileName">Display-Product-By-Multi-SalesOrganizationId</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Display Product By Multi SalesOrganizationId" id="e16a3a6c-4b3b-4352-a4fd-c5c3b84d3790">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/product" methodName="DisplayProductByMultiSalesOrganizationId" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display Product By Multi SalesOrganizationId" id="1df4bce7-c5c6-4c8f-b40b-b8332eda039f" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="productSpecificationExternalId" value="${#TestCase#req_productSpecificationExternalId}"/>
+          <con:entry key="salesOrganizationId" value="${#TestCase#req_salesOrganizationId1}&amp;salesOrganizationId=${#TestCase#req_salesOrganizationId2}"/>
+          <con:entry key="includeLocked" value="${#TestCase#req_includeLocked}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>salesOrganizationId</con:entry>
+          <con:entry>includeLocked</con:entry>
+          <con:entry>productSpecificationExternalId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="c0e51205-ebf5-473b-b7c3-28309e1086ff">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemProductID</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['id']</con:sourcePath>
+        <con:targetType>res_firstItemProductId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemLockedById</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['lockedBy']['businessInteractionId']</con:sourcePath>
+        <con:targetType>res_firstItemLockedById</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemLockedByBiItemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['lockedBy']['businessInteractionItemId']</con:sourcePath>
+        <con:targetType>res_firstItemLockedByBiItemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemStartSerialNumber</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['productInformation']['serialNumberRange']['start']</con:sourcePath>
+        <con:targetType>res_firstItemStartSerialNumber</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemEndSerialNumber</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['productInformation']['serialNumberRange']['end']</con:sourcePath>
+        <con:targetType>res_firstItemEndSerialNumber</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemQuantity</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['productInformation']['quantity']</con:sourcePath>
+        <con:targetType>res_firstItemQuantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemProductStatus</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['productInformation']['status']</con:sourcePath>
+        <con:targetType>res_firstItemProductStatus</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemSalesOrganizationId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['salesOrganizationId']</con:sourcePath>
+        <con:targetType>res_firstItemSalesOrganizationId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemSalesOrganizationName</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['salesOrganizationName']</con:sourcePath>
+        <con:targetType>res_firstItemSalesOrganizationName</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemSalesOrganizationAddressId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['salesOrganizationAddressId']</con:sourcePath>
+        <con:targetType>res_firstItemSalesOrganizationAddressId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemSalesOrganizationAddress</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['salesOrganizationAddress']</con:sourcePath>
+        <con:targetType>res_firstItemSalesOrganizationAddress</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemInventoryId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['inventoryId']</con:sourcePath>
+        <con:targetType>res_firstItemInventoryId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemInventoryName</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['inventoryName']</con:sourcePath>
+        <con:targetType>res_firstItemInventoryName</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemProductSpecificationExternalId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['productSpecificationExternalId']</con:sourcePath>
+        <con:targetType>res_firstItemProductSpecificationExternalId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false" disabled="true">
+        <con:name>firstItemBinId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Product SpecExtId And SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['binId']</con:sourcePath>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false" disabled="true">
+        <con:name>firstItemBinName</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Product SpecExtId And SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[0]['binName']</con:sourcePath>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>secondItemSalesOrganizationId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[1]['salesOrganizationId']</con:sourcePath>
+        <con:targetType>res_secondItemSalesOrganizationId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>thirdItemSalesOrganizationId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[2]['salesOrganizationId']</con:sourcePath>
+        <con:targetType>res_thirdItemSalesOrganizationId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>fourthItemSalesOrganizationId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[3]['salesOrganizationId']</con:sourcePath>
+        <con:targetType>res_fourthItemSalesOrganizationId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>fifthItemSalesOrganizationId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[4]['salesOrganizationId']</con:sourcePath>
+        <con:targetType>res_fifthItemSalesOrganizationId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>sixthItemSalesOrganizationId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>[5]['salesOrganizationId']</con:sourcePath>
+        <con:targetType>res_sixthItemSalesOrganizationId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display Product By Multi SalesOrganizationId</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_salesOrganizationId1</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrganizationId2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecificationExternalId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_includeLocked</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemProductId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemLockedById</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemLockedByBiItemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemStartSerialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemEndSerialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemQuantity</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemSalesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemSalesOrganizationName</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemSalesOrganizationAddressId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemSalesOrganizationAddress</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemInventoryId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemInventoryName</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemProductSpecificationExternalId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemProductStatus</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_secondItemSalesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_thirdItemSalesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_fourthItemSalesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_fifthItemSalesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_sixthItemSalesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

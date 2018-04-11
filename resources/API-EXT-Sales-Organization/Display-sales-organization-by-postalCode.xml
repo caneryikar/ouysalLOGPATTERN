@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="fff7d926-41e0-465e-a5fc-fcb506e19458" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display sales organization by postalCode" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="fff7d926-41e0-465e-a5fc-fcb506e19458fileName">Display-sales-organization-by-postalCode</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Display sales organization by postalCode" id="02bc1eee-e8d1-48f5-af24-c829731a5d4a">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/salesOrganizationRole" methodName="getSalesOrgByPostalCode" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display sales organization by postalCode" id="796f4492-6346-429d-ae19-bfdcc3b67f7a" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InVzZXItZXh0LThlYTFjYTEzLTg1N2MtNDEzOC04ZWY1LTY3ZDMyMzE0NDAyNSJ9fQ.2Fqh8Huky3-PmlcsPkOytoF9qnUXmqvPyc1E22EhMnXD4IsMJbW2uNfJiA0e0UE0rWrj6KtEyCE1nZ_Rp2L3G9w_CP0N6cB-GC6wROfg9ViLHSjE5Q7NN2VzdHllnj7nnkV9zxIsIhBT8cWA_jTvvcb7IH-WnBhIEuLZkb6aXH4"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="6"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/salesOrganizationRole</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="postalCode" value="${#TestCase#req_postalCode}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>postalCode</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="4b61aa36-3be1-4cf9-974d-5134c1f49a48">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_status</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display sales organization by postalCode</con:sourceStep>
+        <con:sourcePath>['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_firstSoId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display sales organization by postalCode</con:sourceStep>
+        <con:sourcePath>$[0].id</con:sourcePath>
+        <con:targetType>res_firstSoId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_firstExternalId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display sales organization by postalCode</con:sourceStep>
+        <con:sourcePath>$[0].externalId</con:sourcePath>
+        <con:targetType>res_firstExternalId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_firstPartyRoleSpecificationId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display sales organization by postalCode</con:sourceStep>
+        <con:sourcePath>$[0].[partyRoleSpecification].id</con:sourcePath>
+        <con:targetType>res_firstPartyRoleSpecificationId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_fullResponse</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display sales organization by postalCode</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_fullResponse</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_postalCode</con:name>
+      <con:value>postalCode-b7e500a6-80da-4f0d-8018-bc064a9a628e</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>200</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_fullResponse</con:name>
+      <con:value>[{"siteId":"1","externalId":"so-ext-91ac5739-1d5d-403b-bb33-898fc70ec642","party":{"name":"name-ext-b69dc0df-25dd-49ff-8e62-97cf0cedd27a","id":"11"},"partyRoleSpecification":{"name":"spec-ce158974-3000-408b-8ebc-fd5b905ae695","id":"15"},"name":"name-ext-b69dc0df-25dd-49ff-8e62-97cf0cedd27a","status":"Active","id":"14"}]</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_firstSoId</con:name>
+      <con:value>14</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_firstExternalId</con:name>
+      <con:value>so-ext-91ac5739-1d5d-403b-bb33-898fc70ec642</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_firstPartyRoleSpecificationId</con:name>
+      <con:value>15</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

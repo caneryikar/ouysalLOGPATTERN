@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="b3871e2e-03bf-4296-87f0-eb39948ca2b6" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display product status change bi items" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="b3871e2e-03bf-4296-87f0-eb39948ca2b6fileName">Display-product-status-change-bi-items</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Display product status change bi items" id="4658b23f-3db2-4846-b906-1a43970593d6">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/changeProductStatus/{req_biId}/items" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display product status change bi items" id="59835b23-0927-47b4-8ec9-a6d652b81f98" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InU1YWJiZTViMy00YzM5LTRiY2ItODUyMy02YzgyNWUwNDI2MTAifX0.nDpNp5qj8kEDso-CSAfTJrPZnDYlD5KKfKtsFJ27T_uzRQoGqKNRfL7Jg7u9SEQseFsBbjBs4bQmig1gTg1pwMZ2bxspmHcVJvLjTT0ZwuNETbtiBcXFWCTcHxbZS3txUaATHVFDNJ29ax3U26WAjA6YZEX4WY_lFCXCByG2-rg"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="43"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/changeProductStatus/200/items</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="req_biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer response" id="94241861-ee11-4f65-83cb-27cad8c9d28d">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display product status change bi items</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_fullResponse</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product status change bi items</con:sourceStep>
+        <con:targetType>res_fullResponse</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_firstItemQuantity</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product status change bi items</con:sourceStep>
+        <con:sourcePath>$[items].[0].quantity</con:sourcePath>
+        <con:targetType>res_firstItemQuantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_firstItemProductId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product status change bi items</con:sourceStep>
+        <con:sourcePath>$[items].[0].productId</con:sourcePath>
+        <con:targetType>res_firstItemProductId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_firstItemFinalStatus</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display product status change bi items</con:sourceStep>
+        <con:sourcePath>$[items].[0].finalStatus</con:sourcePath>
+        <con:targetType>res_firstItemFinalStatus</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value>1721</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>200</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_fullResponse</con:name>
+      <con:value>{"items":[{"quantity":1,"productId":"41","finalStatus":"Sold","id":"371"}]}</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemQuantity</con:name>
+      <con:value>1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemProductId</con:name>
+      <con:value>41</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemFinalStatus</con:name>
+      <con:value>Sold</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

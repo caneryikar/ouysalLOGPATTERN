@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="d2b26572-8a0d-4af3-817b-b84821bf69b7" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Get product by prod spec ext id and place id and return quantity" searchProperties="true" timeout="10000" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="9a788fc6-9921-41d6-9997-b63802a379fdfileName">getProductByProdSpecExtIdAndProdSerialText</con:setting>
+    <con:setting id="f1b20aee-34be-45cc-8886-0209fb859459fileName">getProductByProdSpecExtIdAndPlaceId</con:setting>
+    <con:setting id="d2b26572-8a0d-4af3-817b-b84821bf69b7fileName">Get-product-by-prod-spec-ext-id-and-place-id-and-return-quantity</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="transfer" name="Property Transfer 2" id="27acb5b7-c10f-42bf-97b7-14a158eec44a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrganizationId</con:name>
+        <con:sourceType>UserSo</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>salesOrganizationId</con:targetType>
+        <con:targetStep>Get product by prod spec ext id and place id</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen" id="befab812-7921-42e5-8bec-7784e0fde1ec">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>import net.sf.json.groovy.*;
+import groovy.json.JsonSlurper;
+
+
+def place = context.expand( '${#TestCase#req_placeId}' )
+
+
+def salesOrganizationId = context.expand( '${Get product by prod spec ext id and place id#salesOrganizationId}' )
+def testStep = testRunner.testCase.testSteps['Get product by prod spec ext id and place id']
+
+if(place.toString()=="1")
+{
+testStep.setPropertyValue("salesOrganizationId","".toString())	
+}</script>
+        </con:configuration>
+        <con:name>place</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Get product by prod spec ext id and place id" id="f3d14a2e-c62e-4df0-b0d6-8e08581b7aef">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/product" methodName="DisplayProductByProductSpecCodeAndPlace" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Get product by prod spec ext id and place id" id="70f87037-5a32-43b3-983c-94a239b5fae5" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/product</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="productSpecificationExternalId" value="${#TestCase#req_prodSpecExtId}"/>
+          <con:entry key="prouductSerialText" value=""/>
+          <con:entry key="productSerialNumber" value=""/>
+          <con:entry key="productSerialText" value=""/>
+          <con:entry key="salesOrganizationId" value=""/>
+          <con:entry key="placeId" value="${#TestCase#req_placeId}"/>
+          <con:entry key="productStatus" value=""/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>placeId</con:entry>
+          <con:entry>productSpecificationExternalId</con:entry>
+          <con:entry>productSpecCode</con:entry>
+          <con:entry>productStatus</con:entry>
+          <con:entry>productSerialNumber</con:entry>
+          <con:entry>productSerialText</con:entry>
+          <con:entry>salesOrganizationId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="4e2d8cdf-587e-4104-ad44-d0adac6504a0">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get product by prod spec ext id and place id</con:sourceStep>
+        <con:sourcePath>$[0]['id']</con:sourcePath>
+        <con:targetType>res_productId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get product by prod spec ext id and place id</con:sourceStep>
+        <con:sourcePath>$[0]['productInformation']['quantity']</con:sourcePath>
+        <con:targetType>res_quantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_placeId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecExtId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_productId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_quantity</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>750e7591-7068-4eb5-be3b-3bdbcac76f2d</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>64ebcd27-82f0-4479-9a3c-db633e16cb06</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>befab812-7921-42e5-8bec-7784e0fde1ec</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="102e2d7b-c4cf-4f53-b777-f08cad671a15" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display product by id and return lockedBy" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="102e2d7b-c4cf-4f53-b777-f08cad671a15fileName">Display-product-by-id-and-return-lockedBy</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="transfer" name="Property Transfer 2" id="32c6b47f-a5d6-47e4-803b-5b43b28b76ac">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrganizationId</con:name>
+        <con:sourceType>UserSo</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>salesOrganizationId</con:targetType>
+        <con:targetStep>Get single product</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Get single product" id="b1ab4a5c-f0d5-4e7c-850e-a1737a8d247c">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/product/{productId}" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Get single product" id="a8395d70-0418-4d2b-8a0c-e9386f6a1395" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="productId" value="${#TestCase#req_productId}"/>
+          <con:entry key="salesOrganizationId" value=""/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>productId</con:entry>
+          <con:entry>salesOrganizationId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="f3368644-0c98-455e-8635-476334fc9816">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get single product</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_id</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Get single product</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>lockedById</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get single product</con:sourceStep>
+        <con:sourcePath>$['lockedBy']['businessInteractionId']</con:sourcePath>
+        <con:targetType>res_lockedByBiId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>lockedByBiItemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get single product</con:sourceStep>
+        <con:sourcePath>$['lockedBy']['businessInteractionItemId']</con:sourcePath>
+        <con:targetType>res_lockedByBiItemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>startSerialNumber</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get single product</con:sourceStep>
+        <con:sourcePath>$['productInformation']['serialNumberRange']['start']</con:sourcePath>
+        <con:targetType>res_startSerialNumber</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>endSerialNumber</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get single product</con:sourceStep>
+        <con:sourcePath>$['productInformation']['serialNumberRange']['end']</con:sourcePath>
+        <con:targetType>res_endSerialNumber</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>quantity</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get single product</con:sourceStep>
+        <con:sourcePath>$['productInformation']['quantity']</con:sourcePath>
+        <con:targetType>res_quantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_productId</con:name>
+      <con:value>20153</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_id</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_lockedByBiId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_lockedByBiItemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecExtId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_startSerialNumber</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_endSerialNumber</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_quantity</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>b1ab4a5c-f0d5-4e7c-850e-a1737a8d247c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="productReservation" path="/productReservation" id="c6ba4410-ca48-465a-8a31-0adac21c56d4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="c6ba4410-ca48-465a-8a31-0adac21c56d4fileName">productReservation</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="add item" path="{biId}/item" id="2c797c96-5533-4787-9833-437a53fb66d8">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:resource name="update item" path="{itemId}" id="7fda69fe-bcca-4666-81e0-30441000a798">
+      <con:settings>
+        <con:setting id="7fda69fe-bcca-4666-81e0-30441000a798fileName">stockOut</con:setting>
+      </con:settings>
+      <con:parameters>
+        <con:parameter>
+          <con:name>biId</con:name>
+          <con:value>biId</con:value>
+          <con:style>TEMPLATE</con:style>
+          <con:default>biId</con:default>
+        </con:parameter>
+        <con:parameter>
+          <con:name>itemId</con:name>
+          <con:value>itemId</con:value>
+          <con:style>TEMPLATE</con:style>
+          <con:default>itemId</con:default>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="Update product reservation item" id="795ebc02-c6f9-4d03-b741-1b50b7c37501" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:request name="Update product reservation item" id="2ba95176-2420-486e-9d4d-0d0948a81967" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>${#Project#Endpoint}</con:endpoint>
+          <con:request>{
+	"fromSalesOrganizationId": "${#TestCase#req_fromSalesOrgId}",
+	"fromPlaceId": "${#TestCase#req_fromPlaceId}",
+	"product":
+	{
+	   "id":"${#TestCase#productId}"
+	},
+	"productInformation":
+	{
+	    "quantity":"${#TestCase#productQuantity}"
+	}
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:method name="Add product reservation item" id="0e0bd296-d42a-41f2-9e76-c95bf57dbd36" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://localhost/erms/v1/productReservation/item">item:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="d6681f3d-9d51-4861-a38c-c97a8ad04eb5" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+	"fromSalesOrganizationId": "${#TestCase#req_fromSalesOrgId}",
+	"fromPlaceId": "${#TestCase#req_fromPlaceId}",
+	"product":
+	{
+	   "id":"${#TestCase#productId}"
+	},
+	"productInformation":
+	{
+	    "quantity":"${#TestCase#productQuantity}"
+	}
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="delete item" path="/{biId}/item/{itemId}" id="2c797c96-5533-4787-9833-437a53fb66d8">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>${#TestCase#biId}</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+      <con:parameter>
+        <con:name>itemId</con:name>
+        <con:value>${#TestCase#itemId}</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>0</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Delete product reservation item" id="2bb7a51d-5d99-4605-ad9a-c3d79535dd97" method="DELETE">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="751315ad-01f7-4fb4-ade0-adf5b1b7ec8d" mediaType="application/json" postQueryString="false">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="itemId" value="${#TestCase#itemId}"/>
+          <con:entry key="biId" value="${#TestCase#biId}"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="submit" path="{biId}/submit" id="353b0c54-86df-4a08-9c0b-0533d8efaa6e">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Submit product reservation interaction" id="af029a81-5ee4-4fda-83a3-f7887bc6cbfd" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Submit product reservation interaction" id="a948d8e9-25d7-46d8-b978-0794c33d0e32" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="cancel" path="{biId}/cancel" id="abe4aab7-4c52-4b15-ae29-469fc314ae51">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value/>
+        <con:style>TEMPLATE</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Cancel product reservation interaction" id="deb5dfba-a49b-4b5c-ae9c-28761b6a4750" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="2e7c6744-3153-4747-bf18-e84baff3783e" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="Display single product reservation interaction" path="{biId}" id="c429127e-f6a6-41ce-b55c-5e58b0076c95">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:resource name="Update reservation duration" path="updateReservationDuration" id="567d4d79-d9ac-4f3b-81af-ff43781bf248">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="Method 1" id="1e0e41b1-8455-4f55-b79c-2548bcb8fd14" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:request name="Request 1" id="160ea072-1248-49a9-960e-22ec5aeb58a0" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>${#Project#Endpoint}</con:endpoint>
+          <con:request>{
+	"reservationPeriod":{
+    	"value": "${#TestCase#reservationPeriodValue}",
+    	"unit":"${#TestCase#reservationPeriodUnit}"
+    }
+}</con:request>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:method name="Display single product reservation interaction" id="ec9c0be4-8264-4410-8afd-878f5befb839" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="22452a76-8150-466c-ae4d-58f0ff27ef66" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="Display product reservation items" path="{biId}/item" id="a09ab133-6eb4-42cd-bb02-82eab21b01b8">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Display product reservation items" id="313e0bad-c5db-4f08-8cf8-9eec020cfccf" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://localhost/erms/v1/productReservation/item">item:Fault</con:element>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+      </con:representation>
+      <con:request name="Request 1" id="6b3ba38f-cae3-4e63-a840-b1a0f0cc344d" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="add item with serial number" path="{biId}/item" id="2c797c96-5533-4787-9833-437a53fb66d8">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Add product reservation item by serial number" id="0e0bd296-d42a-41f2-9e76-c95bf57dbd36" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="d6681f3d-9d51-4861-a38c-c97a8ad04eb5" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+	"product":
+	{
+	   "id":"${#TestCase#productId}"
+	},
+	"productInformation":
+	{
+	    "quantity":"${#TestCase#productQuantity}"
+	},
+	"serialNumber": "${#TestCase#serialNumber}"
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:method name="Create product reservation interaction" id="2c914235-11fa-4a21-934d-08fb9e74759d" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:request name="Request 1" id="7cbeeda4-5ebe-4dd2-87b7-3350ca8b8230" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#Endpoint}</con:endpoint>
+      <con:request>{
+    "type": "com.ericsson.bss.rm.erms.core.entity.dto.bi.product.ProductReservationCreateDTO",
+    "userRoleId": "${#TestCase#userId}",
+    "salesOrganizationRoleId": "${#TestCase#soId}",
+    "reservationPeriod":{
+    	"value": "${#TestCase#reservationPeriodValue}",
+    	"unit":"${#TestCase#reservationPeriodUnit}"
+    },
+	"businessInteractionSpec":{"code": "${#TestCase#biSpecCode"}
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+  <con:method name="Display all product reservation interactions" id="e41edbd2-ace1-4fdd-b9d5-bc13f23f4eaa" method="GET">
+    <con:settings/>
+    <con:parameters/>
+    <con:request name="Request 1" id="fd591520-f4d6-4cfa-9acd-3436b7862750" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>${#Project#Endpoint}</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+</con:resource>

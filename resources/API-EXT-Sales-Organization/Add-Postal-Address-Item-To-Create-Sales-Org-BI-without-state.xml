@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="3ec69bcc-8eca-4342-adac-cb3bea6c025e" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add Postal Address Item To Create Sales Org BI without state" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="89ed5fec-f4d0-4074-a35f-58d5f389e4aefileName">Add-Postal-Address-Item-To-Create-Sales-Org-BI</con:setting>
+    <con:setting id="3ec69bcc-8eca-4342-adac-cb3bea6c025efileName">Add-Postal-Address-Item-To-Create-Sales-Org-BI-without-state</con:setting>
+  </con:settings>
+  <con:testStep type="restrequest" name="Add Postal Address Item To Create Sales Org BI" id="50d2df54-4342-4216-bb0d-28a89bead13b">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/createSalesOrganizationRole/{biId}/postalAddressItems" methodName="addPostalAddressItem" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Add Postal Address Item To Create Sales Org BI" id="1c3eebc6-ec47-4eca-9ed6-3ff66a11788f" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+  "country": "${#TestCase#req_country}",
+  "city": "${#TestCase#req_city}",
+  "street": "${#TestCase#req_street}",
+  "postalCode": "${#TestCase#req_postalCode}",
+  "description": "${#TestCase#req_description}"
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="65b6610a-5dd1-4085-8b0e-1355828b5c09">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Add Postal Address Item To Create Sales Org BI</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_errorMsg</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add Postal Address Item To Create Sales Org BI</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_itemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add Postal Address Item To Create Sales Org BI</con:sourceStep>
+        <con:sourcePath>id</con:sourcePath>
+        <con:targetType>res_itemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_country</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_city</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_street</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_postalCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_description</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_itemId</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

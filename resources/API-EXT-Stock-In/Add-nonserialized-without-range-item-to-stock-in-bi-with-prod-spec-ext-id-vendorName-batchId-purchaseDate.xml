@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="818ee031-36b8-4ae4-9a46-50b7ee23363b" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add nonserialized without range item to stock-in bi with prod spec ext id vendorName batchId purchaseDate" searchProperties="true" timeout="10000" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="6bd1934a-177f-4060-ae9c-cb6238b88203fileName">Add-serialized-item-to-stock--in-business-interaction</con:setting>
+    <con:setting id="817eed1d-b20d-48e7-ade2-9994637cee9dfileName">Add-non-serialized-item-to-stock-in-bi-with-prod-spec-ext-id</con:setting>
+    <con:setting id="1df0a954-3f76-4a4e-bd4b-aa3504f4ccf7fileName">Add-nonserialized-without-range-item-to-stock-in-bi-with-prod-spec-ext-id</con:setting>
+    <con:setting id="818ee031-36b8-4ae4-9a46-50b7ee23363bfileName">Add-nonserialized-without-range-item-to-stock-in-bi-with-prod-spec-ext-id-vendorName-batchId-purchaseDate</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Add nonserialized without range item" id="43899fb2-211f-4024-bdd6-759fd82ebfa3">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockin/{biId}/items" methodName="addSerializedItem" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Add nonserialized without range item" id="942908e4-d9e2-4459-ac4c-a9afc661a11e" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+   "productSpecificationExternalId": "${#TestCase#req_prodSpecExtId}",
+   "placeId": "${#TestCase#req_placeId}",
+   "productStatus":${#TestCase#req_prodStatus},
+   "description": "${#TestCase#req_description}",
+   "quantity": ${#TestCase#req_quantity},
+   "characteristics":    [
+            {
+         "key": "${#TestCase#req_charExtId1}",
+         "value": "${#TestCase#req_charValueExtId1}"
+      }
+   ],
+   "batchId": "${#TestCase#req_batchId}",
+   "vendorName": "${#TestCase#req_vendorName}",
+   "purchaseDate": "${#TestCase#req_purchaseDate}",
+   "isPaired": ${#TestCase#req_isPaired}
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/stockin/biId%3E/items</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="69f050d6-94da-4431-9ad8-ed086083bfce">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add nonserialized without range item</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_itemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add nonserialized without range item</con:sourceStep>
+        <con:sourcePath>$['code']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add nonserialized without range item</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecExtId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_placeId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_description</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_charExtId1</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_charValueExtId1</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serialText</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_itemId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodStatus</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_quantity</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_batchId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_vendorName</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_purchaseDate</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_isPaired</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>207556b2-dc30-4ef3-85b2-390953cf78ad</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="7613a83c-b107-4a7e-a293-db0c8ce1af76" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create product spec w/ dynamic valueType" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="2cd3660f-be6e-47c1-b04f-855eb3fa71cbfileName">Create-product-spec</con:setting>
+    <con:setting id="7613a83c-b107-4a7e-a293-db0c8ce1af76fileName">Create-product-spec-w%2F-dynamic-valueType</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Create product spec" id="80bb69c2-1191-4890-951b-6872921383fc">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/productSpecification" methodName="CreateProductSpecification" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Create product spec" id="bc526390-b1ae-49f1-ade3-a69698edd8d5" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{  
+   "code":"${#TestCase#req_productSpecCode}",
+   "article":"${#TestCase#req_productSpecArticle}",
+   "externalReference":{  
+      "externalId":"${#TestCase#req_productSpecExtId}"
+   },
+   "info":{  
+      "name":"${#TestCase#req_productSpecInfoName}",
+      "description":"${#TestCase#req_productSpecInfoDescription}"
+   },
+   "replicationInfo":{  
+      "isReplicated":false
+   },
+   "returnPeriod":{  
+      "value":1,
+      "unit":"Year"
+   },
+   "serialNumberFormat":"${#TestCase#req_productSpecSerialNumberFormat}",
+   "status":"${#TestCase#req_productSpecStatus}",
+   "valueType":${#TestCase#req_valueType},
+   "versionInfo":{  
+      "versionNumber":1000000
+   },
+   "warrantyPeriod":{  
+      "value":1,
+      "unit":"Year"
+   },
+   "productTrackingType":"${#TestCase#req_productTrackingType}",
+   "isSerialized":"${#TestCase#req_productSpecIsSerialized}",
+   "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO"
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/productSpecification</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="0d90771c-5f5e-49c4-b039-f2da68d00e25" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>201</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer productSpecId" id="64957d1e-086e-4079-be55-60e529ebffb6">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productSpecId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Create product spec</con:sourceStep>
+        <con:sourcePath>id</con:sourcePath>
+        <con:targetType>res_productSpecId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>prodSpecCode</con:name>
+        <con:sourceType>RawRequest</con:sourceType>
+        <con:sourceStep>Create product spec</con:sourceStep>
+        <con:sourcePath>code</con:sourcePath>
+        <con:targetType>res_productSpecCode</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>prodSpecArticle</con:name>
+        <con:sourceType>RawRequest</con:sourceType>
+        <con:sourceStep>Create product spec</con:sourceStep>
+        <con:sourcePath>article</con:sourcePath>
+        <con:targetType>res_productSpecArticle</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>prodSpecExtId</con:name>
+        <con:sourceType>RawRequest</con:sourceType>
+        <con:sourceStep>Create product spec</con:sourceStep>
+        <con:sourcePath>externalReference.externalId</con:sourcePath>
+        <con:targetType>res_productSpecExtId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Create product spec</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_productSpecCode</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecArticle</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecExtId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecStatus</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_productTrackingType</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_productSpecId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecIsSerialized</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_productSpecCode</con:name>
+      <con:value>${#TestCase#req_productSpecCode}</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_productSpecArticle</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_productSpecExtId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecInfoName</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecInfoDescription</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecSerialNumberFormat</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_valueType</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>ad244f3c-d0c5-4669-85e6-be9b83720fd2</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

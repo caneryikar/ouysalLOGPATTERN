@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="f5cd2c47-0a79-4be1-ad97-bbfcc802f126" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create stockin box v2" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f5cd2c47-0a79-4be1-ad97-bbfcc802f126fileName">Create-stockin-box-v2</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Method 1 - Request 1 v2" id="b1e8c3de-f78d-4be7-9a0e-eeed216b02a4">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockin" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Method 1 - Request 1 v2" id="8a92619a-9d54-4fb7-bbfb-35c6f6a3fe1a" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJFUk1TX0FETUlOX0F1dGh6UHJvZmlsZSIsInZlcnNpb24iOiJ2MSIsInBhcnR5X2lkIjoiMTIzIiwiZXh0ZXJuYWxfdXNlcm5hbWUiOiJ1c2VyLWJkZGY3Zjg4LTZiNWYtNDdhOC1hNDg4LWJhM2Q2M2M3ZmVlOCJ9fQ.nLM8JMR86J9lm0ARUPFgpwhRwlF7l9Gu0_oAdBxYNIca0szpMVFou1uJ0YJqDN3P86uDE5VlISPvDnuNuCz6obPYiGxnrtTn5zvaq2rMHmEPU5czp782p7QV6bMFvuiZLmqTOvtgoT4IupeEIIrvg2dcPirrYb5_1VuHqg5W2BQ"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="1293"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+    "type": "com.ericsson.bss.erms.entity.dto.bi.CreateStockInBIDTO",
+    "userRoleId": "${#TestCase#userId}",
+    "createdForSalesOrganizationRoleId": "${#TestCase#salesOrganizationId}",
+    "fromUserId": "${#TestCase#userId}",
+    "fromOrganizationId": "${#TestCase#salesOrganizationId}",
+    "creatorUserRoleId": "${#TestCase#userId}",
+    "creatorSalesOrganizationRoleId": "${#TestCase#salesOrganizationId}",
+	"businessInteractionSpec":{"code":"STCKINBUNDLEBISPEC"},
+	"createdByUserRoleId": "${#TestCase#userId}",
+     "createdBySalesOrganizationId": "${#TestCase#salesOrganizationId}"
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/stockin</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="947bb079-b155-4477-bc36-54dd56b66869">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Method 1 - Request 1 v2</con:sourceStep>
+        <con:sourcePath>id</con:sourcePath>
+        <con:targetType>res_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Method 1 - Request 1 v2</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Method 1 - Request 1 v2</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>userId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>salesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>fromUserId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>fromSalesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>creatorUserRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>createrSalesOrganizationId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_biId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value>DESERIALIZATION_ERRROR</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>b1e8c3de-f78d-4be7-9a0e-eeed216b02a4</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="a3ff1ffb-6f98-48ea-858c-989af0078ab0" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="SO UPDATE - Create" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="a3ff1ffb-6f98-48ea-858c-989af0078ab0fileName">SO-UPDATE---Create</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="create - Request 1" id="13ac8140-6292-4fae-8a80-7271e28a374e">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/updateSalesOrganizationRole" methodName="create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="create - Request 1" id="da7d80c2-0c45-4ca3-a637-d7debf4e6970" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+    "businessInteractionSpecificationCode" : "${#TestCase#req_biSpecCode}",
+    "salesOrganizationRoleId" : "${#TestCase#req_salesOrgRoleId}",
+    "userRoleId" : "${#TestCase#req_userRoleId}",
+    "newName": "${#TestCase#req_newName}",
+    "relatedSalesOrganizationRoleId": "${#TestCase#req_relatedSalesOrgRoleId}",
+    "salesOrganizationDescription": "${#TestCase#req_newSalesOrgDesc}",
+    //"salesOrganizationRoleSpecificationId":"${#TestCase#req_salesOrgRoleSpecId}",
+    "externalId": "${#TestCase#req_newExternalId}"
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="0c1af385-2291-4aea-a6bd-73162e82bad0">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>create - Request 1</con:sourceStep>
+        <con:sourcePath>['id']</con:sourcePath>
+        <con:targetType>res_id</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpStatus</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>create - Request 1</con:sourceStep>
+        <con:sourcePath>['status']</con:sourcePath>
+        <con:targetType>res_httpStatus</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>create - Request 1</con:sourceStep>
+        <con:sourcePath>['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biSpecCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrgRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_newName</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedSalesOrgRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_newSalesOrgDesc</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrgRoleSpecId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_newExternalId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_httpStatus</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_id</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

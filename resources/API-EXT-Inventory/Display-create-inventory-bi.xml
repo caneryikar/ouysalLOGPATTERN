@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="9c7ee337-4cad-4eec-bebc-4905decb84c6" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display create inventory bi" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="9c7ee337-4cad-4eec-bebc-4905decb84c6fileName">Display-create-inventory-bi</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Display create inventory bi" id="6f73307e-730e-4c6c-b2e8-8c7913f336d8">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/createInventory/{biId}" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display create inventory bi" id="451cb5fc-7fc7-4d66-a6c7-6cc126113ec1" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1NTE5NTkxNTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InVzZXItNjg3OTE5YjktYzg4OC00MGE5LWIzMmItNGVjMGQ0Zjk2ODhhIn19.OA9-PfTOYPj97t9lL-lMJy6h4Tx-3fQWugfZa1ZwNphtkcVfP6U2D4vVJ3Lk1t571zBXjwNYcqHGPCV3FL30iT2-7ndaLwhM2210H1L_z_wXMjd809KKZNtebBd82CHEV1FFu2UpEwWJZ7oKFORvo9iDl0t2t7PyS9TaoxBMios"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="15"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/createInventory/56</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer response" id="8c9b2798-aa5d-40d4-89ad-cc9a82039669">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>description</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display create inventory bi</con:sourceStep>
+        <con:sourcePath>$['description']</con:sourcePath>
+        <con:targetType>res_description</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>mainState</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display create inventory bi</con:sourceStep>
+        <con:sourcePath>$['mainState']</con:sourcePath>
+        <con:targetType>res_mainState</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>state</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display create inventory bi</con:sourceStep>
+        <con:sourcePath>$['state']</con:sourcePath>
+        <con:targetType>res_state</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpCode</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display create inventory bi</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_httpCode</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display create inventory bi</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>reasonCode</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display create inventory bi</con:sourceStep>
+        <con:sourcePath>$['reasonCode']</con:sourcePath>
+        <con:targetType>res_reasonCode</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display create inventory bi</con:sourceStep>
+        <con:sourcePath>$['code']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">231</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_description</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Inventory is created at [name-sales-4ca6eff7-512f-4319-becf-e20d36d74ae8] by [UserName UserLastName]</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_mainState</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Closed</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_state</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Closed</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_httpCode</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">200</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_reasonCode</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Code-9f12df14-6188-44fa-a726-ee3d16da40c0</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>8c9b2798-aa5d-40d4-89ad-cc9a82039669</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

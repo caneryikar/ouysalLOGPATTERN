@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="874eeb1a-3f0c-4601-95a7-6522c7479b61" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create, add item and submit inventory" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="874eeb1a-3f0c-4601-95a7-6522c7479b61fileName">Create%2C-add-item-and-submit-inventory</con:setting>
+  </con:settings>
+  <con:testStep type="properties" name="Properties" id="35db59da-5859-4fd4-a11e-869a1c9c6cab">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>biSpecCode</con:name>
+          <con:value>INVROLEBISPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>inventoryExtId</con:name>
+          <con:value>inventoryExtId-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>inventoryName</con:name>
+          <con:value>inventoryName-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>inventorySpecName</con:name>
+          <con:value>inventorySpecName-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>organizationName</con:name>
+          <con:value>organizationName-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set create inventory role spec" id="17c4344c-f0d6-4e3f-b013-cf29742c272b">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventoryRoleSpecName</con:name>
+        <con:sourceType>inventorySpecName</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_name</con:targetType>
+        <con:targetStep>Create inventory role spec</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventoryType</con:name>
+        <con:sourceType>req_inventoryType</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_inventoryType</con:targetType>
+        <con:targetStep>Create inventory role spec</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create inventory role spec" id="7be2ecff-4f92-4e6c-b234-bf06dc347452">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>d3c553c2-ee0e-4673-9378-de9f389297e5</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_name</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_inventoryType</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_httpCode</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_id</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set create inventory bi" id="8d70e23a-3c63-4b21-8942-1de8a484a9c7">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userId</con:name>
+        <con:sourceType>req_userId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userId</con:targetType>
+        <con:targetStep>Create inventory bi</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>req_soId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_soId</con:targetType>
+        <con:targetStep>Create inventory bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpecCode</con:name>
+        <con:sourceType>biSpecCode</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_biSpecCode</con:targetType>
+        <con:targetStep>Create inventory bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create inventory bi" id="6222a0af-ee3e-41a6-a50b-aeae42196a70">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>e6b86268-7363-4c67-95ba-e1e694536490</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_soId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_error</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_httpCode</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_error</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set add inventory item" id="8ad79a2c-31e3-4ee0-ba47-a26de9e1afb8">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventoryExtId</con:name>
+        <con:sourceType>inventoryExtId</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_invExtId</con:targetType>
+        <con:targetStep>Add inventory item</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventoryName</con:name>
+        <con:sourceType>inventoryName</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_invName</con:targetType>
+        <con:targetStep>Add inventory item</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soExtId</con:name>
+        <con:sourceType>req_soExtId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_soExtId</con:targetType>
+        <con:targetStep>Add inventory item</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventorySpecId</con:name>
+        <con:sourceType>res_id</con:sourceType>
+        <con:sourceStep>Create inventory role spec</con:sourceStep>
+        <con:targetType>req_invSpecId</con:targetType>
+        <con:targetStep>Add inventory item</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>organizationName</con:name>
+        <con:sourceType>organizationName</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_orgName</con:targetType>
+        <con:targetStep>Add inventory item</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create inventory bi</con:sourceStep>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add inventory item</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add inventory item" id="074605dc-fc87-46a3-9e08-d6e599cbcfd5">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>6f850a54-86b6-45ae-a0a2-60a76be6cc1c</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_invExtId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_invName</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_soExtId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_invSpecId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_orgName</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_error</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_biId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_invExtId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_invName</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_httpCode</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_error</con:entry>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_invExtId</con:entry>
+        <con:entry>res_invName</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set submit inventory bi" id="c55f3732-4119-4972-9be8-9dd98f1cfecd">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create inventory bi</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit inventory bi</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit inventory bi" id="a2065eef-4eef-46ac-89a0-1cbfe357e18f">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>2059010d-dd3c-4067-b03b-3bc85443961d</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_error</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_biId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_httpCode</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_error</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set display inventory by ext id" id="4d39bb28-0db0-4ff1-95e5-ba11aeaeb6ed">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>extId</con:name>
+        <con:sourceType>res_invExtId</con:sourceType>
+        <con:sourceStep>Add inventory item</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_externalId</con:targetType>
+        <con:targetStep>Display inventory by ext id</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display inventory by ext id" id="2a8833e6-199a-4bf3-9316-942d7705cd90">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>d3ae51bf-b286-44b3-8aa7-6c3dcb4119d2</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_externalId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_status</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_name</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_type</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_httpCode</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_inventoryId</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_inventoryId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set display inventory place" id="be2ff777-8a24-4c34-97cb-84d2cb34d587">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventoryId</con:name>
+        <con:sourceType>res_inventoryId</con:sourceType>
+        <con:sourceStep>Display inventory by ext id</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_inventoryId</con:targetType>
+        <con:targetStep>Display inventory place</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display inventory place" id="5216df82-5ac7-48d9-b65c-6e25b03e4546">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>c3a7fb6a-7952-4c39-bf12-273179ca335d</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_inventoryId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_placeId</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_placeId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer response" id="3ea07dfb-bc3b-4d17-ad9d-69a3170f83a2">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>req_biId</con:sourceType>
+        <con:sourceStep>Submit inventory bi</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventorySpecId</con:name>
+        <con:sourceType>res_id</con:sourceType>
+        <con:sourceStep>Create inventory role spec</con:sourceStep>
+        <con:targetType>res_inventorySpecId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventoryId</con:name>
+        <con:sourceType>res_inventoryId</con:sourceType>
+        <con:sourceStep>Display inventory by ext id</con:sourceStep>
+        <con:targetType>res_inventoryId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>placeId</con:name>
+        <con:sourceType>res_placeId</con:sourceType>
+        <con:sourceStep>Display inventory place</con:sourceStep>
+        <con:targetType>res_placeId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_userId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_soId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_soExtId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_inventoryType</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_inventorySpecId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_inventoryId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_placeId</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>5216df82-5ac7-48d9-b65c-6e25b03e4546</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

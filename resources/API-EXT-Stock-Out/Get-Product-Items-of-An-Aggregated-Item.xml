@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="958fdaa9-72cf-4f56-b70d-8aaf8a9d661c" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Get Product Items of An Aggregated Item" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="958fdaa9-72cf-4f56-b70d-8aaf8a9d661cfileName">Get-Product-Items-of-An-Aggregated-Item</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Get Product Items of An Aggregated Item" id="4d03ce93-9269-4ce6-ad78-24878d5c89cb">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockout/{biId}/aggregatedItems/{aggregatedItemId}/items" methodName="getProductItemsOfAggregatedItem" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Get Product Items of An Aggregated Item" id="c02a1a96-5e06-4203-8ebf-5af814c2d716" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InVjNmM4MWJiYS1mYjdhLTQzNTctOWQzYy1lNTJlYWIyNmExOTgifX0.me-zqFt0QkUM7KVNWdWxoWFc0E6eTsWIcFr_zgX0a5AwgtTFs4wMUqpnWOkCE8FNbJ8id7WZoioXu4dfgyiENPUzXj9BhWFl0DJWyn323NcExqM3dXRVkIFjdqpHCGn4a0ZE1oESnsQSaqKZvJXSJz8yxi1O2DP_Kji4B9NwhPw"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="19"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/stockout/671/aggregatedItems/296/items</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="aggregatedItemId" value="${#TestCase#req_aggregatedItemId}"/>
+          <con:entry key="biId" value="${#TestCase#req_biId}"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="4940806c-172a-4744-8e16-46a998ad1b2e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpStatus</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:sourcePath>['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstProductId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:sourcePath>$['items'][0][product].id</con:sourcePath>
+        <con:targetType>res_firstProductId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstQuantity</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:sourcePath>$['items'][0][productInformation].quantity</con:sourcePath>
+        <con:targetType>res_firstQuantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstStarSerialNumber</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:sourcePath>$['items'][0][productInformation][serialNumberRange].start</con:sourcePath>
+        <con:targetType>res_firstStarSerialNumber</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:sourcePath>$['items'][0].id</con:sourcePath>
+        <con:targetType>res_firstItemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>secondProductId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:sourcePath>$['items'][1][product].id</con:sourcePath>
+        <con:targetType>res_secondProductId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>secondQuantity</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:sourcePath>$['items'][1][productInformation].quantity</con:sourcePath>
+        <con:targetType>res_secondQuantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>secondStarSerialNumber</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:sourcePath>$['items'][1][productInformation][serialNumberRange].start</con:sourcePath>
+        <con:targetType>res_secondStarSerialNumber</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>secondItemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:sourcePath>$['items'][1].id</con:sourcePath>
+        <con:targetType>res_secondItemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>thirdProductId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:sourcePath>$['items'][2][product].id</con:sourcePath>
+        <con:targetType>res_thirdProductId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>thirdQuantity</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:sourcePath>$['items'][2][productInformation].quantity</con:sourcePath>
+        <con:targetType>res_thirdQuantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>thirdStarSerialNumber</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:sourcePath>$['items'][2][productInformation][serialNumberRange].start</con:sourcePath>
+        <con:targetType>res_thirdStarSerialNumber</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false">
+        <con:name>thirdItemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:sourcePath>$['items'][2].id</con:sourcePath>
+        <con:targetType>res_thirdItemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath xsi:nil="true"/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fullResponse</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Product Items of An Aggregated Item</con:sourceStep>
+        <con:targetType>res_fullResponse</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_aggregatedItemId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstProductId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstQuantity</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstStarSerialNumber</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_secondProductId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_secondQuantity</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_secondStarSerialNumber</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_secondItemId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_thirdProductId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_thirdQuantity</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_thirdStarSerialNumber</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_thirdItemId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_fullResponse</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

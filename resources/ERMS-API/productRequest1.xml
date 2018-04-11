@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="IncomingPoductRequest" path="/incomingProductRequest" id="f71ffd30-c2d1-4808-9dfc-28c407ddf054" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f71ffd30-c2d1-4808-9dfc-28c407ddf054fileName">productRequest1</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="GetFulfillmentBiId" path="details" id="f7157bfd-0a5f-4394-b01b-760f1c264ab7">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>createdBySalesOrganizationId</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+      <con:parameter>
+        <con:name>createdByUserRoleId</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+      <con:parameter>
+        <con:name>createdForSalesOrganizationRoleId</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getBiId" id="a3fc2231-329f-41da-9551-275aaf5a958d" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>400</con:status>
+        <con:params/>
+        <con:element xmlns:det="http://localhost/erms/v1/incomingProductRequest/details">det:Fault</con:element>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="d31f2d29-8259-4a46-95ba-7f32ce41e9e4" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="createdBySalesOrganizationId" value="value"/>
+          <con:entry key="createdForSalesOrganizationRoleId" value="value"/>
+          <con:entry key="createdByUserRoleId" value="value"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>createdBySalesOrganizationId</con:entry>
+          <con:entry>createdByUserRoleId</con:entry>
+          <con:entry>createdForSalesOrganizationRoleId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+</con:resource>

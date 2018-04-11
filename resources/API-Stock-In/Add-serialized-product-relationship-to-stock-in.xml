@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="f99121bf-b8da-4c2f-b023-d8d2594584a3" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add serialized product relationship to stock in" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f99121bf-b8da-4c2f-b023-d8d2594584a3fileName">Add-serialized-product-relationship-to-stock-in</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Add serialized product relationship to stock in" id="137df24d-c2a5-4b44-98e3-f0878622a7e6">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockin/{biId}/serialProductRelationship" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Add serialized product relationship to stock in" id="82f00bed-c761-4239-a06d-9157c9cfb1e0" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+  "productSpecification": {
+    "id": ${#TestCase#req_prodSpecId},
+    "code": "${#TestCase#req_prodSpecCode}",
+    "article": "${#TestCase#req_prodSpecArticle}",
+    "externalReference": {
+      "externalId": "${#TestCase#req_prodSpecExtId}"
+    },
+    "info": {
+      "name": "${#TestCase#req_prodSpecName}",
+      "description": "${#TestCase#req_prodSpecDescription}"
+    },
+    "replicationInfo": {
+      "isReplicated": ${#TestCase#req_isReplicated}
+    },
+    "returnPeriod": {
+      "value": ${#TestCase#req_returnPeriodValue},
+      "unit": "${#TestCase#req_returnPeriodUnit}"
+    },
+    "serialNumberFormat": "${#TestCase#req_serialNumberFormat}",
+    "status": "${#TestCase#req_status}",
+    "valueType": ${#TestCase#req_valueType},
+    "versionInfo": {
+      "versionNumber": ${#TestCase#req_versionInfoNumber}
+    },
+    "warrantyPeriod": {
+      "value": ${#TestCase#req_warrantyPeriodValue},
+      "unit": "${#TestCase#req_warrantyPeriodUnit}"
+    },
+    "productTrackingType": "${#TestCase#req_productTrackingType}",
+    "isSerialized": ${#TestCase#req_isSerialized},
+    "type": "com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO"
+  },
+  "serialNumber": "${#TestCase#req_serialNumber}",
+  "relatedProductSpecification": {
+    "id": ${#TestCase#req_relatedProductSpecId},
+    "code": "${#TestCase#req_relatedProductSpecCode}",
+    "article": "${#TestCase#req_relatedProductSpecArticle}",
+    "externalReference": {
+      "externalId": "${#TestCase#req_relatedProductSpecExtId}"
+    },
+    "info": {
+      "name": "${#TestCase#req_relatedProductSpecName}",
+      "description": "${#TestCase#req_relatedProductSpecDescription}"
+    },
+    "replicationInfo": {
+      "isReplicated": ${#TestCase#req_isRelatedProductReplicated}"
+    },
+    "returnPeriod": {
+      "value": ${#TestCase#req_relatedReturnPeriodValue},
+      "unit": "${#TestCase#req_relatedReturnPeriodUnit}"
+    },
+    "serialNumberFormat": "${#TestCase#req_relatedSerialNumberFormat}",
+    "status": "${#TestCase#req_relatedStatus}",
+    "valueType": ${#TestCase#req_relatedValueType},
+    "versionInfo": {
+      "versionNumber": ${#TestCase#req_relatedVersionNumber}
+    },
+    "warrantyPeriod": {
+      "value": ${#TestCase#req_relatedWarrantyNumberValue},
+      "unit": "${#TestCase#req_relatedWarrantyNumberUnit}"
+    },
+    "productTrackingType": "${#TestCase#req_relatedProductTrackingType}",
+    "isSerialized": ${#TestCase#req_isRelatedSerialized},
+    "type": "com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO"
+  },
+  "relatedSerialNumber": "${#TestCase#req_relatedSerialNumber}",
+  "userRoleId": ${#TestCase#req_userRoleId},
+  "salesOrganizationRoleId": ${#TestCase#req_salesOrganizationRoleId}
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="42c355fc-a0ea-4a16-b34e-f6435b683aed">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>relationId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add serialized product relationship to stock in</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_relationId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Add serialized product relationship to stock in</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecArticle</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecExtId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecName</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecDescription</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_isReplicated</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_returnPeriodValue</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_returnPeriodUnit</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_serialNumberFormat</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_status</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_valueType</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_versionInfoNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_warrantyPeriodValue</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_warrantyPeriodUnit</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productTrackingType</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_isSerialized</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_serialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedProductSpecId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedProductSpecCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedProductSpecArticle</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedProductSpecExtId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedProductSpecName</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedProductSpecDescription</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_isRelatedProductReplicated</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedReturnPeriodValue</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedReturnPeriodUnit</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedSerialNumberFormat</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedStatus</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedValueType</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedVersionNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedWarrantyNumberValue</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedWarrantyNumberUnit</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedProductTrackingType</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_isRelatedSerialized</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_relatedSerialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrganizationRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_relationId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

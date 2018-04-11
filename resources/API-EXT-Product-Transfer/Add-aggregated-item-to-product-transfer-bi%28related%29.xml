@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="8ab362ae-eb6f-4437-92d6-2a546a188740" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add aggregated item to product transfer bi(related)" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="8ab362ae-eb6f-4437-92d6-2a546a188740fileName">Add-aggregated-item-to-product-transfer-bi%28related%29</con:setting>
+  </con:settings>
+  <con:testStep type="restrequest" name="RelatedAggregated - Request 1" id="2a3ffb3a-7aad-4752-b6ad-e6ed36ba40e3">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/productTransfer/{biId}/aggregatedItems" methodName="RelatedAggregated" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="RelatedAggregated - Request 1" id="1c73b4e4-ed66-43c3-9fda-d308a3b92ef8" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+   "externalSystem":"${#TestCase#req_externalSystem}",
+   "productSpecificationExternalId":"${#TestCase#req_specExtId}",
+   "placeId":"${#TestCase#req_placeId}",
+   "quantity":"${#TestCase#req_quantity}",
+   "status":"${#TestCase#req_status}",
+   "characteristicList":[
+	    {  
+         "key":"${#TestCase#req_charUseExt1}",
+         "value":"${#TestCase#req_charValueExt1}"
+      },
+      {  
+         "key":"${#TestCase#req_charUseExt2}",
+         "value":"${#TestCase#req_charValueExt2}"
+      },
+      {  
+         "key":"${#TestCase#req_charUseExt3}",
+         "value":"${#TestCase#req_charValueExt3}"
+      }
+   ],
+   "toSalesOrganizationId":"${#TestCase#req_toSalesOrgId}",
+   "toPlaceId":"${#TestCase#req_toPlaceId}"
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="97d57520-bb0e-4343-92b4-466f7dc50594">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>headerCode</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep xsi:nil="true"/>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep xsi:nil="true"/>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep xsi:nil="true"/>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_itemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>response</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep xsi:nil="true"/>
+        <con:sourcePath/>
+        <con:targetType>response</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_externalSystem</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_placeId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_quantity</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_status</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_toSalesOrgId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_toPlaceId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value>404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_itemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>response</con:name>
+      <con:value>{"code":"404","description":"HTTP 404 Not Found","errorDetails":"HTTP 404 Not Found","errorMessage":"404","httpStatusCode":"404","httpStatusCodeDescription":"HTTP 404 Not Found"}</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_charUseExt1</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_charUseExt2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_charUseExt3</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_charValueExt1</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_charValueExt2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_charValueExt3</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_specExtId</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>2a3ffb3a-7aad-4752-b6ad-e6ed36ba40e3</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

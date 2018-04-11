@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="d4936202-4b6a-4a99-b237-bdc40f239526" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create and add item payment business interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="d4936202-4b6a-4a99-b237-bdc40f239526fileName">Create-and-add-item-payment-business-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="transfer" name="Property Transfer" id="361768da-4c36-43eb-85e2-30dab577df76">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>req_userRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create payment business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>req_salesOrgRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_salesOrganizationRoleId</con:targetType>
+        <con:targetStep>Create payment business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpec</con:name>
+        <con:sourceType>req_biSpec</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_biSpec</con:targetType>
+        <con:targetStep>Create payment business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create payment business interaction" id="fe72ad8e-3948-4f2e-aefc-08dd5cdcb492">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a21d52e7-a67e-4d14-8ec6-72d9aff2dacc</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrganizationRoleId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpec</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_note</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 2" id="94015331-218d-4eff-94cf-70e878ad9e5e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transferBiId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create payment business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add item to payment business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>paymentType</con:name>
+        <con:sourceType>req_paymentType</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_paymentType</con:targetType>
+        <con:targetStep>Add item to payment business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemOrder</con:name>
+        <con:sourceType>req_itemOrder</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_itemOrder</con:targetType>
+        <con:targetStep>Add item to payment business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>creditCardNumber</con:name>
+        <con:sourceType>req_creditCartNumber</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_creditCardNumber</con:targetType>
+        <con:targetStep>Add item to payment business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>bank</con:name>
+        <con:sourceType>req_bank</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_bank</con:targetType>
+        <con:targetStep>Add item to payment business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>chequeNumber</con:name>
+        <con:sourceType>req_chequeNumber</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_chequeNumber</con:targetType>
+        <con:targetStep>Add item to payment business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transactionRoundedAmount</con:name>
+        <con:sourceType>req_transactionRoundedAmount</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_transactionRoundedAmount</con:targetType>
+        <con:targetStep>Add item to payment business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transactionNotRoundedAmount</con:name>
+        <con:sourceType>req_transactionNotRoundedAmount</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_transactionNotRoundedAmount</con:targetType>
+        <con:targetStep>Add item to payment business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transactionCurrency</con:name>
+        <con:sourceType>req_transactionCurrency</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_transactionCurrency</con:targetType>
+        <con:targetStep>Add item to payment business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>convertedRoundedAmount</con:name>
+        <con:sourceType>req_convertedRoundedAmount</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_convertedRoundedAmount</con:targetType>
+        <con:targetStep>Add item to payment business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>convertedNotRoundedAmount</con:name>
+        <con:sourceType>req_convertedNotRoundedAmount</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_convertedNotRoundedAmount</con:targetType>
+        <con:targetStep>Add item to payment business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>convertedCurrency</con:name>
+        <con:sourceType>req_convertedCurrency</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_convertedCurrency</con:targetType>
+        <con:targetStep>Add item to payment business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>setBiIdToTestCaseProperty</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create payment business interaction</con:sourceStep>
+        <con:targetType>res_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add item to payment business interaction" id="91e40e70-f9ae-48cf-8856-41db59cc8274">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>af005648-7539-49a8-8bfb-f99b7f11d8cb</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_paymentType</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_itemOrder</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_creditCardNumber</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_bank</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_chequeNumber</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionRoundedAmount</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionNotRoundedAmount</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionCurrency</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedRoundedAmount</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedNotRoundedAmount</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedCurrency</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionDate</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties/>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 3" id="12eebe01-0dad-4255-b170-fbbbb04ae7d7">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>res_code</con:sourceType>
+        <con:sourceStep>Add item to payment business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>Add item to payment business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrgRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_biSpec</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_paymentType</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_itemOrder</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_creditCartNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_bank</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_chequeNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_transactionRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_transactionNotRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_transactionCurrency</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_convertedRoundedAmount</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_convertedNotRoundedAmount</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_convertedCurrency</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_biId</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

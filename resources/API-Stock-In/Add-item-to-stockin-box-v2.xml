@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="2c997bae-7044-4d1b-a910-1e55c583ef92" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add item to stockin box v2 step1" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f5cd2c47-0a79-4be1-ad97-bbfcc802f126fileName">Create-stockin-box-v2</con:setting>
+    <con:setting id="2c997bae-7044-4d1b-a910-1e55c583ef92fileName">Add-item-to-stockin-box-v2</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Method add item - Request 1 v2" id="199204e9-557a-461e-8fae-350121bfe4d3">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockin/{biId}/item" methodName="Method add item" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Method add item - Request 1 v2" id="7233cc34-5501-4835-b147-812710f67f91" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJFUk1TX0FETUlOX0F1dGh6UHJvZmlsZSIsInZlcnNpb24iOiJ2MSIsInBhcnR5X2lkIjoiMTIzIiwiZXh0ZXJuYWxfdXNlcm5hbWUiOiJ1c2VyLTFhOGJmYjBkLWE4ZWEtNDAyYi05MTIwLWVmNmIyMWYyMDhmYiJ9fQ.WluxxBUcYOlgMvXGHyRC5-pyx36ZGHL81I5QcUIISTTJlPyQI-yu1dVtZn1MZlR71-8BP6PWGG6t3fjYdhDFZKyqr7BiRBKpBRPLj3OyB_PiUbmRQ0MIGW5XqU0d5Xec43HujbksXgWqgnvolEtEgEQuQLFp6zfz7Myr2R3gbhQ"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="283"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{  
+   "businessInteractionId":"${#TestCase#req_biId}",
+   "productInformation":{  
+      "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.ProductInformationDTO",
+      "productSpecification":{  
+         "id":"${#TestCase#req_productSpecId}",
+         "code":"${#TestCase#req_productSpecCode}",
+         "article":"${#TestCase#req_productSpecArticle}",
+         "externalReference":{  
+            "externalId":"${#TestCase#req_productSpecExtId}"
+         },
+         "info":{  
+            "name":"mybox1",
+            "description":"mybox1"
+         },
+         "status":"Active",
+         "productTrackingType":"${#TestCase#req_productTrackingType}",
+         "productSpecType":"Box",
+         "isSerialized":true,
+         "dynamicMap":{  
+
+         },
+         "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.BoxProductSpecDTO",
+         "characteristicList":[  
+
+         ]
+      },
+      "quantity":"${#TestCase#req_quantity}",
+      "startSerialNumber":"${#TestCase#req_startSerialNumber}",
+      "serialText":"${#TestCase#req_serialText}",
+      "endSerialNumber":"${#TestCase#req_endSerialNumber}",
+      "status":1,
+      "characteristicDescription":"",
+      "description":"mybox1",
+      "batchId":"123123"
+   },
+   "toPartyRoleId":"${#TestCase#req_soId}",
+   "characteristicValues":[  
+
+   ],
+   "type":"com.ericsson.bss.rm.erms.core.entity.dto.bi.gen2.stockin.CreateBoxStockInBIItemDTO",
+   "toPlaceId":"${#TestCase#req_placeId}",
+   "userRoleId":"${#TestCase#req_userId}",
+   "salesOrganizationRoleId":"${#TestCase#req_soId}"
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/stockin/item</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="eb485de4-85e9-476b-a95b-ba962001fb56">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Method add item - Request 1 v2</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Method add item - Request 1 v2</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>response</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Method add item - Request 1 v2</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>response</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>response</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serialText</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_placeId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_userId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_soId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecCode</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value>404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecArticle</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecExtId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_productTrackingType</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_startSerialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_endSerialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_quantity</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>eb485de4-85e9-476b-a95b-ba962001fb56</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>199204e9-557a-461e-8fae-350121bfe4d3</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

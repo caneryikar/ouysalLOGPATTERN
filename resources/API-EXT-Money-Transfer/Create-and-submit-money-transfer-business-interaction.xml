@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="a02d3ba3-9b0f-422e-a585-6faa896f640a" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Create and add item and submit money transfer business interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="a02d3ba3-9b0f-422e-a585-6faa896f640afileName">Create-and-submit-money-transfer-business-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="calltestcase" name="Create money transfer business interaction" id="cc845105-6567-429c-80ce-2a88d0c64780">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a62f64ed-8854-4137-92dc-6a6a778fdc60</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>${#TestCase#req_userRoleId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrganizationRoleId</con:name>
+          <con:value>${#TestCase#req_selasOrganizationRoleId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpec</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>10276</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_biId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property transfer test step res_biId to test case req_biId" id="fef6cf26-3016-4ce5-b651-175b458a6729">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create money transfer business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create money transfer business interaction item" id="6d249fb0-7c31-4c15-abc7-0316c4fd1107">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ecab067c-280d-4767-8723-3aa3e2032b8f</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>${#TestCase#req_biId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromAccountId</con:name>
+          <con:value>${#TestCase#req_fromAccountId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toAccountId</con:name>
+          <con:value>${#TestCase#req_toAccountId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_currency</con:name>
+          <con:value>${#TestCase#req_currency}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_roundedAmount</con:name>
+          <con:value>${#TestCase#req_roundedAmount}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>404</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_notRoundedAmountId</con:name>
+          <con:value>${#TestCase#req_notRoundedAmount}</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit create money transfer business interaction" id="b94c4aa2-2a93-4177-ab0f-49fa253436e8">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>18056452-99e8-45b5-8fcd-29f9985f9310</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>${#TestCase#req_biId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_biId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property transfer test step res_biId to test case res_biId" id="edb7687e-ff4a-4076-95c0-c2a21c104b44">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Submit create money transfer business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value>9</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_selasOrganizationRoleId</con:name>
+      <con:value>7</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_fromAccountId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_toAccountId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_amount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_currency</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_roundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value>10276</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_notRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>fef6cf26-3016-4ce5-b651-175b458a6729</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>b94c4aa2-2a93-4177-ab0f-49fa253436e8</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>cc845105-6567-429c-80ce-2a88d0c64780</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>edb7687e-ff4a-4076-95c0-c2a21c104b44</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>6d249fb0-7c31-4c15-abc7-0316c4fd1107</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

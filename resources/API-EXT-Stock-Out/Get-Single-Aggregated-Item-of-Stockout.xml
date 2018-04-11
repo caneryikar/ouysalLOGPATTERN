@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="46cbeed0-4bf0-4e59-8f14-436ffa925c4e" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Get Single Aggregated Item of Stockout" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="46cbeed0-4bf0-4e59-8f14-436ffa925c4efileName">Get-Single-Aggregated-Item-of-Stockout</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Get Single Aggregated Item of Stockout" id="ab53601c-398f-4c95-a8c2-886b7d5e7917">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockout/{biId}/aggregatedItems/{aggregatedItemId}" methodName="getAggregatedItemById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Get Single Aggregated Item of Stockout" id="13d0ecfa-cf7b-45f2-9953-d7ee367f5667" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InUyMTg1ZDU0ZS0wYWQwLTQzN2UtYWU5Zi04NTRmMzBmNjE5NGUifX0.zJzdvouHBJfkds6em4oedSggMqP5iqfC_MHS_CrZsF9dZ7GM97AKvxq-sgvh_rdKZ3AD5lLe62mzorsCrgdTLo9HIimbzTpVpQ-G5CPO_jeqSPCffK7fxJ6ZZhmwbGjCfKYLxcPyhXV9_Okv_V5ODC9Nhuf13b8vu52hwbGa6G4"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="7"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/stockout/261/aggregatedItems/242</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="aggregatedItemId" value="${#TestCase#req_aggregatedItemId}"/>
+          <con:entry key="biId" value="${#TestCase#req_biId}"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="70773c47-b947-4901-b378-140b189673b5">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpStatus</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Get Single Aggregated Item of Stockout</con:sourceStep>
+        <con:sourcePath>['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>stockOutReasonType</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Single Aggregated Item of Stockout</con:sourceStep>
+        <con:sourcePath>['stockOutReasonType']</con:sourcePath>
+        <con:targetType>res_stockOutReasonType</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>stockOutReasonDescription</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Single Aggregated Item of Stockout</con:sourceStep>
+        <con:sourcePath>['stockOutReasonDescription']</con:sourcePath>
+        <con:targetType>res_stockOutReasonDescription</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>requestedQuantity</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Single Aggregated Item of Stockout</con:sourceStep>
+        <con:sourcePath>['requestedQuantity']</con:sourcePath>
+        <con:targetType>res_requestedQuantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>actualQuantity</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Single Aggregated Item of Stockout</con:sourceStep>
+        <con:sourcePath>['quantity']</con:sourcePath>
+        <con:targetType>res_actualQuantity</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>productSpecExternalId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Single Aggregated Item of Stockout</con:sourceStep>
+        <con:sourcePath>['productSpecExternalId']</con:sourcePath>
+        <con:targetType>res_productSpecExternalId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>status</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Single Aggregated Item of Stockout</con:sourceStep>
+        <con:sourcePath>['status']</con:sourcePath>
+        <con:targetType>res_status</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>characteristicDescription</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Single Aggregated Item of Stockout</con:sourceStep>
+        <con:sourcePath>['characteristicDescription']</con:sourcePath>
+        <con:targetType>res_characteristicDescription</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Single Aggregated Item of Stockout</con:sourceStep>
+        <con:sourcePath>['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value>261</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_aggregatedItemId</con:name>
+      <con:value>242</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>200</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_requestedQuantity</con:name>
+      <con:value>755</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_actualQuantity</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_stockOutReasonType</con:name>
+      <con:value>Sales</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_stockOutReasonDescription</con:name>
+      <con:value>Aggregated desc</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_productSpecExternalId</con:name>
+      <con:value>EXT-IPHONE6S-1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_status</con:name>
+      <con:value>Sellable</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_characteristicDescription</con:name>
+      <con:value>4.7, 32 GB, A7</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

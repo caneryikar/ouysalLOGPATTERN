@@ -1,0 +1,916 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="ext_salesOrganizationRole" path="/salesOrganizationRole" id="ee3cdfc8-7290-4d8e-ab33-b391fd89e697" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="9fe6099e-3086-4cb3-9adc-490188340d31fileName">salesOrganizationRole</con:setting>
+    <con:setting id="ee3cdfc8-7290-4d8e-ab33-b391fd89e697fileName">ext_salesOrganizationRole</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="getSalesOrgBySoId" path="/{soId}" id="53aa1ea0-3f36-4173-957b-201df5427462">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>soId</con:name>
+        <con:value>1</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>1</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getSalesOrgBySoId" id="52627d92-12e0-4584-8dfc-a456bac9faf5" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.SalesOrganizationRoleResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:ns="http://vmx-erms008/erms/retailManagement/v1/salesOrganizationRole/38">ns:Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="cbf9d7b6-438c-4d32-81f4-fc09b0fee7cc" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://vmx-erms008/erms/retailManagement/v1/salesOrganizationRole/38</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="soId" value="1" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>soId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="users" path="/{soId}/users" id="4ee8dc46-4c0c-4e4b-b8b9-ea30d70673b6">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>soId</con:name>
+        <con:value>1</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>1</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:resource name="oneUser" path="{userId}" id="08b89cba-c6a0-4c1e-a460-4fb9756e42ad">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>userId</con:name>
+          <con:value>userId</con:value>
+          <con:style>TEMPLATE</con:style>
+          <con:default>userId</con:default>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="getOneUserOfSo" id="79da730f-737b-47e0-9a94-ded1d90b5827" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:request name="Request 1" id="107a77a9-fbb5-4fc4-866b-34a83deec993" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="soId" value="1"/>
+            <con:entry key="userId" value="${#TestCase#req_userId}"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>userId</con:entry>
+            <con:entry>soId</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:method name="Method 1" id="a42f530c-82d0-4476-8186-ccd7d91f61a9" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:user="http://vmx-erms022/erms/v1/salesOrganizationRole/id/user">user:Fault</con:element>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>text/html;charset=ISO-8859-1</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element>html</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="5e0b051b-494b-4d1f-bafd-fd77d7c71311" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://vmx-erms022/erms/v1/salesOrganizationRole/id/user</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="soId" value="1" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>soId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="place" path="/{soId}/place" id="a57dcf39-5eb5-439c-9db8-2429623f0905">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>soId</con:name>
+        <con:value>soId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>soId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="DisplaySalesOrganizationPlaces" id="0cefc40b-e68e-4a8a-942f-e8e9fb834ef6" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="6db1b0d2-f385-460d-b262-f17b350caf0f" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:parameterOrder>
+          <con:entry>soId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="inventories" path="/{soId}/inventories" id="063bf876-1d49-404d-be1b-f39dd12331d5">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>soId</con:name>
+        <con:value>soId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>soId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:resource name="oneInventory" path="{inventoryId}" id="50a89dc7-0199-488a-acfa-12363c228fec">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>inventoryId</con:name>
+          <con:value>inventoryId</con:value>
+          <con:style>TEMPLATE</con:style>
+          <con:default>inventoryId</con:default>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="getOneInventoryOfSo" id="bb4f1039-5b7e-4835-859b-2ecd0aed05b5" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.InventoryRoleResponse.1.json#"</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:ns="http://localhost/erms/retailManagement/v1/salesOrganizationRole/463/inventories/465">ns:Response</con:element>
+        </con:representation>
+        <con:request name="Request 1" id="99ae18e9-111a-46f4-b0f1-89d40f985690" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="soId" value="${#TestCase#req_soId}"/>
+            <con:entry key="inventoryId" value="${#TestCase#req_inventoryId}"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>soId</con:entry>
+            <con:entry>inventoryId</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:method name="Method 1" id="4d7411b0-ecf0-4a4e-8eae-eebec41f1841" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.InventoryRoleResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="a6085ff1-5fc8-447d-974c-ec0ff3f54522" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="soId" value="${#TestCase#req_soId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>soId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="mainRegions" path="/{soId}/defaultRegion" id="4ee8dc46-4c0c-4e4b-b8b9-ea30d70673b6">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>soId</con:name>
+        <con:value>1</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>1</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="a42f530c-82d0-4476-8186-ccd7d91f61a9" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:user="http://vmx-erms022/erms/v1/salesOrganizationRole/id/user">user:Fault</con:element>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>text/html;charset=ISO-8859-1</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element>html</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="5e0b051b-494b-4d1f-bafd-fd77d7c71311" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://vmx-erms022/erms/v1/salesOrganizationRole/id/user</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="soId" value="1" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>soId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="servingRegions" path="/{soId}/servedRegions" id="4ee8dc46-4c0c-4e4b-b8b9-ea30d70673b6">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>soId</con:name>
+        <con:value>1</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>1</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="a42f530c-82d0-4476-8186-ccd7d91f61a9" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:user="http://vmx-erms022/erms/v1/salesOrganizationRole/id/user">user:Fault</con:element>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>text/html;charset=ISO-8859-1</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element>html</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="5e0b051b-494b-4d1f-bafd-fd77d7c71311" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://vmx-erms022/erms/v1/salesOrganizationRole/id/user</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="soId" value="1" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>soId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="postalAddresses" path="/{soId}/postalAddresses" id="59419698-f748-4dee-9b0a-7046af82c054">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>soId</con:name>
+        <con:value>soId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>soId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="af4d11b9-6c59-44c7-b785-db9a859f3903" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.PostalAddressResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="ea1aba26-f9ed-4561-a6f3-8b5f90e7df94" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="soId" value="${#TestCase#req_soId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>soId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="terminals" path="/{soId}/terminals" id="7f91ac9d-e6e6-4f92-a1a3-da58b192a869">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>soId</con:name>
+        <con:value>1</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>1</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:resource name="oneTerminal" path="/{terminalId}" id="71aa1ac9-31d2-4c06-b781-15a0efac6244">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>terminalId</con:name>
+          <con:value>terminalId</con:value>
+          <con:style>TEMPLATE</con:style>
+          <con:default>terminalId</con:default>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="getOneTerminalOfSo" id="4240e581-e7cc-4ce9-8d3f-d2b789aa0cb3" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.TerminalResponse.1.json#"</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:ns="http://localhost/erms/retailManagement/v1/salesOrganizationRole/367/terminals/31">ns:Response</con:element>
+        </con:representation>
+        <con:request name="Request 1" id="6c51616b-cc0d-4c72-aac1-db7d39d7cf1b" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="soId" value="1"/>
+            <con:entry key="terminalId" value="${#TestCase#req_terminalId}"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>terminalId</con:entry>
+            <con:entry>soId</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:method name="getAllTerminalsOfSo" id="8309d7ff-8f53-4968-968d-1fbf8832e361" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.TerminalResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="2c12bb62-7ce8-42df-a4bd-237a14abf9c5" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="soId" value="1" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>soId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="filterSalesOrganizationsByRegionId" path="" id="f6ea2d55-27b1-473c-8f5b-8701c966a1a7">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>regionId</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="932e5b13-2a74-4d2a-88c6-217a6784d8af" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="c6d403cb-f7c6-408e-8561-9783df3932ee" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="regionId" value="0" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>regionId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getSalesOrgByCharUseIdValueIdPairs" path="" id="a7ad0c1e-7955-4aee-88b3-80247026da9b">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter disableUrlEncoding="false">
+        <con:name>charUseIdValueIdPairs</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getSalesOrgByCharUseIdValueIdPairs" id="c4eddacf-ba28-4762-b8c5-70c4ca4335f6" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.SalesOrganizationRoleResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="cf9e0e3f-2c57-43b2-9b72-45c948324c87" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InVkOGJmY2JmZi05YmU2LTQ0MDQtOGU1Ni0zYTMwM2IwNzUxNWEifX0.aW0Wef65_--KwcLAW3jA1rZF3oYaiOunLkwOPRzXYV8GHba7QrkwlgBvM3C-jpPnBBAFTlaHXb7zH91A_iAVi7qRnGuY1p-d7_VpKn7dnR-aDOWCb9pzTRo9oapUweRBuUcHcC6dy6GltZNipkaPpPS3n1zlLXER6yLn7c5JGZY"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="3"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/salesOrganizationRole</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="charUseIdValueIdPairs" value="{charUseId:${#TestCase#req_charUseId},valueId:${#TestCase#req_valueId}}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>charUseIdValueIdPairs</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getSalesOrgByCharUseIdValuePairs" path="" id="a7ad0c1e-7955-4aee-88b3-80247026da9b">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter disableUrlEncoding="false">
+        <con:name>charUseIdValuePairs</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getSalesOrgByCharUseIdValuePairs" id="c4eddacf-ba28-4762-b8c5-70c4ca4335f6" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.SalesOrganizationRoleResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="cf9e0e3f-2c57-43b2-9b72-45c948324c87" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InVkOGJmY2JmZi05YmU2LTQ0MDQtOGU1Ni0zYTMwM2IwNzUxNWEifX0.aW0Wef65_--KwcLAW3jA1rZF3oYaiOunLkwOPRzXYV8GHba7QrkwlgBvM3C-jpPnBBAFTlaHXb7zH91A_iAVi7qRnGuY1p-d7_VpKn7dnR-aDOWCb9pzTRo9oapUweRBuUcHcC6dy6GltZNipkaPpPS3n1zlLXER6yLn7c5JGZY"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="3"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/salesOrganizationRole</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="charUseIdValuePairs" value="{charUseId:${#TestCase#req_charUseId},value:${#TestCase#req_value}}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>charUseIdValuePairs</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getSalesOrgByCharUseIdValueIdAndCharUseIdValuePairs" path="" id="a7ad0c1e-7955-4aee-88b3-80247026da9b">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter disableUrlEncoding="false">
+        <con:name>charUseIdValueIdPairs</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+      <con:parameter>
+        <con:name>charUseIdValuePairs</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getSalesOrgByCharUseIdValueIdAndCharUseIdValuePairs" id="c4eddacf-ba28-4762-b8c5-70c4ca4335f6" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.SalesOrganizationRoleResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>400</con:status>
+        <con:params/>
+        <con:element xmlns:sal="http://localhost/erms/retailManagement/v1/salesOrganizationRole">sal:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="cf9e0e3f-2c57-43b2-9b72-45c948324c87" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InVkOGJmY2JmZi05YmU2LTQ0MDQtOGU1Ni0zYTMwM2IwNzUxNWEifX0.aW0Wef65_--KwcLAW3jA1rZF3oYaiOunLkwOPRzXYV8GHba7QrkwlgBvM3C-jpPnBBAFTlaHXb7zH91A_iAVi7qRnGuY1p-d7_VpKn7dnR-aDOWCb9pzTRo9oapUweRBuUcHcC6dy6GltZNipkaPpPS3n1zlLXER6yLn7c5JGZY"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="3"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/salesOrganizationRole</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="charUseIdValuePairs" value="{charUseId:${#TestCase#req_charUseId2},value:${#TestCase#req_value2}}"/>
+          <con:entry key="charUseIdValueIdPairs" value="{charUseId:${#TestCase#req_charUseId1},valueId:${#TestCase#req_valueId1}}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>charUseIdValueIdPairs</con:entry>
+          <con:entry>charUseIdValuePairs</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getSalesOrgByName" path="" id="3997e2e8-cebe-4eb9-9a85-1a4eca6af1a0">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>name</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getSalesOrgByName" id="9a71add8-bedf-405b-b4f8-b0f9be562456" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.SalesOrganizationRoleResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="1d37d0dd-6b48-429e-9000-2b146a38fbeb" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="name" value="${#TestCase#req_soName}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>name</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getSalesOrgByCountry" path="" id="7faf91ad-4cf6-4ce5-bd2c-b99115711660">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>country</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getSalesOrgByCountry" id="f7bf739d-6ecf-4b51-9175-42a26626559b" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.SalesOrganizationRoleResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="058afcc2-96c6-4d0e-b9dc-ac68b87607c7" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="country" value="${#TestCase#req_country}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>country</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getSalesOrgByState" path="" id="65770755-367f-41cf-a5b1-b89daf010a2c">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>state</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getSalesOrgByState" id="66cbc7e8-af2a-46b3-8a1a-e33bca3ea815" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.SalesOrganizationRoleResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="eb414c04-1f49-4d9f-b224-bc30879187dd" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="state" value="${#TestCase#req_state}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>state</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getSalesOrgByCity" path="" id="10559750-a1a4-46fd-86e0-86bcf30acd84">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>city</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getSalesOrgByCity" id="41cad119-2c7f-4191-9106-d8abebd3518a" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.SalesOrganizationRoleResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="95746730-16e6-489e-a457-4ad80669d878" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="city" value="${#TestCase#req_city}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>city</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getSalesOrgByStreet" path="" id="21280103-ada9-482b-8e6f-d3079ef51de0">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>street</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getSalesOrgByStreet" id="51584e64-60c5-4342-99eb-1a72a19efa17" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.SalesOrganizationRoleResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="cfd4d656-b01d-4b75-89c7-670c416fe88d" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="street" value="${#TestCase#req_street}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>street</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getSalesOrgByPostalCode" path="" id="b359eb67-0def-4ceb-b012-6515a413b25b">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>postalCode</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getSalesOrgByPostalCode" id="5adaab20-9100-44f4-bfb0-ceb8a6c4099f" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.SalesOrganizationRoleResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="796f4492-6346-429d-ae19-bfdcc3b67f7a" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="postalCode" value="${#TestCase#req_postalCode}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>postalCode</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getSalesOrgByPostalAddressId" path="" id="d6631b74-5034-4883-b9bd-c1981b0f92a3">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>postalAddressId</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getSalesOrgByPostalAddressId" id="ae2c6c20-036c-40b9-b875-4bbd0197e191" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.SalesOrganizationRoleResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="92ec5a43-79b1-4cb3-933b-ccce45fe9a01" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="postalAddressId" value="${#TestCase#req_postalAddressId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>postalAddressId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+</con:resource>

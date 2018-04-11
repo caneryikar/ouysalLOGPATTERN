@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="eb533557-4d69-406e-b55a-30321ff4b080" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display initial session account balance" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="eb533557-4d69-406e-b55a-30321ff4b080fileName">Display-initial-session-account-balance</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Display initial session account balance" id="054dd8d5-cf28-4635-b475-0d15fd4087e3">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/session/{biId}/initialSessionAccountBalance" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display initial session account balance" id="2da60d83-fc79-4607-b56e-dc2b4373235c" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="97bd8daf-2440-4924-9fbd-b086da9a9702">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>initialSessionAccountBalanceId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display initial session account balance</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_initialSessionAcountBalance</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>roundedAmount</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display initial session account balance</con:sourceStep>
+        <con:sourcePath>$['balance']['roundedAmount']</con:sourcePath>
+        <con:targetType>res_roundedAmount</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>notRoundedAmount</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display initial session account balance</con:sourceStep>
+        <con:sourcePath>$['balance']['notRoundedAmount']</con:sourcePath>
+        <con:targetType>res_notRoundedAmount</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>currency</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display initial session account balance</con:sourceStep>
+        <con:sourcePath>$['balance']['currency']</con:sourcePath>
+        <con:targetType>res_currency</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpStatusCode</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display initial session account balance</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_httpStatusCode</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_initialSessionAcountBalance</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_notRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_roundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_currency</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_httpStatusCode</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

@@ -1,0 +1,3456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="225a542d-48e2-4af6-97ac-5116260ef77a" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TestCase 5" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="225a542d-48e2-4af6-97ac-5116260ef77afileName">TestCase-5</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="transfer" name="Set default user and sales organization" id="fb2c668e-b409-48a0-8f99-9d49f1622956">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>DefaultUserRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_createdByUserRoleId</con:targetType>
+        <con:targetStep>Global Properties for This Case</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_createdBySalesOrgRoleId</con:targetType>
+        <con:targetStep>Global Properties for This Case</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="properties" name="Global Properties for This Case" id="72bba326-245f-4742-a557-eedfd2a9904c">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>httpStatus_200</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>httpStatus_201</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>httpStatus_400</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>httpStatus_404</con:name>
+          <con:value>404</con:value>
+        </con:property>
+        <con:property>
+          <con:name>regionName</con:name>
+          <con:value>Region-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>nonExist</con:name>
+          <con:value>-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_createdByUserRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_createdBySalesOrgRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userRoleExtId</con:name>
+          <con:value>EXT-user-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleExtId</con:name>
+          <con:value>EXT-so-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_terminalExtId</con:name>
+          <con:value>EXT-terminal-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_inventoryExtId</con:name>
+          <con:value>EXT-inventory-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>biSpecCode</con:name>
+          <con:value>SO_UPDATE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>emptyName</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>newName</con:name>
+          <con:value>new-name-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>newDescription</con:name>
+          <con:value>new-description-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>newExternalId</con:name>
+          <con:value>new-ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>salesOrgSpecId</con:name>
+          <con:value>999999</con:value>
+        </con:property>
+        <con:property>
+          <con:name>salesOrgRoleNotFound</con:name>
+          <con:value>SALES_ORGANIZATON_ROLE_NOT_FOUND</con:value>
+        </con:property>
+        <con:property>
+          <con:name>userNotExist</con:name>
+          <con:value>USER_NOT_ACTIVE_OR_EXISTS</con:value>
+        </con:property>
+        <con:property>
+          <con:name>salesOrgNotExist</con:name>
+          <con:value>SALES_ORG_NOT_ACTIVE_OR_EXISTS</con:value>
+        </con:property>
+        <con:property>
+          <con:name>biSpecCodeNotExist</con:name>
+          <con:value>BUSINESS_INTERACTION_SPEC_WITH_CODE_DOES_NOT_EXIST</con:value>
+        </con:property>
+        <con:property>
+          <con:name>userNotInSalesOrg</con:name>
+          <con:value>USER_WITH_ID_IS_NOT_IN_SALES_ORGANIZATION_WITH_ID</con:value>
+        </con:property>
+        <con:property>
+          <con:name>biNotFound</con:name>
+          <con:value>BI_WITH_ID_NOT_FOUND</con:value>
+        </con:property>
+        <con:property>
+          <con:name>invalidState</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+        <con:property>
+          <con:name>salesOrgExist</con:name>
+          <con:value>SALES_ORGANIZATON_ALREADY_EXISTS</con:value>
+        </con:property>
+        <con:property>
+          <con:name>externalIdMustBeUnique</con:name>
+          <con:value>EXTERNAL_ID_MUST_BE_UNIQUE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>statusActive</con:name>
+          <con:value>Active</con:value>
+        </con:property>
+        <con:property>
+          <con:name>partyTypeofOrganization</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>partyTypeofCompany</con:name>
+          <con:value>3</con:value>
+        </con:property>
+        <con:property>
+          <con:name>partyRoleTypeofCentralWarehouse</con:name>
+          <con:value>8</con:value>
+        </con:property>
+        <con:property>
+          <con:name>placeUsageType</con:name>
+          <con:value>0</con:value>
+        </con:property>
+        <con:property>
+          <con:name>salesOrgSpecName</con:name>
+          <con:value>spec-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>biSpecCodeCreate</con:name>
+          <con:value>SO_CREATE</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set create sales organization and user" id="e2c4a7b2-b45f-4d84-8e43-e4a3f8b4812b">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userId</con:name>
+        <con:sourceType>req_createdByUserRoleId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_createdByUserRoleId</con:targetType>
+        <con:targetStep>Create sales organization and user</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>req_createdBySalesOrgRoleId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_createdBySalesOrgRoleId</con:targetType>
+        <con:targetStep>Create sales organization and user</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userExtId</con:name>
+        <con:sourceType>req_userRoleExtId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_userRoleExtId</con:targetType>
+        <con:targetStep>Create sales organization and user</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soExtId</con:name>
+        <con:sourceType>req_salesOrgRoleExtId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_salesOrgRoleExtId</con:targetType>
+        <con:targetStep>Create sales organization and user</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>terminalExtId</con:name>
+        <con:sourceType>req_terminalExtId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_terminalExtId</con:targetType>
+        <con:targetStep>Create sales organization and user</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventoryExtId</con:name>
+        <con:sourceType>req_inventoryExtId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_inventoryExtId</con:targetType>
+        <con:targetStep>Create sales organization and user</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create sales organization and user" id="9119ed4b-6bf1-4310-80df-abc9951f1c2b">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>b92a7c8d-a0ed-4725-99e9-4866fd949629</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_createdByUserRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_createdBySalesOrgRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userRoleExtId</con:name>
+          <con:value>EXT-user-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleExtId</con:name>
+          <con:value>EXT-so-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_terminalExtId</con:name>
+          <con:value>EXT-terminal-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_inventoryExtId</con:name>
+          <con:value>EXT-inventory-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrgBiId</con:name>
+          <con:value>161</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_userRoleBiId</con:name>
+          <con:value>181</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_terminalBiId</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_inventoryRoleBiId</con:name>
+          <con:value>191</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrgId</con:name>
+          <con:value>11</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_userRoleId</con:name>
+          <con:value>13</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_terminalId</con:name>
+          <con:value>3</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_inventoryRoleId</con:name>
+          <con:value>14</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_placeId</con:name>
+          <con:value>8</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soExtId</con:name>
+          <con:value>EXT-so-0652c70d-00fc-4368-94c5-24d02749e023</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrganisationExternalId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>userToken</con:name>
+        </con:property>
+        <con:property>
+          <con:name>userIntToken</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_email</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_salesOrgBiId</con:entry>
+        <con:entry>res_userRoleBiId</con:entry>
+        <con:entry>res_terminalBiId</con:entry>
+        <con:entry>res_inventoryRoleBiId</con:entry>
+        <con:entry>res_salesOrgId</con:entry>
+        <con:entry>res_userRoleId</con:entry>
+        <con:entry>res_terminalId</con:entry>
+        <con:entry>res_inventoryRoleId</con:entry>
+        <con:entry>res_placeId</con:entry>
+        <con:entry>res_soExtId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for creating sales organization and user" id="90dd391e-f100-4987-9178-b3dab6dc25e9">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>62944c06-565f-47eb-a2ab-4723176a8db3</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>9119ed4b-6bf1-4310-80df-abc9951f1c2b</con:sourceId>
+        <con:propertyName>res_salesOrgId</con:propertyName>
+        <con:assertion type="Simple Contains" name="so" id="618ae4f1-e26f-40f2-8216-859931bb8026">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>5ee792ac-b2e7-446f-aa9f-8df94dcaf2f9</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>9119ed4b-6bf1-4310-80df-abc9951f1c2b</con:sourceId>
+        <con:propertyName>res_userRoleBiId</con:propertyName>
+        <con:assertion type="Simple Contains" name="user" id="7c31a7fb-5d5b-4475-94f0-6eee1fc935ac">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>e20605a5-0642-48bb-b8ce-028bb034d95f</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>9119ed4b-6bf1-4310-80df-abc9951f1c2b</con:sourceId>
+        <con:propertyName>res_terminalId</con:propertyName>
+        <con:assertion type="Simple Contains" name="terminal" id="841311c1-664f-4290-ad6d-af2cf96d7a7b">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>ea70b0ae-5ba3-4120-9f60-582b5dc4c653</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>9119ed4b-6bf1-4310-80df-abc9951f1c2b</con:sourceId>
+        <con:propertyName>res_inventoryRoleId</con:propertyName>
+        <con:assertion type="Simple Contains" name="inventory" id="95eacc9e-caba-4d3e-8aed-a4fb248aa3ec">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T for displaying sales organization by so id" id="69a12ac8-b84a-4212-83e3-d23c24a9c954">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>res_salesOrgId</con:sourceType>
+        <con:sourceStep>Create sales organization and user</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_soId</con:targetType>
+        <con:targetStep>Display sales organization by so id</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display sales organization by so id" id="09ae8a50-f59e-4162-83b8-356664ec0310">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ca1ba238-814e-4b6d-a473-a1a4c69db3cb</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value>11</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soId</con:name>
+          <con:value>11</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soStatus</con:name>
+          <con:value>Active</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soName</con:name>
+          <con:value>name-EXT-so-0652c70d-00fc-4368-94c5-24d02749e023</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soDescription</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_externalId</con:name>
+          <con:value>EXT-so-0652c70d-00fc-4368-94c5-24d02749e023</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_soId</con:entry>
+        <con:entry>res_soStatus</con:entry>
+        <con:entry>res_soName</con:entry>
+        <con:entry>res_soDescription</con:entry>
+        <con:entry>res_externalId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for displaying sales organization by so id" id="0cdde39c-4216-4b7c-9ffe-1ef6c3fad7cf">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>d4e7077b-4146-43a4-8e86-94335a59ccfd</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>09ae8a50-f59e-4162-83b8-356664ec0310</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="4411ba75-4f36-4a65-b3f1-9d40bfe07731">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>0e0dd543-97af-48ec-8733-7e5edaefde6c</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>09ae8a50-f59e-4162-83b8-356664ec0310</con:sourceId>
+        <con:propertyName>res_soStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="status" id="8d6e02bb-04f3-4613-8bf5-d6b9b07e5348">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>statusActive</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="DataSource for Create SO UPDATE BI" id="b0709fc0-5803-4053-afce-f7a55648b3d1">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Grid">
+        <con:configuration>
+          <check><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry></xml-fragment>]]></check>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#biSpecCode}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Create sales organization and user#res_salesOrgId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#Project#DefaultUserRoleId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#newName}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Create sales organization and user#res_salesOrgId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#newDescription}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#salesOrgSpecId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">USER_WITH_ID_IS_NOT_IN_SALES_ORGANIZATION_WITH_ID</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#biSpecCode}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#Project#DefaultSalesOrganizationRoleId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#Project#DefaultUserRoleId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#newName}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#nonExist}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#newDescription}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#salesOrgSpecId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#salesOrgRoleNotFound}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#biSpecCode}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#Project#DefaultSalesOrganizationRoleId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#nonExist}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#newName}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Create sales organization and user#res_salesOrgId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#newDescription}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#salesOrgSpecId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">USER_NOT_ACTIVE_OR_EXISTS</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#biSpecCode}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#nonExist}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#Project#DefaultUserRoleId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#newName}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Create sales organization and user#res_salesOrgId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#newDescription}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#salesOrgSpecId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">SALES_ORG_NOT_ACTIVE_OR_EXISTS</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#nonExist}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#Project#DefaultSalesOrganizationRoleId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#Project#DefaultUserRoleId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#newName}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Create sales organization and user#res_salesOrgId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#newDescription}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#salesOrgSpecId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#biSpecCodeNotExist}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+        </con:configuration>
+      </con:dataSource>
+      <con:property>biSpecCode</con:property>
+      <con:property>salesOrgRoleId</con:property>
+      <con:property>userRoleId</con:property>
+      <con:property>newName</con:property>
+      <con:property>relatedSalesOrgRoleId</con:property>
+      <con:property>salesOrgDesc</con:property>
+      <con:property>salesOrgRoleSpec</con:property>
+      <con:property>errorMessage</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen for error messages" id="ca2f70d6-d4a3-42a1-81c2-e0e25c2ba949">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>def errorMessage = context.expand( '${DataSource for Create SO UPDATE BI#errorMessage}' )
+return errorMessage.toString();</script>
+        </con:configuration>
+        <con:name>errorMessage</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set Create SO UPDATE BI" id="ed80a63d-6ef6-41a5-8bf2-f1830be648ba">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpecCode</con:name>
+        <con:sourceType>biSpecCode</con:sourceType>
+        <con:sourceStep>DataSource for Create SO UPDATE BI</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biSpecCode</con:targetType>
+        <con:targetStep>Create SO UPDATE BI fail</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>salesOrgRoleId</con:sourceType>
+        <con:sourceStep>DataSource for Create SO UPDATE BI</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI fail</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>userRoleId</con:sourceType>
+        <con:sourceStep>DataSource for Create SO UPDATE BI</con:sourceStep>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI fail</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>newName</con:name>
+        <con:sourceType>newName</con:sourceType>
+        <con:sourceStep>DataSource for Create SO UPDATE BI</con:sourceStep>
+        <con:targetType>req_newName</con:targetType>
+        <con:targetStep>Create SO UPDATE BI fail</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>relatedSalesOrgRoleId</con:name>
+        <con:sourceType>relatedSalesOrgRoleId</con:sourceType>
+        <con:sourceStep>DataSource for Create SO UPDATE BI</con:sourceStep>
+        <con:targetType>req_relatedSalesOrgRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI fail</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgDesc</con:name>
+        <con:sourceType>salesOrgDesc</con:sourceType>
+        <con:sourceStep>DataSource for Create SO UPDATE BI</con:sourceStep>
+        <con:targetType>req_newSalesOrgDesc</con:targetType>
+        <con:targetStep>Create SO UPDATE BI fail</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleSpec</con:name>
+        <con:sourceType>salesOrgRoleSpec</con:sourceType>
+        <con:sourceStep>DataSource for Create SO UPDATE BI</con:sourceStep>
+        <con:targetType>req_salesOrgRoleSpecId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI fail</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userToken</con:name>
+        <con:sourceType>emptyName</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>AuthorizationUser</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userSo</con:name>
+        <con:sourceType>emptyName</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>UserSo</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create SO UPDATE BI fail" id="c76c6823-67b6-4334-b36a-8adf58dc3d8e">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a3ff1ffb-6f98-48ea-858c-989af0078ab0</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+          <con:value>${Global Properties for This Case#nonExist}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>${#Project#DefaultSalesOrganizationRoleId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>${#Project#DefaultUserRoleId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newName</con:name>
+          <con:value>${Global Properties for This Case#newName}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_relatedSalesOrgRoleId</con:name>
+          <con:value>${Create sales organization and user#res_salesOrgId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newSalesOrgDesc</con:name>
+          <con:value>${Global Properties for This Case#newDescription}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleSpecId</con:name>
+          <con:value>${Global Properties for This Case#salesOrgSpecId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newExternalId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>BUSINESS_INTERACTION_SPEC_WITH_CODE_DOES_NOT_EXIST</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert httpStatus and errorMessages" id="aa01a057-b161-4e3f-bfa1-68ef50fb7df6">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>22475f94-f4ed-49ea-90ca-da6111a068df</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>c76c6823-67b6-4334-b36a-8adf58dc3d8e</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="e8e57806-c502-43c3-9c80-7e31a0937e44">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>f0688527-8f4a-485b-9eae-f55d0f81abe8</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>c76c6823-67b6-4334-b36a-8adf58dc3d8e</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="5b3845b1-fa4c-4760-a039-43aac9e19536">
+          <con:configuration>
+            <patternObjectId>ca2f70d6-d4a3-42a1-81c2-e0e25c2ba949</patternObjectId>
+            <patternProperty>errorMessage</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="DataSource Loop for Create SO UPDATE BI" id="956e449e-4795-4720-8984-55401274f226">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>DataSource for Create SO UPDATE BI</dataSourceStep>
+      <targetStep>DataGen for error messages</targetStep>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set Create SO UPDATE BI success" id="b51e2975-a0b0-42b4-9d02-369cc1209f6e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpecCode</con:name>
+        <con:sourceType>biSpecCode</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biSpecCode</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>DefaultUserRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>newName</con:name>
+        <con:sourceType>newName</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_newName</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>relatedSalesOrgRoleId</con:name>
+        <con:sourceType>res_salesOrgId</con:sourceType>
+        <con:sourceStep>Create sales organization and user</con:sourceStep>
+        <con:targetType>req_relatedSalesOrgRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgDesc</con:name>
+        <con:sourceType>newDescription</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_newSalesOrgDesc</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleSpec</con:name>
+        <con:sourceType>salesOrgSpecId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_salesOrgRoleSpecId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create SO UPDATE BI success" id="f5b144b4-ead2-479c-ab46-c568aba7e965">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a3ff1ffb-6f98-48ea-858c-989af0078ab0</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+          <con:value>SO_UPDATE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newName</con:name>
+          <con:value>new-name-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_relatedSalesOrgRoleId</con:name>
+          <con:value>11</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newSalesOrgDesc</con:name>
+          <con:value>new-description-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleSpecId</con:name>
+          <con:value>999999</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newExternalId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>211</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert httpStatus and res_id" id="455e6523-57fa-4476-bb90-3cb4bd677aaf">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>a324375e-9b8e-4ae4-84c6-3b2a9980e10c</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f5b144b4-ead2-479c-ab46-c568aba7e965</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="388315b9-e2f3-4ec5-967a-1525451199f8">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_201</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>c8bcb5e0-008c-47aa-ad58-003d8eef8ba8</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f5b144b4-ead2-479c-ab46-c568aba7e965</con:sourceId>
+        <con:propertyName>res_id</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="07e3fc93-a9c1-464e-b7d1-f7ebf098a3a3">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set Cancel non-exist BI" id="4765ca55-0f10-4800-b9b8-ce8a4adf82ee">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>nonExist</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cancel non-exist BI</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cancel non-exist BI" id="26bde607-861d-48d3-a108-65d39cee13e7">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>2274019f-0d52-4386-a94d-b7e4d0b7c2e9</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>BI_WITH_ID_NOT_FOUND</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert httpStatus and errorMessage 1" id="cd9e0f16-29c3-47c7-a59c-09ef56b22d52">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>383fdfb2-d9fd-4503-afac-1ddd5c08ff86</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>26bde607-861d-48d3-a108-65d39cee13e7</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="ceecfff5-b7b4-44ee-942a-e3b0bb07c385">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>a67e4368-2ecc-4f35-a634-495a8708814b</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>26bde607-861d-48d3-a108-65d39cee13e7</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="f98aacc9-e994-4134-96eb-007bc2c25b38">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>biNotFound</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set Cancel create BI" id="b182182b-7bd5-4835-aa99-00e8d6a9857e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_id</con:sourceType>
+        <con:sourceStep>Create SO UPDATE BI success</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cancel create BI</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cancel create BI" id="d7e8f2c2-970a-4fa3-98ec-93c0ca133b85">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>2274019f-0d52-4386-a94d-b7e4d0b7c2e9</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>211</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>211</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_id</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert httpStatus and res_id 2" id="a97155c9-f996-4d9a-9a0b-bfeb75d7171d">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>42cae0d3-dc17-4895-895c-2fd55cb89bf3</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>d7e8f2c2-970a-4fa3-98ec-93c0ca133b85</con:sourceId>
+        <con:propertyName>res_id</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="7cf28a7f-fe1c-4f0c-afcc-a86ea5477c94">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>70fdb6ca-b331-4b4d-b36d-976a1fc19e29</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>d7e8f2c2-970a-4fa3-98ec-93c0ca133b85</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="12355c46-c545-4e6b-bf74-3b6d4197c937">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T for displaying sales organization by so id after cancelling" id="0e5e56c1-9a63-4d8d-9df2-cd97a16b3e22">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>res_salesOrgId</con:sourceType>
+        <con:sourceStep>Create sales organization and user</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_soId</con:targetType>
+        <con:targetStep>Display sales organization by so id after cancelling</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display sales organization by so id after cancelling" id="f0b5ea11-c074-4e88-9238-281cbb8f6fbd">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ca1ba238-814e-4b6d-a473-a1a4c69db3cb</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value>11</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soId</con:name>
+          <con:value>11</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soStatus</con:name>
+          <con:value>Active</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soName</con:name>
+          <con:value>name-EXT-so-0652c70d-00fc-4368-94c5-24d02749e023</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soDescription</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_externalId</con:name>
+          <con:value>EXT-so-0652c70d-00fc-4368-94c5-24d02749e023</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_soId</con:entry>
+        <con:entry>res_soStatus</con:entry>
+        <con:entry>res_soName</con:entry>
+        <con:entry>res_soDescription</con:entry>
+        <con:entry>res_externalId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for displaying sales organization by so id after cancelling" id="44968de4-dd46-4964-b8f1-a564718ffc76">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>82975b52-070a-42d5-85bd-8aa2db64efb9</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f0b5ea11-c074-4e88-9238-281cbb8f6fbd</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="5eaab9a6-dcc1-4737-8a20-2233b8627c2f">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>c792538d-dce9-42dd-891e-93921d570358</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f0b5ea11-c074-4e88-9238-281cbb8f6fbd</con:sourceId>
+        <con:propertyName>res_soName</con:propertyName>
+        <con:assertion type="Simple Equals" name="name" id="01f7b85c-2ef6-4d90-9729-cf8b03b1397c">
+          <con:configuration>
+            <patternObjectId>09ae8a50-f59e-4162-83b8-356664ec0310</patternObjectId>
+            <patternProperty>res_soName</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>6f294992-9db5-4cf2-a675-0fc108ed6390</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f0b5ea11-c074-4e88-9238-281cbb8f6fbd</con:sourceId>
+        <con:propertyName>res_soDescription</con:propertyName>
+        <con:assertion type="Simple Equals" name="desc" id="39250cc2-2837-47f1-ac4c-ca046f19dcb1">
+          <con:configuration>
+            <patternObjectId>09ae8a50-f59e-4162-83b8-356664ec0310</patternObjectId>
+            <patternProperty>res_soDescription</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>cc3c6509-4771-40fc-8d1a-d5ac21351b08</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f0b5ea11-c074-4e88-9238-281cbb8f6fbd</con:sourceId>
+        <con:propertyName>res_externalId</con:propertyName>
+        <con:assertion type="Simple Equals" name="ext id" id="c6b2918a-60ae-419a-803b-7d9ffb7d1122">
+          <con:configuration>
+            <patternObjectId>09ae8a50-f59e-4162-83b8-356664ec0310</patternObjectId>
+            <patternProperty>res_externalId</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set cancel cancelled BI" id="af60addd-8510-4ca9-8957-c535dfba2fa1">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_id</con:sourceType>
+        <con:sourceStep>Create SO UPDATE BI success</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cancel cancelled BI</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cancel cancelled BI" id="4c2976f8-39f3-45ad-ada6-2bcac30d496d">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>2274019f-0d52-4386-a94d-b7e4d0b7c2e9</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>211</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert httpStatus and errorMessage 2" id="6c6908aa-d1eb-4ce1-a648-450a84bd803b">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>2479fed6-0f61-4706-8314-5e517265bf91</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>4c2976f8-39f3-45ad-ada6-2bcac30d496d</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="1c7989f4-d62c-4216-81f7-d04b556121ee">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>826bc11a-a302-4268-bb29-4ffba1deea05</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>4c2976f8-39f3-45ad-ada6-2bcac30d496d</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="7416b295-4bc3-4e33-b5ca-93420645d640">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>invalidState</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen new values" id="0098cf1b-4a63-42b8-b8f8-2c10ad0217d7">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>def newName = context.expand( '${Global Properties for This Case#newName}' )
+testRunner.testCase.testSteps['New value parameters'].setPropertyValue("newName", newName.toString());</script>
+        </con:configuration>
+        <con:name>newName</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Script">
+        <con:configuration>
+          <script>def newDescription = context.expand( '${Global Properties for This Case#newDescription}' )
+testRunner.testCase.testSteps['New value parameters'].setPropertyValue("newDescription", newDescription.toString());</script>
+        </con:configuration>
+        <con:name>newDescription</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Script">
+        <con:configuration>
+          <script>def newExternalId = context.expand( '${Global Properties for This Case#newExternalId}' )
+testRunner.testCase.testSteps['New value parameters'].setPropertyValue("newExternalId", newExternalId.toString());</script>
+        </con:configuration>
+        <con:name>newExternalId</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="properties" name="New value parameters" id="7be8f6dd-b1ca-4e7b-b969-d8dc893b9912">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>newName</con:name>
+          <con:value>new-name-e3ff6e8c-cde9-47e3-ae33-0e8d937a1969</con:value>
+        </con:property>
+        <con:property>
+          <con:name>newDescription</con:name>
+          <con:value>new-description-cf12009b-cf16-4c34-b5e3-987c3a8bc7e6</con:value>
+        </con:property>
+        <con:property>
+          <con:name>newExternalId</con:name>
+          <con:value>new-ext-4cf99cf4-4bd9-48bc-9650-e493df0adda1</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set Create SO UPDATE BI success 2" id="9ba685e3-6201-47fa-9e11-7621f69b5df6">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpecCode</con:name>
+        <con:sourceType>biSpecCode</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biSpecCode</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success 2</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>DefaultUserRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>newName</con:name>
+        <con:sourceType>newName</con:sourceType>
+        <con:sourceStep>New value parameters</con:sourceStep>
+        <con:targetType>req_newName</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>relatedSalesOrgRoleId</con:name>
+        <con:sourceType>res_salesOrgId</con:sourceType>
+        <con:sourceStep>Create sales organization and user</con:sourceStep>
+        <con:targetType>req_relatedSalesOrgRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>newSalesOrgDesc</con:name>
+        <con:sourceType>newDescription</con:sourceType>
+        <con:sourceStep>New value parameters</con:sourceStep>
+        <con:targetType>req_newSalesOrgDesc</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleSpec</con:name>
+        <con:sourceType>salesOrgSpecId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_salesOrgRoleSpecId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>newExternalId</con:name>
+        <con:sourceType>newExternalId</con:sourceType>
+        <con:sourceStep>New value parameters</con:sourceStep>
+        <con:targetType>req_newExternalId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create SO UPDATE BI success 2" id="475a76e5-d395-481e-af8e-5d2447f97001">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a3ff1ffb-6f98-48ea-858c-989af0078ab0</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+          <con:value>SO_UPDATE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newName</con:name>
+          <con:value>new-name-e3ff6e8c-cde9-47e3-ae33-0e8d937a1969</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_relatedSalesOrgRoleId</con:name>
+          <con:value>11</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newSalesOrgDesc</con:name>
+          <con:value>new-description-cf12009b-cf16-4c34-b5e3-987c3a8bc7e6</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleSpecId</con:name>
+          <con:value>999999</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newExternalId</con:name>
+          <con:value>new-ext-4cf99cf4-4bd9-48bc-9650-e493df0adda1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>221</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert httpStatus and res_id 3" id="4e9be224-c8f2-4833-af3f-d024df98f1cd">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>65b87ff2-9c62-4508-8889-f04283e6b458</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>475a76e5-d395-481e-af8e-5d2447f97001</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="4a24c0c9-539e-468c-896d-366e77bda316">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_201</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>6fe6ce4f-69d7-4489-a795-0aef763e54a3</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>475a76e5-d395-481e-af8e-5d2447f97001</con:sourceId>
+        <con:propertyName>res_id</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="46d57855-3cf5-43f7-a4da-8ef3d1e1aadb">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set submit non-exist" id="9102f16f-a14a-40c4-90d4-ee01db342d4a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>nonExist</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit non-exist</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit non-exist" id="9e6111d8-fd50-4be8-a73b-210ebc87af52">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>701a073f-a229-46f5-a5cb-03eaf4fedcb0</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>BI_WITH_ID_NOT_FOUND</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert httpStatus and errorMessage 3" id="81843498-c168-4c5d-bdf5-7a46e918dc6c">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>76512d16-c293-4309-92b6-e78ea40fc617</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>9e6111d8-fd50-4be8-a73b-210ebc87af52</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="455f9fbf-3491-4044-ae0b-3b009945a18c">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>8ababe35-ab85-4f6b-9c48-12151938b2e3</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>9e6111d8-fd50-4be8-a73b-210ebc87af52</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="be85f58e-dfbe-475e-a67f-8c67e7010a81">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>biNotFound</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set submit success" id="cb1d1093-14ac-41c0-89c2-e5ae6c3a410b">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_id</con:sourceType>
+        <con:sourceStep>Create SO UPDATE BI success 2</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit success</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit success" id="49d38092-4e7c-4f4a-aa6e-50d83313eb60">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>701a073f-a229-46f5-a5cb-03eaf4fedcb0</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>221</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>221</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert httpStatus and res_id 4" id="4db84fae-de99-41e3-ac76-6ca1fd4f5cde">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>52dbf27e-1914-4e3b-9254-426b137fcae1</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>49d38092-4e7c-4f4a-aa6e-50d83313eb60</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="0f308e9b-3d2e-4337-b0aa-693aacd63ba9">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>411fef08-3e05-4685-8add-f6e562fefe5c</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>49d38092-4e7c-4f4a-aa6e-50d83313eb60</con:sourceId>
+        <con:propertyName>res_id</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="18040a51-d357-4dda-af92-3c55b0b720fc">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set submit submitted" id="46e62aeb-c263-4561-8b33-060ed755a00d">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_id</con:sourceType>
+        <con:sourceStep>Create SO UPDATE BI success 2</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit submitted</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit submitted" id="3ce57add-9c5b-46ab-baee-ba00ab477e7e">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>701a073f-a229-46f5-a5cb-03eaf4fedcb0</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>221</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert httpStatus and errorMessage 4" id="fce9e75a-8a24-4f27-aaa7-e66a8356fb78">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>8171d976-a4d8-41b9-8277-3d504baf7184</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3ce57add-9c5b-46ab-baee-ba00ab477e7e</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="eda9bced-4232-4b12-9cb0-b14bc7f78a73">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>2f8c5a28-9232-40ff-ad5e-e1a1b00ce50b</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3ce57add-9c5b-46ab-baee-ba00ab477e7e</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="184967af-0e00-4ff9-9e95-c8abf1120c8a">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>invalidState</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set display sales organization updated information" id="5e7e2bc5-14db-4335-88ad-6f02d8c42b2b">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>res_salesOrgId</con:sourceType>
+        <con:sourceStep>Create sales organization and user</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_soId</con:targetType>
+        <con:targetStep>Display sales organization updated information</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display sales organization updated information" id="7339912d-13cf-4702-b687-5f7d18eceb85">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ca1ba238-814e-4b6d-a473-a1a4c69db3cb</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value>11</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soId</con:name>
+          <con:value>11</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soStatus</con:name>
+          <con:value>Active</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soName</con:name>
+          <con:value>new-name-e3ff6e8c-cde9-47e3-ae33-0e8d937a1969</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soDescription</con:name>
+          <con:value>new-description-cf12009b-cf16-4c34-b5e3-987c3a8bc7e6</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_externalId</con:name>
+          <con:value>new-ext-4cf99cf4-4bd9-48bc-9650-e493df0adda1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_soId</con:entry>
+        <con:entry>res_soStatus</con:entry>
+        <con:entry>res_soName</con:entry>
+        <con:entry>res_soDescription</con:entry>
+        <con:entry>res_externalId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert sales organization info is updated" id="056d6f3a-c050-4bfb-ba8a-a316f85d97fa">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>61f9a122-08db-45db-b776-566c69fff2ba</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>7339912d-13cf-4702-b687-5f7d18eceb85</con:sourceId>
+        <con:propertyName>res_soName</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals name" id="bfd80aa5-157c-4f6d-a2f8-5d41a2e07120">
+          <con:configuration>
+            <patternObjectId>7be8f6dd-b1ca-4e7b-b969-d8dc893b9912</patternObjectId>
+            <patternProperty>newName</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>c9ba9974-dad0-4c74-b6e9-906f43303a51</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>7339912d-13cf-4702-b687-5f7d18eceb85</con:sourceId>
+        <con:propertyName>res_soDescription</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals desc" id="5e6c1532-f531-4fb3-8b0e-7f9e27e61673">
+          <con:configuration>
+            <patternObjectId>7be8f6dd-b1ca-4e7b-b969-d8dc893b9912</patternObjectId>
+            <patternProperty>newDescription</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>25e3033f-85a5-4afb-ac7a-f39066abc7ce</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>7339912d-13cf-4702-b687-5f7d18eceb85</con:sourceId>
+        <con:propertyName>res_externalId</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals ext id" id="42d4dc55-024d-4942-a135-6b719d6c2190">
+          <con:configuration>
+            <patternObjectId>7be8f6dd-b1ca-4e7b-b969-d8dc893b9912</patternObjectId>
+            <patternProperty>newExternalId</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>7ec56207-d593-42cb-aee9-f521320b0a66</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>7339912d-13cf-4702-b687-5f7d18eceb85</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="209cac18-d5a8-410c-9e70-5560e6a5b58f">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set display non-exist single BI" id="50361636-e46d-403d-8ead-46e71eeaf4fc">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>nonExist</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Display non-exist single BI</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display non-exist single BI" id="02323168-2074-4b78-bb3c-fa26582bd66e">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>cf4ff044-af9f-4d02-9032-83f9bd913fea</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>404</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_newName</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_oldName</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_description</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_externalId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_newName</con:entry>
+        <con:entry>res_oldName</con:entry>
+        <con:entry>res_description</con:entry>
+        <con:entry>res_externalId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert httpStatus not found" id="0242a7e9-43cb-43fa-9c9a-61ca64911b85">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>516f77af-65e6-4091-b34c-9b5ae21572f7</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>02323168-2074-4b78-bb3c-fa26582bd66e</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="aedd9e6c-0986-4eb8-baef-3800528af7e2">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_404</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set display single BI" id="39375499-16de-41f5-8b50-e651da7b9fbc">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_id</con:sourceType>
+        <con:sourceStep>Submit success</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Display single BI</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display single BI" id="fc8cd616-0560-47ed-b4c4-8e6c01db86d7">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>cf4ff044-af9f-4d02-9032-83f9bd913fea</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>221</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>221</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_newName</con:name>
+          <con:value>new-name-e3ff6e8c-cde9-47e3-ae33-0e8d937a1969</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_oldName</con:name>
+          <con:value>name-EXT-so-0652c70d-00fc-4368-94c5-24d02749e023</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_description</con:name>
+          <con:value>new-description-cf12009b-cf16-4c34-b5e3-987c3a8bc7e6</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_externalId</con:name>
+          <con:value>new-ext-4cf99cf4-4bd9-48bc-9650-e493df0adda1</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_newName</con:entry>
+        <con:entry>res_oldName</con:entry>
+        <con:entry>res_description</con:entry>
+        <con:entry>res_externalId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert httpStatus, name , description" id="2182ac84-6d6f-4a9b-9926-fc911fc9967e">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>d21ebf9e-6aa0-4dc9-b069-77666da8b421</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>fc8cd616-0560-47ed-b4c4-8e6c01db86d7</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="e7199572-4f3f-4f54-8ec7-dc12eadec52e">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>e9cea5c5-c6a8-4dac-850d-6cfc46e10300</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>fc8cd616-0560-47ed-b4c4-8e6c01db86d7</con:sourceId>
+        <con:propertyName>res_newName</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals name" id="27223193-1061-4dc7-bfba-4ad8078eb724">
+          <con:configuration>
+            <patternObjectId>7339912d-13cf-4702-b687-5f7d18eceb85</patternObjectId>
+            <patternProperty>res_soName</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>32278cf3-ee52-49c0-a76c-1a5e390d374e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>fc8cd616-0560-47ed-b4c4-8e6c01db86d7</con:sourceId>
+        <con:propertyName>res_description</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals description" id="6a357285-592e-4c80-ba3e-043302588bb3">
+          <con:configuration>
+            <patternObjectId>7339912d-13cf-4702-b687-5f7d18eceb85</patternObjectId>
+            <patternProperty>res_soDescription</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>c1f2f8b1-6df6-473a-a72d-d5c1175e2f99</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>fc8cd616-0560-47ed-b4c4-8e6c01db86d7</con:sourceId>
+        <con:propertyName>res_externalId</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals ext id" id="d0a7c829-af82-4ec9-8f31-209c1eeb9559">
+          <con:configuration>
+            <patternObjectId>7339912d-13cf-4702-b687-5f7d18eceb85</patternObjectId>
+            <patternProperty>res_externalId</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display all" id="3a03d7c1-771f-4dea-9b41-e03527b77e44">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>11292a7b-4a29-47fb-9f5c-f00a8fe2f414</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>[{"newName":"new-name-e3ff6e8c-cde9-47e3-ae33-0e8d937a1969","oldName":"name-EXT-so-0652c70d-00fc-4368-94c5-24d02749e023","salesOrganizationDescription":"new-description-cf12009b-cf16-4c34-b5e3-987c3a8bc7e6","externalId":"new-ext-4cf99cf4-4bd9-48bc-9650-e493df0adda1","businessInteractionType":29,"code":"SOU-221","description":"SalesOrganization is updated by [ADMIN USER]","mainState":"Closed","state":"Closed","createdDate":"2017-11-20T08:23:47.405Z","preventUpdateFromOtherSystem":false,"id":"221"},{"newName":"new-name-3b4d8bce-7a9e-4213-9d7e-fa7ea8e45c6d","oldName":"name-EXT-so-0652c70d-00fc-4368-94c5-24d02749e023","salesOrganizationDescription":"new-description-e58740df-fdd1-42b1-b7a7-c96df55b47fd","businessInteractionType":29,"code":"SOU-211","description":"SalesOrganization is updated by [ADMIN USER]","mainState":"Closed","state":"Cancelled","createdDate":"2017-11-20T08:23:47.215Z","preventUpdateFromOtherSystem":false,"id":"211"},{"newName":"new-name-bb85c81a-864c-42c1-b121-113aa1f3e990","oldName":"name-EXT-so-e21318b7-ccb0-4d82-9d17-faf62f56966c","salesOrganizationDescription":"new-description-bd000517-dc79-44ed-a897-157e1330b44d","externalId":"new-ext-c712ba47-d3bc-4a3d-a153-cd402987fe1d","businessInteractionType":29,"code":"SOU-151","description":"SalesOrganization is updated by [ADMIN USER]","mainState":"Draft","state":"Draft","createdDate":"2017-11-20T08:21:56.839Z","preventUpdateFromOtherSystem":false,"id":"151"},{"newName":"new-name-43fec573-da80-4b12-8aac-a7d9cb7c3af9","oldName":"name-EXT-so-e21318b7-ccb0-4d82-9d17-faf62f56966c","salesOrganizationDescription":"new-description-3a69a9dd-a0a0-4821-bc64-61b6bc929ebd","externalId":"new-ext-42247d6c-5891-4f45-890f-a85d8e3e813d","businessInteractionType":29,"code":"SOU-141","description":"SalesOrganization is updated by [ADMIN USER]","mainState":"Draft","state":"Draft","createdDate":"2017-11-20T08:21:56.712Z","preventUpdateFromOtherSystem":false,"id":"141"},{"newName":"new-name-43fec573-da80-4b12-8aac-a7d9cb7c3af9","oldName":"name-EXT-so-e455240b-0038-4a74-8ecc-1196b2a95550","salesOrganizationDescription":"new-description-8512551c-bceb-4d38-88cb-58f718a926c4","externalId":"new-ext-c712ba47-d3bc-4a3d-a153-cd402987fe1d","businessInteractionType":29,"code":"SOU-81","description":"SalesOrganization is updated by [ADMIN USER]","mainState":"Closed","state":"Closed","createdDate":"2017-11-20T08:21:53.772Z","preventUpdateFromOtherSystem":false,"id":"81"},{"newName":"new-name-df6cc908-0f8d-4ed9-b54d-f83aa04aae54","oldName":"name-EXT-so-e455240b-0038-4a74-8ecc-1196b2a95550","salesOrganizationDescription":"new-description-6e6e0077-38c5-48aa-b5b8-921f16a67d6b","businessInteractionType":29,"code":"SOU-71","description":"SalesOrganization is updated by [ADMIN USER]","mainState":"Closed","state":"Cancelled","createdDate":"2017-11-20T08:21:53.283Z","preventUpdateFromOtherSystem":false,"id":"71"}]</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert httpStatus" id="05369396-97ff-40dd-9dd0-9f937a7e45dd">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>1d03c8ab-dc69-4739-bcaf-81e29001d19f</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3a03d7c1-771f-4dea-9b41-e03527b77e44</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="913d26b0-299d-4f50-89d1-56f2bf0b70fb">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T for creating sales organization and user" id="70d46af5-f3a9-41e0-a13a-9e70389e115a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userId</con:name>
+        <con:sourceType>req_createdByUserRoleId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_createdByUserRoleId</con:targetType>
+        <con:targetStep>Create sales organization and user new</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>req_createdBySalesOrgRoleId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_createdBySalesOrgRoleId</con:targetType>
+        <con:targetStep>Create sales organization and user new</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userExtId</con:name>
+        <con:sourceType>req_userRoleExtId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_userRoleExtId</con:targetType>
+        <con:targetStep>Create sales organization and user new</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soExtId</con:name>
+        <con:sourceType>req_salesOrgRoleExtId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_salesOrgRoleExtId</con:targetType>
+        <con:targetStep>Create sales organization and user new</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>terminalExtId</con:name>
+        <con:sourceType>req_terminalExtId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_terminalExtId</con:targetType>
+        <con:targetStep>Create sales organization and user new</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventoryExtId</con:name>
+        <con:sourceType>req_inventoryExtId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_inventoryExtId</con:targetType>
+        <con:targetStep>Create sales organization and user new</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create sales organization and user new" id="b928be47-274e-44bb-b70c-9abfdf2eb6f6">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>b92a7c8d-a0ed-4725-99e9-4866fd949629</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_createdByUserRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_createdBySalesOrgRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userRoleExtId</con:name>
+          <con:value>EXT-user-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleExtId</con:name>
+          <con:value>EXT-so-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_terminalExtId</con:name>
+          <con:value>EXT-terminal-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_inventoryExtId</con:name>
+          <con:value>EXT-inventory-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrgBiId</con:name>
+          <con:value>231</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_userRoleBiId</con:name>
+          <con:value>251</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_terminalBiId</con:name>
+          <con:value>271</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_inventoryRoleBiId</con:name>
+          <con:value>261</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrgId</con:name>
+          <con:value>15</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_userRoleId</con:name>
+          <con:value>17</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_terminalId</con:name>
+          <con:value>4</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_inventoryRoleId</con:name>
+          <con:value>18</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_placeId</con:name>
+          <con:value>10</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soExtId</con:name>
+          <con:value>EXT-so-7c75945d-bb3a-4019-a6a2-bc141eed7dd1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrganisationExternalId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>userToken</con:name>
+          <con:value>Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6IkVYVC11c2VyLTI3YTdmMjVhLTMxODQtNGM4Yy1iMmE5LWMyNDcwZjYyMzlhMyJ9fQ.iLSpFQiB4q2ZRVdOIzDzl4EHg2fmIrh2NQHSrXjieRn7bslbCVe5VGZRhMnodIgH802UgVaMsx1ecpDCH8dL01PZmqmGjd0ke8tTwmxRioa-vuaU77imLVLiDOQL47DvUo8D3IDqk2yhHAmzTKRtCy_VIBAaxq5ohuMvgMOSU2Y</con:value>
+        </con:property>
+        <con:property>
+          <con:name>userIntToken</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_email</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_inventoryRoleBiId</con:entry>
+        <con:entry>res_inventoryRoleId</con:entry>
+        <con:entry>res_placeId</con:entry>
+        <con:entry>res_salesOrgBiId</con:entry>
+        <con:entry>res_salesOrgId</con:entry>
+        <con:entry>res_soExtId</con:entry>
+        <con:entry>res_terminalBiId</con:entry>
+        <con:entry>res_terminalId</con:entry>
+        <con:entry>res_userRoleBiId</con:entry>
+        <con:entry>res_userRoleId</con:entry>
+        <con:entry>userToken</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for creating new sales organization and user" id="4263d335-a3cb-4b31-8ae9-613dce4ab5d5">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>9b6f7b73-ea4c-42cf-b167-6e84b9d3a69d</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>b928be47-274e-44bb-b70c-9abfdf2eb6f6</con:sourceId>
+        <con:propertyName>res_salesOrgId</con:propertyName>
+        <con:assertion type="Simple Contains" name="so" id="7cda3452-0ef2-48d3-ab6b-288a34ddb245">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>32bcce01-fd72-4261-8947-48eea8c9638e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>b928be47-274e-44bb-b70c-9abfdf2eb6f6</con:sourceId>
+        <con:propertyName>res_userRoleId</con:propertyName>
+        <con:assertion type="Simple Contains" name="user" id="784846a5-1cda-4b42-bbfe-465dada813c8">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>23d38e04-f1e3-4045-8552-828dccc1f55a</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>b928be47-274e-44bb-b70c-9abfdf2eb6f6</con:sourceId>
+        <con:propertyName>res_terminalId</con:propertyName>
+        <con:assertion type="Simple Contains" name="terminal" id="8397779c-15cd-4338-8aad-7d2a8a247b19">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>c4500349-d709-49f8-8bd5-2aa5187cc362</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>b928be47-274e-44bb-b70c-9abfdf2eb6f6</con:sourceId>
+        <con:propertyName>res_inventoryRoleId</con:propertyName>
+        <con:assertion type="Simple Contains" name="inventory" id="544dfc76-cf7b-4aaa-92e3-f27d567b1e11">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="DataSource for Creating SO UPDATE BI with existing values" id="4a7b8523-567e-4424-992f-c3dd06b8f02e">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Grid">
+        <con:configuration>
+          <check><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry></xml-fragment>]]></check>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${New value parameters#newName}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#newExternalId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#salesOrgExist}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#newName}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${New value parameters#newExternalId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties for This Case#externalIdMustBeUnique}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+        </con:configuration>
+      </con:dataSource>
+      <con:property>name</con:property>
+      <con:property>externalId</con:property>
+      <con:property>errorMessage</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen for errors" id="65dacf43-e39e-47f4-8d88-fe0409c99605">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>def errorMessage = context.expand( '${DataSource for Creating SO UPDATE BI with existing values#errorMessage}' )
+return errorMessage.toString();</script>
+        </con:configuration>
+        <con:name>error</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set Create SO UPDATE BI with existing values" id="0c02cd38-57f2-4076-bac8-6b18a67c6b96">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpecCode</con:name>
+        <con:sourceType>biSpecCode</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biSpecCode</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success with existing values</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success with existing values</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>DefaultUserRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success with existing values</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>newName</con:name>
+        <con:sourceType>name</con:sourceType>
+        <con:sourceStep>DataSource for Creating SO UPDATE BI with existing values</con:sourceStep>
+        <con:targetType>req_newName</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success with existing values</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>relatedSalesOrgRoleId</con:name>
+        <con:sourceType>res_salesOrgId</con:sourceType>
+        <con:sourceStep>Create sales organization and user new</con:sourceStep>
+        <con:targetType>req_relatedSalesOrgRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success with existing values</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgDesc</con:name>
+        <con:sourceType>newDescription</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_newSalesOrgDesc</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success with existing values</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleSpec</con:name>
+        <con:sourceType>salesOrgSpecId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_salesOrgRoleSpecId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success with existing values</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>newExternalId</con:name>
+        <con:sourceType>externalId</con:sourceType>
+        <con:sourceStep>DataSource for Creating SO UPDATE BI with existing values</con:sourceStep>
+        <con:targetType>req_newExternalId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI success with existing values</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userToken</con:name>
+        <con:sourceType>emptyName</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>AuthorizationUser</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userSo</con:name>
+        <con:sourceType>emptyName</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>UserSo</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create SO UPDATE BI success with existing values" id="bcf0f2e7-71ff-4fb0-9cc7-6795d5ef485c">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a3ff1ffb-6f98-48ea-858c-989af0078ab0</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+          <con:value>SO_UPDATE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newName</con:name>
+          <con:value>${Global Properties for This Case#newName}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_relatedSalesOrgRoleId</con:name>
+          <con:value>15</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newSalesOrgDesc</con:name>
+          <con:value>new-description-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleSpecId</con:name>
+          <con:value>999999</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newExternalId</con:name>
+          <con:value>${New value parameters#newExternalId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>291</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert for creation SO UPDATE BI success with existing values" id="7e800da2-ec91-45e8-905b-98c5725de3d4">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>cbba322e-cb93-4142-b14e-49e449c87ab9</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>bcf0f2e7-71ff-4fb0-9cc7-6795d5ef485c</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="f1d245c0-e896-442c-b7a4-aa78b778deb3">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_201</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>1047e113-59cc-417b-aee5-5f640f05f4c4</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>bcf0f2e7-71ff-4fb0-9cc7-6795d5ef485c</con:sourceId>
+        <con:propertyName>res_id</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="6a3082e6-a5e3-42ff-b7b6-7496fc709d25">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set submit BI with existing values" id="375d7df9-d207-4451-9870-00df73843baf">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_id</con:sourceType>
+        <con:sourceStep>Create SO UPDATE BI success with existing values</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit BI with existing values</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit BI with existing values" id="f0dcebb8-e1a4-4cfc-a02f-10aad7b6e6e1">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>701a073f-a229-46f5-a5cb-03eaf4fedcb0</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>291</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>EXTERNAL_ID_MUST_BE_UNIQUE</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert for submitting BI with existing values" id="d540077b-7824-4a41-9e23-521bf1da5dcd">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>5e296b54-530f-4398-a88a-a94607ad57a8</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f0dcebb8-e1a4-4cfc-a02f-10aad7b6e6e1</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="96aad5ec-7ae0-4ded-930b-100f41217f87">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>a8097856-f4d4-4b7e-ac49-a33e63374532</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f0dcebb8-e1a4-4cfc-a02f-10aad7b6e6e1</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="error" id="59e7ed97-f8d0-4294-845a-6c127b334367">
+          <con:configuration>
+            <patternObjectId>65dacf43-e39e-47f4-8d88-fe0409c99605</patternObjectId>
+            <patternProperty>error</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="DataSource Loop for Creating SO UPDATE BI with existing values" id="c6d298b0-d33a-403b-bb9c-226830741985">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>DataSource for Creating SO UPDATE BI with existing values</dataSourceStep>
+      <targetStep>DataGen for errors</targetStep>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="properties" name="Company SO - Update Cases" id="6d948ab2-a7d5-47a9-b9f5-950035b4efdc">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties/>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T for creating sales org spec" id="e18a487f-0857-4cb9-a433-d19b8edbbffb">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>placeUsageType</con:name>
+        <con:sourceType>placeUsageType</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_placeUsageType</con:targetType>
+        <con:targetStep>Create sales organization role specification</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>specName</con:name>
+        <con:sourceType>salesOrgSpecName</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_name</con:targetType>
+        <con:targetStep>Create sales organization role specification</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create sales organization role specification" id="435aaf29-4803-43bf-959a-6ae97a3de9a2">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>72b6edb4-5311-4bc4-9381-ad6be5e3c3cd</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_name</con:name>
+          <con:value>spec-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_placeUsageType</con:name>
+          <con:value>0</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>21</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_id</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for creating sales org spec" id="ef6ff836-ba28-4c4e-b2b3-79f425d722de">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>86f23c6c-ec62-42d2-af6b-25cb041dea96</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>435aaf29-4803-43bf-959a-6ae97a3de9a2</con:sourceId>
+        <con:propertyName>res_id</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="1e3c3162-f083-43e1-a084-6316bdffd7f0">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T for creating sales org bi for company type" id="da3f328f-7c6c-4912-a484-bcae8ae17fe6">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>DefaultUserRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create sales org bi for company type</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soRoleId</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Create sales org bi for company type</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpec</con:name>
+        <con:sourceType>biSpecCodeCreate</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_biSpecCode</con:targetType>
+        <con:targetStep>Create sales org bi for company type</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>extId</con:name>
+        <con:sourceType>req_salesOrgRoleExtId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_externalId</con:targetType>
+        <con:targetStep>Create sales org bi for company type</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soRoleSpecId</con:name>
+        <con:sourceType>res_id</con:sourceType>
+        <con:sourceStep>Create sales organization role specification</con:sourceStep>
+        <con:targetType>req_salesOrgRoleSpecId</con:targetType>
+        <con:targetStep>Create sales org bi for company type</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>partyType</con:name>
+        <con:sourceType>partyTypeofCompany</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_partyType</con:targetType>
+        <con:targetStep>Create sales org bi for company type</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>partyRoleType</con:name>
+        <con:sourceType>partyRoleTypeofCentralWarehouse</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_partyRoleType</con:targetType>
+        <con:targetStep>Create sales org bi for company type</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soName</con:name>
+        <con:sourceType>newName</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_soName</con:targetType>
+        <con:targetStep>Create sales org bi for company type</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create sales org bi for company type" id="2f930d51-6eca-4da1-ba09-32ebf8280f1c">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>484a544a-d1e8-4f62-bb0a-d41d4a74dea8</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_externalId</con:name>
+          <con:value>EXT-so-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleSpecId</con:name>
+          <con:value>21</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+          <con:value>SO_CREATE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_partyType</con:name>
+          <con:value>3</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_partyRoleType</con:name>
+          <con:value>8</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_soName</con:name>
+          <con:value>new-name-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>301</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soExtId</con:name>
+          <con:value>EXT-so-ed64e2e8-d181-450b-8f7e-ad092ceb25b1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMsg</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_soName</con:name>
+          <con:value>new-name-677f0d6f-ec54-4cec-9547-f150209f6863</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_soExtId</con:entry>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMsg</con:entry>
+        <con:entry>res_soName</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for creating sales org bi for company type" id="458753ab-ebcb-4162-bf0a-b8ce09148c04">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>b94dc2b6-3ed0-43f1-9469-08323483b75c</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>2f930d51-6eca-4da1-ba09-32ebf8280f1c</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="75f1f6cf-0bbc-4860-a485-220e1c92785a">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_201</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>bc303faa-7c12-417c-a666-576bbf0805e3</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>2f930d51-6eca-4da1-ba09-32ebf8280f1c</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="79c72b50-a9cf-48c4-80ab-ef1180378d6b">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T for submitting creating company so" id="030af6c0-851b-4758-80f0-d161e9102845">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biID</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create sales org bi for company type</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit create company so</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit create company so" id="e2eab995-7e8c-423d-b9a1-1b405b9bfe89">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>3802d1dc-0382-45cf-90b9-8db69603c7cc</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>301</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>301</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for submitting creating company so" id="f8e50162-e613-4550-b4e3-94587c7529f5">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>8ae652e0-2bf2-4c8c-9371-e16af80fc8c5</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>e2eab995-7e8c-423d-b9a1-1b405b9bfe89</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="fc9bdf28-063a-40d9-942c-a9a97de3fc2d">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T for getting so by ext id" id="34b1299a-e198-4781-bdbb-837f9a7241b2">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>extId</con:name>
+        <con:sourceType>res_soExtId</con:sourceType>
+        <con:sourceStep>Create sales org bi for company type</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_salesOrgRoleExternalId</con:targetType>
+        <con:targetStep>Display company so id by so ext id</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display company so id by so ext id" id="166b3c62-6679-4189-bf1f-2e4529e694ea">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>dcc5b52e-c2ba-4e8d-89b1-ba422b7eb16a</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_salesOrgRoleExternalId</con:name>
+          <con:value>EXT-so-ed64e2e8-d181-450b-8f7e-ad092ceb25b1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrgRoleId</con:name>
+          <con:value>19</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_salesOrgRoleId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for getting so by ext id" id="b2306393-80fc-4763-9091-6f8fbed3001e">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>4b2fbee5-bd96-4029-9cae-b68e4d47cba3</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>166b3c62-6679-4189-bf1f-2e4529e694ea</con:sourceId>
+        <con:propertyName>res_salesOrgRoleId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="d3cce780-b866-45cf-a7c7-a5f9a9a7754b">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T for displaying company sales organization by soId" id="75126cce-bfaf-4add-9d0d-a6f5e72ea9a0">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>res_salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Display company so id by so ext id</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_soId</con:targetType>
+        <con:targetStep>Display company sales organization by soId</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display company sales organization by soId" id="ec2c1a7e-5a95-4153-afb6-a1e74984c5e5">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ca1ba238-814e-4b6d-a473-a1a4c69db3cb</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value>19</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soId</con:name>
+          <con:value>19</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soStatus</con:name>
+          <con:value>Active</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soName</con:name>
+          <con:value>new-name-677f0d6f-ec54-4cec-9547-f150209f6863</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soDescription</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_externalId</con:name>
+          <con:value>EXT-so-ed64e2e8-d181-450b-8f7e-ad092ceb25b1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_soId</con:entry>
+        <con:entry>res_soStatus</con:entry>
+        <con:entry>res_soName</con:entry>
+        <con:entry>res_soDescription</con:entry>
+        <con:entry>res_externalId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for displaying company sales organization by soId" id="193dc92f-69f3-45a6-aba8-585beeadec4f">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>49907842-ee80-423b-afca-e8dfac6a7ce2</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>ec2c1a7e-5a95-4153-afb6-a1e74984c5e5</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="fc98507b-be50-4100-8c7d-2f2b83a3de72">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>b07ccf0a-6f58-4abd-ae8a-2753a0d15e60</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>ec2c1a7e-5a95-4153-afb6-a1e74984c5e5</con:sourceId>
+        <con:propertyName>res_soStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="status" id="8bd33e3c-9cf6-45bf-b07c-fe8d5463c649">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>statusActive</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>16b09897-f308-4e51-ad1d-adc40faf8d7e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>ec2c1a7e-5a95-4153-afb6-a1e74984c5e5</con:sourceId>
+        <con:propertyName>res_externalId</con:propertyName>
+        <con:assertion type="Simple Equals" name="ext id" id="0b05701c-bd3e-447c-a239-00533207ad4b">
+          <con:configuration>
+            <patternObjectId>2f930d51-6eca-4da1-ba09-32ebf8280f1c</patternObjectId>
+            <patternProperty>res_soExtId</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen new values for company" id="2970f321-d20c-40ab-b264-02d7926face2">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>def newName = context.expand( '${Global Properties for This Case#newName}' )
+testRunner.testCase.testSteps['New value parameters for company'].setPropertyValue("newName", newName.toString());</script>
+        </con:configuration>
+        <con:name>newCompanyName</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Script">
+        <con:configuration>
+          <script>def newDescription = context.expand( '${Global Properties for This Case#newDescription}' )
+testRunner.testCase.testSteps['New value parameters for company'].setPropertyValue("newDescription", newDescription.toString());</script>
+        </con:configuration>
+        <con:name>newCompanyDescription</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Script">
+        <con:configuration>
+          <script>def newExternalId = context.expand( '${Global Properties for This Case#newExternalId}' )
+testRunner.testCase.testSteps['New value parameters for company'].setPropertyValue("newExternalId", newExternalId.toString());</script>
+        </con:configuration>
+        <con:name>newCompanyExternalId</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="properties" name="New value parameters for company" id="a16ce3e6-affb-4156-8fa7-a580d9ab700d">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>newName</con:name>
+          <con:value>new-name-f1873189-c5c2-463e-a481-04a325f250a7</con:value>
+        </con:property>
+        <con:property>
+          <con:name>newDescription</con:name>
+          <con:value>new-description-c6822579-0ad5-440b-b732-3a14102814c8</con:value>
+        </con:property>
+        <con:property>
+          <con:name>newExternalId</con:name>
+          <con:value>new-ext-71bbbf23-189a-4dd0-9301-3fbd12507571</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T for creating SO UPDATE BI for company so" id="ce751bce-4e7e-42b1-92ae-da419315684b">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpecCode</con:name>
+        <con:sourceType>biSpecCode</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biSpecCode</con:targetType>
+        <con:targetStep>Create SO UPDATE BI for company so</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI for company so</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>DefaultUserRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI for company so</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleSpec</con:name>
+        <con:sourceType>salesOrgSpecId</con:sourceType>
+        <con:sourceStep>Global Properties for This Case</con:sourceStep>
+        <con:targetType>req_salesOrgRoleSpecId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI for company so</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>relatedSalesOrgRoleId</con:name>
+        <con:sourceType>res_salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Display company so id by so ext id</con:sourceStep>
+        <con:targetType>req_relatedSalesOrgRoleId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI for company so</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>newName</con:name>
+        <con:sourceType>newName</con:sourceType>
+        <con:sourceStep>New value parameters for company</con:sourceStep>
+        <con:targetType>req_newName</con:targetType>
+        <con:targetStep>Create SO UPDATE BI for company so</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>newSalesOrgDesc</con:name>
+        <con:sourceType>newDescription</con:sourceType>
+        <con:sourceStep>New value parameters for company</con:sourceStep>
+        <con:targetType>req_newSalesOrgDesc</con:targetType>
+        <con:targetStep>Create SO UPDATE BI for company so</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>newExternalId</con:name>
+        <con:sourceType>newExternalId</con:sourceType>
+        <con:sourceStep>New value parameters for company</con:sourceStep>
+        <con:targetType>req_newExternalId</con:targetType>
+        <con:targetStep>Create SO UPDATE BI for company so</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create SO UPDATE BI for company so" id="9f4e6393-de07-4bb2-a4c1-5b7b5d7eb7ad">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a3ff1ffb-6f98-48ea-858c-989af0078ab0</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+          <con:value>SO_UPDATE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newName</con:name>
+          <con:value>new-name-f1873189-c5c2-463e-a481-04a325f250a7</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_relatedSalesOrgRoleId</con:name>
+          <con:value>19</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newSalesOrgDesc</con:name>
+          <con:value>new-description-c6822579-0ad5-440b-b732-3a14102814c8</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleSpecId</con:name>
+          <con:value>999999</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_newExternalId</con:name>
+          <con:value>new-ext-71bbbf23-189a-4dd0-9301-3fbd12507571</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>321</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for creating SO UPDATE BI for company so" id="db1ea0c6-45e2-48da-998c-d837aac87ebc">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>c81d2ad0-1eff-4ada-99f4-2d818a3aded5</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>9f4e6393-de07-4bb2-a4c1-5b7b5d7eb7ad</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="e461c5fc-8205-411c-accf-9e0e06f08bf3">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_201</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>f44dbc30-de61-4f19-87ef-78bf5480f03d</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>9f4e6393-de07-4bb2-a4c1-5b7b5d7eb7ad</con:sourceId>
+        <con:propertyName>res_id</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="2ad06b7d-3ff0-47db-9c84-a7d65adcafa7">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T for submitting Create SO UPDATE BI for company so" id="942c7d47-11bb-4f76-856a-005de6e04a9a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_id</con:sourceType>
+        <con:sourceStep>Create SO UPDATE BI for company so</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit Create SO UPDATE BI for company so</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit Create SO UPDATE BI for company so" id="c30d17aa-f593-4f53-80bb-68be1d81032c">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>701a073f-a229-46f5-a5cb-03eaf4fedcb0</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>321</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>321</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for submitting Create SO UPDATE BI for company so" id="ea5cee20-168c-4441-ae88-218ae92df720">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>fa4a2a8c-5062-4481-887e-842e9a4f7b45</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>c30d17aa-f593-4f53-80bb-68be1d81032c</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="c4af6bb6-3bbd-4bc1-bd61-c9ed6b38d6a5">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T for displaying updated company sales organization by soId" id="cbe8205c-9e6d-4e47-845e-dd84aab81cc6">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>res_salesOrgRoleId</con:sourceType>
+        <con:sourceStep>Display company so id by so ext id</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_soId</con:targetType>
+        <con:targetStep>Display updated company sales organization by soId</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display updated company sales organization by soId" id="2764be6f-9365-42c5-9c14-2bd5be9b9204">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>ca1ba238-814e-4b6d-a473-a1a4c69db3cb</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value>19</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soId</con:name>
+          <con:value>19</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soStatus</con:name>
+          <con:value>Active</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soName</con:name>
+          <con:value>new-name-f1873189-c5c2-463e-a481-04a325f250a7</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soDescription</con:name>
+          <con:value>new-description-c6822579-0ad5-440b-b732-3a14102814c8</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_externalId</con:name>
+          <con:value>new-ext-71bbbf23-189a-4dd0-9301-3fbd12507571</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_soId</con:entry>
+        <con:entry>res_soStatus</con:entry>
+        <con:entry>res_soName</con:entry>
+        <con:entry>res_soDescription</con:entry>
+        <con:entry>res_externalId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion for displaying updated company sales organization by soId" id="7b90cba6-e8d2-45b2-96e7-39f5dca61ca1">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>8a6f527a-63f9-4836-8dcc-5eb01c3baa28</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>2764be6f-9365-42c5-9c14-2bd5be9b9204</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="56a1ea0d-7d5a-4b1f-80ea-b0ddb4955ec6">
+          <con:configuration>
+            <patternObjectId>72bba326-245f-4742-a557-eedfd2a9904c</patternObjectId>
+            <patternProperty>httpStatus_200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>36483d99-db68-4bd3-9efc-f32373d67a32</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>2764be6f-9365-42c5-9c14-2bd5be9b9204</con:sourceId>
+        <con:propertyName>res_soName</con:propertyName>
+        <con:assertion type="Simple Equals" name="new name" id="2d5a32e0-62fc-4c84-8150-d2427ded2904">
+          <con:configuration>
+            <patternObjectId>a16ce3e6-affb-4156-8fa7-a580d9ab700d</patternObjectId>
+            <patternProperty>newName</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>e0e25bec-fea1-4227-9090-e7b81421b012</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>2764be6f-9365-42c5-9c14-2bd5be9b9204</con:sourceId>
+        <con:propertyName>res_soDescription</con:propertyName>
+        <con:assertion type="Simple Equals" name="new desc" id="913458fe-00bc-4913-91df-fb8b860e9660">
+          <con:configuration>
+            <patternObjectId>a16ce3e6-affb-4156-8fa7-a580d9ab700d</patternObjectId>
+            <patternProperty>newDescription</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>5a4c8c50-93d7-42e9-be50-ad850e0866b5</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>2764be6f-9365-42c5-9c14-2bd5be9b9204</con:sourceId>
+        <con:propertyName>res_externalId</con:propertyName>
+        <con:assertion type="Simple Equals" name="new ext" id="7e10b927-3a7f-445a-974b-4183218573a5">
+          <con:configuration>
+            <patternObjectId>a16ce3e6-affb-4156-8fa7-a580d9ab700d</patternObjectId>
+            <patternProperty>newExternalId</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>b51e2975-a0b0-42b4-9d02-369cc1209f6e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>b182182b-7bd5-4835-aa99-00e8d6a9857e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d7e8f2c2-970a-4fa3-98ec-93c0ca133b85</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>9ba685e3-6201-47fa-9e11-7621f69b5df6</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>475a76e5-d395-481e-af8e-5d2447f97001</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>46e62aeb-c263-4561-8b33-060ed755a00d</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>9102f16f-a14a-40c4-90d4-ee01db342d4a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>9e6111d8-fd50-4be8-a73b-210ebc87af52</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>0c02cd38-57f2-4076-bac8-6b18a67c6b96</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>bcf0f2e7-71ff-4fb0-9cc7-6795d5ef485c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>70d46af5-f3a9-41e0-a13a-9e70389e115a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>b928be47-274e-44bb-b70c-9abfdf2eb6f6</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>5e7e2bc5-14db-4335-88ad-6f02d8c42b2b</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>7339912d-13cf-4702-b687-5f7d18eceb85</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>39375499-16de-41f5-8b50-e651da7b9fbc</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>7e800da2-ec91-45e8-905b-98c5725de3d4</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>50361636-e46d-403d-8ead-46e71eeaf4fc</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>02323168-2074-4b78-bb3c-fa26582bd66e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>0e5e56c1-9a63-4d8d-9df2-cd97a16b3e22</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>f0b5ea11-c074-4e88-9238-281cbb8f6fbd</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d540077b-7824-4a41-9e23-521bf1da5dcd</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e2eab995-7e8c-423d-b9a1-1b405b9bfe89</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>2970f321-d20c-40ab-b264-02d7926face2</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a16ce3e6-affb-4156-8fa7-a580d9ab700d</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>c30d17aa-f593-4f53-80bb-68be1d81032c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>2764be6f-9365-42c5-9c14-2bd5be9b9204</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

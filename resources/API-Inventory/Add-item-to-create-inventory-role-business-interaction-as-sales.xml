@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="d0a0d555-5dd1-4a4c-94cc-597efd0d19f4" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add item to create inventory role business interaction as sales" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="5914d943-4fee-4e49-8a96-e100db78b91dfileName">Add-item-to-create-inventory-role-business-interaction</con:setting>
+    <con:setting id="d0a0d555-5dd1-4a4c-94cc-597efd0d19f4fileName">Add-item-to-create-inventory-role-business-interaction-as-sales</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Add item to create inventory role business interaction" id="a5e4666c-64c2-493e-9cca-b1735330e398">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/inventoryCreate/{biId}/item" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Add item to create inventory role business interaction" id="8bb81ff7-3871-4e91-929a-5d017a5212c0" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+   "type":"com.ericsson.bss.rm.erms.core.entity.dto.inventory.InventoryRoleSpecDTO",
+   "name": "Inventory - ${#TestCase#req_externalId}",
+   "externalId": "${#TestCase#req_externalId}",
+   "party":    {
+      "type": "com.ericsson.bss.rm.erms.core.entity.dto.party.OrganizationDTO",
+      "name": "Inventory - ${#TestCase#req_externalId}"
+   },
+   "inventoryRoleSpec": {"id": "${#TestCase#req_inventoryRoleSpecId}", "inventoryType":"2"},
+   "salesOrganizationRoleId": "${#TestCase#req_salesOrgRoleId}"
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/inventoryCreate/biId/item</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="ce896d6a-fcfb-4ae2-ae7e-4e42dff130a5">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>req_biId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biItemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add item to create inventory role business interaction</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_biItemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value>420</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrgRoleId</con:name>
+      <con:value>274</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_externalId</con:name>
+      <con:value>ext-t-9</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_inventoryRoleSpecId</con:name>
+      <con:value>3</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_biId</con:name>
+      <con:value>420</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_biItemId</con:name>
+      <con:value>215</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>56117e2c-4610-41b9-8ce5-0c13bacc4591</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>fcfadd79-d492-4c8b-8f80-3de650b5e723</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

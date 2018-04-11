@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="cf4ff044-af9f-4d02-9032-83f9bd913fea" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="SO UPDATE - Display Single" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="cf4ff044-af9f-4d02-9032-83f9bd913feafileName">SO-UPDATE---Display-Single</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="displaySingle - Request 1" id="4ae6acf3-8e5c-4b50-bb9a-ae99e0d4ce5c">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/updateSalesOrganizationRole/{id}" methodName="displaySingle" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="displaySingle - Request 1" id="babca530-32ca-4f5e-bc90-b96916031cec" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJFUk1TX1NZU1RFTV9BdXRoelByb2ZpbGUiLCJ2ZXJzaW9uIjoidjEiLCJwYXJ0eV9pZCI6IjEyMyJ9fQ.wPkZKoUs47osZN6K-iP9wXxjSFMZNQKC6UIChyYrKg3toxPKXzE9QHE6uYPOBTzfBsVhyVxgCCaQo2is56vXMvddlGnmQpNsRrYiUa9pIRI-knK3qzVmGgYqSpXds9-I1XQJfDvl5WgseQN7VLe41XtF1XG8LIYCIhKGtuITyyE" xmlns="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/updateSalesOrganizationRole/81</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="id" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>id</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="efa928f2-6760-481b-a58a-9b9e19308d68">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>newName</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>displaySingle - Request 1</con:sourceStep>
+        <con:sourcePath>['newName']</con:sourcePath>
+        <con:targetType>res_newName</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>oldName</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>displaySingle - Request 1</con:sourceStep>
+        <con:sourcePath>['oldName']</con:sourcePath>
+        <con:targetType>res_oldName</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>description</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>displaySingle - Request 1</con:sourceStep>
+        <con:sourcePath>['salesOrganizationDescription']</con:sourcePath>
+        <con:targetType>res_description</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>displaySingle - Request 1</con:sourceStep>
+        <con:sourcePath>['id']</con:sourcePath>
+        <con:targetType>res_id</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpStatus</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>displaySingle - Request 1</con:sourceStep>
+        <con:sourcePath>['status']</con:sourcePath>
+        <con:targetType>res_httpStatus</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>externalId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>displaySingle - Request 1</con:sourceStep>
+        <con:sourcePath>['externalId']</con:sourcePath>
+        <con:targetType>res_externalId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value>81</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_httpStatus</con:name>
+      <con:value>200</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_id</con:name>
+      <con:value>81</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_newName</con:name>
+      <con:value>new-name-b863d105-0a21-4bee-8e59-9b5b6f579259</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_oldName</con:name>
+      <con:value>name-EXT-so-e03b99e9-246a-451a-8e3b-81a034210a58</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_description</con:name>
+      <con:value>new-description-417b8fa4-ac47-4a0b-bfe9-4437752cc952</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_externalId</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

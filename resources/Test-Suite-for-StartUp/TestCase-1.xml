@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="6c55eb0e-b1bf-4d5d-94d2-c9ed1d198e67" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TestCase 1" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="6c55eb0e-b1bf-4d5d-94d2-c9ed1d198e67fileName">TestCase-1</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Properties" id="7f29ece2-76a3-4bf5-8f91-9affe6f5606e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>condition_OrgTypeRWH</con:name>
+          <con:value>OrgTypeRWHCondition</con:value>
+        </con:property>
+        <con:property>
+          <con:name>condition_DealerOrShop</con:name>
+          <con:value>OrganizationTypeDealerOrShopCondition</con:value>
+        </con:property>
+        <con:property>
+          <con:name>condition_Null</con:name>
+          <con:value>NullCondition</con:value>
+        </con:property>
+        <con:property>
+          <con:name>domain_SalesOrganization</con:name>
+          <con:value>SOC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>action_CreateSalesOrganization</con:name>
+          <con:value>SOC.Create</con:value>
+        </con:property>
+        <con:property>
+          <con:name>profile_CSR</con:name>
+          <con:value>CSR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>scope_Null</con:name>
+          <con:value>PermitAllScope</con:value>
+        </con:property>
+        <con:property>
+          <con:name>null</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>random-SoextId</con:name>
+          <con:value>ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>createUser_biSpecCode</con:name>
+          <con:value>USERCREATEBISPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>random_userExtId</con:name>
+          <con:value>ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>domain_User</con:name>
+          <con:value>USR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>action_CreateUser</con:name>
+          <con:value>USR.Create</con:value>
+        </con:property>
+        <con:property>
+          <con:name>random_inventoryExtId</con:name>
+          <con:value>ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>random_terminalExtId</con:name>
+          <con:value>ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>product_transfer_biSpec</con:name>
+          <con:value>PRD_TRANSFER</con:value>
+        </con:property>
+        <con:property>
+          <con:name>true</con:name>
+          <con:value>true</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 24" id="9ca59a8c-3607-4634-bb8b-fad635b32090">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>status</con:name>
+        <con:sourceType>true</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_status</con:targetType>
+        <con:targetStep>Enable authentication</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>status_auth</con:name>
+        <con:sourceType>true</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_status</con:targetType>
+        <con:targetStep>Enable authorization</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userSo</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>UserSo</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>createdForSalesOrg</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_createdForSalesOrg</con:targetType>
+        <con:targetStep>Create profile permission bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userId</con:name>
+        <con:sourceType>DefaultUserRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_userId</con:targetType>
+        <con:targetStep>Create profile permission bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soId</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_soId</con:targetType>
+        <con:targetStep>Create profile permission bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Enable authentication" id="7aece872-42e2-4410-ba90-ef929e2a19e5">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>12c0c490-255d-42bc-a787-f1e604969886</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>Ok</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_status</con:name>
+          <con:value>true</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Enable authorization" id="10ecf27a-088f-4299-abb2-969e847082d7">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>b9e75504-97ad-4b37-b581-97fe464f9739</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>Ok</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_status</con:name>
+          <con:value>true</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Get all action codes" id="e6a1894c-3621-4142-85fe-b6bf227af6d3">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>d98b83f6-dc2f-4785-836b-a25d7dbcf78c</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>[{"code":"CASU.Cancel","name":"Change Active Sales Organization Of User Cancel","domain":"CASU","permissionType":"ACTION_PERMISSION"},{"code":"CASU.Create","name":"Change Active Sales Organization Of User Create","domain":"CASU","permissionType":"ACTION_PERMISSION"},{"code":"CASU.Get","name":"Change Active Sales Organization Of User Get","domain":"CASU","permissionType":"ACTION_PERMISSION"},{"code":"CASU.Submit","name":"Change Active Sales Organization Of User Submit","domain":"CASU","permissionType":"ACTION_PERMISSION"},{"code":"CASU.Update","name":"Change Active Sales Organization Of User Update","domain":"CASU","permissionType":"ACTION_PERMISSION"},{"code":"CASU.View","name":"Change Active Sales Organization Of User View","domain":"CASU","permissionType":"VIEW_PERMISSION"},{"code":"CEC.Cancel","name":"Change Entity Characteristics Cancel","domain":"CEC","permissionType":"ACTION_PERMISSION"},{"code":"CEC.Create","name":"Change Entity Characteristics Create","domain":"CEC","permissionType":"ACTION_PERMISSION"},{"code":"CEC.FromSalesOrganization","name":"Change Entity Characteristics FromSalesOrganization","domain":"CEC","permissionType":"ORG_LIST_PERMISSION"},{"code":"CEC.Get","name":"Change Entity Characteristics Get","domain":"CEC","permissionType":"ACTION_PERMISSION"},{"code":"CEC.Submit","name":"Change Entity Characteristics Submit","domain":"CEC","permissionType":"ACTION_PERMISSION"},{"code":"CEC.Update","name":"Change Entity Characteristics Update","domain":"CEC","permissionType":"ACTION_PERMISSION"},{"code":"CEC.View","name":"Change Entity Characteristics View","domain":"CEC","permissionType":"VIEW_PERMISSION"},{"code":"CSOP.Cancel","name":"Change Sales Organization Parent Cancel","domain":"CSOP","permissionType":"ACTION_PERMISSION"},{"code":"CSOP.Create","name":"Change Sales Organization Parent Create","domain":"CSOP","permissionType":"ACTION_PERMISSION"},{"code":"CSOP.Get","name":"Change Sales Organization Parent Get","domain":"CSOP","permissionType":"ACTION_PERMISSION"},{"code":"CSOP.Submit","name":"Change Sales Organization Parent Submit","domain":"CSOP","permissionType":"ACTION_PERMISSION"},{"code":"CSOP.Update","name":"Change Sales Organization Parent Update","domain":"CSOP","permissionType":"ACTION_PERMISSION"},{"code":"CSOP.View","name":"Change Sales Organization Parent View","domain":"CSOP","permissionType":"VIEW_PERMISSION"},{"code":"CSO.Cancel","name":"Change Sales Organizations Of User Cancel","domain":"CSO","permissionType":"ACTION_PERMISSION"},{"code":"CSO.Create","name":"Change Sales Organizations Of User Create","domain":"CSO","permissionType":"ACTION_PERMISSION"},{"code":"CSO.Get","name":"Change Sales Organizations Of User Get","domain":"CSO","permissionType":"ACTION_PERMISSION"},{"code":"CSO.Submit","name":"Change Sales Organizations Of User Submit","domain":"CSO","permissionType":"ACTION_PERMISSION"},{"code":"CSO.Update","name":"Change Sales Organizations Of User Update","domain":"CSO","permissionType":"ACTION_PERMISSION"},{"code":"CSO.View","name":"Change Sales Organizations Of User View","domain":"CSO","permissionType":"VIEW_PERMISSION"},{"code":"CSP.Cancel","name":"Create Starter Pack Cancel","domain":"CSP","permissionType":"ACTION_PERMISSION"},{"code":"CSP.Create","name":"Create Starter Pack Create","domain":"CSP","permissionType":"ACTION_PERMISSION"},{"code":"CSP.Get","name":"Create Starter Pack Get","domain":"CSP","permissionType":"ACTION_PERMISSION"},{"code":"CSP.Submit","name":"Create Starter Pack Submit","domain":"CSP","permissionType":"ACTION_PERMISSION"},{"code":"CSP.SubmitStarterPack","name":"Create Starter Pack SubmitStarterPack","domain":"CSP","permissionType":"ACTION_PERMISSION"},{"code":"CSP.Update","name":"Create Starter Pack Update","domain":"CSP","permissionType":"ACTION_PERMISSION"},{"code":"CSP.View","name":"Create Starter Pack View","domain":"CSP","permissionType":"VIEW_PERMISSION"},{"code":"SEN.Cancel","name":"End Session Cancel","domain":"SEN","permissionType":"ACTION_PERMISSION"},{"code":"SEN.Create","name":"End Session Create","domain":"SEN","permissionType":"ACTION_PERMISSION"},{"code":"SEN.Get","name":"End Session Get","domain":"SEN","permissionType":"ACTION_PERMISSION"},{"code":"SEN.Submit","name":"End Session Submit","domain":"SEN","permissionType":"ACTION_PERMISSION"},{"code":"SEN.Update","name":"End Session Update","domain":"SEN","permissionType":"ACTION_PERMISSION"},{"code":"SEN.View","name":"End Session View","domain":"SEN","permissionType":"VIEW_PERMISSION"},{"code":"IPRQ.Fulfill","name":"Incoming Product Request Fulfill","domain":"IPRQ","permissionType":"ACTION_PERMISSION"},{"code":"IPRQ.Get","name":"Incoming Product Request Get","domain":"IPRQ","permissionType":"ACTION_PERMISSION"},{"code":"IPRQ.View","name":"Incoming Product Request View","domain":"IPRQ","permissionType":"VIEW_PERMISSION"},{"code":"INV.Cancel","name":"Inventory Create Cancel","domain":"INV","permissionType":"ACTION_PERMISSION"},{"code":"INV.Create","name":"Inventory Create Create","domain":"INV","permissionType":"ACTION_PERMISSION"},{"code":"INV.FromSalesOrganization","name":"Inventory Create FromSalesOrganization","domain":"INV","permissionType":"ORG_LIST_PERMISSION"},{"code":"INV.Get","name":"Inventory Create Get","domain":"INV","permissionType":"ACTION_PERMISSION"},{"code":"INV.Submit","name":"Inventory Create Submit","domain":"INV","permissionType":"ACTION_PERMISSION"},{"code":"INV.Update","name":"Inventory Create Update","domain":"INV","permissionType":"ACTION_PERMISSION"},{"code":"INV.View","name":"Inventory Create View","domain":"INV","permissionType":"VIEW_PERMISSION"},{"code":"MCM.Cancel","name":"Manage Contact Medium Cancel","domain":"MCM","permissionType":"ACTION_PERMISSION"},{"code":"MCM.Create","name":"Manage Contact Medium Create","domain":"MCM","permissionType":"ACTION_PERMISSION"},{"code":"MCM.FromSalesOrganization","name":"Manage Contact Medium FromSalesOrganization","domain":"MCM","permissionType":"ORG_LIST_PERMISSION"},{"code":"MCM.Get","name":"Manage Contact Medium Get","domain":"MCM","permissionType":"ACTION_PERMISSION"},{"code":"MCM.Submit","name":"Manage Contact Medium Submit","domain":"MCM","permissionType":"ACTION_PERMISSION"},{"code":"MCM.ToSalesOrganization","name":"Manage Contact Medium ToSalesOrganization","domain":"MCM","permissionType":"ORG_LIST_PERMISSION"},{"code":"MCM.Update","name":"Manage Contact Medium Update","domain":"MCM","permissionType":"ACTION_PERMISSION"},{"code":"MCM.View","name":"Manage Contact Medium View","domain":"MCM","permissionType":"VIEW_PERMISSION"},{"code":"MTx.Get","name":"Monetary Transaction Get","domain":"MTx","permissionType":"ACTION_PERMISSION"},{"code":"MTx.View","name":"Monetary Transaction View","domain":"MTx","permissionType":"VIEW_PERMISSION"},{"code":"MT.Cancel","name":"Money Transfer Cancel","domain":"MT","permissionType":"ACTION_PERMISSION"},{"code":"MT.Create","name":"Money Transfer Create","domain":"MT","permissionType":"ACTION_PERMISSION"},{"code":"MT.Get","name":"Money Transfer Get","domain":"MT","permissionType":"ACTION_PERMISSION"},{"code":"MT.Submit","name":"Money Transfer Submit","domain":"MT","permissionType":"ACTION_PERMISSION"},{"code":"MT.Update","name":"Money Transfer Update","domain":"MT","permissionType":"ACTION_PERMISSION"},{"code":"MT.View","name":"Money Transfer View","domain":"MT","permissionType":"VIEW_PERMISSION"},{"code":"PAY.Cancel","name":"Payment Cancel","domain":"PAY","permissionType":"ACTION_PERMISSION"},{"code":"PAY.Create","name":"Payment Create","domain":"PAY","permissionType":"ACTION_PERMISSION"},{"code":"PAY.Get","name":"Payment Get","domain":"PAY","permissionType":"ACTION_PERMISSION"},{"code":"PAY.Revert","name":"Payment Revert","domain":"PAY","permissionType":"ACTION_PERMISSION"},{"code":"PAY.Submit","name":"Payment Submit","domain":"PAY","permissionType":"ACTION_PERMISSION"},{"code":"PAY.Update","name":"Payment Update","domain":"PAY","permissionType":"ACTION_PERMISSION"},{"code":"PAY.View","name":"Payment View","domain":"PAY","permissionType":"VIEW_PERMISSION"},{"code":"CONF.Get","name":"Product Confirmation Get","domain":"CONF","permissionType":"ACTION_PERMISSION"},{"code":"CONF.Reject","name":"Product Confirmation Reject","domain":"CONF","permissionType":"ACTION_PERMISSION"},{"code":"CONF.Submit","name":"Product Confirmation Submit","domain":"CONF","permissionType":"ACTION_PERMISSION"},{"code":"CONF.Update","name":"Product Confirmation Update","domain":"CONF","permissionType":"ACTION_PERMISSION"},{"code":"CONF.View","name":"Product Confirmation View","domain":"CONF","permissionType":"VIEW_PERMISSION"},{"code":"PRQ.Cancel","name":"Product Request Cancel","domain":"PRQ","permissionType":"ACTION_PERMISSION"},{"code":"PRQ.Create","name":"Product Request Create","domain":"PRQ","permissionType":"ACTION_PERMISSION"},{"code":"PRQ.FromSalesOrganization","name":"Product Request FromSalesOrganization","domain":"PRQ","permissionType":"ORG_LIST_PERMISSION"},{"code":"PRQ.Get","name":"Product Request Get","domain":"PRQ","permissionType":"ACTION_PERMISSION"},{"code":"PRQ.Submit","name":"Product Request Submit","domain":"PRQ","permissionType":"ACTION_PERMISSION"},{"code":"PRQ.ToSalesOrganization","name":"Product Request ToSalesOrganization","domain":"PRQ","permissionType":"ORG_LIST_PERMISSION"},{"code":"PRQ.Update","name":"Product Request Update","domain":"PRQ","permissionType":"ACTION_PERMISSION"},{"code":"PRQ.View","name":"Product Request View","domain":"PRQ","permissionType":"VIEW_PERMISSION"},{"code":"PR.Cancel","name":"Product Reservation Cancel","domain":"PR","permissionType":"ACTION_PERMISSION"},{"code":"PR.Create","name":"Product Reservation Create","domain":"PR","permissionType":"ACTION_PERMISSION"},{"code":"PR.FromSalesOrganization","name":"Product Reservation FromSalesOrganization","domain":"PR","permissionType":"ORG_LIST_PERMISSION"},{"code":"PR.Get","name":"Product Reservation Get","domain":"PR","permissionType":"ACTION_PERMISSION"},{"code":"PR.Submit","name":"Product Reservation Submit","domain":"PR","permissionType":"ACTION_PERMISSION"},{"code":"PR.Update","name":"Product Reservation Update","domain":"PR","permissionType":"ACTION_PERMISSION"},{"code":"PR.View","name":"Product Reservation View","domain":"PR","permissionType":"VIEW_PERMISSION"},{"code":"PSC.Cancel","name":"Product Status Change Cancel","domain":"PSC","permissionType":"ACTION_PERMISSION"},{"code":"PSC.Create","name":"Product Status Change Create","domain":"PSC","permissionType":"ACTION_PERMISSION"},{"code":"PSC.FromSalesOrganization","name":"Product Status Change FromSalesOrganization","domain":"PSC","permissionType":"ORG_LIST_PERMISSION"},{"code":"PSC.Get","name":"Product Status Change Get","domain":"PSC","permissionType":"ACTION_PERMISSION"},{"code":"PSC.Submit","name":"Product Status Change Submit","domain":"PSC","permissionType":"ACTION_PERMISSION"},{"code":"PSC.Update","name":"Product Status Change Update","domain":"PSC","permissionType":"ACTION_PERMISSION"},{"code":"PSC.View","name":"Product Status Change View","domain":"PSC","permissionType":"VIEW_PERMISSION"},{"code":"PT.Approve","name":"Product Transfer Approve","domain":"PT","permissionType":"ACTION_PERMISSION"},{"code":"PT.Cancel","name":"Product Transfer Cancel","domain":"PT","permissionType":"ACTION_PERMISSION"},{"code":"PT.Create","name":"Product Transfer Create","domain":"PT","permissionType":"ACTION_PERMISSION"},{"code":"PT.FromPlace","name":"Product Transfer FromPlace","domain":"PT","permissionType":"PLACE_LIST_PERMISSION"},{"code":"PT.FromSalesOrganization","name":"Product Transfer FromSalesOrganization","domain":"PT","permissionType":"ORG_LIST_PERMISSION"},{"code":"PT.Get","name":"Product Transfer Get","domain":"PT","permissionType":"ACTION_PERMISSION"},{"code":"PT.Revert","name":"Product Transfer Revert","domain":"PT","permissionType":"ACTION_PERMISSION"},{"code":"PT.Submit","name":"Product Transfer Submit","domain":"PT","permissionType":"ACTION_PERMISSION"},{"code":"PT.ToPlace","name":"Product Transfer ToPlace","domain":"PT","permissionType":"PLACE_LIST_PERMISSION"},{"code":"PT.ToSalesOrganization","name":"Product Transfer ToSalesOrganization","domain":"PT","permissionType":"ORG_LIST_PERMISSION"},{"code":"PT.Update","name":"Product Transfer Update","domain":"PT","permissionType":"ACTION_PERMISSION"},{"code":"PT.View","name":"Product Transfer View","domain":"PT","permissionType":"VIEW_PERMISSION"},{"code":"PP.Cancel","name":"Profile Permission Cancel","domain":"PP","permissionType":"ACTION_PERMISSION"},{"code":"PP.Create","name":"Profile Permission Create","domain":"PP","permissionType":"ACTION_PERMISSION"},{"code":"PP.Get","name":"Profile Permission Get","domain":"PP","permissionType":"ACTION_PERMISSION"},{"code":"PP.Submit","name":"Profile Permission Submit","domain":"PP","permissionType":"ACTION_PERMISSION"},{"code":"PP.Update","name":"Profile Permission Update","domain":"PP","permissionType":"ACTION_PERMISSION"},{"code":"PP.View","name":"Profile Permission View","domain":"PP","permissionType":"VIEW_PERMISSION"},{"code":"REC.Cancel","name":"Reconciliation Cancel","domain":"REC","permissionType":"ACTION_PERMISSION"},{"code":"REC.Create","name":"Reconciliation Create","domain":"REC","permissionType":"ACTION_PERMISSION"},{"code":"REC.FromSalesOrganization","name":"Reconciliation FromSalesOrganization","domain":"REC","permissionType":"ORG_LIST_PERMISSION"},{"code":"REC.Get","name":"Reconciliation Get","domain":"REC","permissionType":"ACTION_PERMISSION"},{"code":"REC.Submit","name":"Reconciliation Submit","domain":"REC","permissionType":"ACTION_PERMISSION"},{"code":"REC.Update","name":"Reconciliation Update","domain":"REC","permissionType":"ACTION_PERMISSION"},{"code":"REC.View","name":"Reconciliation View","domain":"REC","permissionType":"VIEW_PERMISSION"},{"code":"REGSOUPDATEBI.Cancel","name":"Region Sales Organization Update Cancel","domain":"REGSOUPDATEBI","permissionType":"ACTION_PERMISSION"},{"code":"REGSOUPDATEBI.Create","name":"Region Sales Organization Update Create","domain":"REGSOUPDATEBI","permissionType":"ACTION_PERMISSION"},{"code":"REGSOUPDATEBI.FromSalesOrganization","name":"Region Sales Organization Update FromSalesOrganization","domain":"REGSOUPDATEBI","permissionType":"ORG_LIST_PERMISSION"},{"code":"REGSOUPDATEBI.Get","name":"Region Sales Organization Update Get","domain":"REGSOUPDATEBI","permissionType":"ACTION_PERMISSION"},{"code":"REGSOUPDATEBI.Submit","name":"Region Sales Organization Update Submit","domain":"REGSOUPDATEBI","permissionType":"ACTION_PERMISSION"},{"code":"REGSOUPDATEBI.Update","name":"Region Sales Organization Update Update","domain":"REGSOUPDATEBI","permissionType":"ACTION_PERMISSION"},{"code":"REGSOUPDATEBI.View","name":"Region Sales Organization Update View","domain":"REGSOUPDATEBI","permissionType":"VIEW_PERMISSION"},{"code":"SLS.Cancel","name":"Sales Cancel","domain":"SLS","permissionType":"ACTION_PERMISSION"},{"code":"SLS.Create","name":"Sales Create","domain":"SLS","permissionType":"ACTION_PERMISSION"},{"code":"SLS.FromSalesOrganization","name":"Sales FromSalesOrganization","domain":"SLS","permissionType":"ORG_LIST_PERMISSION"},{"code":"SLS.Get","name":"Sales Get","domain":"SLS","permissionType":"ACTION_PERMISSION"},{"code":"SOC.Cancel","name":"Sales Organization Create Cancel","domain":"SOC","permissionType":"ACTION_PERMISSION"},{"code":"SOC.Create","name":"Sales Organization Create Create","domain":"SOC","permissionType":"ACTION_PERMISSION"},{"code":"SOC.Get","name":"Sales Organization Create Get","domain":"SOC","permissionType":"ACTION_PERMISSION"},{"code":"SOC.Submit","name":"Sales Organization Create Submit","domain":"SOC","permissionType":"ACTION_PERMISSION"},{"code":"SOC.Update","name":"Sales Organization Create Update","domain":"SOC","permissionType":"ACTION_PERMISSION"},{"code":"SOC.View","name":"Sales Organization Create View","domain":"SOC","permissionType":"VIEW_PERMISSION"},{"code":"SALES_ORGANIZATION.FromSalesOrganization","name":"Sales Organization Role FromSalesOrganization","domain":"SALES_ORGANIZATION","permissionType":"ORG_LIST_PERMISSION"},{"code":"SOU.Cancel","name":"Sales Organization Update Cancel","domain":"SOU","permissionType":"ACTION_PERMISSION"},{"code":"SOU.Create","name":"Sales Organization Update Create","domain":"SOU","permissionType":"ACTION_PERMISSION"},{"code":"SOU.Get","name":"Sales Organization Update Get","domain":"SOU","permissionType":"ACTION_PERMISSION"},{"code":"SOU.Submit","name":"Sales Organization Update Submit","domain":"SOU","permissionType":"ACTION_PERMISSION"},{"code":"SOU.Update","name":"Sales Organization Update Update","domain":"SOU","permissionType":"ACTION_PERMISSION"},{"code":"SOU.View","name":"Sales Organization Update View","domain":"SOU","permissionType":"VIEW_PERMISSION"},{"code":"SLS.Revert","name":"Sales Revert","domain":"SLS","permissionType":"ACTION_PERMISSION"},{"code":"SLS.Submit","name":"Sales Submit","domain":"SLS","permissionType":"ACTION_PERMISSION"},{"code":"SLS.SubmitSerialNumbers","name":"Sales SubmitSerialNumbers","domain":"SLS","permissionType":"ACTION_PERMISSION"},{"code":"SLS.Update","name":"Sales Update","domain":"SLS","permissionType":"ACTION_PERMISSION"},{"code":"SLS.View","name":"Sales View","domain":"SLS","permissionType":"VIEW_PERMISSION"},{"code":"SES.Get","name":"Session Get","domain":"SES","permissionType":"ACTION_PERMISSION"},{"code":"SES.View","name":"Session View","domain":"SES","permissionType":"VIEW_PERMISSION"},{"code":"SST.Cancel","name":"Start Session Cancel","domain":"SST","permissionType":"ACTION_PERMISSION"},{"code":"SST.Create","name":"Start Session Create","domain":"SST","permissionType":"ACTION_PERMISSION"},{"code":"SST.Get","name":"Start Session Get","domain":"SST","permissionType":"ACTION_PERMISSION"},{"code":"SST.Submit","name":"Start Session Submit","domain":"SST","permissionType":"ACTION_PERMISSION"},{"code":"SST.View","name":"Start Session View","domain":"SST","permissionType":"VIEW_PERMISSION"},{"code":"STC.Cancel","name":"Status Change Cancel","domain":"STC","permissionType":"ACTION_PERMISSION"},{"code":"STC.Create","name":"Status Change Create","domain":"STC","permissionType":"ACTION_PERMISSION"},{"code":"STC.Get","name":"Status Change Get","domain":"STC","permissionType":"ACTION_PERMISSION"},{"code":"STC.Submit","name":"Status Change Submit","domain":"STC","permissionType":"ACTION_PERMISSION"},{"code":"STC.Update","name":"Status Change Update","domain":"STC","permissionType":"ACTION_PERMISSION"},{"code":"STC.View","name":"Status Change View","domain":"STC","permissionType":"VIEW_PERMISSION"},{"code":"STI.Approve","name":"Stock In Approve","domain":"STI","permissionType":"ACTION_PERMISSION"},{"code":"STI.Cancel","name":"Stock In Cancel","domain":"STI","permissionType":"ACTION_PERMISSION"},{"code":"STI.Create","name":"Stock In Create","domain":"STI","permissionType":"ACTION_PERMISSION"},{"code":"STI.Get","name":"Stock In Get","domain":"STI","permissionType":"ACTION_PERMISSION"},{"code":"STI.Submit","name":"Stock In Submit","domain":"STI","permissionType":"ACTION_PERMISSION"},{"code":"STI.ToPlace","name":"Stock In ToPlace","domain":"STI","permissionType":"PLACE_LIST_PERMISSION"},{"code":"STI.ToSalesOrganization","name":"Stock In ToSalesOrganization","domain":"STI","permissionType":"ORG_LIST_PERMISSION"},{"code":"STI.Update","name":"Stock In Update","domain":"STI","permissionType":"ACTION_PERMISSION"},{"code":"STI.View","name":"Stock In View","domain":"STI","permissionType":"VIEW_PERMISSION"},{"code":"STOCK.FromSalesOrganization","name":"Stock Level FromSalesOrganization","domain":"STOCK","permissionType":"ORG_LIST_PERMISSION"},{"code":"STO.Approve","name":"Stock Out Approve","domain":"STO","permissionType":"ACTION_PERMISSION"},{"code":"STO.Cancel","name":"Stock Out Cancel","domain":"STO","permissionType":"ACTION_PERMISSION"},{"code":"STO.Create","name":"Stock Out Create","domain":"STO","permissionType":"ACTION_PERMISSION"},{"code":"STO.FromPlace","name":"Stock Out FromPlace","domain":"STO","permissionType":"PLACE_LIST_PERMISSION"},{"code":"STO.FromSalesOrganization","name":"Stock Out FromSalesOrganization","domain":"STO","permissionType":"ORG_LIST_PERMISSION"},{"code":"STO.Get","name":"Stock Out Get","domain":"STO","permissionType":"ACTION_PERMISSION"},{"code":"STO.Revert","name":"Stock Out Revert","domain":"STO","permissionType":"ACTION_PERMISSION"},{"code":"STO.Submit","name":"Stock Out Submit","domain":"STO","permissionType":"ACTION_PERMISSION"},{"code":"STO.ToPlace","name":"Stock Out ToPlace","domain":"STO","permissionType":"PLACE_LIST_PERMISSION"},{"code":"STO.Update","name":"Stock Out Update","domain":"STO","permissionType":"ACTION_PERMISSION"},{"code":"STO.View","name":"Stock Out View","domain":"STO","permissionType":"VIEW_PERMISSION"},{"code":"SREC.Approve","name":"Stock Reconciliation Approve","domain":"SREC","permissionType":"ACTION_PERMISSION"},{"code":"SREC.Cancel","name":"Stock Reconciliation Cancel","domain":"SREC","permissionType":"ACTION_PERMISSION"},{"code":"SREC.Create","name":"Stock Reconciliation Create","domain":"SREC","permissionType":"ACTION_PERMISSION"},{"code":"SREC.FromSalesOrganization","name":"Stock Reconciliation FromSalesOrganization","domain":"SREC","permissionType":"ORG_LIST_PERMISSION"},{"code":"SREC.Get","name":"Stock Reconciliation Get","domain":"SREC","permissionType":"ACTION_PERMISSION"},{"code":"SREC.Submit","name":"Stock Reconciliation Submit","domain":"SREC","permissionType":"ACTION_PERMISSION"},{"code":"SREC.Update","name":"Stock Reconciliation Update","domain":"SREC","permissionType":"ACTION_PERMISSION"},{"code":"SREC.View","name":"Stock Reconciliation View","domain":"SREC","permissionType":"VIEW_PERMISSION"},{"code":"TRM.Cancel","name":"Terminal Create Cancel","domain":"TRM","permissionType":"ACTION_PERMISSION"},{"code":"TRM.Create","name":"Terminal Create Create","domain":"TRM","permissionType":"ACTION_PERMISSION"},{"code":"TRM.Get","name":"Terminal Create Get","domain":"TRM","permissionType":"ACTION_PERMISSION"},{"code":"TRM.Submit","name":"Terminal Create Submit","domain":"TRM","permissionType":"ACTION_PERMISSION"},{"code":"TRM.Update","name":"Terminal Create Update","domain":"TRM","permissionType":"ACTION_PERMISSION"},{"code":"TRM.View","name":"Terminal Create View","domain":"TRM","permissionType":"VIEW_PERMISSION"},{"code":"USR.Cancel","name":"User Create Cancel","domain":"USR","permissionType":"ACTION_PERMISSION"},{"code":"USR.Create","name":"User Create Create","domain":"USR","permissionType":"ACTION_PERMISSION"},{"code":"USR.Get","name":"User Create Get","domain":"USR","permissionType":"ACTION_PERMISSION"},{"code":"USR.Submit","name":"User Create Submit","domain":"USR","permissionType":"ACTION_PERMISSION"},{"code":"USR.Update","name":"User Create Update","domain":"USR","permissionType":"ACTION_PERMISSION"},{"code":"USR.View","name":"User Create View","domain":"USR","permissionType":"VIEW_PERMISSION"},{"code":"USRU.Cancel","name":"User Update Cancel","domain":"USRU","permissionType":"ACTION_PERMISSION"},{"code":"USRU.Create","name":"User Update Create","domain":"USRU","permissionType":"ACTION_PERMISSION"},{"code":"USRU.Get","name":"User Update Get","domain":"USRU","permissionType":"ACTION_PERMISSION"},{"code":"USRU.Submit","name":"User Update Submit","domain":"USRU","permissionType":"ACTION_PERMISSION"},{"code":"USRU.Update","name":"User Update Update","domain":"USRU","permissionType":"ACTION_PERMISSION"},{"code":"USRU.View","name":"User Update View","domain":"USRU","permissionType":"VIEW_PERMISSION"}]</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen for action code" id="2245a350-2445-4d5b-91f3-76dcac602112">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>import net.sf.json.groovy.*;
+import groovy.json.JsonSlurper;
+
+def items = context.expand( '${Get all action codes#response}' )
+//def serializedProductId = context.expand( '${Properties#actionCode}' )
+//def items2 = context.expand( '${Add permission#response}' )
+
+def testStepCreate = testRunner.testCase.testSteps['Create profile permission bi']
+def testStepAdd = testRunner.testCase.testSteps['Add item to create permission']
+def testStepSubmit = testRunner.testCase.testSteps['Submit permission']
+
+//Create permission bi
+//testStepCreate.setPropertyValue("req_UserId",'${Create profile permission bi#req_userId}'.toString())
+//testStepCreate.setPropertyValue("req_SoId",'${Create profile permission bi#req_soId}'.toString())
+	testStepCreate.run( testRunner, context )
+	
+def json = new JsonSlurper().parseText (items);
+
+//Add all permission items to bi
+for (int i=0; i &lt; json.size(); i++)
+{
+	if(json[i].domain.toString()!="PP"){
+		
+	
+	testStepAdd.setPropertyValue("req_biId",'${Create profile permission bi#res_biId}'.toString())
+	testStepAdd.setPropertyValue("req_Action",json[i].code.toString())
+	testStepAdd.setPropertyValue("req_UserId",'${Create profile permission bi#req_userId}'.toString())
+	testStepAdd.setPropertyValue("req_SoId",'${Create profile permission bi#req_soId}'.toString())
+	testStepAdd.setPropertyValue("req_Domain",json[i].domain.toString())
+	testStepAdd.setPropertyValue("req_Condition","NullCondition")
+	testStepAdd.setPropertyValue("req_Scope","PermitAllScope")
+	testStepAdd.setPropertyValue("req_Profile","CSR")
+	
+     testStepAdd.run( testRunner, context )	
+	}							
+}
+//Submit permission bi items 
+testStepSubmit.setPropertyValue("req_biId",'${Create profile permission bi#res_biId}'.toString())
+testStepSubmit.run( testRunner, context )</script>
+        </con:configuration>
+        <con:name>serializedProductItemId</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create profile permission bi" id="f745f3e7-645e-46e2-aa95-7331f66f94d2">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a758dd18-2bbc-44a0-9a04-e28732549eea</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_createdForSalesOrg</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>11</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>res_biId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add item to create permission" id="0b6badba-1de8-4628-9b77-0e6a3f63f509">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>5a605ff2-6242-41b9-81c0-43eb6b944bd9</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_domain</con:name>
+          <con:value>USRU</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_action</con:name>
+          <con:value>USRU.View</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_profile</con:name>
+          <con:value>CSR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_condition</con:name>
+          <con:value>NullCondition</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_scope</con:name>
+          <con:value>PermitAllScope</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userId</con:name>
+          <con:value>${Create profile permission bi#req_userId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value>${Create profile permission bi#req_soId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>{"domain":"USRU","domainDescription":"User Update","action":"USRU.View","actionDescription":"User Update View","condition":"NullCondition","conditionDescription":"Always","scope":"PermitAllScope","scopeDescription":"Permit All","profile":"CSR","itemType":0,"id":207,"href":"/v1/profilePermissionItem/207","dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.bi.profilepermission.ProfilePermissionBIItemResponseDTO"}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>${Create profile permission bi#res_biId}</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit permission" id="a36388a6-36d4-4132-a5a5-3c127cd211ab">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>c9c4405f-4b70-4e2a-8cf2-79512a00c934</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>${Create profile permission bi#res_biId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>{"businessInteractionType":34,"code":"PP-11","description":"Profile Permission at [ROOT ORGANIZATION] by [ADMIN USER]","mainState":0,"state":5,"createdDate":"2018-01-04T06:45:00+0000","businessInteractionSpec":{"id":75,"journaled":false,"name":"Profile Permission bi spec","specificationType":0,"allowSubmitBIWithoutItem":false,"requiresSession":false,"code":"PROFILE_PERMISSION","requiresActiveSO":false,"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.bi.BusinessInteractionSpecDTO"},"createdByUserId":"2","createdBySalesOrganizationId":"1","createdForSalesOrganizationRoleId":"1","preventUpdateFromOtherSystem":false,"items":[],"isLocked":false,"businessInteractionRoleId1":2,"businessInteractionRoleId2":1,"businessInteractionRoleId3":1,"id":11,"href":"/v1/profilePermission/11","dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.bi.profilepermission.ProfilePermissionBIResponseDTO"}</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_Action</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_UserId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_SoId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_Domain</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_Condition</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_Scope</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_Profile</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>e6a1894c-3621-4142-85fe-b6bf227af6d3</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>2245a350-2445-4d5b-91f3-76dcac602112</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>9ca59a8c-3607-4634-bb8b-fad635b32090</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>10ecf27a-088f-4299-abb2-969e847082d7</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>7f29ece2-76a3-4bf5-8f91-9affe6f5606e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>f745f3e7-645e-46e2-aa95-7331f66f94d2</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>0b6badba-1de8-4628-9b77-0e6a3f63f509</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a36388a6-36d4-4132-a5a5-3c127cd211ab</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>7aece872-42e2-4410-ba90-ef929e2a19e5</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

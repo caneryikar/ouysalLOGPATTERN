@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="33f1b0d1-3892-4048-8027-63fc50ae39e4" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add nonSerialized item to stockin box step2" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="2220aeb8-fbdd-42d7-81d0-d4c29e7acff2fileName">Add-item-to-stock-in-for-box-step2</con:setting>
+    <con:setting id="8a020ebb-f043-44cd-83a4-db4cef06a1d3fileName">Add-item-to-stockin-box-v2-step2</con:setting>
+    <con:setting id="33f1b0d1-3892-4048-8027-63fc50ae39e4fileName">Add-nonSerialized-item-to-stockin-box-step2</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Method 1 - Request 1 v2" id="9ed753db-94fc-4833-844a-fea5d5e8a534">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockin/{biId}/item" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Method 1 - Request 1 v2" id="687fb007-4e2f-4007-b340-a2d34917c574" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJFUk1TX0FETUlOX0F1dGh6UHJvZmlsZSIsInZlcnNpb24iOiJ2MSIsInBhcnR5X2lkIjoiMTIzIiwiZXh0ZXJuYWxfdXNlcm5hbWUiOiJ1c2VyLWU5NThhMDU0LWEwMTAtNGRjMS04ZjRkLTViYTg2MDM5ZTcyZCJ9fQ.YMEF2NAseX2O-wJGSrucvGq_doG4DANefB8NtN63pcPBw-Huv5mutmMX_3w2B7nQ3NOecOBeh533UN-lLdL2_6L9PFem6GahsQMhyu5iHE35XeDDFmG_EeI4fUdbuxPpiIY2FAO1Vv3wILmg5RxYGKUIi4bO12VFoeeAsvYH1O8"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="443"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{  
+   "businessInteractionId":"${#TestCase#req_biId}",
+ //"parentBusinessInteractionItemId":"${#TestCase#req_itemId}",
+   "productInformation":{  
+      "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.ProductInformationDTO",
+      "productSpecification":{  
+         "id":"3",
+         "code":"CODE-APPLMOUSE-1",
+         "article":"ARR-APPLMOUSE-1",
+         "externalReference":{  
+            "externalId":"EXT-APPLMOUSE-1"
+         },
+         "info":{  
+            "name":"Apple Mouse",
+            "description":"Apple Mouse"
+         },
+         "replicationInfo":{  
+            "isReplicated":false
+         },
+         "returnPeriod":{  
+            "value":1,
+            "unit":"Year"
+         },
+         "serialNumberFormat":"APPLMOUSE-XXXXXXXXXX",
+         "status":"Active",
+         "valueType":1,
+         "versionInfo":{  
+            "versionNumber":1000000
+         },
+         "warrantyPeriod":{  
+            "value":1,
+            "unit":"Year"
+         },
+         "productTrackingType":"NonSerialized",
+         "productSpecType":"Atomic",
+         "isSerialized":true,
+         "dynamicMap":{  
+
+         },
+         "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO",
+         "characteristicList":[  
+            {  
+               "selectedValue":{  
+                  "name":"1",
+                  "id":17
+               },
+               "name":"Mouse Button Count",
+               "id":5,
+               "specCharUseId":7,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"1",
+                     "id":17
+                  },
+                  {  
+                     "name":"2",
+                     "id":18
+                  }
+               ]
+            }
+         ]
+      },
+      "parentSerialNumberText":"${#TestCase#req_serialNumber}",
+      "quantity":"${#TestCase#req_quantity}",
+      "startSerialNumber":"${#TestCase#req_startSerialNumber}",
+      "serialText":"${#TestCase#req_serialNumber}",
+      "endSerialNumber":"${#TestCase#req_endSerialNumber}",
+      "status":1,
+      "characteristicDescription":"1",
+      "description":"Apple Mouse"
+   },
+ "toPartyRoleId":"${#TestCase#req_soId}",
+   "characteristicValues":[  
+      {  
+         "productSpecCharUse":{  
+            "id":7,
+            "productSpecCharacteristic":{  
+               "id":5,
+               "info":{  
+                  "name":"Mouse Button Count"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":17,
+            "value":"1",
+            "productSpecChar":{  
+               "id":5
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      }
+   ],
+   "type":"com.ericsson.bss.rm.erms.core.entity.dto.bi.gen2.stockin.CreateStockInBIItemDTO",
+   "toPlaceId": "${#TestCase#req_placeId}",
+   "userRoleId":"${#TestCase#req_userId}",
+   "salesOrganizationRoleId":"${#TestCase#req_soId}"
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/stockin/item</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="a29f8621-49aa-4925-b931-9e41d9a4bd76">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Method 1 - Request 1 v2</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Method 1 - Request 1 v2</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>response</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Method 1 - Request 1 v2</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>response</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Method 1 - Request 1 v2</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_itemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_serialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value>404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>response</con:name>
+      <con:value>{"code":"404","description":"HTTP 404 Not Found","errorDetails":"HTTP 404 Not Found","errorMessage":"404","httpStatusCode":"404","httpStatusCodeDescription":"HTTP 404 Not Found"}</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_placeId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_itemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_userId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_soId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_itemId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_productTrackingType</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_startSerialNumber</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_endSerialNumber</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_quantity</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_productSpecificationId</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>bbb395d6-2cbf-4f1e-938d-b78906a08848</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>6b7b0035-98af-47ac-a1ec-e0ea4349d332</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

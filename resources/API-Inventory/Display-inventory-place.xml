@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="c3a7fb6a-7952-4c39-bf12-273179ca335d" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display inventory place" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="c3a7fb6a-7952-4c39-bf12-273179ca335dfileName">Display-inventory-place</con:setting>
+  </con:settings>
+  <con:testStep type="restrequest" name="Display inventory place" id="56042b96-27cf-4a1c-a43a-38367c0c2bbf">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/inventoryRole/{inventoryId}/place" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display inventory place" id="79b9aa0f-b96e-4439-bfca-38c82f15e16e" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="inventoryId" value="${#TestCase#req_inventoryId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer response" id="eb58b2c5-483d-4c87-86b7-257636f791c1">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>placeId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display inventory place</con:sourceStep>
+        <con:sourcePath>id</con:sourcePath>
+        <con:targetType>res_placeId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_inventoryId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_placeId</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

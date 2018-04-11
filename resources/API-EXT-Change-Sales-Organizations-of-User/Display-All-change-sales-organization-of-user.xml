@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="b1d2886d-3ae7-4676-8f62-5d7f55fb8ec6" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display All change sales organization of user" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="beaf7854-c36c-4a52-934a-51eaa1d69ddcfileName">Display-All-change-sales-organization-of-user</con:setting>
+    <con:setting id="b1d2886d-3ae7-4676-8f62-5d7f55fb8ec6fileName">Display-All-change-sales-organization-of-user</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Display All change sales organization of user BI" id="0a94553e-f216-4a4f-88cc-2ca50122ad3c">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/changeSalesOrganizationsOfUser/" methodName="displayAll" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display All change sales organization of user BI" id="898bcd56-5c0d-412d-b2c5-2f68acf09075" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://vmx-erms008/erms/v1/changeSalesOrganizationOfUser</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Display All change sales organization of user BI Property Transfer" id="2b99e814-5808-4acb-b256-8523e82927a6">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_headerCode</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display All change sales organization of user BI</con:sourceStep>
+        <con:sourcePath>['status']</con:sourcePath>
+        <con:targetType>res_headerCode</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>res_headerCode</con:name>
+      <con:value>{"status":200,"statusText":null,"httpVersion":"HTTP/1.1","cookies":[],"headers":[{"name":"#status#","value":"HTTP/1.1 200 OK","comment":null},{"name":"Content-Length","value":"12","comment":null},{"name":"Content-Type","value":"application/json;profile=\"http://ericsson.com/bss.erms.ChangeSalesOrganizationOfUserResponse.1.json#\"","comment":null},{"name":"ERICSSON.GIP","value":"eyJwYXNzaW5nUGFyYW1ldGVyU2V0IjpbeyJ0aW1lU3RhbXAiOiIyMDE3LTA0LTE5VDA5OjMxOjQ2LjE1NCswMjowMCIsImluc3RhbmNlSWQiOiJFU0VLQVZEQVc3STQ2OSJ9XX0=","comment":null},{"name":"Server","value":"Jetty(8.1.17.v20150415)","comment":null}],"content":{"size":12,"compression":null,"mimeType":"application/json;profile=\"http://ericsson.com/bss.erms.ChangeSalesOrganizationOfUserResponse.1.json#\"","text":"{\"items\":[]}","comment":null},"redirectURL":"","headersSize":-1,"bodySize":12,"comment":null}</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

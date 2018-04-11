@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="ext_inventoryRole" path="/inventoryRole" id="ad63ad41-0cb9-456d-8cf6-8957e34a68a4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f233217c-bc14-4b52-8333-39d89b4afb0dfileName">inventoryRole</con:setting>
+    <con:setting id="ad63ad41-0cb9-456d-8cf6-8957e34a68a4fileName">ext_inventoryRole</con:setting>
+  </con:settings>
+  <con:parameters>
+    <con:parameter>
+      <con:name>externalId</con:name>
+      <con:value/>
+      <con:style>QUERY</con:style>
+      <con:default/>
+      <con:description xsi:nil="true"/>
+    </con:parameter>
+  </con:parameters>
+  <con:resource name="getInventoryById" path="{id}" id="35ac378d-b7e0-4b03-a990-e5dd3333780f">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>id</con:name>
+        <con:value>id</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>id</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getInventoryById" id="93b8a854-cad2-4294-b3ff-0b606c144df4" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.InventoryRoleResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:ns="http://localhost/erms/retailManagement/v1/inventoryRole/30">ns:Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="9f7c9dbd-4dbf-4c50-a7c9-d78308a7f727" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/inventoryRole/30</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="externalId" value=""/>
+          <con:entry key="id" value="14"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>id</con:entry>
+          <con:entry>externalId</con:entry>
+        </con:parameterOrder>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="place" path="{inventoryId}/place" id="4e869ba8-472c-4e22-af23-8b1d11cd2a42">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>inventoryId</con:name>
+        <con:value>inventoryId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>inventoryId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="7bbfdc3b-eea9-4144-a694-d07b0a3a8852" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="79b9aa0f-b96e-4439-bfca-38c82f15e16e" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="inventoryId" value="${#TestCase#inventoryId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:method name="getInventoryByExternalId" id="49da20d9-ad98-41c7-bf8b-8ff9062a4a60" method="GET">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element>Response</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="143707c1-b2a3-4837-bf2e-480de63bb504" mediaType="application/json">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+      <con:request/>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <entry key="externalId" value="{externalId}" xmlns="http://eviware.com/soapui/config"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>externalId</con:entry>
+      </con:parameterOrder>
+    </con:request>
+  </con:method>
+</con:resource>

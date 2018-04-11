@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="f1e179d5-3b1b-4607-9721-f2c2b00a8fe7" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Display users by sales org role id" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f1e179d5-3b1b-4607-9721-f2c2b00a8fe7fileName">Display-users-by-sales-org-role-id</con:setting>
+  </con:settings>
+  <con:testStep type="restrequest" name="Display users by sales org role id" id="23c699ef-0dba-46a6-9280-331c0157d139">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/userRole" methodName="getUsersBySoId" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Display users by sales org role id" id="98dd1c9f-bbb8-4eb3-9145-932efc04acca" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="salesOrgRoleId" value="${#TestCase#req_salesOrgRoleId}"/>
+          <con:entry key="id" value=""/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>externalId</con:entry>
+          <con:entry>id</con:entry>
+          <con:entry>salesOrgRoleId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="b71cb21c-7619-4c96-b863-0cbf56c53466">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpStatus</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Display users by sales org role id</con:sourceStep>
+        <con:sourcePath>['status']</con:sourcePath>
+        <con:targetType>res_httpCode</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fullResponse</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display users by sales org role id</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_fullResponse</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemName</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display users by sales org role id</con:sourceStep>
+        <con:sourcePath>[0].name</con:sourcePath>
+        <con:targetType>res_firstItemName</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Display users by sales org role id</con:sourceStep>
+        <con:sourcePath>[0].id</con:sourcePath>
+        <con:targetType>res_firstItemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_salesOrgRoleId</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_httpCode</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_fullResponse</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemName</con:name>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemId</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

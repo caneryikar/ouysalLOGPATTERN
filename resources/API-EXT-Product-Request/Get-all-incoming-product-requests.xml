@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="f576cb07-ac8d-4be5-b406-0394d65082f0" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Get all incoming product requests" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f576cb07-ac8d-4be5-b406-0394d65082f0fileName">Get-all-incoming-product-requests</con:setting>
+  </con:settings>
+  <con:testStep type="restrequest" name="GetAllIncProduct" id="e9abfe73-ed1b-4a39-be0c-3ff80b21cf0a">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/incomingProductRequest" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="GetAllIncProduct" id="6e6f2700-6ac3-4a35-9335-e448c80e0354" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJQT1NfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwiZXh0ZXJuYWxfdXNlcm5hbWUiOiJ1c2VyLWV4dC02OWM3NDk1Ny0yNTBlLTQ1NzQtOTA0OS00NjUwYmU3MGM4MmIifX0.csOrtzSPbP2r-zrHaO1_WJ4YjT-PBvxbGMQeeSujDD0rX4xuE8g94y6elj4-xxnk2y_R-77vG6P96upX5wnhzgcDu1kzEK4V41dMcnzYyzvWw1pwLqJNQ2b0VOC2G-jzFYXSKA2iMzRIs2szVUnyA7Wt9BkIKvlrjAK2vEkbEmo" xmlns="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/incomingProductRequest</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="1caf8870-dd34-455d-8434-159fc1c4eaf1">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>GetAllIncProduct</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>GetAllIncProduct</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>response</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>GetAllIncProduct</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>response</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>200</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>response</con:name>
+      <con:value>{"items":[{"businessInteractionType":41,"code":"IPRQ-28","description":"Incoming Product Request at [name-s2d2b6d7a-6d3e-4e99-8299-49e262cf516f] by [John Smith]","mainState":"Closed","state":"Closed","createdDate":"2017-09-25T08:18:01.971Z","preventUpdateFromOtherSystem":false,"id":"28"},{"businessInteractionType":41,"code":"IPRQ-57","description":"Incoming Product Request at [name-s5b1caa7b-7f81-4ccb-bd94-91cbb1d484f1] by [John Smith]","mainState":"Closed","state":"Closed","createdDate":"2017-09-25T08:31:36.348Z","preventUpdateFromOtherSystem":false,"id":"57"},{"businessInteractionType":41,"code":"IPRQ-85","description":"Incoming Product Request at [name-s275b295e-3634-4694-8fb5-c455ee1a6036] by [John Smith]","mainState":"Closed","state":"Closed","createdDate":"2017-09-25T08:32:34.198Z","preventUpdateFromOtherSystem":false,"id":"85"},{"businessInteractionType":41,"code":"IPRQ-113","description":"Incoming Product Request at [name-s60f0d3f6-286f-4c5c-baad-0fa4ec915270] by [John Smith]","mainState":"Closed","state":"Closed","createdDate":"2017-09-25T08:37:40.478Z","preventUpdateFromOtherSystem":false,"id":"113"},{"businessInteractionType":41,"code":"IPRQ-141","description":"Incoming Product Request at [name-sb6d8e6f2-bf20-4aed-8a7a-df7b1acbb4f8] by [John Smith]","mainState":"Closed","state":"Closed","createdDate":"2017-09-25T08:38:21.410Z","preventUpdateFromOtherSystem":false,"id":"141"},{"businessInteractionType":41,"code":"IPRQ-169","description":"Incoming Product Request at [name-s43d893c4-0c8b-4de4-a216-7f843bd1160d] by [John Smith]","mainState":"Closed","state":"Closed","createdDate":"2017-09-25T08:49:43.117Z","preventUpdateFromOtherSystem":false,"id":"169"},{"businessInteractionType":41,"code":"IPRQ-197","description":"Incoming Product Request at [name-s79cf24da-d6f5-4843-ae59-74e217a6e204] by [John Smith]","mainState":"Closed","state":"Closed","createdDate":"2017-09-25T08:53:58.348Z","preventUpdateFromOtherSystem":false,"id":"197"}]}</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>e9abfe73-ed1b-4a39-be0c-3ff80b21cf0a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

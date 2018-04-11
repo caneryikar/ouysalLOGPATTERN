@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="b052c2e3-86ce-4ebf-849b-5dd071a102ff" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add bulk sales item for 3 products" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="b052c2e3-86ce-4ebf-849b-5dd071a102fffileName">Add-bulk-sales-item-for-3-products</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Add bulk sales item" id="e4071677-419f-4a79-a50e-63d61a0fd62e">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/bulk/sales/{biId}/items" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Add bulk sales item" id="fb83a096-70ad-4fab-a57f-8aa23f26deed" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+  "itemCreateList": [
+    {
+      "productSpecificationExternalId": "${#TestCase#req_nonSerializedProductSpecExtId}",
+      "quantity": ${#TestCase#req_nonSerializedProductSalesQuantity},
+      "placeId": "${#TestCase#req_nonSerializedProductPlaceId}",
+      "characteristics": [
+        {
+          "key": "${#TestCase#req_nonSerializedProductSpecCharExtId1}",
+          "value": "${#TestCase#req_nonSerializedProductSpecCharValueExtId1}"
+        }
+      ]
+    },
+    {
+      "productSpecificationExternalId": "${#TestCase#req_serializedProductSpecExtId}",
+      "quantity": ${#TestCase#req_serializedProductSalesQuantity},
+      "placeId": "${#TestCase#req_serializedProductPlaceId}",
+      "characteristics": [
+        {
+          "key": "${#TestCase#req_serializedProductSpecCharExtId1}",
+          "value": "${#TestCase#req_serializedProductSpecCharValueExtId1}"
+        },
+        {
+          "key": "${#TestCase#req_serializedProductSpecCharExtId2}",
+          "value": "${#TestCase#req_serializedProductSpecCharValueExtId2}"
+        },
+        {
+          "key": "${#TestCase#req_serializedProductSpecCharExtId3}",
+          "value": "${#TestCase#req_serializedProductSpecCharValueExtId3}"
+        }
+      ]
+    },
+    {
+      "productSpecificationExternalId": "${#TestCase#req_serializedWithoutRangeProductSpecExtId}",
+      "quantity": ${#TestCase#req_serializedWithoutRangeProductSalesQuantity},
+      "placeId": "${#TestCase#req_serializedWithoutRangeProductPlaceId}",
+      "characteristics": [
+        {
+          "key": "${#TestCase#req_serializedWithoutRangeProductSpecCharExtId1}",
+          "value": "${#TestCase#req_serializedWithoutRangeProductSpecCharValueExtId1}"
+        },
+        {
+          "key": "${#TestCase#req_serializedWithoutRangeProductSpecCharExtId2}",
+          "value": "${#TestCase#req_serializedWithoutRangeProductSpecCharValueExtId2}"
+        },
+        {
+          "key": "${#TestCase#req_serializedWithoutRangeProductSpecCharExtId3}",
+          "value": "${#TestCase#req_serializedWithoutRangeProductSpecCharValueExtId3}"
+        }
+      ]
+    }
+  ]
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer response" id="a49616be-bf48-4950-ba69-24f6f8a82ff4">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Add bulk sales item</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstItemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add bulk sales item</con:sourceStep>
+        <con:sourcePath>itemCreateResponseList.[0].id</con:sourcePath>
+        <con:targetType>res_firstItemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>secondItemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add bulk sales item</con:sourceStep>
+        <con:sourcePath>itemCreateResponseList.[1].id</con:sourcePath>
+        <con:targetType>res_secondItemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>thirdItemId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add bulk sales item</con:sourceStep>
+        <con:sourcePath>itemCreateResponseList.[2].id</con:sourcePath>
+        <con:targetType>res_thirdItemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add bulk sales item</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_firstItemId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_secondItemId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_thirdItemId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedWithoutRangeProductSpecExtId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedWithoutRangeProductSpecCharValueExtId3</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedWithoutRangeProductSpecCharValueExtId2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedWithoutRangeProductSpecCharValueExtId1</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedWithoutRangeProductSpecCharExtId3</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedWithoutRangeProductSpecCharExtId2</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedWithoutRangeProductSpecCharExtId1</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedWithoutRangeProductSalesQuantity</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedWithoutRangeProductPlaceId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedProductSpecExtId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedProductSpecCharValueExtId3</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedProductSpecCharValueExtId2</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedProductSpecCharExtId3</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedProductSpecCharExtId2</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedProductSpecCharExtId1</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedProductSalesQuantity</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedProductPlaceId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_nonSerializedProductSpecExtId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_nonSerializedProductSpecCharValueExtId1</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_nonSerializedProductSpecCharExtId1</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_nonSerializedProductSalesQuantity</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_nonSerializedProductPlaceId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>req_serializedProductSpecCharValueExtId1</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="ext_createInventory" path="/createInventory" id="dd6b7e7d-9ea6-4636-95a0-5e616131927b" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="dd6b7e7d-9ea6-4636-95a0-5e616131927bfileName">ext_createInventory</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="items" path="{bi}/items" id="c4068587-a730-4352-aaf0-f365e6f1efd4">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>bi</con:name>
+        <con:value>bi</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>bi</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="addItem" id="a38f97ba-a699-4f80-b11c-a6c0da4b5bb4" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="54e5a8ae-7961-4268-842c-1f7ba87e460c" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+  "externalId": "${#TestCase#req_invExtId}",
+  "name": "${#TestCase#req_invName}",
+  "salesOrganizationRoleExternalId": "${#TestCase#req_soExtId}",
+  "inventoryRoleSpecificationId": "${#TestCase#req_invSpecId}",
+  "organization": {
+    "name": "${#TestCase#req_orgName}"
+  }
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="bi" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+    <con:method name="addItemWithoutExternalId" id="a38f97ba-a699-4f80-b11c-a6c0da4b5bb4" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="54e5a8ae-7961-4268-842c-1f7ba87e460c" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+  "name": "${#TestCase#req_invName}",
+  "salesOrganizationRoleExternalId": "${#TestCase#req_soExtId}",
+  "inventoryRoleSpecificationId": "${#TestCase#req_invSpecId}",
+  "organization": {
+    "name": "${#TestCase#req_orgName}"
+  }
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="bi" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="submit" path="{biId}/submit" id="1fa00c13-6fad-4db1-9bc1-fbe454a2e093">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="ccfd075f-64ae-4869-9f83-5496fe43c98c" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="ea84701c-0621-400f-a962-e69804cd4737" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="deleteItem" path="{biId}/items/{itemId}" id="44abec52-a503-459a-88c1-269b435d470d">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+      <con:parameter>
+        <con:name>itemId</con:name>
+        <con:value>itemId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>itemId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="a22a965e-701f-443b-bc98-de5f8a024e48" method="DELETE">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="f4d2ab53-480e-4618-97a2-346b82339138" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="itemId" value="${#TestCase#req_itemId}"/>
+          <con:entry key="biId" value="${#TestCase#req_biId}"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getCreateInventoryBI" path="{biId}" id="d828418d-3f65-4896-a8a9-e9715db115de">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="e5817101-dca5-49e8-b859-198859b76983" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="451cb5fc-7fc7-4d66-a6c7-6cc126113ec1" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getCreateInventoryItems" path="{biId}/items" id="954529e4-7f0f-44c1-acbc-6b3bd62fc1e0">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:resource name="{itemId}" path="{itemId}" id="eff612a2-f9bd-484c-aebe-e82541de000f">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>itemId</con:name>
+          <con:value>itemId</con:value>
+          <con:style>TEMPLATE</con:style>
+          <con:default>itemId</con:default>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="getAddInventoryItems" id="539d700e-b048-4cbf-acbf-6769a3825f0f" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:request name="Request 1" id="afa87ff4-7bfd-4dcb-b26b-befb3b86a6ea" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <con:entry key="itemId" value="${#TestCase#req_itemId}"/>
+            <con:entry key="biId" value="${#TestCase#req_biId}"/>
+          </con:parameters>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:method name="Method 1" id="7d316028-3b60-446e-9900-ea15cb19bde9" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="17b70e2a-6930-4f84-aa76-198bf5e68e4c" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="cancelInventoryBI" path="{biId}/cancel" id="9202accd-a497-4dff-af54-8ea9384eb384">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="Method 1" id="ff916105-79fc-4cc2-b7c1-73a9aca3920b" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:can="http://localhost/erms/v1/createInventory/cancel">can:Fault</con:element>
+      </con:representation>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:request name="Request 1" id="2c1f9458-5b78-4ea1-b019-1933e94e437f" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="" path="" id="11ab0270-5d2b-4417-ad1a-e1402e65bf43">
+    <con:settings/>
+    <con:parameters/>
+    <con:method name="getAllCreateInventoryBI" id="16e0fdc2-062b-40aa-94e0-dfad61e06608" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="cbaeb9a1-7070-4959-a6ac-42600a19b7ba" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:method name="createInventory" id="e1c2c8e7-050d-422e-a921-1dbb948da7a4" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:request name="Request 1" id="77fb8486-2089-4b48-b0f5-db0e88b2c54e" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+      <con:request>{
+   	"userRoleId":"${#TestCase#req_userId}",
+	"salesOrganizationRoleId":"${#TestCase#req_soId}",
+ 	"businessInteractionSpecificationCode":"${#TestCase#req_bispecCode}"
+}</con:request>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+</con:resource>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="dd0c2b4f-ef8d-47b2-bbe6-522d6ca18729" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Get Characteristic Owner Role Char Values" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="dd0c2b4f-ef8d-47b2-bbe6-522d6ca18729fileName">Get-Characteristic-Owner-Role-Char-Values</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Get Characteristic Owner Role Char Values" id="1a0d0362-f2d8-43e7-9db9-a1f9e9bc9c3c">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/soProfile/{id}/profileSpecCharValue" methodName="getCharacteristicOwnerRoleCharValues" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Get Characteristic Owner Role Char Values" id="3660a898-68a9-43d2-80c4-1fb9f7ed20dc" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJFUk1TX0FETUlOX0F1dGh6UHJvZmlsZSIsInZlcnNpb24iOiJ2MSIsInBhcnR5X2lkIjoiMTIzIiwiZXh0ZXJuYWxfdXNlcm5hbWUiOiJ1OTdlZjk3YzEtMDRiMS00ODIyLWFmYzktNmVjNGY0ODE0ZDAwIn19.ymmrEfwuq0lc2xxWIG848odV4STcILlDyQrv2s4OGHBCCBWSKXoqPSmOD2o4_aa6gl4D8ebLWo3v0z64I2Hix3KAFHSsesdDnyDnMY2ANHpl0ykNf8YqhqW_BgjSgeOp7wzRS23E8UsMltL_MD8VIH54UV0w-FiqfPz22uMIvsQ"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="19"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/v1/soCharacteristicOwnerRole/2/characterististicOwnerRoleCharValue</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="id" value="${#TestCase#req_soCharacteristicOwnerRoleId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property transfer" id="385bbb48-d422-4b48-a8c6-9a50f7f4dba1">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Get Characteristic Owner Role Char Values</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_ErrorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Characteristic Owner Role Char Values</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_allResponse</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Characteristic Owner Role Char Values</con:sourceStep>
+        <con:targetType>res_allResponse</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>characteristicOwnerRoleId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Characteristic Owner Role Char Values</con:sourceStep>
+        <con:sourcePath>[0]['profile'].id</con:sourcePath>
+        <con:targetType>res_charOwnerRoleId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>charOwnerRoleCharUseId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Characteristic Owner Role Char Values</con:sourceStep>
+        <con:sourcePath>[0]['profileSpecCharUse'].id</con:sourcePath>
+        <con:targetType>res_charOwnerRoleCharUseId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>characteristicValueId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Characteristic Owner Role Char Values</con:sourceStep>
+        <con:sourcePath>[0]['globalCharacteristicSpecValue'].id</con:sourcePath>
+        <con:targetType>res_characteristicValueId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_soCharacteristicOwnerRoleId</con:name>
+      <con:value>6</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>200</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_allResponse</con:name>
+      <con:value>[{"profile":{"soRole":{"siteId":"1","externalId":"s071ffc35-fb81-439b-a9a0-86afdde3d6d9","status":"ACTIVE","name":"name-s071ffc35-fb81-439b-a9a0-86afdde3d6d9","party":{"name":"name-s071ffc35-fb81-439b-a9a0-86afdde3d6d9","partyType":2,"id":15},"partyRoleSpec":{"placeUsageType":"NA","name":"sos-0fd632ad-153a-468d-83d9-c22599b5e09d","id":22},"partyRoleType":8,"partyInteractionRoleId":40,"id":19},"profileSpec":{"soRoleSpec":{"placeUsageType":"NA","name":"sos-0fd632ad-153a-468d-83d9-c22599b5e09d","id":22},"status":"ACTIVE","name":"SO- sos-0fd632ad-153a-468d-83d9-c22599b5e09d","description":"sos-0fd632ad-153a-468d-83d9-c22599b5e09d","id":6},"status":"PASSIVE","name":"SO- name-s071ffc35-fb81-439b-a9a0-86afdde3d6d9","description":"name-s071ffc35-fb81-439b-a9a0-86afdde3d6d9","id":6},"profileSpecCharUse":{"isMandatory":true,"unique":false,"name":"NameOfSizeCharListType - 86fe36d4-80ff-4131-9c21-b16f8247e0a2","description":"SizeCharDescriptionForList","globalCharacteristicSpecification":{"name":"NameOfSizeCharListType - 86fe36d4-80ff-4131-9c21-b16f8247e0a2","description":"SizeCharDescriptionForList","valueType":"LIST","id":6},"profileSpec":{"soRoleSpec":{"placeUsageType":"NA","name":"sos-0fd632ad-153a-468d-83d9-c22599b5e09d","id":22},"status":"ACTIVE","name":"SO- sos-0fd632ad-153a-468d-83d9-c22599b5e09d","description":"sos-0fd632ad-153a-468d-83d9-c22599b5e09d","id":6},"charValueUses":[],"id":6},"globalCharacteristicSpecValue":{"value":"SMALL","globalCharacteristicSpecification":{"name":"NameOfSizeCharListType - 86fe36d4-80ff-4131-9c21-b16f8247e0a2","description":"SizeCharDescriptionForList","valueType":"LIST","id":6},"id":13},"valueType":"LIST","id":4}]</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_charOwnerRoleId</con:name>
+      <con:value>6</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_charOwnerRoleCharUseId</con:name>
+      <con:value>6</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_characteristicValueId</con:name>
+      <con:value>13</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

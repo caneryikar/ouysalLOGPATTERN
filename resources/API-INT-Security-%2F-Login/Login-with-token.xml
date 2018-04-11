@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="d3247ed2-4ce5-43d2-b4d5-55b3c5ae7871" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Login with token" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="d3247ed2-4ce5-43d2-b4d5-55b3c5ae7871fileName">Login-with-token</con:setting>
+  </con:settings>
+  <con:testStep type="restrequest" name="POST - loginWithToken" id="389fe4c0-1fea-4853-aceb-d086e70a9a6a">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/security/login" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="POST - loginWithToken" id="8bb81ff7-3871-4e91-929a-5d017a5212c0" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:parameterOrder/>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="50463000-9e69-4b1a-b782-bcb5a28e915a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>status</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>POST - loginWithToken</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_status</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>POST - loginWithToken</con:sourceStep>
+        <con:sourcePath>$['code']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>desc</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>POST - loginWithToken</con:sourceStep>
+        <con:sourcePath>$['description']</con:sourcePath>
+        <con:targetType>res_description</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>authenticated</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>POST - loginWithToken</con:sourceStep>
+        <con:sourcePath>$['isAuthenticated']</con:sourcePath>
+        <con:targetType>res_isAuthenticated</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>permissions</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>POST - loginWithToken</con:sourceStep>
+        <con:sourcePath>$['permissions']</con:sourcePath>
+        <con:targetType>res_permission</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>name</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>POST - loginWithToken</con:sourceStep>
+        <con:sourcePath>$['userName']</con:sourcePath>
+        <con:targetType>res_userName</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>profileId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>POST - loginWithToken</con:sourceStep>
+        <con:sourcePath>$['profileId']</con:sourcePath>
+        <con:targetType>res_profileId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>res_status</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_description</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_isAuthenticated</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_permission</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_profileId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_userName</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>50463000-9e69-4b1a-b782-bcb5a28e915a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

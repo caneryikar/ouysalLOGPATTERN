@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="ext_createStarterPack" path="/createStarterPack" id="e9f021d7-dc9f-4e01-bad0-a54241442612" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="e9f021d7-dc9f-4e01-bad0-a54241442612fileName">ext_createStarterPack</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:resource name="reserve" path="{biId}/reserve" id="34c7e211-590c-414e-aa27-53fc37c44cb0">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="reserve" id="1239240b-1910-42b9-82c7-3c9255bb42e5" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:res="http://localhost/erms/retailManagement/v1/createStarterPack/biId/reserve">res:Fault</con:element>
+      </con:representation>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:request name="Request 1" id="bbab8b1b-ad08-4a88-8640-56be439806e9" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+  "startICCID": "89302720400082580692",
+  "endICCID": "89302720500082580693",
+  "simSpecificationExternalId": "c2e52c3c-1dd1-42cf-b936-f417a2bae297",
+  "requestedQuantity": 3,
+  "placeId": "2"
+}</con:request>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/createStarterPack/biId/reserve</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="submitToOngoing" path="{biId}/submit" id="21c2832c-c394-4054-9c7e-cf8d6b852acd">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="submitToOngoing" id="04769ab6-0856-4b6f-b376-5c8dd74ceb3b" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="41f16eba-79a3-461b-b212-154a54f167c9" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="submitStarterPacks" path="/{biId}/submitStarterPacks" id="8a2daf57-c727-44ef-82af-80bd695f2c07">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="submitStarterPacks" id="655e87a3-fa96-4f6f-a593-0903abb0def8" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:sub="http://localhost/erms/v1/createStarterPack/biId/submitStarterPacks">sub:Fault</con:element>
+      </con:representation>
+      <con:representation type="REQUEST">
+        <con:mediaType>application/json</con:mediaType>
+        <con:params/>
+      </con:representation>
+      <con:request name="Request 1" id="d91efafb-7fad-4f81-b8ce-b23ec6cb6124" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+  "starterPackSpecificationExternalId": "ba224ced-6c7c-4aad-b43c-4d792a783a9b",
+  "toPlaceId": "6",
+  "starterPackResultUnits": [
+    {
+     "iccid": "1234567890123100017",
+      "starterPackSerialNumber": "123"
+    },
+    {
+      "iccid": "1234567890123100021",
+      "starterPackSerialNumber": "124"
+    }
+  ]
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/createStarterPack/biId/submitStarterPacks</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="cancel" path="{biId}/cancel" id="d1f7ec53-e236-4284-b1a6-83b0c64e1a54">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="cancel" id="e4f238df-ad65-4043-a215-6fa5efa3ac64" method="POST">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>405 404</con:status>
+        <con:params/>
+        <con:element xmlns:can="http://localhost/erms/retailManagement/v1/createStarterPack/69/cancel">can:Fault</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="07dcfc6c-ac8a-4467-bb2b-8794e723462a" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getSingleStarterPackBI" path="{biId}" id="422bc52a-ddfb-4ae9-9f4c-690f84e5151a">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:resource name="items" path="items" id="89faadae-0bff-4ffe-ae1a-b7157edb01ae">
+      <con:settings>
+        <con:setting id="89faadae-0bff-4ffe-ae1a-b7157edb01aefileName">ext_createStarterPack</con:setting>
+      </con:settings>
+      <con:parameters>
+        <con:parameter>
+          <con:name>biId</con:name>
+          <con:value>biId</con:value>
+          <con:style>TEMPLATE</con:style>
+          <con:default>biId</con:default>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="Method 1" id="e463bdce-7baf-402d-bceb-ea43cb12cd43" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:request name="Request 1" id="a31438ba-0095-41c9-ba6f-e3f0ab199c22" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>${#Project#Endpoint}</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:method name="getSingleStarterPackBI" id="c68624c7-b169-49f0-aa0d-f1f146af6efb" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:biid="http://localhost/erms/retailManagement/v1/createStarterPack/biId">biid:Fault</con:element>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.CreateStarterPackResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element xmlns:biid="http://localhost/erms/retailManagement/v1/createStarterPack/biId">biid:Response</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="f93d27a1-59c1-48f5-b8a2-fee268cc3c1b" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getStarterPackBIItems" path="/{biId}/items" id="49b41aaf-13a0-4f18-9860-244c04f063a0">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getStarterPackBIItems" id="d7694538-826a-42bc-9363-f8b680500ef6" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:representation type="FAULT">
+        <con:mediaType>application/json</con:mediaType>
+        <con:status>404</con:status>
+        <con:params/>
+        <con:element xmlns:item="http://localhost/erms/retailManagement/v1/createStarterPack/createStarterPack/69/items">item:Fault</con:element>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.CreateStarterPackItemResponse.1.json#"</con:mediaType>
+        <con:status>200</con:status>
+        <con:params/>
+        <con:element>Response</con:element>
+      </con:representation>
+      <con:representation type="RESPONSE">
+        <con:mediaType xsi:nil="true"/>
+        <con:status>0</con:status>
+        <con:params/>
+        <con:element>data</con:element>
+      </con:representation>
+      <con:request name="Request 1" id="f169bd07-d9f4-4187-a1c8-c67837a3c7bd" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="getSingleStarterPackBIItem" path="createStarterPack/{biId}/items/{itemId}" id="8f372bae-8bfa-4bf1-a0fe-cd4fdcb2c748">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+      <con:parameter>
+        <con:name>itemId</con:name>
+        <con:value>itemId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>itemId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="getSingleStarterPackBIItem" id="35c3a93f-f62c-4ddd-a4f8-9c426cd32010" method="GET">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="a1ac9e93-ad5d-48bc-9010-72a083f06317" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:resource name="deleteStarterPackBIItem" path="{biId}/items/{itemId}" id="3400add7-7b07-4be0-b354-4d4c8ce55cea">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter>
+        <con:name>biId</con:name>
+        <con:value>biId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>biId</con:default>
+      </con:parameter>
+      <con:parameter>
+        <con:name>itemId</con:name>
+        <con:value>itemId</con:value>
+        <con:style>TEMPLATE</con:style>
+        <con:default>itemId</con:default>
+      </con:parameter>
+    </con:parameters>
+    <con:method name="deleteStarterPackBIItem" id="815ba8ae-afd5-4f80-ae4f-e7b89e389f78" method="DELETE">
+      <con:settings/>
+      <con:parameters/>
+      <con:request name="Request 1" id="34c4f606-506c-4c5c-8dfa-5ee25c8bd375" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+      </con:request>
+    </con:method>
+  </con:resource>
+  <con:method name="getAllStarterPackBIs" id="12ae92c7-3d92-471c-bbb5-625a5bbcd029" method="GET">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.CreateStarterPackResponse.1.json#"</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element>Response</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="e72e702b-8697-4c6d-8abf-791cb903902f" mediaType="application/json">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+      <con:request/>
+      <con:originalUri>http://localhost/erms/retailManagement/v1/createStarterPack</con:originalUri>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+  <con:method name="createStarterPack" id="12ae92c7-3d92-471c-bbb5-625a5bbcd029" method="POST">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.CreateStarterPackResponse.1.json#"</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element>Response</con:element>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:representation type="FAULT">
+      <con:mediaType>application/json</con:mediaType>
+      <con:status>406</con:status>
+      <con:params/>
+      <con:element xmlns:cre="http://localhost/erms/retailManagement/v1/createStarterPack">cre:Fault</con:element>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json;profile="http://ericsson.com/bss.erms.EntityResponse.1.json#"</con:mediaType>
+      <con:status>201</con:status>
+      <con:params/>
+      <con:element xmlns:cre="http://localhost/erms/retailManagement/v1/createStarterPack">cre:Response</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="e72e702b-8697-4c6d-8abf-791cb903902f" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+      <con:request>{
+	"userRoleId": "2",
+	"salesOrganizationRoleId": "1",
+	"businessInteractionSpecificationCode":"CREATESTARTERPACKBISPEC"
+}</con:request>
+      <con:originalUri>http://localhost/erms/retailManagement/v1/createStarterPack</con:originalUri>
+      <con:credentials>
+        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters/>
+    </con:request>
+  </con:method>
+</con:resource>

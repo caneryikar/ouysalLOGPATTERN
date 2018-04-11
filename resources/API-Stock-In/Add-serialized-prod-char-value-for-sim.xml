@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="2a9d74ae-f3e5-4e26-83a9-cea18bb0fc94" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add serialized prod char value for sim" searchProperties="true" timeout="10000" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="721ffe0a-3707-4db3-aecb-1eaf27cce156fileName">Add-serialized-prod-char-value</con:setting>
+    <con:setting id="2a9d74ae-f3e5-4e26-83a9-cea18bb0fc94fileName">Add-serialized-prod-char-value-for-sim</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Add serialized prod characteristic value" id="64f5e8f6-99f0-4595-b662-bc36a02ae463">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockin/{biId}/stockInSerializedCharacteristic" methodName="addSerializedProdCharValue" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Add serialized prod characteristic value" id="a3e58051-e313-4623-985f-d071225a19dc" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{
+   "salesOrganizationRoleId": "${#TestCase#req_salesOrgRoleId}",
+   "userRoleId": "${#TestCase#req_userRoleId}",
+   "serializedProductCharValueList": [   {
+      "productSpecCharUse": {"id": "${#TestCase#req_prodSpecCharUseId1}"},
+      "serialNumber": "${#TestCase#req_serialNumber}",
+	  "value": "${#TestCase#req_serialNumber}1"
+   },
+   {
+      "productSpecCharUse": {"id": "${#TestCase#req_prodSpecCharUseId2}"},
+      "serialNumber": "${#TestCase#req_serialNumber}",
+	  "value": "${#TestCase#req_charValue2}"
+   },
+   {
+      "productSpecCharUse": {"id": "${#TestCase#req_prodSpecCharUseId3}"},
+      "serialNumber": "${#TestCase#req_serialNumber}",
+	  "value": "${#TestCase#req_charValue3}"
+   }
+   ]
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="27ca9f26-ff3a-47ac-be7f-47ecf6ec65ab">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>response</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Add serialized prod characteristic value</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>response</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrgRoleId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecCharUseId1</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_serialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_charValue2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>response</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_charValue3</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecCharUseId2</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_prodSpecCharUseId3</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>eff9743b-625d-42d1-af32-a843cd2b77a0</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d9970a40-cf48-4326-968f-821f23f32feb</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

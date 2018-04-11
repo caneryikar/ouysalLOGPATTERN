@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="37a89ccc-ada6-4561-97ce-1a2ca617b823" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Update item of payment business interaction" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="37a89ccc-ada6-4561-97ce-1a2ca617b823fileName">Update-item-of-payment-business-interaction</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Update item of payment business interaction" id="c09c1ee9-8757-4aec-abc7-fd83ea6ee4bd">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/payment/{biId}/items/{itemId}" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Update item of payment business interaction" id="b857dc30-6945-4b5a-bff1-7d083283ef70" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request>{
+    "paymentType": ${#TestCase#req_paymentType},
+    "itemOrder" :${#TestCase#req_itemOrder},
+    "transactionDate":"${#TestCase#req_transactionDate}",
+  //  "creditCardInfo":
+   // {
+    //	"creditCardNumber": ${#TestCase#req_creditCardNumber},
+     //   "bank": ${#TestCase#req_bank},
+      //  "chequeNumber" : ${#TestCase#req_chequeNumber}
+   // },
+    "transactionAmount":
+    {
+        "roundedAmount":${#TestCase#req_transactionRoundedAmount},
+        "notRoundedAmount" :${#TestCase#req_transactionNotRoundedAmount},
+        "currency": "${#TestCase#req_transactionCurrency}"
+    },
+    "convertedAmount":
+    {
+        "roundedAmount":${#TestCase#req_convertedRoundedAmount},
+        "notRoundedAmount" :${#TestCase#req_convertedNotRoundedAmount},
+        "currency":"${#TestCase#req_convertedCurrency}" 
+    }
+}</con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="itemId" value="${#TestCase#req_itemId}"/>
+          <con:entry key="biId" value="${#TestCase#req_biId}"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+          <con:entry>itemId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="9d91b49b-5619-4fa5-87ad-1be7b3eafc72">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Update item of payment business interaction</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>error</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Update item of payment business interaction</con:sourceStep>
+        <con:sourcePath>$['code']</con:sourcePath>
+        <con:targetType>res_error</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_itemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_paymentType</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_itemOrder</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_creditCardNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_bank</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_chequeNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_transactionRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_transactionNotRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_transactionCurrency</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_convertedRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_convertedNotRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_convertedCurrency</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_error</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_transactionDate</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

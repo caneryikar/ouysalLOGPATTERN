@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="24509476-59ab-4d12-9568-b7dab2a80aa1" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Get monetary transaction of session" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="24509476-59ab-4d12-9568-b7dab2a80aa1fileName">Get-monetary-transaction-of-session</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Get monetary transaction of session" id="077a7b6f-8a81-43f5-9f88-77f81cb8745a">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/session/{sessionId}/getMonetaryTransactionListOfSession" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Get monetary transaction of session" id="88d0b40f-12c3-42a3-9166-e7880286e390" mediaType="application/json">
+        <con:settings/>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="sessionId" value="${#TestCase#req_sessionId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="86968cbb-903c-4b85-8b22-f68148c0b1f3">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>monetaryTransactionId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get monetary transaction of session</con:sourceStep>
+        <con:sourcePath>$[0]['id']</con:sourcePath>
+        <con:targetType>res_monetaryTransactionId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>status</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get monetary transaction of session</con:sourceStep>
+        <con:sourcePath>$[0]['status']</con:sourcePath>
+        <con:targetType>res_status</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>relatedAccounts</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get monetary transaction of session</con:sourceStep>
+        <con:sourcePath>$[0]['relatedAccounts']</con:sourcePath>
+        <con:targetType>res_relatedAccounts</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>amount</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get monetary transaction of session</con:sourceStep>
+        <con:sourcePath>$[0]['amount']</con:sourcePath>
+        <con:targetType>res_amount</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromAccount</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get monetary transaction of session</con:sourceStep>
+        <con:sourcePath>$[0]['fromAccount']</con:sourcePath>
+        <con:targetType>res_fromAccount</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toAccount</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get monetary transaction of session</con:sourceStep>
+        <con:sourcePath>$[0]['toAccount']</con:sourcePath>
+        <con:targetType>res_toAccount</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>currency</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get monetary transaction of session</con:sourceStep>
+        <con:sourcePath>$[0]['currency']</con:sourcePath>
+        <con:targetType>res_currency</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>httpStatusCode</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Get monetary transaction of session</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_httpStatusCode</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_sessionId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_monetaryTransactionId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_status</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_relatedAccounts</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_fromAccount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_toAccount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_amount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_currency</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_httpStatusCode</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

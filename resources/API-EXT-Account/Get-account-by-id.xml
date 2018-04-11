@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="b8b1a13e-5ebf-4cd2-aaa1-f6546151c21a" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Get account by id" searchProperties="true" timeout="10000" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="b8b1a13e-5ebf-4cd2-aaa1-f6546151c21afileName">Get-account-by-id</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Get account balance by id" id="77a790a6-285b-4cae-9c7c-9b19f2b06b88">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/account/{req_id}" methodName="getAccountById" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Get account balance by id" id="85cbc2e1-a039-47ae-ad05-c9b05f9f9591" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="req_id" value="${#TestCase#req_id}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>req_id</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="545d3f93-54e8-4dbe-abfc-a6c5e78bf41e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>balance</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get account balance by id</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_balance</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>amount</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get account balance by id</con:sourceStep>
+        <con:sourcePath>$['balance'].notRoundedAmount</con:sourcePath>
+        <con:targetType>res_roundedAmount</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_id</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_balance</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_roundedAmount</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>545d3f93-54e8-4dbe-abfc-a6c5e78bf41e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

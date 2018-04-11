@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="2220aeb8-fbdd-42d7-81d0-d4c29e7acff2" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add item to stock in for box step2" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="2220aeb8-fbdd-42d7-81d0-d4c29e7acff2fileName">Add-item-to-stock-in-for-box-step2</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="AddItem2 - Request 1" id="58fb293f-43ee-4f85-b133-ebd63e6f2ad0">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockin2/{biId}/item" methodName="AddItem2" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="AddItem2 - Request 1" id="3b3d0a9a-6bd7-4c1b-864d-84ca6c0f0fbc" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{  
+   "businessInteractionId":"${#TestCase#req_biId}",
+   "parentBusinessInteractionItemId":"${#TestCase#req_itemId}",
+   "productInformation":{  
+      "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.ProductInformationDTO",
+      "productSpecification":{  
+         "id":2,
+         "code":"CODE-GALAXYNOTE4-1",
+         "article":"ARR-GALAXYNOTE4-1",
+         "externalReference":{  
+            "externalId":"EXT-GALAXYNOTE4-1"
+         },
+         "info":{  
+            "name":"Galaxy Note 4",
+            "description":"Galaxy Note 4"
+         },
+         "replicationInfo":{  
+            "isReplicated":false
+         },
+         "returnPeriod":{  
+            "value":1,
+            "unit":"Year"
+         },
+         "serialNumberFormat":"GN-XXXXXXXXXX",
+         "status":"Active",
+         "valueType":1,
+         "versionInfo":{  
+            "versionNumber":1000000
+         },
+         "warrantyPeriod":{  
+            "value":1,
+            "unit":"Year"
+         },
+         "productTrackingType":"SerializedWithoutRange",
+         "productSpecType":"Atomic",
+         "isSerialized":true,
+         "dynamicMap":{  
+
+         },
+         "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO",
+         "characteristicList":[  
+            {  
+               "selectedValue":{  
+                  "name":"5.4",
+                  "id":2
+               },
+               "name":"Screen Size",
+               "id":1,
+               "specCharUseId":4,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"5.4",
+                     "id":2
+                  }
+               ]
+            },
+            {  
+               "selectedValue":{  
+                  "name":"32 GB",
+                  "id":5
+               },
+               "name":"Memory",
+               "id":2,
+               "specCharUseId":5,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"32 GB",
+                     "id":5
+                  },
+                  {  
+                     "name":"64 GB",
+                     "id":6
+                  },
+                  {  
+                     "name":"128 GB",
+                     "id":7
+                  }
+               ]
+            },
+            {  
+               "selectedValue":{  
+                  "name":"M10",
+                  "id":10
+               },
+               "name":"Processor",
+               "id":3,
+               "specCharUseId":6,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"M10",
+                     "id":10
+                  },
+                  {  
+                     "name":"M15",
+                     "id":11
+                  }
+               ]
+            }
+         ]
+      },
+      "parentSerialNumberText":"${#TestCase#req_serialNumber}",
+      "quantity":1,
+      "startSerialNumber":0,
+      "serialText":"${#TestCase#req_serialNumber}",
+      "endSerialNumber":0,
+      "status":1,
+      "characteristicDescription":"5.4, 32 GB, M10",
+      "description":"Galaxy Note 4"
+   },
+   "characteristicValues":[  
+      {  
+         "productSpecCharUse":{  
+            "id":4,
+            "productSpecCharacteristic":{  
+               "id":1,
+               "info":{  
+                  "name":"Screen Size"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":2,
+            "value":"5.4",
+            "productSpecChar":{  
+               "id":1
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      },
+      {  
+         "productSpecCharUse":{  
+            "id":5,
+            "productSpecCharacteristic":{  
+               "id":2,
+               "info":{  
+                  "name":"Memory"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":5,
+            "value":"32 GB",
+            "productSpecChar":{  
+               "id":2
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      },
+      {  
+         "productSpecCharUse":{  
+            "id":6,
+            "productSpecCharacteristic":{  
+               "id":3,
+               "info":{  
+                  "name":"Processor"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":10,
+            "value":"M10",
+            "productSpecChar":{  
+               "id":3
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      }
+   ],
+   "type":"com.ericsson.bss.rm.erms.core.entity.dto.bi.gen2.stockin.CreateStockInBIItemDTO",
+   "toPlaceId": "${#TestCase#req_placeId}",
+   "userRoleId":"${#TestCase#req_userId}",
+   "salesOrganizationRoleId":"${#TestCase#req_soId}"
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/stockin2/item</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>biId</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="c1d6222c-6a5b-4943-a27f-0d624ddea6af">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>AddItem2 - Request 1</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>AddItem2 - Request 1</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>response</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>AddItem2 - Request 1</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>response</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>AddItem2 - Request 1</con:sourceStep>
+        <con:sourcePath>$['id']</con:sourcePath>
+        <con:targetType>res_itemId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>XPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_serialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value>404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>response</con:name>
+      <con:value>{"code":"404","description":"HTTP 404 Not Found","errorDetails":"HTTP 404 Not Found","errorMessage":"404","httpStatusCode":"404","httpStatusCodeDescription":"HTTP 404 Not Found"}</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_placeId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_itemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_userId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_soId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_itemId</con:name>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

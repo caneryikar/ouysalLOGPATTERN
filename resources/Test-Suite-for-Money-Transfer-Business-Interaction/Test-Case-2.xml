@@ -1,0 +1,2826 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="e77120fa-a95c-4930-99f9-66cced456a33" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Test Case 2" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="e77120fa-a95c-4930-99f9-66cced456a33fileName">Test-Case-2</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Given properties for the test steps" id="3555e875-3cb0-45ff-9859-a56a386dfed0">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>amount</con:name>
+          <con:value>100</con:value>
+        </con:property>
+        <con:property>
+          <con:name>currency</con:name>
+          <con:value>USD</con:value>
+        </con:property>
+        <con:property>
+          <con:name>currency2</con:name>
+          <con:value>EUR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>roundedAmount</con:name>
+          <con:value>101</con:value>
+        </con:property>
+        <con:property>
+          <con:name>notExistBIId</con:name>
+          <con:value>-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>emptyValue</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>biIdNotFound</con:name>
+          <con:value>BI_WITH_ID_NOT_FOUND</con:value>
+        </con:property>
+        <con:property>
+          <con:name>invalidState</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+        <con:property>
+          <con:name>httpStatus200</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>httpStatus201</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>httpStatus400</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>userCreateSpec</con:name>
+          <con:value>USERCREATEBISPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>userExtId</con:name>
+          <con:value>second-user-ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>name</con:name>
+          <con:value>second-user-name-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>forceToUseSession</con:name>
+          <con:value>false</con:value>
+        </con:property>
+        <con:property>
+          <con:name>firstName</con:name>
+          <con:value>second-user-1stName-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>lastName</con:name>
+          <con:value>second-user-lastName-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>extSystem</con:name>
+          <con:value>ext-system-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set default user and sales org" id="d2ab895e-9b44-4753-8d1f-8cfef02d0c2a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>DefaultUserRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_createByUserRoleId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_createdBySalesOrgRoleId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create sales organization, user, inventory and terminal" id="5114538a-d28e-44bf-aae1-bd9ba0de89e9">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>b92a7c8d-a0ed-4725-99e9-4866fd949629</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_createdByUserRoleId</con:name>
+          <con:value>${#TestCase#req_createByUserRoleId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_createdBySalesOrgRoleId</con:name>
+          <con:value>${#TestCase#req_createdBySalesOrgRoleId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userRoleExtId</con:name>
+          <con:value>u${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleExtId</con:name>
+          <con:value>s${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_terminalExtId</con:name>
+          <con:value>t${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_inventoryExtId</con:name>
+          <con:value>i${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrgBiId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_userRoleBiId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_terminalBiId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_inventoryRoleBiId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrgId</con:name>
+          <con:value>58</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_userRoleId</con:name>
+          <con:value>60</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_terminalId</con:name>
+          <con:value>12</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_inventoryRoleId</con:name>
+          <con:value>61</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_placeId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_soExtId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrganisationExternalId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>userToken</con:name>
+          <con:value>Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1NTE0NDEwNTQsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InUzZTc5ODhkYS02ZjNmLTRlYmQtOGIzNC05OWJlMGZhMzkyNzUifX0.Lpb234dmhTBj_aSJA86_sbmS2Pks0M6NZIDfhnCkxL1Zn_dIaU3Gb69Vxw4EUGr7-wqXVO1lkrRojjoO3sFX3mLXAXbyVpJvvYK5IYov5aIUIGK510IYT5zrqT2ZhuyEh7eNcbLObSMa2zpxFKZuegCEigmkxz9LcWX4zNbzoms</con:value>
+        </con:property>
+        <con:property>
+          <con:name>userIntToken</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_email</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_inventoryRoleId</con:entry>
+        <con:entry>res_salesOrgId</con:entry>
+        <con:entry>res_terminalId</con:entry>
+        <con:entry>res_userRoleId</con:entry>
+        <con:entry>userToken</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert if user id, so id, inventory id and terminal id not null" id="ca44be80-a9fe-4592-abb6-bd1411a8cdf2">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>e230232a-d253-42eb-889c-d69bd067280f</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>5114538a-d28e-44bf-aae1-bd9ba0de89e9</con:sourceId>
+        <con:propertyName>res_salesOrgId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="40e3747e-0114-463e-877a-716267b3f830">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>4eb478a2-e43f-494f-b2eb-4eb8c0a23e2f</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>5114538a-d28e-44bf-aae1-bd9ba0de89e9</con:sourceId>
+        <con:propertyName>res_userRoleId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="87a98f22-850f-4b24-8b23-9b24de44a5ce">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>39fd7c88-7c75-4242-81e1-69b2eb521469</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>5114538a-d28e-44bf-aae1-bd9ba0de89e9</con:sourceId>
+        <con:propertyName>res_terminalId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 3" id="3cd0011c-514e-466d-82ce-f4f4452376c2">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>9f16437d-065e-416b-9e26-22d3cbf924bb</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>5114538a-d28e-44bf-aae1-bd9ba0de89e9</con:sourceId>
+        <con:propertyName>res_inventoryRoleId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 4" id="3467763e-5ca5-4a3e-ae92-55bb60e736ed">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set create user belongs to first sales organization" id="cd8405d0-1f7d-404e-a925-51880a02ac0e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>createdByUserRoleId</con:name>
+        <con:sourceType>DefaultUserRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_createdByUserRoleId</con:targetType>
+        <con:targetStep>Create user belongs to first sales organization</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>createdBySalesOrgRoleId</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_createdBySalesOrgRoleId</con:targetType>
+        <con:targetStep>Create user belongs to first sales organization</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soRoleId</con:name>
+        <con:sourceType>res_salesOrgId</con:sourceType>
+        <con:sourceStep>Create sales organization, user, inventory and terminal</con:sourceStep>
+        <con:targetType>req_soRoleId</con:targetType>
+        <con:targetStep>Create user belongs to first sales organization</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpecCode</con:name>
+        <con:sourceType>userCreateSpec</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_biSpecCode</con:targetType>
+        <con:targetStep>Create user belongs to first sales organization</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userExtId</con:name>
+        <con:sourceType>userExtId</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_userExternalID</con:targetType>
+        <con:targetStep>Create user belongs to first sales organization</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>name</con:name>
+        <con:sourceType>name</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_name</con:targetType>
+        <con:targetStep>Create user belongs to first sales organization</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>forceToUseSession</con:name>
+        <con:sourceType>forceToUseSession</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_forceToUseSession</con:targetType>
+        <con:targetStep>Create user belongs to first sales organization</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>firstName</con:name>
+        <con:sourceType>firstName</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_indFirstName</con:targetType>
+        <con:targetStep>Create user belongs to first sales organization</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>lastName</con:name>
+        <con:sourceType>lastName</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_indLastName</con:targetType>
+        <con:targetStep>Create user belongs to first sales organization</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userToken</con:name>
+        <con:sourceType>emptyValue</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>AuthorizationUser</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userSo</con:name>
+        <con:sourceType>emptyValue</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>UserSo</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create user belongs to first sales organization" id="6ac0d499-a819-42c2-b670-b2fa4d56257b">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>f95d12d9-6cd5-4f61-b30f-72301b48157f</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_createdByUserRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_createdBySalesOrgRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_soRoleId</con:name>
+          <con:value>58</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpecCode</con:name>
+          <con:value>USERCREATEBISPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userExternalID</con:name>
+          <con:value>second-user-ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_forceToUseSession</con:name>
+          <con:value>false</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_name</con:name>
+          <con:value>second-user-name-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_indFirstName</con:name>
+          <con:value>second-user-1stName-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_indLastName</con:name>
+          <con:value>second-user-lastName-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_indName</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>1401</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_userId</con:name>
+          <con:value>62</con:value>
+        </con:property>
+        <con:property>
+          <con:name>userToken</con:name>
+          <con:value>Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1NTE0NDEwNTUsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InNlY29uZC11c2VyLWV4dC1lYjAwMjBhMy0wOTVmLTQ0YjYtYjliYS03ZWE0ODQ2NTRjMTQifX0.zUMLg2zbuNIKXfcryUf5s_vjfgbRg5Lth-6BUxinhAr8zx5hTpiGpeI4I6L_Hf661qqh521avEWZM30gmcahVuLj3PhHLQOF4KD-HPD7uF-fR_YZwCHRapBtkZbftNXJ7rIRGXupkXe6d8aW56a1nAR8tFjAxYW6Q0NiIVsywsk</con:value>
+        </con:property>
+        <con:property>
+          <con:name>intUserToken</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_email</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_error</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_forceToUseSession</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_userId</con:entry>
+        <con:entry>userToken</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert second user created" id="dda280ef-4cca-4316-9d09-c51e20e79241">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set get first user account id" id="b4590759-106b-4b2a-97c3-0fc6a96151c9">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>id</con:name>
+        <con:sourceType>res_userRoleId</con:sourceType>
+        <con:sourceStep>Create sales organization, user, inventory and terminal</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userId</con:targetType>
+        <con:targetStep>Get first user account id</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userToken</con:name>
+        <con:sourceType>userToken</con:sourceType>
+        <con:sourceStep>Create sales organization, user, inventory and terminal</con:sourceStep>
+        <con:targetType>AuthorizationUser</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userSo</con:name>
+        <con:sourceType>res_salesOrgId</con:sourceType>
+        <con:sourceStep>Create sales organization, user, inventory and terminal</con:sourceStep>
+        <con:targetType>UserSo</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Get first user account id" id="744b4740-4a93-40c5-8f21-e050ae1a97c7">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>8a3b20cb-7c77-4c79-a6a7-2d4c83fecf8c</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userId</con:name>
+          <con:value>60</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_accountId</con:name>
+          <con:value>23</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_accountName</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_notRoundedAmount</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_currency</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_roundedAmount</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_accountId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert first account  id not null" id="ace63915-704a-476b-8cb6-38ed12aba52f">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>6e1546ca-ccbc-4bd3-813b-e12e568508b9</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>744b4740-4a93-40c5-8f21-e050ae1a97c7</con:sourceId>
+        <con:propertyName>res_accountId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="95d04990-02c5-4ba3-afda-5c32397f0d5d">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set first user properties" id="fa506699-ef74-4bdd-83ed-8fc3b8e7729a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>res_userRoleId</con:sourceType>
+        <con:sourceStep>Create sales organization, user, inventory and terminal</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_firstUserRoleId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soRoleId</con:name>
+        <con:sourceType>res_salesOrgId</con:sourceType>
+        <con:sourceStep>Create sales organization, user, inventory and terminal</con:sourceStep>
+        <con:targetType>req_firstSoRoleId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>accountId</con:name>
+        <con:sourceType>res_accountId</con:sourceType>
+        <con:sourceStep>Get first user account id</con:sourceStep>
+        <con:targetType>req_fromAccountId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set get second user account id" id="db0dca08-8e9f-4603-935e-0018a041a9ad">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>res_userId</con:sourceType>
+        <con:sourceStep>Create user belongs to first sales organization</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userId</con:targetType>
+        <con:targetStep>Get second user account id</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userToken</con:name>
+        <con:sourceType>userToken</con:sourceType>
+        <con:sourceStep>Create user belongs to first sales organization</con:sourceStep>
+        <con:targetType>AuthorizationUser</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userSo</con:name>
+        <con:sourceType>req_soRoleId</con:sourceType>
+        <con:sourceStep>Create user belongs to first sales organization</con:sourceStep>
+        <con:targetType>UserSo</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Get second user account id" id="3c1e0131-46ff-44e1-98fc-50234355a4d3">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>8a3b20cb-7c77-4c79-a6a7-2d4c83fecf8c</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userId</con:name>
+          <con:value>62</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_accountId</con:name>
+          <con:value>24</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_accountName</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_notRoundedAmount</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_currency</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_roundedAmount</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_accountId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert second account id not null" id="accfb980-fce2-47a3-b6d7-9aeda73b58de">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set second user properties" id="c2919f72-77e5-4926-85bb-7497238ddfa2">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>res_userId</con:sourceType>
+        <con:sourceStep>Create user belongs to first sales organization</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_secondUserRoleId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>res_salesOrgId</con:sourceType>
+        <con:sourceStep>Create sales organization, user, inventory and terminal</con:sourceStep>
+        <con:targetType>req_secondSoRoleId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>accountId</con:name>
+        <con:sourceType>res_accountId</con:sourceType>
+        <con:sourceStep>Get second user account id</con:sourceStep>
+        <con:targetType>req_toAccountId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set bi id to cancel which is not exist" id="87815c35-37b4-4996-bd2a-fee3b2f2ebaf">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>notExistBIId</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cancel bi which is not exist</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cancel bi which is not exist" id="37e1e000-b7c7-44fe-8db6-f571ed618f69">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>9c12a2e4-e16c-48c6-91f3-ca9952c82d55</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>BI_WITH_ID_NOT_FOUND</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>400</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_httpStatus</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert bi is not canceled" id="33c70f5b-cdf1-4aa0-b933-55fb83d715c3">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>a7afa392-e7bc-4e32-bad2-eabd5fcdf2a3</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>37e1e000-b7c7-44fe-8db6-f571ed618f69</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="025743b2-0193-45ff-b32d-29fefc90493e">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>httpStatus400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>464329f0-3101-4475-a181-a79cfbe49aaf</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>37e1e000-b7c7-44fe-8db6-f571ed618f69</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="29ca51c8-ea58-4f49-8232-a85f05ee67ed">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>biIdNotFound</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set create money transfer BI" id="0c8de3b2-4d79-4a9b-8bf6-735e9d2be4f9">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>req_firstUserRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create money transfer BI</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soRoleId</con:name>
+        <con:sourceType>req_firstSoRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_salesOrganizationRoleId</con:targetType>
+        <con:targetStep>Create money transfer BI</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpec</con:name>
+        <con:sourceType>req_biSpec</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_biSpec</con:targetType>
+        <con:targetStep>Create money transfer BI</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userToken</con:name>
+        <con:sourceType>userToken</con:sourceType>
+        <con:sourceStep>Create sales organization, user, inventory and terminal</con:sourceStep>
+        <con:targetType>AuthorizationUser</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userSo</con:name>
+        <con:sourceType>res_salesOrgId</con:sourceType>
+        <con:sourceStep>Create sales organization, user, inventory and terminal</con:sourceStep>
+        <con:targetType>UserSo</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create money transfer BI" id="cf22d48c-c8c3-4b08-b30f-dc6792319f9e">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a62f64ed-8854-4137-92dc-6a6a778fdc60</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>60</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrganizationRoleId</con:name>
+          <con:value>58</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpec</con:name>
+          <con:value>MONEYTRSPECCODE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>1411</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_biId</con:entry>
+        <con:entry>req_description</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert created bi id is not null" id="5b459855-4e3d-4832-acd1-2745b1f61330">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>bf03a0a9-46d9-47a8-8773-93d1077d0cbf</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>cf22d48c-c8c3-4b08-b30f-dc6792319f9e</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="038de5ff-7f44-4926-a926-c992588e00f5">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>58c29c9d-5e64-4744-a429-eb6a29d389fa</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>cf22d48c-c8c3-4b08-b30f-dc6792319f9e</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="8045cf14-8d4b-41f3-b88d-32dc7fef6e41">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>httpStatus201</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set bi id to cancel which has not bi item" id="549bdc6d-1ee0-475d-9371-39b8350e2004">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create money transfer BI</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cancel bi which has not bi item</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cancel bi which has not bi item" id="0d2b1623-d797-4abf-93c5-c6156efb81c2">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>9c12a2e4-e16c-48c6-91f3-ca9952c82d55</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>1411</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value>1411</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_httpStatus</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="NOK-Assert bi is canceled" id="338fbad8-6bf7-4ef1-90ab-5fe0b45638a6">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>86e49f9d-3e91-4e91-9cae-cbbe25517e12</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>0d2b1623-d797-4abf-93c5-c6156efb81c2</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="1ffba2a3-6308-409f-a4f9-9b680de1f675">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>httpStatus200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>74721253-73f5-489b-934c-568a13d0137d</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>0d2b1623-d797-4abf-93c5-c6156efb81c2</con:sourceId>
+        <con:propertyName>res_id</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="3d701df6-4a71-4846-a295-d57de0f5b9d5">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set add item properties" id="69aeda24-3817-4b88-8e07-d4ef570426f8">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create money transfer BI</con:sourceStep>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add item to cancelled money business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromAccountId</con:name>
+        <con:sourceType>req_fromAccountId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_fromAccountId</con:targetType>
+        <con:targetStep>Add item to cancelled money business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toAccountId</con:name>
+        <con:sourceType>req_toAccountId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_toAccountId</con:targetType>
+        <con:targetStep>Add item to cancelled money business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>amount</con:name>
+        <con:sourceType>amount</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_amount</con:targetType>
+        <con:targetStep>Add item to cancelled money business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>currency</con:name>
+        <con:sourceType>currency</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_currency</con:targetType>
+        <con:targetStep>Add item to cancelled money business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>roundedAmount</con:name>
+        <con:sourceType>roundedAmount</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_roundedAmount</con:targetType>
+        <con:targetStep>Add item to cancelled money business interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add item to cancelled money business interaction" id="e66765d0-17ac-4c03-bc10-5dd20a74a2b0">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>71dd28d9-9244-41c7-8ab3-83bd246d05c1</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>1411</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromAccountId</con:name>
+          <con:value>23</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toAccountId</con:name>
+          <con:value>24</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_amount</con:name>
+          <con:value>100</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_currency</con:name>
+          <con:value>USD</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_roundedAmount</con:name>
+          <con:value>101</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_monetaryType</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert cannot add item to cancelled bi" id="e9829f24-3ecd-461d-a85c-c7622e5625d1">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>2e817bcb-e72d-4f34-854d-ca27a1a9d964</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>e66765d0-17ac-4c03-bc10-5dd20a74a2b0</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="ca1b239b-4628-4826-a590-ffb24e21a7fa">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>httpStatus400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>dc0fb1bf-de1f-44c7-9b59-c5ce88eb21e3</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>e66765d0-17ac-4c03-bc10-5dd20a74a2b0</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="fa5c512a-6c3f-4b5f-b394-83f3d3c80236">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>invalidState</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set bi id for canceled bi" id="60df6295-9e65-406f-ab49-ff9c60e9e24e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create money transfer BI</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit money transfer business interaction which is already canceled</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit money transfer business interaction which is already canceled" id="121609e9-f82c-4489-8bbf-67737225b1af">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>18056452-99e8-45b5-8fcd-29f9985f9310</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>1411</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert bi is not added if it is canceled" id="fcef4df6-dc84-4bf7-9273-3453507c9f1c">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>df52f562-bede-411f-86d4-92118a39b9dd</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>121609e9-f82c-4489-8bbf-67737225b1af</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="08bd7ba0-6ec6-4871-a3ba-ac6702cfd267">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>httpStatus400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>4122a5bf-f700-4382-bb3a-26048c260613</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>121609e9-f82c-4489-8bbf-67737225b1af</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="270c0f53-fc1c-43c4-9346-73806ddf58e5">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>invalidState</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set bi id to cancel which is closed" id="b6511723-e9e7-4ae9-9758-d0c85ed8ed49">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create money transfer BI</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cancel bi which is already closed</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cancel bi which is already closed" id="20844254-03c2-42f2-9dee-37f6e994962e">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>9c12a2e4-e16c-48c6-91f3-ca9952c82d55</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>1411</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>400</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_httpStatus</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assert bi is not canceled which is already closed" id="3b16215c-425b-45e0-b64f-06e75ef9ef47">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>468d7542-03d5-462c-afbc-596d14241b05</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>20844254-03c2-42f2-9dee-37f6e994962e</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="90923a8a-5237-47f1-b6df-7afa0b41f55a">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>httpStatus400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>a7d61626-a78a-4708-bd0d-d3d0b8abf57e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>20844254-03c2-42f2-9dee-37f6e994962e</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="9587b22d-6af8-40d0-9cf9-a9bc21e89461">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>invalidState</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set create money transfer BI 2" id="d9fd96ea-a7c9-47ca-91f2-0d32519d2d7c">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>req_firstUserRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create money transfer BI 2</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleId</con:name>
+        <con:sourceType>req_firstSoRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_salesOrganizationRoleId</con:targetType>
+        <con:targetStep>Create money transfer BI 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpec</con:name>
+        <con:sourceType>req_biSpec</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_biSpec</con:targetType>
+        <con:targetStep>Create money transfer BI 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create money transfer BI 2" id="911fe2e3-e07d-4952-94e9-fdf1ff0f67ba">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a62f64ed-8854-4137-92dc-6a6a778fdc60</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>60</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrganizationRoleId</con:name>
+          <con:value>58</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpec</con:name>
+          <con:value>MONEYTRSPECCODE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>1421</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion BI created success" id="15e049ac-df83-4926-9dda-ab3a80714649">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>3d0bfe61-8287-448e-9f28-bb1e292468ae</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>911fe2e3-e07d-4952-94e9-fdf1ff0f67ba</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="b85e1816-cefa-4481-842a-17cb6d32b222">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>0c37a023-6fa9-44fb-b070-8aeb7e47a31b</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>911fe2e3-e07d-4952-94e9-fdf1ff0f67ba</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="00d317a2-fcc7-48ff-9dd3-bbc28b1f8064">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>httpStatus201</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="DataSource for add item with different currencies" id="82c19a00-faaf-4a82-9d44-68b919b1459c">
+    <con:settings>
+      <con:setting id="com.eviware.soapui.impl.wsdl.teststeps.datasource.DataSourceContainer@prepared-properties">&lt;xml-fragment/></con:setting>
+    </con:settings>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Grid">
+        <con:configuration>
+          <check><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry></xml-fragment>]]></check>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${Create money transfer BI 2#res_biId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#req_fromAccountId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#req_toAccountId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Given properties for the test steps#amount}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Given properties for the test steps#roundedAmount}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Given properties for the test steps#currency}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${Create money transfer BI 2#res_biId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#req_fromAccountId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#req_toAccountId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Given properties for the test steps#amount}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Given properties for the test steps#roundedAmount}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Given properties for the test steps#currency2}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${Create money transfer BI 2#res_biId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#req_fromAccountId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#req_toAccountId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Given properties for the test steps#amount}  </con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Given properties for the test steps#roundedAmount}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Given properties for the test steps#currency2}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+        </con:configuration>
+      </con:dataSource>
+      <con:property>biId</con:property>
+      <con:property>fromAccountId</con:property>
+      <con:property>toAccountId</con:property>
+      <con:property>amount</con:property>
+      <con:property>roundedAmount</con:property>
+      <con:property>currency</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set add item to BI with different currencies" id="8b17920f-55cd-454c-89bf-78da8f660c6d">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>biId</con:sourceType>
+        <con:sourceStep>DataSource for add item with different currencies</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add item to BI with different currencies</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromAccount</con:name>
+        <con:sourceType>fromAccountId</con:sourceType>
+        <con:sourceStep>DataSource for add item with different currencies</con:sourceStep>
+        <con:targetType>req_fromAccountId</con:targetType>
+        <con:targetStep>Add item to BI with different currencies</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toAccount</con:name>
+        <con:sourceType>toAccountId</con:sourceType>
+        <con:sourceStep>DataSource for add item with different currencies</con:sourceStep>
+        <con:targetType>req_toAccountId</con:targetType>
+        <con:targetStep>Add item to BI with different currencies</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>amount</con:name>
+        <con:sourceType>amount</con:sourceType>
+        <con:sourceStep>DataSource for add item with different currencies</con:sourceStep>
+        <con:targetType>req_amount</con:targetType>
+        <con:targetStep>Add item to BI with different currencies</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>roundedAmount</con:name>
+        <con:sourceType>roundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item with different currencies</con:sourceStep>
+        <con:targetType>req_roundedAmount</con:targetType>
+        <con:targetStep>Add item to BI with different currencies</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>currency</con:name>
+        <con:sourceType>currency</con:sourceType>
+        <con:sourceStep>DataSource for add item with different currencies</con:sourceStep>
+        <con:targetType>req_currency</con:targetType>
+        <con:targetStep>Add item to BI with different currencies</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add item to BI with different currencies" id="cbd36e78-019d-47af-872d-7b9eaaae03f7">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>71dd28d9-9244-41c7-8ab3-83bd246d05c1</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>${Create money transfer BI 2#res_biId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromAccountId</con:name>
+          <con:value>${#TestCase#req_fromAccountId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toAccountId</con:name>
+          <con:value>${#TestCase#req_toAccountId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_amount</con:name>
+          <con:value>${Given properties for the test steps#amount}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_currency</con:name>
+          <con:value>${Given properties for the test steps#currency2}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_roundedAmount</con:name>
+          <con:value>${Given properties for the test steps#roundedAmount}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_monetaryType</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value>172</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion item added success" id="1384fd22-b9f7-4d61-a04e-09165bb7a6e0">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>29a2330e-4c5f-42e9-9e8e-ea16a66dcff8</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>cbd36e78-019d-47af-872d-7b9eaaae03f7</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="59daaca6-abac-4fd0-8751-3192d84d0071">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>httpStatus201</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>853ae01e-ef48-4ff7-81ed-4a18d62aadb2</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>cbd36e78-019d-47af-872d-7b9eaaae03f7</con:sourceId>
+        <con:propertyName>res_itemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="bff02360-cec7-4d88-84b3-fd78cabaab4f">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="DataSource Loop for add ittem" id="6f65b77f-176d-4871-9d00-fabd79afd7e5">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>DataSource for add item with different currencies</dataSourceStep>
+      <targetStep>Set add item to BI with different currencies</targetStep>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set submit add item" id="ea5c80fc-b5e4-4a33-9336-121177fb5d0a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create money transfer BI 2</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit add item</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit add item" id="ee3ff706-5fbd-43b0-8c62-739085df7389">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>18056452-99e8-45b5-8fcd-29f9985f9310</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>1421</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>1421</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion bi submitted success" id="93668899-8edd-4bef-8f29-44d82cfc1615">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>af63d98a-3946-4688-92d5-222093faf522</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>ee3ff706-5fbd-43b0-8c62-739085df7389</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="cf786104-3720-4316-a6e2-69e7e15434d8">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>httpStatus200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>2ced63ff-25f4-42c5-ac05-8d6ef5b2f45d</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>ee3ff706-5fbd-43b0-8c62-739085df7389</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="11a16dac-6a77-4aff-b574-6f0feb1a3775">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set display all items" id="86b7a5f9-ca94-4769-a536-1a461a3af9fa">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Submit add item</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Display all items</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display all items" id="04005dbc-4361-40d1-b320-c1e8db44f9da">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>649cc7c2-ee8e-4127-8975-5371377676ea</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>1421</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>{"items":[{"amount":100.0000,"roundedAmount":100.00,"currency":"USD","id":"170"},{"amount":100.0000,"roundedAmount":100.00,"currency":"EUR","id":"171"},{"amount":100.0000,"roundedAmount":100.00,"currency":"EUR","id":"172"}]}</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion items listed success" id="b9ef713a-8f94-4dd8-a446-8f1fcffefb8d">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>6bae2093-8fce-4469-9e7a-c1de62fbfefd</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>04005dbc-4361-40d1-b320-c1e8db44f9da</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="c7619fe3-8936-420b-ad1d-0b0dfadb6041">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>httpStatus200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>d9e1429b-c77f-4897-a48e-2f0c2c824454</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>04005dbc-4361-40d1-b320-c1e8db44f9da</con:sourceId>
+        <con:propertyName>response</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="36238fcf-01cf-4304-8804-47a16bd2e7bf">
+          <con:configuration>
+            <token>\w+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="properties" name="Define transferred amounts" id="c829a80a-0163-43c4-bf6c-41a1750211bf">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>totalEUR</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>totalUSD</con:name>
+          <con:value>100</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Get account balance informations for health-check" id="3c26137e-a0a7-436c-8ec2-72a7d731e1ea">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>e23ce15b-2219-4a5b-b5d0-3acfad596e85</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_firstAccountId</con:name>
+          <con:value>24</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_firstAmount</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_firstCurrency</con:name>
+          <con:value>EUR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_secondAccountId</con:name>
+          <con:value>23</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_secondAmount</con:name>
+          <con:value>100</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_secondCurrency</con:name>
+          <con:value>USD</con:value>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>[{"id":48,"amount":{"roundedAmount":200.00,"notRoundedAmount":200.0000,"currency":"EUR"},"account":{"id":24,"name":"User Account : second-user-1stName-59df3798-22bc-4e70-9a57-f8a8f9771197 second-user-lastName-6fdad9b7-53a2-41c9-a910-6c1df8e923b6-name-s9a1cbe7d-733a-4a27-9539-381807703d20","accountType":1,"balance":{"roundedAmount":300.00,"notRoundedAmount":300.0000,"currency":"EUR"},"isVisible":true,"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountDTO"},"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountBalanceDTO"},{"id":47,"amount":{"roundedAmount":-200.00,"notRoundedAmount":-200.0000,"currency":"EUR"},"account":{"id":23,"name":"User Account : John Smith-name-s9a1cbe7d-733a-4a27-9539-381807703d20","accountType":1,"balance":{"roundedAmount":-300.00,"notRoundedAmount":-300.0000,"currency":"EUR"},"isVisible":true,"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountDTO"},"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountBalanceDTO"},{"id":46,"amount":{"roundedAmount":100.00,"notRoundedAmount":100.0000,"currency":"USD"},"account":{"id":24,"name":"User Account : second-user-1stName-59df3798-22bc-4e70-9a57-f8a8f9771197 second-user-lastName-6fdad9b7-53a2-41c9-a910-6c1df8e923b6-name-s9a1cbe7d-733a-4a27-9539-381807703d20","accountType":1,"balance":{"roundedAmount":300.00,"notRoundedAmount":300.0000,"currency":"EUR"},"isVisible":true,"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountDTO"},"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountBalanceDTO"},{"id":45,"amount":{"roundedAmount":-100.00,"notRoundedAmount":-100.0000,"currency":"USD"},"account":{"id":23,"name":"User Account : John Smith-name-s9a1cbe7d-733a-4a27-9539-381807703d20","accountType":1,"balance":{"roundedAmount":-300.00,"notRoundedAmount":-300.0000,"currency":"EUR"},"isVisible":true,"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountDTO"},"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountBalanceDTO"},{"id":44,"amount":{"roundedAmount":200.00,"notRoundedAmount":200.0000,"currency":"EUR"},"account":{"id":22,"name":"User Account : second-user-1stName-233d90f3-03f2-48fc-b280-e5aa55f12225 second-user-lastName-4940ff3d-f148-4bf1-8ec2-da666cc95b74-name-s77e5bb4a-7bb9-400b-9aa8-419df590c755","accountType":1,"balance":{"roundedAmount":300.00,"notRoundedAmount":300.0000,"currency":"EUR"},"isVisible":true,"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountDTO"},"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountBalanceDTO"},{"id":43,"amount":{"roundedAmount":-200.00,"notRoundedAmount":-200.0000,"currency":"EUR"},"account":{"id":21,"name":"User Account : John Smith-name-s77e5bb4a-7bb9-400b-9aa8-419df590c755","accountType":1,"balance":{"roundedAmount":-300.00,"notRoundedAmount":-300.0000,"currency":"EUR"},"isVisible":true,"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountDTO"},"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountBalanceDTO"},{"id":42,"amount":{"roundedAmount":100.00,"notRoundedAmount":100.0000,"currency":"USD"},"account":{"id":22,"name":"User Account : second-user-1stName-233d90f3-03f2-48fc-b280-e5aa55f12225 second-user-lastName-4940ff3d-f148-4bf1-8ec2-da666cc95b74-name-s77e5bb4a-7bb9-400b-9aa8-419df590c755","accountType":1,"balance":{"roundedAmount":300.00,"notRoundedAmount":300.0000,"currency":"EUR"},"isVisible":true,"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountDTO"},"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountBalanceDTO"},{"id":41,"amount":{"roundedAmount":-100.00,"notRoundedAmount":-100.0000,"currency":"USD"},"account":{"id":21,"name":"User Account : John Smith-name-s77e5bb4a-7bb9-400b-9aa8-419df590c755","accountType":1,"balance":{"roundedAmount":-300.00,"notRoundedAmount":-300.0000,"currency":"EUR"},"isVisible":true,"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountDTO"},"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountBalanceDTO"},{"id":40,"amount":{"roundedAmount":200.00,"notRoundedAmount":200.0000,"currency":"EUR"},"account":{"id":20,"name":"User Account : second-user-1stName-3ef70ecc-e578-4475-a4ea-12eb4dd0c17e second-user-lastName-c71167a9-9fe7-443c-b999-c2bc2ebc2f8d-name-s0e292407-e461-42e1-ae6a-159ad5fddbda","accountType":1,"balance":{"roundedAmount":300.00,"notRoundedAmount":300.0000,"currency":"EUR"},"isVisible":true,"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountDTO"},"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountBalanceDTO"},{"id":39,"amount":{"roundedAmount":-200.00,"notRoundedAmount":-200.0000,"currency":"EUR"},"account":{"id":19,"name":"User Account : John Smith-name-s0e292407-e461-42e1-ae6a-159ad5fddbda","accountType":1,"balance":{"roundedAmount":-300.00,"notRoundedAmount":-300.0000,"currency":"EUR"},"isVisible":true,"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountDTO"},"dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.pm.AccountBalanceDTO"}]</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_firstAccountId</con:entry>
+        <con:entry>res_firstAmount</con:entry>
+        <con:entry>res_firstCurrency</con:entry>
+        <con:entry>res_secondAccountId</con:entry>
+        <con:entry>res_secondAmount</con:entry>
+        <con:entry>res_secondCurrency</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen for washing machine" id="dc91fc22-278f-43c6-9752-83bb7530ea19">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>import net.sf.json.groovy.*;
+
+def firstAmount = context.expand( '${Get account balance informations for health-check#res_firstAmount}' )
+def firstCurrency = context.expand( '${Get account balance informations for health-check#res_firstCurrency}' )
+def secondAmount = context.expand( '${Get account balance informations for health-check#res_secondAmount}' )
+def secondCurrency = context.expand( '${Get account balance informations for health-check#res_secondCurrency}' )
+
+def accountBalanceList = context.expand( '${Get account balance informations for health-check#response}' )
+def json = new JsonSlurper().parseText (accountBalanceList);
+	//Check first element of index for USD
+	if (json[0].amount.currency == "USD") 
+	{	//Swap amounts between from and two
+		testRunner.testCase.testSteps['Get account balance informations for health-check'].setPropertyValue("res_firstAmount",secondAmount);
+		testRunner.testCase.testSteps['Get account balance informations for health-check'].setPropertyValue("res_secondAmount",firstAmount);
+		//Swap currency between from and two
+		testRunner.testCase.testSteps['Get account balance informations for health-check'].setPropertyValue("res_firstCurrency",secondCurrency);
+		testRunner.testCase.testSteps['Get account balance informations for health-check'].setPropertyValue("res_secondCurrency",firstCurrency);				
+	}
+	if (firstAmount=="200.0")
+	{
+		testRunner.testCase.testSteps['Get account balance informations for health-check'].setPropertyValue("res_firstAmount","200");
+		testRunner.testCase.testSteps['Get account balance informations for health-check'].setPropertyValue("res_secondAmount","100");
+	}</script>
+        </con:configuration>
+        <con:name>amountAndCurrency</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion validate balance partition" id="bd1ccb58-824e-422a-ada2-198fdb9a3b54">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>380a6149-640c-4722-8aa1-66255832680f</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3c26137e-a0a7-436c-8ec2-72a7d731e1ea</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="a4810aef-cdcb-4726-bcf4-810697d536db">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>httpStatus200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>df1a5535-5a7b-4216-b623-03ead957b9c8</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3c26137e-a0a7-436c-8ec2-72a7d731e1ea</con:sourceId>
+        <con:propertyName>res_firstAmount</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="5849a173-aa55-4ecd-b4e5-2bd5a11d1079">
+          <con:configuration>
+            <patternObjectId>c829a80a-0163-43c4-bf6c-41a1750211bf</patternObjectId>
+            <patternProperty>totalEUR</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>b9d3da20-546e-4f09-af21-58445f5c8d28</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3c26137e-a0a7-436c-8ec2-72a7d731e1ea</con:sourceId>
+        <con:propertyName>res_firstCurrency</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 3" id="8fe58fea-5cc2-4641-9213-942547be9816">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>currency2</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>c3e3ecb7-5033-451b-b79b-c08cbf9c9777</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3c26137e-a0a7-436c-8ec2-72a7d731e1ea</con:sourceId>
+        <con:propertyName>res_secondAmount</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 4" id="6e5126ac-6a75-471b-a955-d56574948f35">
+          <con:configuration>
+            <patternObjectId>c829a80a-0163-43c4-bf6c-41a1750211bf</patternObjectId>
+            <patternProperty>totalUSD</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>651e44a3-9e14-4de9-8489-e165b2a34d27</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3c26137e-a0a7-436c-8ec2-72a7d731e1ea</con:sourceId>
+        <con:propertyName>res_secondCurrency</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 5" id="4f7afabb-18bb-4ead-b010-5bc1e8698cda">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>currency</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>ff2c5109-e169-4d72-b2e7-a89460a337b6</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3c26137e-a0a7-436c-8ec2-72a7d731e1ea</con:sourceId>
+        <con:propertyName>res_firstAccountId</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 6" id="8d3d50bb-c37c-4922-855d-db10f967d453">
+          <con:configuration>
+            <patternObjectId>e77120fa-a95c-4930-99f9-66cced456a33</patternObjectId>
+            <patternProperty>req_toAccountId</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>8dbcfdf6-8f0a-4873-a1c4-859727f65d91</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3c26137e-a0a7-436c-8ec2-72a7d731e1ea</con:sourceId>
+        <con:propertyName>res_secondAccountId</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 7" id="23b064b2-5380-4dcb-b8dd-388ddecec2a7">
+          <con:configuration>
+            <patternObjectId>e77120fa-a95c-4930-99f9-66cced456a33</patternObjectId>
+            <patternProperty>req_fromAccountId</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="DataSource for monetary types" id="1a17c5a4-815b-4d6d-8c84-091a24806900">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Grid">
+        <con:configuration>
+          <check><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">false</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry></xml-fragment>]]></check>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">BA</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Billing Account</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">MONETARY_TYPE_SHOULD_BE_CASH</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">BI_CAN_NOT_BE_SUBMITTED_WITHOUT_ITEMS</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">200</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">CCE</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Electronic Credit Card</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">MONETARY_TYPE_SHOULD_BE_CASH</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">BI_CAN_NOT_BE_SUBMITTED_WITHOUT_ITEMS</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">200</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">BT</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Bank Transfer</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">MONETARY_TYPE_SHOULD_BE_CASH</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">BI_CAN_NOT_BE_SUBMITTED_WITHOUT_ITEMS</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">200</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">PP</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Paypal</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">MONETARY_TYPE_SHOULD_BE_CASH</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">BI_CAN_NOT_BE_SUBMITTED_WITHOUT_ITEMS</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">200</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">CA</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Cash</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">201</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config">200</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config">200</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config">200</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">CA</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">CC</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Credit Card</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">MONETARY_TYPE_SHOULD_BE_CASH</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">BI_CAN_NOT_BE_SUBMITTED_WITHOUT_ITEMS</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">200</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">CQ</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Cheque</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">MONETARY_TYPE_SHOULD_BE_CASH</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">BI_CAN_NOT_BE_SUBMITTED_WITHOUT_ITEMS</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">200</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">CT</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Credit Transfer</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">MONETARY_TYPE_SHOULD_BE_CASH</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">BI_CAN_NOT_BE_SUBMITTED_WITHOUT_ITEMS</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">200</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">DC</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Debit Card</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">MONETARY_TYPE_SHOULD_BE_CASH</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">BI_CAN_NOT_BE_SUBMITTED_WITHOUT_ITEMS</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">200</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">DD</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">Direct Debit</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">MONETARY_TYPE_SHOULD_BE_CASH</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">405</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">400</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">BI_CAN_NOT_BE_SUBMITTED_WITHOUT_ITEMS</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">200</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+        </con:configuration>
+      </con:dataSource>
+      <con:property>monetaryType</con:property>
+      <con:property>description</con:property>
+      <con:property>addItemResCode</con:property>
+      <con:property>addItemErrorMessage</con:property>
+      <con:property>deleteItemResCode</con:property>
+      <con:property>deleteItemErrorCode</con:property>
+      <con:property>submitBiResCode</con:property>
+      <con:property>submitBiErrorDetails</con:property>
+      <con:property>displayItemResCode</con:property>
+      <con:property>displayItemMonetaryType</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="MONETARYTYPE controls > Set create money transfer BI 3" id="d25de1ca-756f-4d64-8980-8f63284951e1">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>req_firstUserRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create money transfer BI 3</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soRoleId</con:name>
+        <con:sourceType>req_firstSoRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_salesOrganizationRoleId</con:targetType>
+        <con:targetStep>Create money transfer BI 3</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpec</con:name>
+        <con:sourceType>req_biSpec</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_biSpec</con:targetType>
+        <con:targetStep>Create money transfer BI 3</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create money transfer BI 3" id="4c54c1db-256d-4f8f-85b2-7f8257906fc4">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a62f64ed-8854-4137-92dc-6a6a778fdc60</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>60</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrganizationRoleId</con:name>
+          <con:value>58</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpec</con:name>
+          <con:value>MONEYTRSPECCODE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>1521</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_biId</con:entry>
+        <con:entry>req_description</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion MT created success" id="c39b1614-6954-4284-ab8b-ccdb9ab5933d">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>f3564618-afcf-4237-91b2-d26ae8c5af93</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>4c54c1db-256d-4f8f-85b2-7f8257906fc4</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="16aecdd4-bbeb-4959-b768-d662e02051b8">
+          <con:configuration>
+            <patternObjectId>3555e875-3cb0-45ff-9859-a56a386dfed0</patternObjectId>
+            <patternProperty>httpStatus201</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>012898ae-2999-439b-8b8a-a8a3e4c79518</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>4c54c1db-256d-4f8f-85b2-7f8257906fc4</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="1ee60178-dfd2-4206-b858-7307052119b4">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set add item with different monetary types" id="52e689c1-bc61-4d99-9718-e3e40bc7826f">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create money transfer BI 3</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add item with different monetary types</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromAccount</con:name>
+        <con:sourceType>req_fromAccountId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_fromAccountId</con:targetType>
+        <con:targetStep>Add item with different monetary types</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toAccount</con:name>
+        <con:sourceType>req_toAccountId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_toAccountId</con:targetType>
+        <con:targetStep>Add item with different monetary types</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>amount</con:name>
+        <con:sourceType>amount</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_amount</con:targetType>
+        <con:targetStep>Add item with different monetary types</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>roundedAmount</con:name>
+        <con:sourceType>roundedAmount</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_roundedAmount</con:targetType>
+        <con:targetStep>Add item with different monetary types</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>currency</con:name>
+        <con:sourceType>currency</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_currency</con:targetType>
+        <con:targetStep>Add item with different monetary types</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>monetaryType</con:name>
+        <con:sourceType>monetaryType</con:sourceType>
+        <con:sourceStep>DataSource for monetary types</con:sourceStep>
+        <con:targetType>req_monetaryType</con:targetType>
+        <con:targetStep>Add item with different monetary types</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add item with different monetary types" id="8a918a52-6f9b-46f4-860f-9fe7d3dc2b64">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>71dd28d9-9244-41c7-8ab3-83bd246d05c1</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>1521</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromAccountId</con:name>
+          <con:value>23</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toAccountId</con:name>
+          <con:value>24</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_currency</con:name>
+          <con:value>USD</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_roundedAmount</con:name>
+          <con:value>101</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_monetaryType</con:name>
+          <con:value>DD</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_amount</con:name>
+          <con:value>100</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>MONETARY_TYPE_SHOULD_BE_CASH</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion MT item added success" id="e2395391-c268-4dde-bce7-b0d6d375bf6c">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>d4365405-fce6-43a5-8fb3-41c64080e8cd</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>8a918a52-6f9b-46f4-860f-9fe7d3dc2b64</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="cbfa582e-be58-48e2-9bba-8ad4fc2e6fc3">
+          <con:configuration>
+            <patternObjectId>1a17c5a4-815b-4d6d-8c84-091a24806900</patternObjectId>
+            <patternProperty>addItemResCode</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>86b93392-ff2f-4925-be2c-c44721c23ab2</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>8a918a52-6f9b-46f4-860f-9fe7d3dc2b64</con:sourceId>
+        <con:propertyName>res_itemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains 2" id="82823ac8-d2e1-4689-acbf-50a743866e75" disabled="true">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>df594308-27ce-4850-8538-ffd929486184</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>8a918a52-6f9b-46f4-860f-9fe7d3dc2b64</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="91e954af-bff0-4fe4-8636-b6cc4ad4a78b">
+          <con:configuration>
+            <patternObjectId>1a17c5a4-815b-4d6d-8c84-091a24806900</patternObjectId>
+            <patternProperty>addItemErrorMessage</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set add item with different monetary types 2" id="dd716c76-2115-47f9-a8c2-39e47934786f">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create money transfer BI 3</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add item with different monetary types 2</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>fromAccount</con:name>
+        <con:sourceType>req_fromAccountId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_fromAccountId</con:targetType>
+        <con:targetStep>Add item with different monetary types 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>toAccount</con:name>
+        <con:sourceType>req_toAccountId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_toAccountId</con:targetType>
+        <con:targetStep>Add item with different monetary types 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>amount</con:name>
+        <con:sourceType>amount</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_amount</con:targetType>
+        <con:targetStep>Add item with different monetary types 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>roundedAmount</con:name>
+        <con:sourceType>roundedAmount</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_roundedAmount</con:targetType>
+        <con:targetStep>Add item with different monetary types 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>currency</con:name>
+        <con:sourceType>currency</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_currency</con:targetType>
+        <con:targetStep>Add item with different monetary types 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>monetaryType</con:name>
+        <con:sourceType>monetaryType</con:sourceType>
+        <con:sourceStep>DataSource for monetary types</con:sourceStep>
+        <con:targetType>req_monetaryType</con:targetType>
+        <con:targetStep>Add item with different monetary types 2</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add item with different monetary types 2" id="61f52e22-4aad-4e7d-ba2d-f6788058bef5">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>71dd28d9-9244-41c7-8ab3-83bd246d05c1</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>1521</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_fromAccountId</con:name>
+          <con:value>23</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_toAccountId</con:name>
+          <con:value>24</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_currency</con:name>
+          <con:value>USD</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_roundedAmount</con:name>
+          <con:value>101</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_monetaryType</con:name>
+          <con:value>DD</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_amount</con:name>
+          <con:value>100</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>MONETARY_TYPE_SHOULD_BE_CASH</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_id</con:entry>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion MT item added success 2" id="5e6249d6-6e3c-4010-80c8-4a033d1bb4e2">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>81687560-562f-4822-a82d-8be308c403cc</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>61f52e22-4aad-4e7d-ba2d-f6788058bef5</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="a311c0b9-27a8-40f3-9b1c-78dad4380420">
+          <con:configuration>
+            <patternObjectId>1a17c5a4-815b-4d6d-8c84-091a24806900</patternObjectId>
+            <patternProperty>addItemResCode</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>16bff422-c4b6-4b04-9a84-7ed5aaa88456</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>61f52e22-4aad-4e7d-ba2d-f6788058bef5</con:sourceId>
+        <con:propertyName>res_itemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="215bbff4-d788-4ca9-98dc-bd2513e66a35" disabled="true">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>b120d96c-8cc4-4da7-83b7-c651ae3b467c</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>61f52e22-4aad-4e7d-ba2d-f6788058bef5</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="e3d3b0f9-ae43-4bc5-b4ce-26afc9c4d1af">
+          <con:configuration>
+            <patternObjectId>1a17c5a4-815b-4d6d-8c84-091a24806900</patternObjectId>
+            <patternProperty>addItemErrorMessage</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set delete item with external system success" id="b7cea0a8-b465-46a8-b81b-83226643606c">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create money transfer BI 3</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Delete item with external system success</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>res_itemId</con:sourceType>
+        <con:sourceStep>Add item with different monetary types 2</con:sourceStep>
+        <con:targetType>req_itemId</con:targetType>
+        <con:targetStep>Delete item with external system success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>extSystem</con:name>
+        <con:sourceType>extSystem</con:sourceType>
+        <con:sourceStep>Given properties for the test steps</con:sourceStep>
+        <con:targetType>req_extSystem</con:targetType>
+        <con:targetStep>Delete item with external system success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Delete item with external system success" id="124ea080-3f85-4a3d-8a38-9f96c01a993c">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>3c62f841-1480-40d3-962a-93fec9d69db0</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>1521</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_extSystem</con:name>
+          <con:value>ext-system-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>405</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>405</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_id</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>res_id</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion item2 deleted success" id="a8d833a6-a827-40f4-aa75-69fe1f8dfe49">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>b9408a03-62fa-4e90-8032-ae21a47cc2c8</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>124ea080-3f85-4a3d-8a38-9f96c01a993c</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="5672805e-41d6-444d-b2a8-712a582bf93e">
+          <con:configuration>
+            <patternObjectId>1a17c5a4-815b-4d6d-8c84-091a24806900</patternObjectId>
+            <patternProperty>deleteItemResCode</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>f88b8eba-9617-441f-a8a6-8f55426dfbbb</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>124ea080-3f85-4a3d-8a38-9f96c01a993c</con:sourceId>
+        <con:propertyName>res_id</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="60bee451-c638-40ce-b748-2bc0250d1864" disabled="true">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>50268e45-424f-42fc-9fc4-9c50e0b2513e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>124ea080-3f85-4a3d-8a38-9f96c01a993c</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="32b31e7e-6430-4955-a77f-488fe461c81a">
+          <con:configuration>
+            <patternObjectId>1a17c5a4-815b-4d6d-8c84-091a24806900</patternObjectId>
+            <patternProperty>deleteItemErrorCode</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set submit" id="4f9e2699-4aab-4592-824d-30e55155a3b5">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Create money transfer BI 3</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit transfer</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit transfer" id="4557b343-c495-42a0-84e5-97f06f0f4c94">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>18056452-99e8-45b5-8fcd-29f9985f9310</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>1521</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>BI_CAN_NOT_BE_SUBMITTED_WITHOUT_ITEMS</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion MT submitted succes" id="2dc00385-5d0d-4ff7-b4a3-b102631ed9f0">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>4526b9cc-a19f-4b32-ad6b-485045c1c737</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>4557b343-c495-42a0-84e5-97f06f0f4c94</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="f73ca31c-18fc-47b7-9260-b5a2990a62ba" disabled="true">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>b523c65d-c4b2-455f-bd27-31ce42fbb881</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>4557b343-c495-42a0-84e5-97f06f0f4c94</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="13a90365-1eec-492a-b46c-d88b45ef9fd2">
+          <con:configuration>
+            <patternObjectId>1a17c5a4-815b-4d6d-8c84-091a24806900</patternObjectId>
+            <patternProperty>submitBiResCode</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>a34b07c9-bed9-4b00-834e-07d6bb517c41</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>4557b343-c495-42a0-84e5-97f06f0f4c94</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="a92f4b1a-ef9f-4a0e-a0e2-02278663e656">
+          <con:configuration>
+            <patternObjectId>1a17c5a4-815b-4d6d-8c84-091a24806900</patternObjectId>
+            <patternProperty>submitBiErrorDetails</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Set display single money transfer item" id="cbd5a7d1-6a60-44d1-b6b1-f30b3f8f4bc6">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>req_biId</con:sourceType>
+        <con:sourceStep>Submit transfer</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_itemId</con:targetType>
+        <con:targetStep>Display single money transfer item</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display single money transfer item" id="8bc5565c-9d49-4aac-abfa-5561a590053a">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>dcfe4a2b-808d-4e4c-91c9-86386151c086</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_itemId</con:name>
+          <con:value>1521</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_httpStatus</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_monetaryType</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_httpStatus</con:entry>
+        <con:entry>res_monetaryType</con:entry>
+        <con:entry>res_id</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Healthcheck for monetaryType" id="cd7802e3-93bd-4eac-9cde-b95e8b8c87ae">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>1027e2bc-14ef-4325-9582-767f2570082c</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>8bc5565c-9d49-4aac-abfa-5561a590053a</con:sourceId>
+        <con:propertyName>res_httpStatus</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="0fec0190-2a7e-4cae-83a9-2e41a958b9f6">
+          <con:configuration>
+            <patternObjectId>1a17c5a4-815b-4d6d-8c84-091a24806900</patternObjectId>
+            <patternProperty>displayItemResCode</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>0f525384-994e-4c97-ba20-1a4412c7ced9</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>8bc5565c-9d49-4aac-abfa-5561a590053a</con:sourceId>
+        <con:propertyName>res_monetaryType</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="d62a92fa-4e54-4183-8aee-35e3a6bf296e" disabled="true">
+          <con:configuration>
+            <patternObjectId>1a17c5a4-815b-4d6d-8c84-091a24806900</patternObjectId>
+            <patternProperty>displayItemMonetaryType</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>5724f08f-477e-4f65-9ed6-98bf5e98c4a0</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>8bc5565c-9d49-4aac-abfa-5561a590053a</con:sourceId>
+        <con:propertyName>res_monetaryType</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="d2fbfbbf-2ecb-4837-8e75-7b58c1915ddf">
+          <con:configuration>
+            <token>^\s*$</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="DataSource Loop &lt; MONETARYTYPE controls" id="e0c5511e-6c71-4378-bcb1-486a39bdcb6f">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>DataSource for monetary types</dataSourceStep>
+      <targetStep>MONETARYTYPE controls > Set create money transfer BI 3</targetStep>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_firstUserRoleId</con:name>
+      <con:value>60</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_firstSoRoleId</con:name>
+      <con:value>58</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_secondUserRoleId</con:name>
+      <con:value>62</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_secondSoRoleId</con:name>
+      <con:value>58</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_createByUserRoleId</con:name>
+      <con:value>2</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_createdBySalesOrgRoleId</con:name>
+      <con:value>1</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_fromAccountId</con:name>
+      <con:value>23</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_toAccountId</con:name>
+      <con:value>24</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_biSpec</con:name>
+      <con:value>MONEYTRSPECCODE</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>3555e875-3cb0-45ff-9859-a56a386dfed0</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>5114538a-d28e-44bf-aae1-bd9ba0de89e9</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>ca44be80-a9fe-4592-abb6-bd1411a8cdf2</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>fa506699-ef74-4bdd-83ed-8fc3b8e7729a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>87815c35-37b4-4996-bd2a-fee3b2f2ebaf</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>37e1e000-b7c7-44fe-8db6-f571ed618f69</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>33c70f5b-cdf1-4aa0-b933-55fb83d715c3</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>0c8de3b2-4d79-4a9b-8bf6-735e9d2be4f9</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>cf22d48c-c8c3-4b08-b30f-dc6792319f9e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>5b459855-4e3d-4832-acd1-2745b1f61330</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>549bdc6d-1ee0-475d-9371-39b8350e2004</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>0d2b1623-d797-4abf-93c5-c6156efb81c2</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>338fbad8-6bf7-4ef1-90ab-5fe0b45638a6</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>69aeda24-3817-4b88-8e07-d4ef570426f8</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e66765d0-17ac-4c03-bc10-5dd20a74a2b0</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e9829f24-3ecd-461d-a85c-c7622e5625d1</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>60df6295-9e65-406f-ab49-ff9c60e9e24e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>121609e9-f82c-4489-8bbf-67737225b1af</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>fcef4df6-dc84-4bf7-9273-3453507c9f1c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>b6511723-e9e7-4ae9-9758-d0c85ed8ed49</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>20844254-03c2-42f2-9dee-37f6e994962e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>3b16215c-425b-45e0-b64f-06e75ef9ef47</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>3c26137e-a0a7-436c-8ec2-72a7d731e1ea</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>bd1ccb58-824e-422a-ada2-198fdb9a3b54</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>cd8405d0-1f7d-404e-a925-51880a02ac0e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>6ac0d499-a819-42c2-b670-b2fa4d56257b</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>dda280ef-4cca-4316-9d09-c51e20e79241</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>db0dca08-8e9f-4603-935e-0018a041a9ad</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>3c1e0131-46ff-44e1-98fc-50234355a4d3</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>8a918a52-6f9b-46f4-860f-9fe7d3dc2b64</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>52e689c1-bc61-4d99-9718-e3e40bc7826f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>accfb980-fce2-47a3-b6d7-9aeda73b58de</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>4557b343-c495-42a0-84e5-97f06f0f4c94</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>1a17c5a4-815b-4d6d-8c84-091a24806900</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>124ea080-3f85-4a3d-8a38-9f96c01a993c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>b7cea0a8-b465-46a8-b81b-83226643606c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>dd716c76-2115-47f9-a8c2-39e47934786f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>61f52e22-4aad-4e7d-ba2d-f6788058bef5</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d2ab895e-9b44-4753-8d1f-8cfef02d0c2a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

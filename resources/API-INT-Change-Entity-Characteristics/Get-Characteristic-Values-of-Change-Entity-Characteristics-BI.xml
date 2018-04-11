@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="83f29269-d2af-4f99-ba99-6fc886ab2d5c" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Get Characteristic Values of Change Entity Characteristics BI" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="83f29269-d2af-4f99-ba99-6fc886ab2d5cfileName">Get-Characteristic-Values-of-Change-Entity-Characteristics-BI</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Get Characteristic Values of Change Entity Characteristics BI" id="12d16826-1c79-4697-bd86-e57e91213d35">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/changeEntityCharacteristics/{biId}/characteristicValues" methodName="getCharacteristicValues" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Get Characteristic Values of Change Entity Characteristics BI" id="33c2e47d-a475-450e-bfa0-6af7b7f36418" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJFUk1TX0FETUlOX0F1dGh6UHJvZmlsZSIsInZlcnNpb24iOiJ2MSIsInBhcnR5X2lkIjoiMTIzIiwiZXh0ZXJuYWxfdXNlcm5hbWUiOiJ1MjM1NDZmODMtMTg0OS00MGVkLThkZmItYTc1YzE3ZWM4NTgxIn19.eNIacUPhFna-VmuquHLfFHOHGW3TXZvhfhYDu9or3gXPDC4K1FPHWBhKTdfu9FnZvueow-Mad7aCdYgedBG_tD8AJQUAmitwKPq1D4TQN-qWBg5pSp9pRDAFKg3z-rP3D_xdwJr7FTuFCTDJiwTeZ6bdH7d0vNNJAHHitXQ9Q5c"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="51"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/v1/changeEntityCharacteristics/118/characteristicValues</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property transfer" id="4aed98af-5d74-44ce-83c0-2696db09542e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Get Characteristic Values of Change Entity Characteristics BI</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Characteristic Values of Change Entity Characteristics BI</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_characteristicId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Characteristic Values of Change Entity Characteristics BI</con:sourceStep>
+        <con:sourcePath>[0]['globalCharacteristicSpecification'].id</con:sourcePath>
+        <con:targetType>res_characteristicId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_characteristicOwnerRoleCharUseId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Characteristic Values of Change Entity Characteristics BI</con:sourceStep>
+        <con:sourcePath>[0]['profileSpecCharUse'].id</con:sourcePath>
+        <con:targetType>res_characteristicOwnerRoleCharUseId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_characteristicValueId</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Characteristic Values of Change Entity Characteristics BI</con:sourceStep>
+        <con:sourcePath>[0]['globalCharacteristicSpecValue'].id</con:sourcePath>
+        <con:targetType>res_characteristicValueId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_characteristicValue</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Characteristic Values of Change Entity Characteristics BI</con:sourceStep>
+        <con:sourcePath>[0]['globalCharacteristicSpecValue'].value</con:sourcePath>
+        <con:targetType>res_characteristicValue</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_characteristicIdForSecondItem</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Characteristic Values of Change Entity Characteristics BI</con:sourceStep>
+        <con:sourcePath>[1]['globalCharacteristicSpecification'].id</con:sourcePath>
+        <con:targetType>res_characteristicIdForSecondItem</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_characteristicOwnerRoleCharUseIdForSecondItem</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Characteristic Values of Change Entity Characteristics BI</con:sourceStep>
+        <con:sourcePath>[1]['profileSpecCharUse'].id</con:sourcePath>
+        <con:targetType>res_characteristicOwnerRoleCharUseIdForSecondItem</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_FirstValueItem</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Characteristic Values of Change Entity Characteristics BI</con:sourceStep>
+        <con:sourcePath>[0]</con:sourcePath>
+        <con:targetType>res_FirstValueItemFull</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_SecondValueItem</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Get Characteristic Values of Change Entity Characteristics BI</con:sourceStep>
+        <con:sourcePath>[1]</con:sourcePath>
+        <con:targetType>res_SecondValueItemFull</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">701</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">200</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_characteristicId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_characteristicOwnerRoleCharUseId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_characteristicValueId</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_characteristicValue</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_characteristicIdForSecondItem</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_characteristicOwnerRoleCharUseIdForSecondItem</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_FirstValueItemFull</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+    <con:property>
+      <con:name>res_SecondValueItemFull</con:name>
+      <con:value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="5206b52a-ed9d-476d-b282-12f78b0cf6eb" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TestCase 1" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="5206b52a-ed9d-476d-b282-12f78b0cf6ebfileName">TestCase-1</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Properties" id="a39aaf7d-958a-4a14-9f1d-a3fa9d7bd9ea">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>condition_OrgTypeRWH</con:name>
+          <con:value>OrgTypeRWHCondition</con:value>
+        </con:property>
+        <con:property>
+          <con:name>condition_DealerOrShop</con:name>
+          <con:value>OrganizationTypeDealerOrShopCondition</con:value>
+        </con:property>
+        <con:property>
+          <con:name>condition_Null</con:name>
+          <con:value>NullCondition</con:value>
+        </con:property>
+        <con:property>
+          <con:name>domain_SalesOrganization</con:name>
+          <con:value>SOC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>action_CreateSalesOrganization</con:name>
+          <con:value>SOC.Create</con:value>
+        </con:property>
+        <con:property>
+          <con:name>profile_CSR</con:name>
+          <con:value>CSR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>scope_Null</con:name>
+          <con:value>PermitAllScope</con:value>
+        </con:property>
+        <con:property>
+          <con:name>null</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>random-SoextId</con:name>
+          <con:value>ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>createUser_biSpecCode</con:name>
+          <con:value>USERCREATEBISPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>random_userExtId</con:name>
+          <con:value>ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>domain_User</con:name>
+          <con:value>USR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>action_CreateUser</con:name>
+          <con:value>USR.Create</con:value>
+        </con:property>
+        <con:property>
+          <con:name>random_inventoryExtId</con:name>
+          <con:value>ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>random_terminalExtId</con:name>
+          <con:value>ext-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>product_transfer_biSpec</con:name>
+          <con:value>PRD_TRANSFER</con:value>
+        </con:property>
+        <con:property>
+          <con:name>false</con:name>
+          <con:value>false</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Get all given permissions" id="14fa260c-052b-4011-b438-6ffbcc7f66a3">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a2d00e03-8a9d-46ec-92ef-bf1171ae0ae6</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>[]</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="85c98dbb-8065-480c-a028-92d795d7ae3b">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userIntToken</con:name>
+        <con:sourceType>null</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>AuthorizationIntUser</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userSo</con:name>
+        <con:sourceType>null</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>UserSo</con:targetType>
+        <con:targetStep>#Project#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>createdForSalesOrg</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_createdForSalesOrg</con:targetType>
+        <con:targetStep>Create profile permission bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleId</con:name>
+        <con:sourceType>DefaultUserRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_userId</con:targetType>
+        <con:targetStep>Create profile permission bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>soRoleId</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_soId</con:targetType>
+        <con:targetStep>Create profile permission bi</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen for action code delete" id="e0295387-b17c-4e81-b74d-d3149d854426">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>import net.sf.json.groovy.*;
+import groovy.json.JsonSlurper;
+
+def items = context.expand( '${Get all given permissions#response}' )
+//def serializedProductId = context.expand( '${Properties#actionCode}' )
+//def items2 = context.expand( '${Add permission#response}' )
+
+def testStepCreate = testRunner.testCase.testSteps['Create profile permission bi']
+def testStepAdd = testRunner.testCase.testSteps['Remove item to create permission']
+def testStepSubmit = testRunner.testCase.testSteps['Submit permission']
+
+def json = new JsonSlurper().parseText (items);
+
+//testStepCreate.setPropertyValue("req_UserId",'${Create profile permission bi#req_userId}'.toString())
+//testStepCreate.setPropertyValue("req_SoId",'${Create profile permission bi#res_soId}'.toString())
+	testStepCreate.run( testRunner, context )	
+	
+for (int i=0; i &lt; json.size(); i++)
+{
+	//testStepAdd.setPropertyValue("req_Action",json[i].code.toString())
+	testStepAdd.setPropertyValue("req_biId",'${Create profile permission bi#res_biId}'.toString())
+	testStepAdd.setPropertyValue("req_UserId",'${Create profile permission bi#req_userId}'.toString())
+	testStepAdd.setPropertyValue("req_SoId",'${Create profile permission bi#res_soId}'.toString())
+	testStepAdd.setPropertyValue("req_profilePermissionId",json[i].id.toString())
+	//testStep.setPropertyValue("req_Domain",json[i].domain.toString())
+	//testStep.setPropertyValue("req_Condition","NullCondition")
+	//testStep.setPropertyValue("req_Scope","NullScope")
+	//testStep.setPropertyValue("req_Profile","CSR")
+	
+     testStepAdd.run( testRunner, context )	
+																	
+}
+
+testStepSubmit.setPropertyValue("req_biId",'${Create profile permission bi#res_biId}'.toString())
+testStepSubmit.run( testRunner, context )</script>
+        </con:configuration>
+        <con:name>serializedProductItemId</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create profile permission bi" id="e5365875-fb41-412e-97fd-b7f61d8069a0">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a758dd18-2bbc-44a0-9a04-e28732549eea</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_createdForSalesOrg</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>1851</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>res_biId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Remove item to create permission" id="dbaf98f8-dbc9-4d50-b0d0-d363626f2120">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>67960895-effa-41f8-bbd1-d3c75c4a0b00</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_domain</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_action</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_condition</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_scope</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_userId</con:name>
+          <con:value>${Create profile permission bi#req_userId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_soId</con:name>
+          <con:value>${Create profile permission bi#res_soId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>{"itemType":1,"id":592,"href":"/v1/profilePermissionItem/592","dynamicMap":{},"type":"com.ericsson.bss.rm.erms.core.entity.dto.bi.profilepermission.ProfilePermissionBIItemResponseDTO"}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>${Create profile permission bi#res_biId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_profile</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_profilePermissionId</con:name>
+          <con:value>236</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit permission" id="1ea101bd-2f04-4b8b-aa8f-a1d1eeaecc52">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>c9c4405f-4b70-4e2a-8cf2-79512a00c934</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>${Create profile permission bi#res_biId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>No Permission Defined to delete for [null,null,null,null]</con:value>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>{"code":"No Permission Defined to delete for [null,null,null,null]","description":"No Permission Defined to delete for [null,null,null,null]","errorDetails":"No Permission Defined to delete for [null,null,null,null]","errorMessage":"No Permission Defined to delete for [null,null,null,null]","httpStatusCode":"No Permission Defined to delete for [null,null,null,null]","httpStatusCodeDescription":"No Permission Defined to delete for [null,null,null,null]"}</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer 24" id="8785d0dc-07a4-4ab8-bede-14c1b20023fe" disabled="true">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>status_auth</con:name>
+        <con:sourceType>false</con:sourceType>
+        <con:sourceStep>Properties</con:sourceStep>
+        <con:targetType>req_status</con:targetType>
+        <con:targetStep>Disable authorization</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Disable authorization" id="dd1d36f9-c6fd-4144-8f66-41b09e3b525a" disabled="true">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>b9e75504-97ad-4b37-b581-97fe464f9739</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>Ok</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_status</con:name>
+          <con:value>false</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>8785d0dc-07a4-4ab8-bede-14c1b20023fe</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a39aaf7d-958a-4a14-9f1d-a3fa9d7bd9ea</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>dd1d36f9-c6fd-4144-8f66-41b09e3b525a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>85c98dbb-8065-480c-a028-92d795d7ae3b</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>14fa260c-052b-4011-b438-6ffbcc7f66a3</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e0295387-b17c-4e81-b74d-d3149d854426</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e5365875-fb41-412e-97fd-b7f61d8069a0</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>dbaf98f8-dbc9-4d50-b0d0-d363626f2120</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>1ea101bd-2f04-4b8b-aa8f-a1d1eeaecc52</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

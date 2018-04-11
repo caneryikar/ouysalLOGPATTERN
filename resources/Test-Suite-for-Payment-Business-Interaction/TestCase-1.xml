@@ -1,0 +1,3576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="bc1a228e-1eed-4e92-ae9e-481ca5d937fd" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TestCase 1" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="bc1a228e-1eed-4e92-ae9e-481ca5d937fdfileName">TestCase-1</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="properties" name="Global Properties" id="4986094c-30d0-47de-9dd4-aa43b0b4ff60">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>currencyLocal</con:name>
+          <con:value>EUR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>currencyUSD</con:name>
+          <con:value>USD</con:value>
+        </con:property>
+        <con:property>
+          <con:name>invalidCurrency</con:name>
+          <con:value>AFN</con:value>
+        </con:property>
+        <con:property>
+          <con:name>invalidMonetaryType</con:name>
+          <con:value>bitcoin</con:value>
+        </con:property>
+        <con:property>
+          <con:name>http200</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>http201</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>http400</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>http404</con:name>
+          <con:value>404</con:value>
+        </con:property>
+        <con:property>
+          <con:name>http406</con:name>
+          <con:value>406</con:value>
+        </con:property>
+        <con:property>
+          <con:name>paymentBiSpec</con:name>
+          <con:value>PAYMENTBISPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>incorrectBiSpec</con:name>
+          <con:value>MONEYTRSPECCODE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>notExistBiSpec</con:name>
+          <con:value>NOTEXISTBISPECCODE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>emptyBiSpec</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>notExistId</con:name>
+          <con:value>-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>extSystem</con:name>
+          <con:value>ext-system-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>errMsg-biSpecCodeNotProvided</con:name>
+          <con:value>BUSINESS_INTERACTION_CODE_MUST_BE_PROVIDED</con:value>
+        </con:property>
+        <con:property>
+          <con:name>errMsg-incorrectBiSpec</con:name>
+          <con:value>PAYMENT_BI_SHOULD_HAVE_PAYMENT_BI_SPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>errMsg_biSpecNotExist</con:name>
+          <con:value>BUSINESS_INTERACTION_SPEC_WITH_CODE_DOES_NOT_EXIST</con:value>
+        </con:property>
+        <con:property>
+          <con:name>errMsg-biNotFound</con:name>
+          <con:value>BI_WITH_ID_NOT_FOUND</con:value>
+        </con:property>
+        <con:property>
+          <con:name>errMsg-biItemNotFound</con:name>
+          <con:value>BI_ITEM_WITH_ID_NOT_FOUND</con:value>
+        </con:property>
+        <con:property>
+          <con:name>errMsg-submitWithoutItem</con:name>
+          <con:value>BI_CAN_NOT_BE_SUBMITTED_WITHOUT_ITEMS</con:value>
+        </con:property>
+        <con:property>
+          <con:name>errMsg-shouldBeLocalCurrency</con:name>
+          <con:value>CONVERTED_AMOUNT_CURRENCY_SHOULD_BE_LOCAL_CURRENCY</con:value>
+        </con:property>
+        <con:property>
+          <con:name>errMsg-invalidMonetary</con:name>
+          <con:value>INVALID_MONETARY_TYPE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>errMsg-invalidCurrencyInput</con:name>
+          <con:value>INVALID_CURRENCY_INPUT</con:value>
+        </con:property>
+        <con:property>
+          <con:name>errMsg-invalidStateOperation</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+        <con:property>
+          <con:name>transaction_date</con:name>
+          <con:value>2019-08-12T20:17:46.384Z</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="7894da08-9dc7-478e-b865-77986a0c7222">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>defaultUserRoleId</con:name>
+        <con:sourceType>DefaultUserRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_createdByUserRoleId</con:targetType>
+        <con:targetStep>Create and submit sales org with user, inventory and terminal</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>defaultSalesOrgRoleId</con:name>
+        <con:sourceType>DefaultSalesOrganizationRoleId</con:sourceType>
+        <con:sourceStep>#Project#</con:sourceStep>
+        <con:targetType>req_createdBySalesOrgRoleId</con:targetType>
+        <con:targetStep>Create and submit sales org with user, inventory and terminal</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>salesOrgRoleExtId</con:name>
+        <con:sourceType>req_salesOrgRoleExtId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_salesOrgRoleExtId</con:targetType>
+        <con:targetStep>Create and submit sales org with user, inventory and terminal</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>userRoleExtId</con:name>
+        <con:sourceType>req_userRoleExtdId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_userRoleExtId</con:targetType>
+        <con:targetStep>Create and submit sales org with user, inventory and terminal</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>terminalExtId</con:name>
+        <con:sourceType>req_terminalExtId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_terminalExtId</con:targetType>
+        <con:targetStep>Create and submit sales org with user, inventory and terminal</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>inventoryExtId</con:name>
+        <con:sourceType>req_terminalExtId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_terminalExtId</con:targetType>
+        <con:targetStep>Create and submit sales org with user, inventory and terminal</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create and submit sales org with user, inventory and terminal" id="eea9e91b-ad6c-45d0-9f28-c54c0fa2ee6a">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>b92a7c8d-a0ed-4725-99e9-4866fd949629</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_createdByUserRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_createdBySalesOrgRoleId</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_userRoleExtId</con:name>
+          <con:value>user-u-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrgRoleExtId</con:name>
+          <con:value>sales-s-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_terminalExtId</con:name>
+          <con:value>ter-t-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_inventoryExtId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrgBiId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_userRoleBiId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_terminalBiId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_inventoryRoleBiId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrgId</con:name>
+          <con:value>108</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_userRoleId</con:name>
+          <con:value>110</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_terminalId</con:name>
+          <con:value>26</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_inventoryRoleId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_placeId</con:name>
+          <con:value>2</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_soExtId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_salesOrganisationExternalId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>userToken</con:name>
+        </con:property>
+        <con:property>
+          <con:name>userIntToken</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_email</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_salesOrgId</con:entry>
+        <con:entry>res_userRoleId</con:entry>
+        <con:entry>res_terminalId</con:entry>
+        <con:entry>res_inventoryRoleId</con:entry>
+        <con:entry>res_placeId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. Create business interaction without biSpec" id="94aa2e61-dcc0-45ce-a68e-97bf7c51a5aa">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>setUserRoleId</con:name>
+        <con:sourceType>res_userRoleId</con:sourceType>
+        <con:sourceStep>Create and submit sales org with user, inventory and terminal</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>setSalesOrgRoleId</con:name>
+        <con:sourceType>res_salesOrgId</con:sourceType>
+        <con:sourceStep>Create and submit sales org with user, inventory and terminal</con:sourceStep>
+        <con:targetType>req_salesOrgRoleId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>setInventoryId</con:name>
+        <con:sourceType>res_inventoryRoleId</con:sourceType>
+        <con:sourceStep>Create and submit sales org with user, inventory and terminal</con:sourceStep>
+        <con:targetType>req_inventoryId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>setTerminalId</con:name>
+        <con:sourceType>res_terminalId</con:sourceType>
+        <con:sourceStep>Create and submit sales org with user, inventory and terminal</con:sourceStep>
+        <con:targetType>req_terminalId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transferUserRoleId</con:name>
+        <con:sourceType>res_userRoleId</con:sourceType>
+        <con:sourceStep>Create and submit sales org with user, inventory and terminal</con:sourceStep>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create business interaction without biSpec</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transferSalesOrgRoleId</con:name>
+        <con:sourceType>res_salesOrgId</con:sourceType>
+        <con:sourceStep>Create and submit sales org with user, inventory and terminal</con:sourceStep>
+        <con:targetType>req_salesOrganizationRoleId</con:targetType>
+        <con:targetStep>Create business interaction without biSpec</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>emptyBiSpec</con:name>
+        <con:sourceType>emptyBiSpec</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:targetType>req_biSpec</con:targetType>
+        <con:targetStep>Create business interaction without biSpec</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create business interaction without biSpec" id="818b402f-0240-4837-9451-08fc9458ff13">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a21d52e7-a67e-4d14-8ec6-72d9aff2dacc</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>110</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrganizationRoleId</con:name>
+          <con:value>108</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpec</con:name>
+          <con:value/>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>BUSINESS_INTERACTION_CODE_MUST_BE_PROVIDED</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_note</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion1 httpStatus&amp;errorMessage" id="e1d8dd2e-e789-4a5f-9502-e334cd6f893e">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>e31aa126-f200-4bfd-8354-1fb96fd5a512</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>818b402f-0240-4837-9451-08fc9458ff13</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="c0ad0e89-aec1-490d-bb6f-db2aced6d8dd">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>6f9f63ac-f6ec-442e-ac61-17c214627e4a</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>818b402f-0240-4837-9451-08fc9458ff13</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="f67c4241-c5d4-4b8f-b653-87059dbeb702">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>errMsg-biSpecCodeNotProvided</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. Submit business interaction which does not exist" id="ff2e5dcd-c35a-478b-88fa-c6abadbc77ea">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>notExistId</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>SUBMIT business interaction which does not exist</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="SUBMIT business interaction which does not exist" id="84cc7588-c694-4d15-b692-15941f29fdf9">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>cb3cb2e1-8414-4af7-a7b2-ec77be43f3be</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>BI_WITH_ID_NOT_FOUND</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion2 httpStatus&amp;errorMessage" id="3de4648c-3077-4b69-98ee-09f6be5e3f0a">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>da8b279d-9e08-45e2-9712-ef74cf60a8c2</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>84cc7588-c694-4d15-b692-15941f29fdf9</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="cea5b194-8697-4b64-a56d-ea9171fee1c4">
+          <con:configuration>
+            <patternText>400</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>469da212-0c33-4ad5-801b-3acd0db09148</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>84cc7588-c694-4d15-b692-15941f29fdf9</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="d851c395-416f-4765-8e1b-39d010fa527a">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>errMsg-biNotFound</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="DataSource for ADD item to business interaction which does not exist" id="d359273a-2199-4e77-8313-ed9a59fb1d1e">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Grid">
+        <con:configuration>
+          <check>&lt;con:entry xmlns:con="http://eviware.com/soapui/config">true&lt;/con:entry></check>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">BA</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5127540000000002 </con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">USD</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">EUR</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+        </con:configuration>
+      </con:dataSource>
+      <con:property>req_paymentType</con:property>
+      <con:property>req_itemOrder</con:property>
+      <con:property>req_creditCardNumber</con:property>
+      <con:property>req_bank</con:property>
+      <con:property>req_chequeNumber</con:property>
+      <con:property>req_transactionRoundedAmount</con:property>
+      <con:property>req_transactionNotRoundedAmount</con:property>
+      <con:property>req_transactionCurrency</con:property>
+      <con:property>req_convertedRoundedAmount</con:property>
+      <con:property>req_convertedNotRoundedAmount</con:property>
+      <con:property>req_convertedCurrency</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. Add item to business interaction which does not exist" id="321b4ece-f4b2-4ffb-b47b-8bfc62cf34ab">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>notExistId</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>ADD item to business interaction which does not exist</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_paymentType</con:name>
+        <con:sourceType>req_paymentType</con:sourceType>
+        <con:sourceStep>DataSource for ADD item to business interaction which does not exist</con:sourceStep>
+        <con:targetType>req_paymentType</con:targetType>
+        <con:targetStep>ADD item to business interaction which does not exist</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_itemOrder</con:name>
+        <con:sourceType>req_itemOrder</con:sourceType>
+        <con:sourceStep>DataSource for ADD item to business interaction which does not exist</con:sourceStep>
+        <con:targetType>req_itemOrder</con:targetType>
+        <con:targetStep>ADD item to business interaction which does not exist</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_creditCardNumber</con:name>
+        <con:sourceType>req_creditCardNumber</con:sourceType>
+        <con:sourceStep>DataSource for ADD item to business interaction which does not exist</con:sourceStep>
+        <con:targetType>req_creditCardNumber</con:targetType>
+        <con:targetStep>ADD item to business interaction which does not exist</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_bank</con:name>
+        <con:sourceType>req_bank</con:sourceType>
+        <con:sourceStep>DataSource for ADD item to business interaction which does not exist</con:sourceStep>
+        <con:targetType>req_bank</con:targetType>
+        <con:targetStep>ADD item to business interaction which does not exist</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_chequeNumber</con:name>
+        <con:sourceType>req_chequeNumber</con:sourceType>
+        <con:sourceStep>DataSource for ADD item to business interaction which does not exist</con:sourceStep>
+        <con:targetType>req_chequeNumber</con:targetType>
+        <con:targetStep>ADD item to business interaction which does not exist</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionRoundedAmount</con:name>
+        <con:sourceType>req_transactionRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for ADD item to business interaction which does not exist</con:sourceStep>
+        <con:targetType>req_transactionRoundedAmount</con:targetType>
+        <con:targetStep>ADD item to business interaction which does not exist</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionNotRoundedAmount</con:name>
+        <con:sourceType>req_transactionNotRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for ADD item to business interaction which does not exist</con:sourceStep>
+        <con:targetType>req_transactionNotRoundedAmount</con:targetType>
+        <con:targetStep>ADD item to business interaction which does not exist</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionCurrency</con:name>
+        <con:sourceType>req_transactionCurrency</con:sourceType>
+        <con:sourceStep>DataSource for ADD item to business interaction which does not exist</con:sourceStep>
+        <con:targetType>req_transactionCurrency</con:targetType>
+        <con:targetStep>ADD item to business interaction which does not exist</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedRoundedAmount</con:name>
+        <con:sourceType>req_convertedRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for ADD item to business interaction which does not exist</con:sourceStep>
+        <con:targetType>req_convertedRoundedAmount</con:targetType>
+        <con:targetStep>ADD item to business interaction which does not exist</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedNotRoundedAmount</con:name>
+        <con:sourceType>req_convertedNotRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for ADD item to business interaction which does not exist</con:sourceStep>
+        <con:targetType>req_convertedNotRoundedAmount</con:targetType>
+        <con:targetStep>ADD item to business interaction which does not exist</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedCurrency</con:name>
+        <con:sourceType>req_convertedCurrency</con:sourceType>
+        <con:sourceStep>DataSource for ADD item to business interaction which does not exist</con:sourceStep>
+        <con:targetType>req_convertedCurrency</con:targetType>
+        <con:targetStep>ADD item to business interaction which does not exist</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionDate</con:name>
+        <con:sourceType>transaction_date</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:targetType>req_transactionDate</con:targetType>
+        <con:targetStep>ADD item to business interaction which does not exist</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="ADD item to business interaction which does not exist" id="ac870239-8b6a-42d9-b257-f43a48775ca1">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>af005648-7539-49a8-8bfb-f99b7f11d8cb</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>BI_WITH_ID_NOT_FOUND</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_paymentType</con:name>
+          <con:value>BA</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemOrder</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_creditCardNumber</con:name>
+          <con:value>5127540000000002</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_bank</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_chequeNumber</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionRoundedAmount</con:name>
+          <con:value>100</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionNotRoundedAmount</con:name>
+          <con:value>100.49</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionCurrency</con:name>
+          <con:value>USD</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedRoundedAmount</con:name>
+          <con:value>90</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedNotRoundedAmount</con:name>
+          <con:value>90.49</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedCurrency</con:name>
+          <con:value>EUR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionDate</con:name>
+          <con:value>2019-08-12T20:17:46.384Z</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion3 httpStatus&amp;errorMessage" id="e3847e39-b1c6-425e-aecc-1846b36176a3">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>2f7ac0c6-7caf-4230-9ec3-09110b792f9c</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>ac870239-8b6a-42d9-b257-f43a48775ca1</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="540e19af-9044-4469-b545-c340cda50ec4">
+          <con:configuration>
+            <patternText>400</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>22664ae0-e71c-471e-a904-c84d874c7fd6</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>ac870239-8b6a-42d9-b257-f43a48775ca1</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="266b510c-e7e1-416f-a026-9d5abfe376ab">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>errMsg-biNotFound</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. Create payment business interaction with incorrect biSpec" id="8142d970-aacd-4689-bc6f-b1151ff989ab">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transferUserRoleId</con:name>
+        <con:sourceType>req_userRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create payment business interaction with incorrect biSpec</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transferSalesOrgRoleId</con:name>
+        <con:sourceType>req_salesOrgRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_salesOrganizationRoleId</con:targetType>
+        <con:targetStep>Create payment business interaction with incorrect biSpec</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>incorrectBiSpec</con:name>
+        <con:sourceType>incorrectBiSpec</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:targetType>req_biSpec</con:targetType>
+        <con:targetStep>Create payment business interaction with incorrect biSpec</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create payment business interaction with incorrect biSpec" id="2602b7eb-8488-4633-9971-622e2fef6a08">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a21d52e7-a67e-4d14-8ec6-72d9aff2dacc</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>110</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrganizationRoleId</con:name>
+          <con:value>108</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpec</con:name>
+          <con:value>MONEYTRSPECCODE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>PAYMENT_BI_SHOULD_HAVE_PAYMENT_BI_SPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_note</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion httpStatus&amp;biSpecError" id="d563d7de-d9a0-4db6-a0c1-a9c625aa363d">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>4da081cc-6a76-4b24-8241-55e4984f8f14</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>2602b7eb-8488-4633-9971-622e2fef6a08</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="83f4a28c-afda-4b29-8853-44850bdb5378">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>4e308d85-7ccd-46d6-9316-1d92ccc44ec8</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>2602b7eb-8488-4633-9971-622e2fef6a08</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="36d74bde-5fea-47b8-9c8f-dedfb74e1b6b">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>errMsg-incorrectBiSpec</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. Create payment business interaction with non-existing biSpec" id="a340495d-7c90-42d1-ad10-54216eb5207d">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transferUserRoleId</con:name>
+        <con:sourceType>req_userRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>Create payment business interaction with non-existing biSpec</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transferSalesOrgRoleId</con:name>
+        <con:sourceType>req_salesOrgRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_salesOrganizationRoleId</con:targetType>
+        <con:targetStep>Create payment business interaction with non-existing biSpec</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>notExistBiSpec</con:name>
+        <con:sourceType>notExistBiSpec</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:targetType>req_biSpec</con:targetType>
+        <con:targetStep>Create payment business interaction with non-existing biSpec</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Create payment business interaction with non-existing biSpec" id="350b3b51-1eaa-49ec-a630-1f66f362293a">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a21d52e7-a67e-4d14-8ec6-72d9aff2dacc</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>110</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrganizationRoleId</con:name>
+          <con:value>108</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpec</con:name>
+          <con:value>NOTEXISTBISPECCODE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>BUSINESS_INTERACTION_SPEC_WITH_CODE_DOES_NOT_EXIST</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_note</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion httpStatus&amp;biSpecError 2" id="dd4b8dce-717d-4b7b-adc9-b8ac8ca80c97">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>d86b74a8-1a53-486e-9e05-9d60ae17af09</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>350b3b51-1eaa-49ec-a630-1f66f362293a</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="fdd4907f-5c06-4b6d-b344-43e7d491730a">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>65bf8f3d-70d4-4e7f-8ebd-f4a795ae2f5d</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>350b3b51-1eaa-49ec-a630-1f66f362293a</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="f1fe8d8b-d856-4754-8a3e-379afe1520f2">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>errMsg_biSpecNotExist</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. Create payment business interaction success" id="4560690b-fcc0-40b4-9b0b-cb0b25f0cc22">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transferUserRoleId</con:name>
+        <con:sourceType>req_userRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_userRoleId</con:targetType>
+        <con:targetStep>CREATE payment business interaction success</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transferSalesOrgRoleId</con:name>
+        <con:sourceType>req_salesOrgRoleId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:targetType>req_salesOrganizationRoleId</con:targetType>
+        <con:targetStep>CREATE payment business interaction success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biSpec</con:name>
+        <con:sourceType>paymentBiSpec</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:targetType>req_biSpec</con:targetType>
+        <con:targetStep>CREATE payment business interaction success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="CREATE payment business interaction success" id="878caeb6-cf0e-4494-8ec0-137f0875de55">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>a21d52e7-a67e-4d14-8ec6-72d9aff2dacc</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_userRoleId</con:name>
+          <con:value>110</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_salesOrganizationRoleId</con:name>
+          <con:value>108</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_biSpec</con:name>
+          <con:value>PAYMENTBISPEC</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_note</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion1 httpStatus and biId" id="b8acf8b4-7c24-4f28-b664-d20e5ee79f78">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>b83ec5e0-42e8-4122-9a90-31d88338c56e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>878caeb6-cf0e-4494-8ec0-137f0875de55</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="ac18a30a-8384-4f7b-b364-5ae3efa12053">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>da3330d3-4deb-45e9-a5de-4bcf33254a8f</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>878caeb6-cf0e-4494-8ec0-137f0875de55</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="03903a6e-3519-4b28-9e19-ffb25151c430">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http201</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. Set biId for TestCase" id="75511de8-b184-4bba-94cb-8c421eae03cf">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>setBiId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>CREATE payment business interaction success</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="DataSource for add item fail cases" id="88f30f0a-49b1-4c43-ab39-9a2327fddb84">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Grid">
+        <con:configuration>
+          <check><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry></xml-fragment>]]></check>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#req_biId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">BA</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5127540000000002 </con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#currencyUSD}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#currencyUSD}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#http400}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#errMsg-shouldBeLocalCurrency}</con:entry></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#req_biId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#invalidMonetaryType}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5127540000000002</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#currencyUSD}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#currencyLocal}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#http400}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#errMsg-invalidMonetary}</con:entry></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#req_biId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">BT</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5127540000000002</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#invalidCurrency</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">80</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">80.48</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#currencyLocal}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#http400}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#errMsg-invalidCurrencyInput}</con:entry></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#req_biId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">PP</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5127540000000002</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#currencyUSD}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">70</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">70.47</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#invalidCurrency</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#http400}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#errMsg-invalidCurrencyInput}</con:entry></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">${#TestCase#req_biId}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">CCE</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1a</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5127540000000002</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#currencyUSD}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#currencyLocal}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#http406}</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">${Global Properties#http406}</con:entry></xml-fragment>]]></row>
+        </con:configuration>
+      </con:dataSource>
+      <con:property>req_biId</con:property>
+      <con:property>req_paymentType</con:property>
+      <con:property>req_itemOrder</con:property>
+      <con:property>req_creditCardNumber</con:property>
+      <con:property>req_bank</con:property>
+      <con:property>req_chequeNumber</con:property>
+      <con:property>req_transactionRoundedAmount</con:property>
+      <con:property>req_transactionNotRoundedAmount</con:property>
+      <con:property>req_transactionCurrency</con:property>
+      <con:property>req_convertedRoundedAmount</con:property>
+      <con:property>req_convertedNotRoundedAmount</con:property>
+      <con:property>req_convertedCurrency</con:property>
+      <con:property>res_code</con:property>
+      <con:property>res_errorMessage</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. add item fail cases" id="48b97072-407b-4783-a690-b70eb5571060">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>req_biId</con:sourceType>
+        <con:sourceStep>DataSource for add item fail cases</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add item fail cases</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_paymentType</con:name>
+        <con:sourceType>req_paymentType</con:sourceType>
+        <con:sourceStep>DataSource for add item fail cases</con:sourceStep>
+        <con:targetType>req_paymentType</con:targetType>
+        <con:targetStep>Add item fail cases</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_itemOrder</con:name>
+        <con:sourceType>req_itemOrder</con:sourceType>
+        <con:sourceStep>DataSource for add item fail cases</con:sourceStep>
+        <con:targetType>req_itemOrder</con:targetType>
+        <con:targetStep>Add item fail cases</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_creditCardNumber</con:name>
+        <con:sourceType>req_creditCardNumber</con:sourceType>
+        <con:sourceStep>DataSource for add item fail cases</con:sourceStep>
+        <con:targetType>req_creditCardNumber</con:targetType>
+        <con:targetStep>Add item fail cases</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_bank</con:name>
+        <con:sourceType>req_bank</con:sourceType>
+        <con:sourceStep>DataSource for add item fail cases</con:sourceStep>
+        <con:targetType>req_bank</con:targetType>
+        <con:targetStep>Add item fail cases</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_chequeNumber</con:name>
+        <con:sourceType>req_chequeNumber</con:sourceType>
+        <con:sourceStep>DataSource for add item fail cases</con:sourceStep>
+        <con:targetType>req_chequeNumber</con:targetType>
+        <con:targetStep>Add item fail cases</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionRoundedAmount</con:name>
+        <con:sourceType>req_transactionRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item fail cases</con:sourceStep>
+        <con:targetType>req_transactionRoundedAmount</con:targetType>
+        <con:targetStep>Add item fail cases</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionNotRoundedAmount</con:name>
+        <con:sourceType>req_transactionNotRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item fail cases</con:sourceStep>
+        <con:targetType>req_transactionNotRoundedAmount</con:targetType>
+        <con:targetStep>Add item fail cases</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionCurrency</con:name>
+        <con:sourceType>req_transactionCurrency</con:sourceType>
+        <con:sourceStep>DataSource for add item fail cases</con:sourceStep>
+        <con:targetType>req_transactionCurrency</con:targetType>
+        <con:targetStep>Add item fail cases</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedRoundedAmount</con:name>
+        <con:sourceType>req_convertedRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item fail cases</con:sourceStep>
+        <con:targetType>req_convertedRoundedAmount</con:targetType>
+        <con:targetStep>Add item fail cases</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedNotRoundedAmount</con:name>
+        <con:sourceType>req_convertedNotRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item fail cases</con:sourceStep>
+        <con:targetType>req_convertedNotRoundedAmount</con:targetType>
+        <con:targetStep>Add item fail cases</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedCurrency</con:name>
+        <con:sourceType>req_convertedCurrency</con:sourceType>
+        <con:sourceStep>DataSource for add item fail cases</con:sourceStep>
+        <con:targetType>req_convertedCurrency</con:targetType>
+        <con:targetStep>Add item fail cases</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionDate</con:name>
+        <con:sourceType>transaction_date</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:targetType>req_transactionDate</con:targetType>
+        <con:targetStep>Add item fail cases</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add item fail cases" id="d0d55628-b7f2-4543-a533-033b12df49bc">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>af005648-7539-49a8-8bfb-f99b7f11d8cb</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>${#TestCase#req_biId}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>406</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>406</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_paymentType</con:name>
+          <con:value>CCE</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemOrder</con:name>
+          <con:value>1a</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_creditCardNumber</con:name>
+          <con:value>5127540000000002</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_bank</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_chequeNumber</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionRoundedAmount</con:name>
+          <con:value>100</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionNotRoundedAmount</con:name>
+          <con:value>100.49</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionCurrency</con:name>
+          <con:value>${Global Properties#currencyUSD}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedRoundedAmount</con:name>
+          <con:value>90</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedNotRoundedAmount</con:name>
+          <con:value>90.49</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedCurrency</con:name>
+          <con:value>${Global Properties#currencyLocal}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionDate</con:name>
+          <con:value>2019-08-12T20:17:46.384Z</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen for httpCode and errorMessage" id="12f8deac-3465-443a-a873-898030a5070e">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>def errorMsg = context.expand( '${DataSource for add item fail cases#res_errorMessage}' ).toString();
+return errorMsg;</script>
+        </con:configuration>
+        <con:name>errorMsg</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Script">
+        <con:configuration>
+          <script>def httpCode = context.expand( '${DataSource for add item fail cases#res_code}' ).toString();
+return httpCode;</script>
+        </con:configuration>
+        <con:name>httpCode</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion4 httpStatus&amp;errorMessage" id="738c9ee0-923b-4a78-aa17-fbc8082d1695">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>fb602221-06c1-46cf-be8d-3e0fca74a00b</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>d0d55628-b7f2-4543-a533-033b12df49bc</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="159a2b80-b6ed-47c3-9847-2957d5735b12">
+          <con:configuration>
+            <patternObjectId>12f8deac-3465-443a-a873-898030a5070e</patternObjectId>
+            <patternProperty>httpCode</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>778a7088-18d3-496e-9749-7a6ff27528d4</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>12f8deac-3465-443a-a873-898030a5070e</con:sourceId>
+        <con:propertyName>errorMsg</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="b9a30a67-440b-4da7-bf07-91e97505822c">
+          <con:configuration>
+            <patternObjectId>12f8deac-3465-443a-a873-898030a5070e</patternObjectId>
+            <patternProperty>errorMsg</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="DataSource Loop for add item fail cases" id="ddaaa60e-196b-4d87-b42e-891d20ed729f">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>DataSource for add item fail cases</dataSourceStep>
+      <targetStep>P.T. add item fail cases</targetStep>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="DataSource for add item to interaction" id="e1284c36-d335-4ff8-9eba-3332f06478a1">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Grid">
+        <con:configuration>
+          <check>&lt;con:entry xmlns:con="http://eviware.com/soapui/config">true&lt;/con:entry></check>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">BA</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5127540000000002 </con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">USD</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">EUR</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">201</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+        </con:configuration>
+      </con:dataSource>
+      <con:property>req_paymentType</con:property>
+      <con:property>req_itemOrder</con:property>
+      <con:property>req_creditCardNumber</con:property>
+      <con:property>req_bank</con:property>
+      <con:property>req_chequeNumber</con:property>
+      <con:property>req_transactionRoundedAmount</con:property>
+      <con:property>req_transactionNotRoundedAmount</con:property>
+      <con:property>req_transactionCurrency</con:property>
+      <con:property>req_convertedRoundedAmount</con:property>
+      <con:property>req_convertedNotRoundedAmount</con:property>
+      <con:property>req_convertedCurrency</con:property>
+      <con:property>res_code</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. add item to interaction" id="2bd530db-7e8b-427b-bc30-9e8615ed9e0e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>req_biId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>ADD item to interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_paymentType</con:name>
+        <con:sourceType>req_paymentType</con:sourceType>
+        <con:sourceStep>DataSource for add item to interaction</con:sourceStep>
+        <con:targetType>req_paymentType</con:targetType>
+        <con:targetStep>ADD item to interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_itemOrder</con:name>
+        <con:sourceType>req_itemOrder</con:sourceType>
+        <con:sourceStep>DataSource for add item to interaction</con:sourceStep>
+        <con:targetType>req_itemOrder</con:targetType>
+        <con:targetStep>ADD item to interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_creditCardNumber</con:name>
+        <con:sourceType>req_creditCardNumber</con:sourceType>
+        <con:sourceStep>DataSource for add item to interaction</con:sourceStep>
+        <con:targetType>req_creditCardNumber</con:targetType>
+        <con:targetStep>ADD item to interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_bank</con:name>
+        <con:sourceType>req_bank</con:sourceType>
+        <con:sourceStep>DataSource for add item to interaction</con:sourceStep>
+        <con:targetType>req_bank</con:targetType>
+        <con:targetStep>ADD item to interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_chequeNumber</con:name>
+        <con:sourceType>req_chequeNumber</con:sourceType>
+        <con:sourceStep>DataSource for add item to interaction</con:sourceStep>
+        <con:targetType>req_chequeNumber</con:targetType>
+        <con:targetStep>ADD item to interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionRoundedAmount</con:name>
+        <con:sourceType>req_transactionRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item to interaction</con:sourceStep>
+        <con:targetType>req_transactionRoundedAmount</con:targetType>
+        <con:targetStep>ADD item to interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionNotRoundedAmount</con:name>
+        <con:sourceType>req_transactionNotRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item to interaction</con:sourceStep>
+        <con:targetType>req_transactionNotRoundedAmount</con:targetType>
+        <con:targetStep>ADD item to interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionCurrency</con:name>
+        <con:sourceType>req_transactionCurrency</con:sourceType>
+        <con:sourceStep>DataSource for add item to interaction</con:sourceStep>
+        <con:targetType>req_transactionCurrency</con:targetType>
+        <con:targetStep>ADD item to interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedRoundedAmount</con:name>
+        <con:sourceType>req_convertedRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item to interaction</con:sourceStep>
+        <con:targetType>req_convertedRoundedAmount</con:targetType>
+        <con:targetStep>ADD item to interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedNotRoundedAmount</con:name>
+        <con:sourceType>req_convertedNotRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item to interaction</con:sourceStep>
+        <con:targetType>req_convertedNotRoundedAmount</con:targetType>
+        <con:targetStep>ADD item to interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedCurrency</con:name>
+        <con:sourceType>req_convertedCurrency</con:sourceType>
+        <con:sourceStep>DataSource for add item to interaction</con:sourceStep>
+        <con:targetType>req_convertedCurrency</con:targetType>
+        <con:targetStep>ADD item to interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionDate</con:name>
+        <con:sourceType>transaction_date</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:targetType>req_transactionDate</con:targetType>
+        <con:targetStep>ADD item to interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="ADD item to interaction" id="3e2e62c7-c079-47d0-8531-f5d35a806319">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>af005648-7539-49a8-8bfb-f99b7f11d8cb</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value>541</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_paymentType</con:name>
+          <con:value>BA</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemOrder</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_creditCardNumber</con:name>
+          <con:value>5127540000000002</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_bank</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_chequeNumber</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionRoundedAmount</con:name>
+          <con:value>100</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionNotRoundedAmount</con:name>
+          <con:value>100.49</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionCurrency</con:name>
+          <con:value>USD</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedRoundedAmount</con:name>
+          <con:value>90</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedNotRoundedAmount</con:name>
+          <con:value>90.49</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedCurrency</con:name>
+          <con:value>EUR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionDate</con:name>
+          <con:value>2019-08-12T20:17:46.384Z</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion item added successfully" id="ab226b9a-8232-477c-8ca7-6485ffe2f684">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>34b2c8d8-39f3-4aac-adb7-6f034d39dd11</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3e2e62c7-c079-47d0-8531-f5d35a806319</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="c6302ecb-fbc7-40fb-8fab-b7dbda9e1b7f">
+          <con:configuration>
+            <patternObjectId>e1284c36-d335-4ff8-9eba-3332f06478a1</patternObjectId>
+            <patternProperty>res_code</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>288f05dc-e576-46ee-a50b-e6d1ee37d08e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>3e2e62c7-c079-47d0-8531-f5d35a806319</con:sourceId>
+        <con:propertyName>res_itemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="ea2699ed-57a8-40f3-b1d5-9eeb9d4c97e7">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. delete item from interaction" id="bc506a0c-baa2-4e09-a253-683ef8b27250">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_biId</con:name>
+        <con:sourceType>req_biId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>DELETE item from interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_itemId</con:name>
+        <con:sourceType>res_itemId</con:sourceType>
+        <con:sourceStep>ADD item to interaction</con:sourceStep>
+        <con:targetType>req_itemId</con:targetType>
+        <con:targetStep>DELETE item from interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="DELETE item from interaction" id="70900f3f-eafd-4336-81f9-fe43e94b3be7">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>dca19eed-1959-4bc8-835e-883fdb6f3d0d</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemId</con:name>
+          <con:value>541</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value>541</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_itemId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion item deleted successfully" id="08bda4f7-1f48-4e24-b51c-f08bd32e819f">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>dde2ee62-73f0-40d0-a893-571ed0e07c40</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>70900f3f-eafd-4336-81f9-fe43e94b3be7</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="ceb24d61-5c68-4ff3-b648-128af2c7ef26">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>a34db1ce-48b1-4ca7-a93a-86e593d6d1a4</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>70900f3f-eafd-4336-81f9-fe43e94b3be7</con:sourceId>
+        <con:propertyName>res_itemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="2eea5fc7-5bbd-474a-9900-aa7a1a4013ca">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. delete deleted item of interaction with external system" id="dce3928c-7541-4448-a244-2c955bcb18aa">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>req_biId</con:sourceType>
+        <con:sourceStep>ADD item to interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Delete deleted item of interaction with external system</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>itemId</con:name>
+        <con:sourceType>res_itemId</con:sourceType>
+        <con:sourceStep>ADD item to interaction</con:sourceStep>
+        <con:targetType>req_itemId</con:targetType>
+        <con:targetStep>Delete deleted item of interaction with external system</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>extSystem</con:name>
+        <con:sourceType>extSystem</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:targetType>req_extSystem</con:targetType>
+        <con:targetStep>Delete deleted item of interaction with external system</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Delete deleted item of interaction with external system" id="1978cc02-ddb3-459d-804a-a84a1e70380d">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>78f1bc88-6ced-4eaa-88ce-ed078af6d6a7</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemId</con:name>
+          <con:value>541</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_extSystem</con:name>
+          <con:value>ext-system-${=java.util.UUID.randomUUID()}</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>BI_ITEM_WITH_ID_NOT_FOUND</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion biItem not found" id="2b2fa56b-9072-435b-8ba6-2266ca7f6090">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>f67cd759-47db-4ef8-ab2e-c6a85c5376cd</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>1978cc02-ddb3-459d-804a-a84a1e70380d</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="b5385e9d-44c9-43a8-a8a2-ea05107d7d28">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>9c82636d-fb64-4a9a-a089-c2594263a715</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>1978cc02-ddb3-459d-804a-a84a1e70380d</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="a85fd32a-8c21-4dc2-9c18-c8b69ecdf9b5">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>errMsg-biItemNotFound</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. submit interaction without item" id="56062fdd-16cd-4417-8751-2d961c7c62dc">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>req_biId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit interaction without item</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit interaction without item" id="55ad1c78-315e-41fb-aef1-dc312030d10e">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>cb3cb2e1-8414-4af7-a7b2-ec77be43f3be</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>BI_CAN_NOT_BE_SUBMITTED_WITHOUT_ITEMS</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion cannot submit without item" id="d72ab0af-50c5-4c8e-8dff-ca9e0753637a">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>731cb8e5-9812-4b8d-b856-c3aad43f997d</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>55ad1c78-315e-41fb-aef1-dc312030d10e</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="3117bcd3-c328-4f9a-8aea-32856e795fe6">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>315acd1a-1ac3-4287-898b-2cfd6101555d</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>55ad1c78-315e-41fb-aef1-dc312030d10e</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="a3dd2322-f48a-449c-8386-82145e7c8db9">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>errMsg-submitWithoutItem</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="DataSource for add item to payment interaction success" id="7c8297b2-0627-4499-a959-559455860937">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Grid">
+        <con:configuration>
+          <check><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">true</con:entry></xml-fragment>]]></check>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">BA</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5127540000000002 </con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">USD</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">EUR</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">CCE</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5127540000000002</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">USD</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">EUR</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">BT</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5127540000000002</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">USD</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">EUR</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">PP</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5127540000000002</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">100.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">USD</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">90.49</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">EUR</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+        </con:configuration>
+      </con:dataSource>
+      <con:property>req_paymentType</con:property>
+      <con:property>req_itemOrder</con:property>
+      <con:property>req_creditCardNumber</con:property>
+      <con:property>req_bank</con:property>
+      <con:property>req_chequeNumber</con:property>
+      <con:property>req_transactionRoundedAmount</con:property>
+      <con:property>req_transactionNotRoundedAmount</con:property>
+      <con:property>req_transactionCurrency</con:property>
+      <con:property>req_convertedRoundedAmount</con:property>
+      <con:property>req_convertedNotRoundedAmount</con:property>
+      <con:property>req_convertedCurrency</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. add item to payment interaction success" id="a06d8c94-9499-486e-8f1a-ca3267054a8b">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>req_biId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Add item to payment interaction success</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_paymentType</con:name>
+        <con:sourceType>req_paymentType</con:sourceType>
+        <con:sourceStep>DataSource for add item to payment interaction success</con:sourceStep>
+        <con:targetType>req_paymentType</con:targetType>
+        <con:targetStep>Add item to payment interaction success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_itemOrder</con:name>
+        <con:sourceType>req_itemOrder</con:sourceType>
+        <con:sourceStep>DataSource for add item to payment interaction success</con:sourceStep>
+        <con:targetType>req_itemOrder</con:targetType>
+        <con:targetStep>Add item to payment interaction success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_creditCardNumber</con:name>
+        <con:sourceType>req_creditCardNumber</con:sourceType>
+        <con:sourceStep>DataSource for add item to payment interaction success</con:sourceStep>
+        <con:targetType>req_creditCardNumber</con:targetType>
+        <con:targetStep>Add item to payment interaction success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_bank</con:name>
+        <con:sourceType>req_bank</con:sourceType>
+        <con:sourceStep>DataSource for add item to payment interaction success</con:sourceStep>
+        <con:targetType>req_bank</con:targetType>
+        <con:targetStep>Add item to payment interaction success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_chequeNumber</con:name>
+        <con:sourceType>req_chequeNumber</con:sourceType>
+        <con:sourceStep>DataSource for add item to payment interaction success</con:sourceStep>
+        <con:targetType>req_chequeNumber</con:targetType>
+        <con:targetStep>Add item to payment interaction success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionRoundedAmount</con:name>
+        <con:sourceType>req_transactionRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item to payment interaction success</con:sourceStep>
+        <con:targetType>req_transactionRoundedAmount</con:targetType>
+        <con:targetStep>Add item to payment interaction success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionNotRoundedAmount</con:name>
+        <con:sourceType>req_transactionNotRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item to payment interaction success</con:sourceStep>
+        <con:targetType>req_transactionNotRoundedAmount</con:targetType>
+        <con:targetStep>Add item to payment interaction success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionCurrency</con:name>
+        <con:sourceType>req_transactionCurrency</con:sourceType>
+        <con:sourceStep>DataSource for add item to payment interaction success</con:sourceStep>
+        <con:targetType>req_transactionCurrency</con:targetType>
+        <con:targetStep>Add item to payment interaction success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedRoundedAmount</con:name>
+        <con:sourceType>req_convertedRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item to payment interaction success</con:sourceStep>
+        <con:targetType>req_convertedRoundedAmount</con:targetType>
+        <con:targetStep>Add item to payment interaction success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedNotRoundedAmount</con:name>
+        <con:sourceType>req_convertedNotRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item to payment interaction success</con:sourceStep>
+        <con:targetType>req_convertedNotRoundedAmount</con:targetType>
+        <con:targetStep>Add item to payment interaction success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedCurrency</con:name>
+        <con:sourceType>req_convertedCurrency</con:sourceType>
+        <con:sourceStep>DataSource for add item to payment interaction success</con:sourceStep>
+        <con:targetType>req_convertedCurrency</con:targetType>
+        <con:targetStep>Add item to payment interaction success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionDate</con:name>
+        <con:sourceType>transaction_date</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:targetType>req_transactionDate</con:targetType>
+        <con:targetStep>Add item to payment interaction success</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Add item to payment interaction success" id="158324af-7479-4c1f-a4c4-c11152488a7c">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>af005648-7539-49a8-8bfb-f99b7f11d8cb</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value>542</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>201</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value xsi:nil="true"/>
+        </con:property>
+        <con:property>
+          <con:name>req_paymentType</con:name>
+          <con:value>BA</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemOrder</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_creditCardNumber</con:name>
+          <con:value>5127540000000002</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_bank</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_chequeNumber</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionRoundedAmount</con:name>
+          <con:value>100</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionNotRoundedAmount</con:name>
+          <con:value>100.49</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionCurrency</con:name>
+          <con:value>USD</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedRoundedAmount</con:name>
+          <con:value>90</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedNotRoundedAmount</con:name>
+          <con:value>90.49</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedCurrency</con:name>
+          <con:value>EUR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionDate</con:name>
+          <con:value>2019-08-12T20:17:46.384Z</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_itemId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion items added successfully" id="a73cf92b-17ae-4dc4-b9e3-b0d4fd5fa3cb">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>489f168c-2032-4183-9bfd-36173dc35dd5</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>158324af-7479-4c1f-a4c4-c11152488a7c</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="a6d71f23-1b81-4896-902b-dc09329110b9">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http201</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>9b8579fa-6221-4cc4-a64a-66deb26a2519</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>158324af-7479-4c1f-a4c4-c11152488a7c</con:sourceId>
+        <con:propertyName>res_itemId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="c14e6f59-c209-4d92-9bb6-db5deb9bc774">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="DataSource Loop for add item success cases" id="f07b7549-6dc7-4d27-845b-beee9ac1f735">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>DataSource for add item to interaction</dataSourceStep>
+      <targetStep>P.T. add item to payment interaction success</targetStep>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="DataSource for UPDATE last added item" id="0ee4924e-23b8-4e50-b5cb-aeec905e1089">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Grid">
+        <con:configuration>
+          <check>&lt;con:entry xmlns:con="http://eviware.com/soapui/config">true&lt;/con:entry></check>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">BA</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5127540000000002 </con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">200</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">200.98</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">USD</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">180</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">180.98</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">EUR</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+        </con:configuration>
+      </con:dataSource>
+      <con:property>req_paymentType</con:property>
+      <con:property>req_itemOrder</con:property>
+      <con:property>req_creditCardNumber</con:property>
+      <con:property>req_bank</con:property>
+      <con:property>req_chequeNumber</con:property>
+      <con:property>req_transactionRoundedAmount</con:property>
+      <con:property>req_transactionNotRoundedAmount</con:property>
+      <con:property>req_transactionCurrency</con:property>
+      <con:property>req_convertedRoundedAmount</con:property>
+      <con:property>req_convertedNotRoundedAmount</con:property>
+      <con:property>req_convertedCurrency</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. update last added item" id="d0bef6e0-f1ed-4461-b7a3-ebb80c6d46a1">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>req_biId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Update item of payment interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_itemId</con:name>
+        <con:sourceType>res_itemId</con:sourceType>
+        <con:sourceStep>Add item to payment interaction success</con:sourceStep>
+        <con:targetType>req_itemId</con:targetType>
+        <con:targetStep>Update item of payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_paymentType</con:name>
+        <con:sourceType>req_paymentType</con:sourceType>
+        <con:sourceStep>DataSource for UPDATE last added item</con:sourceStep>
+        <con:targetType>req_paymentType</con:targetType>
+        <con:targetStep>Update item of payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_itemOrder</con:name>
+        <con:sourceType>req_itemOrder</con:sourceType>
+        <con:sourceStep>DataSource for UPDATE last added item</con:sourceStep>
+        <con:targetType>req_itemOrder</con:targetType>
+        <con:targetStep>Update item of payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_creditCardNumber</con:name>
+        <con:sourceType>req_creditCardNumber</con:sourceType>
+        <con:sourceStep>DataSource for UPDATE last added item</con:sourceStep>
+        <con:targetType>req_creditCardNumber</con:targetType>
+        <con:targetStep>Update item of payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_bank</con:name>
+        <con:sourceType>req_bank</con:sourceType>
+        <con:sourceStep>DataSource for UPDATE last added item</con:sourceStep>
+        <con:targetType>req_bank</con:targetType>
+        <con:targetStep>Update item of payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_chequeNumber</con:name>
+        <con:sourceType>req_chequeNumber</con:sourceType>
+        <con:sourceStep>DataSource for UPDATE last added item</con:sourceStep>
+        <con:targetType>req_chequeNumber</con:targetType>
+        <con:targetStep>Update item of payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionRoundedAmount</con:name>
+        <con:sourceType>req_transactionRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for UPDATE last added item</con:sourceStep>
+        <con:targetType>req_transactionRoundedAmount</con:targetType>
+        <con:targetStep>Update item of payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionNotRoundedAmount</con:name>
+        <con:sourceType>req_transactionNotRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for UPDATE last added item</con:sourceStep>
+        <con:targetType>req_transactionNotRoundedAmount</con:targetType>
+        <con:targetStep>Update item of payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionCurrency</con:name>
+        <con:sourceType>req_transactionCurrency</con:sourceType>
+        <con:sourceStep>DataSource for UPDATE last added item</con:sourceStep>
+        <con:targetType>req_transactionCurrency</con:targetType>
+        <con:targetStep>Update item of payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedRoundedAmount</con:name>
+        <con:sourceType>req_convertedRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for UPDATE last added item</con:sourceStep>
+        <con:targetType>req_convertedRoundedAmount</con:targetType>
+        <con:targetStep>Update item of payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedNotRoundedAmount</con:name>
+        <con:sourceType>req_convertedNotRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for UPDATE last added item</con:sourceStep>
+        <con:targetType>req_convertedNotRoundedAmount</con:targetType>
+        <con:targetStep>Update item of payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedCurrency</con:name>
+        <con:sourceType>req_convertedCurrency</con:sourceType>
+        <con:sourceStep>DataSource for UPDATE last added item</con:sourceStep>
+        <con:targetType>req_convertedCurrency</con:targetType>
+        <con:targetStep>Update item of payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionDate</con:name>
+        <con:sourceType>transaction_date</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:targetType>req_transactionDate</con:targetType>
+        <con:targetStep>Update item of payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Update item of payment interaction" id="edf9adee-134d-4cd6-aa3d-c0a1c2137546">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>37a89ccc-ada6-4561-97ce-1a2ca617b823</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemId</con:name>
+          <con:value>542</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_paymentType</con:name>
+          <con:value>BA</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemOrder</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_creditCardNumber</con:name>
+          <con:value>5127540000000002</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_bank</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_chequeNumber</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionRoundedAmount</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionNotRoundedAmount</con:name>
+          <con:value>200.98</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionCurrency</con:name>
+          <con:value>USD</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedRoundedAmount</con:name>
+          <con:value>180</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedNotRoundedAmount</con:name>
+          <con:value>180.98</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedCurrency</con:name>
+          <con:value>EUR</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_error</con:name>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionDate</con:name>
+          <con:value>2019-08-12T20:17:46.384Z</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion last added item updated successfully" id="bbb043a2-3b71-419f-98f4-afdd8f463b8c">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>d59ad139-05f0-41a9-be0d-aa2b75f403bc</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>edf9adee-134d-4cd6-aa3d-c0a1c2137546</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="07012af9-1bef-4488-95f5-94a32bf23789">
+          <con:configuration>
+            <patternText>200</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. submit payment business interaction" id="fa7c6191-4a06-4310-a77c-8c13d515f3af">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>req_biId</con:sourceType>
+        <con:sourceStep>#TestCase#</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Submit payment business interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Submit payment business interaction" id="f2a38d9c-4dc9-4293-9b11-d47480b00d95">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>cb3cb2e1-8414-4af7-a7b2-ec77be43f3be</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_biId</con:entry>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion payment business interaction submitted succesfully" id="7c79c71b-9f44-4f6d-9ffc-b9333210d903">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>728d554e-7adc-46e5-bc25-554c5c8da8da</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f2a38d9c-4dc9-4293-9b11-d47480b00d95</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="c2d04532-d52d-4d17-afc0-995b61b29fe9">
+          <con:configuration>
+            <patternText>200</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>2a1da85c-fb6e-4abe-87c1-8f145ae3d87e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>f2a38d9c-4dc9-4293-9b11-d47480b00d95</con:sourceId>
+        <con:propertyName>res_biId</con:propertyName>
+        <con:assertion type="Simple Contains" name="Contains" id="0ae57a32-8670-4775-8c4a-20577084ad4a">
+          <con:configuration>
+            <token>\d+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="DataSource for add item to closed payment interaction" id="29be42ee-a27e-40c3-bd49-32b4f468df40">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Grid">
+        <con:configuration>
+          <check>&lt;con:entry xmlns:con="http://eviware.com/soapui/config">true&lt;/con:entry></check>
+          <row><![CDATA[<xml-fragment><con:entry xmlns:con="http://eviware.com/soapui/config">BA</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">5127540000000002 </con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">USD</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">1</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config">USD</con:entry><con:entry xmlns:con="http://eviware.com/soapui/config"/></xml-fragment>]]></row>
+        </con:configuration>
+      </con:dataSource>
+      <con:property>req_paymentType</con:property>
+      <con:property>req_itemOrder</con:property>
+      <con:property>req_creditCardNumber</con:property>
+      <con:property>req_bank</con:property>
+      <con:property>req_chequeNumber</con:property>
+      <con:property>req_transactionRoundedAmount</con:property>
+      <con:property>req_transactionNotRoundedAmount</con:property>
+      <con:property>req_transactionCurrency</con:property>
+      <con:property>req_convertedRoundedAmount</con:property>
+      <con:property>req_convertedNotRoundedAmount</con:property>
+      <con:property>req_convertedCurrency</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. add item to closed payment interaction" id="9d428acc-ccfb-4963-b624-4c4466457797">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Submit payment business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cannot add item to closed payment interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_paymentType</con:name>
+        <con:sourceType>req_paymentType</con:sourceType>
+        <con:sourceStep>DataSource for add item to closed payment interaction</con:sourceStep>
+        <con:targetType>req_paymentType</con:targetType>
+        <con:targetStep>Cannot add item to closed payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_itemOrder</con:name>
+        <con:sourceType>req_itemOrder</con:sourceType>
+        <con:sourceStep>DataSource for add item to closed payment interaction</con:sourceStep>
+        <con:targetType>req_itemOrder</con:targetType>
+        <con:targetStep>Cannot add item to closed payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_creditCardNumber</con:name>
+        <con:sourceType>req_creditCardNumber</con:sourceType>
+        <con:sourceStep>DataSource for add item to closed payment interaction</con:sourceStep>
+        <con:targetType>req_creditCardNumber</con:targetType>
+        <con:targetStep>Cannot add item to closed payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_bank</con:name>
+        <con:sourceType>req_bank</con:sourceType>
+        <con:sourceStep>DataSource for add item to closed payment interaction</con:sourceStep>
+        <con:targetType>req_bank</con:targetType>
+        <con:targetStep>Cannot add item to closed payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_chequeNumber</con:name>
+        <con:sourceType>req_chequeNumber</con:sourceType>
+        <con:sourceStep>DataSource for add item to closed payment interaction</con:sourceStep>
+        <con:targetType>req_chequeNumber</con:targetType>
+        <con:targetStep>Cannot add item to closed payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionRoundedAmount</con:name>
+        <con:sourceType>req_transactionRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item to closed payment interaction</con:sourceStep>
+        <con:targetType>req_transactionRoundedAmount</con:targetType>
+        <con:targetStep>Cannot add item to closed payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionNotRoundedAmount</con:name>
+        <con:sourceType>req_transactionNotRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item to closed payment interaction</con:sourceStep>
+        <con:targetType>req_transactionNotRoundedAmount</con:targetType>
+        <con:targetStep>Cannot add item to closed payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionCurrency</con:name>
+        <con:sourceType>req_transactionCurrency</con:sourceType>
+        <con:sourceStep>DataSource for add item to closed payment interaction</con:sourceStep>
+        <con:targetType>req_transactionCurrency</con:targetType>
+        <con:targetStep>Cannot add item to closed payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedRoundedAmount</con:name>
+        <con:sourceType>req_convertedRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item to closed payment interaction</con:sourceStep>
+        <con:targetType>req_convertedRoundedAmount</con:targetType>
+        <con:targetStep>Cannot add item to closed payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedNotRoundedAmount</con:name>
+        <con:sourceType>req_convertedNotRoundedAmount</con:sourceType>
+        <con:sourceStep>DataSource for add item to closed payment interaction</con:sourceStep>
+        <con:targetType>req_convertedNotRoundedAmount</con:targetType>
+        <con:targetStep>Cannot add item to closed payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="false" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_convertedCurrency</con:name>
+        <con:sourceType>req_convertedCurrency</con:sourceType>
+        <con:sourceStep>DataSource for add item to closed payment interaction</con:sourceStep>
+        <con:targetType>req_convertedCurrency</con:targetType>
+        <con:targetStep>Cannot add item to closed payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_transactionDate</con:name>
+        <con:sourceType>transaction_date</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:targetType>req_transactionDate</con:targetType>
+        <con:targetStep>Cannot add item to closed payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cannot add item to closed payment interaction" id="fe8a82af-68a3-46f9-94fe-0144d520b62e">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>af005648-7539-49a8-8bfb-f99b7f11d8cb</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_paymentType</con:name>
+          <con:value>BA</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemOrder</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_creditCardNumber</con:name>
+          <con:value>5127540000000002</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_bank</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_chequeNumber</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionRoundedAmount</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionNotRoundedAmount</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionCurrency</con:name>
+          <con:value>USD</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedRoundedAmount</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedNotRoundedAmount</con:name>
+          <con:value>1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_convertedCurrency</con:name>
+          <con:value>USD</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_transactionDate</con:name>
+          <con:value>2019-08-12T20:17:46.384Z</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion cannot add item" id="97278100-71c4-4aed-98fa-18812879959a">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>2eaa0e65-2d6a-4702-8619-907cd5a76e7c</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>fe8a82af-68a3-46f9-94fe-0144d520b62e</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="db2083f0-3c43-4560-b191-f2937663a8f8">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>439dafa4-fe69-4994-b8f8-72b3c49448cd</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>fe8a82af-68a3-46f9-94fe-0144d520b62e</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="e395b28a-5b57-41db-9b63-653b1ce4a50b">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>errMsg-invalidStateOperation</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. delete item from closed payment interaction" id="c16ef023-5760-453d-a311-19155fa8421e">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Submit payment business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cannot delete item from closed payment interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_itemId</con:name>
+        <con:sourceType>res_itemId</con:sourceType>
+        <con:sourceStep>Add item to payment interaction success</con:sourceStep>
+        <con:targetType>req_itemId</con:targetType>
+        <con:targetStep>Cannot delete item from closed payment interaction</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cannot delete item from closed payment interaction" id="d377d5d1-9df9-46ae-bb42-26fbe87808d2">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>dca19eed-1959-4bc8-835e-883fdb6f3d0d</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemId</con:name>
+          <con:value>542</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion cannot delete item" id="d04a207d-8d8d-4b40-9d16-f8f15bc5252a">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>9a2309c3-4058-4982-a244-bb21651cb0a6</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>d377d5d1-9df9-46ae-bb42-26fbe87808d2</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="ccea09f6-49d1-4399-8fcf-11b1bf7fccbd">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>ae79d710-3316-4bfa-a874-2d9363fa9cb1</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>d377d5d1-9df9-46ae-bb42-26fbe87808d2</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="4b7dd9e4-3734-45f2-930f-f666de2a231d">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>errMsg-invalidStateOperation</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. submit closed payment interaction" id="c4660b7b-8b5a-44d2-88ab-5453423f064d">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Submit payment business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Cannot submit closed payment interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Cannot submit closed payment interaction" id="07cbf182-0661-4b6e-b869-8c06c2f5ee97">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>cb3cb2e1-8414-4af7-a7b2-ec77be43f3be</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_biId</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>400</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+          <con:value>INVALID_STATE_OPERATION</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_errorMessage</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion cannot submit item" id="4b397af6-bc56-4c92-bdc4-d9914667e97b">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>8d632401-bb47-41ea-bbdd-cdde8f46a4eb</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>07cbf182-0661-4b6e-b869-8c06c2f5ee97</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="72622563-a116-48c3-af62-8ac7aa64827b">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http400</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>353e3f6f-ad0e-48ed-813a-9e608c1ce857</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>07cbf182-0661-4b6e-b869-8c06c2f5ee97</con:sourceId>
+        <con:propertyName>res_errorMessage</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="99f8e3d8-72f4-4989-a014-38cebf31bdc3">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>errMsg-invalidStateOperation</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. display non-exist single payment interaction" id="e12eebe9-579d-46b4-8e8c-8481d936b4dd">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>biId</con:name>
+        <con:sourceType>notExistId</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Display non-exist single payment interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display non-exist single payment interaction" id="323e0d5d-1675-4861-aea2-4d226001f398">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>2f733266-3a4f-4f6a-9bb3-8f53ada3aca8</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>404</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_mainState</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_state</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_note</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion single payment interaction not found" id="f021ff3a-84de-495b-8f5b-6d40d2de8591">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>c61ba4cc-cb18-4949-bcb8-80f9edb3a858</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>323e0d5d-1675-4861-aea2-4d226001f398</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="537b133b-d076-4b01-95a5-9ae28a9881c3">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http404</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. display single payment interaction" id="84fc794c-3f64-4458-85d6-a669c522885a">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Submit payment business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Display single payment interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display single payment interaction" id="c12d67bf-b001-4d4d-9476-822ac9450b17">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>2f733266-3a4f-4f6a-9bb3-8f53ada3aca8</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_mainState</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_state</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_errorMessage</con:name>
+        </con:property>
+        <con:property>
+          <con:name>res_note</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion single payment interaction displayed" id="84452d4e-e409-449b-b2bd-f6d51f1a4063">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>e1d1c5c5-38a7-4e44-995b-6f120ca7ff7e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>c12d67bf-b001-4d4d-9476-822ac9450b17</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="40f9535e-1485-442b-ba94-aa65bc891289">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Display all payment interactions" id="66a91cbb-4a0c-4be1-a4fb-158b7b37fb11">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>37de4201-dfb9-471f-9747-ed3843ab5609</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion all payment interactions displayed" id="387afd39-765a-44fd-b7cd-26283922e7a9">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>74d3f1a9-9cf4-4c98-b612-c16d0a40d5c0</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>66a91cbb-4a0c-4be1-a4fb-158b7b37fb11</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="d58265c6-e0f1-469c-add0-ff19397b41e1">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. retrieve deleted payment interaction item" id="424e94d7-782b-445a-99eb-6db6a43ccb6d">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Submit payment business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Retrieve deleted payment interaction item</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_itemId</con:name>
+        <con:sourceType>res_itemId</con:sourceType>
+        <con:sourceStep>ADD item to interaction</con:sourceStep>
+        <con:targetType>req_itemId</con:targetType>
+        <con:targetStep>Retrieve deleted payment interaction item</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Retrieve deleted payment interaction item" id="decf8f77-6e6f-4cf4-a2fc-36653cbd4a51">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>98c12f77-67f1-4197-99dc-770ecdbe9933</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemId</con:name>
+          <con:value>541</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>404</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion single payment interaction item not found" id="f7413477-008e-4e18-92ef-dee6599e1e55">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>846f255b-da90-448e-9806-4ce8b87ae1ab</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>decf8f77-6e6f-4cf4-a2fc-36653cbd4a51</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="10073ead-0a97-4238-bde7-344ef31cb9bb">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http404</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. retrieve single payment interaction item" id="93b3544a-c4e1-4ad1-8ad3-8e8abd55e9a8">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfe_biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Submit payment business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Retrieve single payment interaction item</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_itemId</con:name>
+        <con:sourceType>res_itemId</con:sourceType>
+        <con:sourceStep>Add item to payment interaction success</con:sourceStep>
+        <con:targetType>req_itemId</con:targetType>
+        <con:targetStep>Retrieve single payment interaction item</con:targetStep>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Retrieve single payment interaction item" id="07785313-c52a-459f-8600-aada2f6bc3a7">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>98c12f77-67f1-4197-99dc-770ecdbe9933</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>req_itemId</con:name>
+          <con:value>542</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_itemId</con:name>
+          <con:value>542</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>res_itemId</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion single payment interaction item retrieved" id="4d730cfe-0fb2-421c-8851-918e3cd60532">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>d12dff88-aa07-4275-8169-f85847ef4d06</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>07785313-c52a-459f-8600-aada2f6bc3a7</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="405ca944-28fb-40be-bd36-ed427557cf12">
+          <con:configuration>
+            <patternText>200</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>2d677b89-d8fd-475b-b7e3-8d2b994e5e5e</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>07785313-c52a-459f-8600-aada2f6bc3a7</con:sourceId>
+        <con:propertyName>req_itemId</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals 2" id="c7841f1a-1688-47fd-8b7e-bfc7d88deb8a">
+          <con:configuration>
+            <patternObjectId>07785313-c52a-459f-8600-aada2f6bc3a7</patternObjectId>
+            <patternProperty>res_itemId</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. retrieve all items of payment interaction not exist" id="081e3111-0780-4002-a8c0-4dda54441263">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_biId</con:name>
+        <con:sourceType>notExistId</con:sourceType>
+        <con:sourceStep>Global Properties</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Retrieve all items of payment interaction not exist</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Retrieve all items of payment interaction not exist" id="aa52324a-84b6-415a-94a6-92c539e76271">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>109f2d21-555d-4cc6-932d-a87fbeeafcc6</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>-1</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+          <con:value>[]</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+        <con:entry>response</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion all items of payment interaction not found" id="68563c50-8c1e-469a-8c40-516c9b12ac6d">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>edf6de22-4075-4517-bf3f-dc85e856ee7c</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>aa52324a-84b6-415a-94a6-92c539e76271</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="c20ae900-3c2f-4612-b026-171ca039392e">
+          <con:configuration>
+            <patternObjectId>4986094c-30d0-47de-9dd4-aa43b0b4ff60</patternObjectId>
+            <patternProperty>http200</patternProperty>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+      <con:entry>
+        <con:id>7a25e9f2-b91a-460e-83ef-a7eec7fefaed</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>aa52324a-84b6-415a-94a6-92c539e76271</con:sourceId>
+        <con:propertyName>response</con:propertyName>
+        <con:assertion type="Simple NotContains" name="Not Contains" id="fafb63e7-872c-48db-a6df-7798ade4662e">
+          <con:configuration>
+            <token>\w+</token>
+            <ignoreCase>false</ignoreCase>
+            <useRegEx>true</useRegEx>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="P.T. retrieve all items of payment interaction" id="197d6f4d-2aa3-403a-b0bf-12ca35c48e2b">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>transfer_biId</con:name>
+        <con:sourceType>res_biId</con:sourceType>
+        <con:sourceStep>Submit payment business interaction</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>req_biId</con:targetType>
+        <con:targetStep>Retrieve all items of payment interaction</con:targetStep>
+        <con:targetPath/>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="calltestcase" name="Retrieve all items of payment interaction" id="6513fa69-9df3-4d22-961b-97334e87eeb5">
+    <con:settings/>
+    <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:targetTestCase>109f2d21-555d-4cc6-932d-a87fbeeafcc6</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>req_biId</con:name>
+          <con:value>2451</con:value>
+        </con:property>
+        <con:property>
+          <con:name>res_code</con:name>
+          <con:value>200</con:value>
+        </con:property>
+        <con:property>
+          <con:name>response</con:name>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>res_code</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="assertionteststep" name="Assertion all items of payment interaction retrieved" id="b7be1b44-8e3d-48ad-a1bf-e57293f44528">
+    <con:settings/>
+    <con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:entry>
+        <con:id>9641912d-c924-4184-a3e6-4fefdfc7152f</con:id>
+        <con:isGroup>false</con:isGroup>
+        <con:sourceId>6513fa69-9df3-4d22-961b-97334e87eeb5</con:sourceId>
+        <con:propertyName>res_code</con:propertyName>
+        <con:assertion type="Simple Equals" name="Equals" id="43290cf0-c3ea-4cd8-b50b-efe719b6ea0b">
+          <con:configuration>
+            <patternText>200</patternText>
+            <caseSensitive>true</caseSensitive>
+          </con:configuration>
+        </con:assertion>
+      </con:entry>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_salesOrgRoleExtId</con:name>
+      <con:value>sales-s-${=java.util.UUID.randomUUID()}</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_userRoleExtdId</con:name>
+      <con:value>user-u-${=java.util.UUID.randomUUID()}</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_inventoryExtId</con:name>
+      <con:value>inv-i-${=java.util.UUID.randomUUID()}</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_terminalExtId</con:name>
+      <con:value>ter-t-${=java.util.UUID.randomUUID()}</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_userRoleId</con:name>
+      <con:value>110</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_salesOrgRoleId</con:name>
+      <con:value>108</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_inventoryId</con:name>
+      <con:value>2</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_terminalId</con:name>
+      <con:value>26</con:value>
+    </con:property>
+    <con:property>
+      <con:name>req_emptyBiSpec</con:name>
+    </con:property>
+    <con:property>
+      <con:name>req_paymentType</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_itemOrder</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_creditCardNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_bank</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_chequeNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_transactionRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_transactionNotRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_transactionCurrency</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_convertedRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_convertedNotRoundedAmount</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_convertedCurrency</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">2451</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>e3847e39-b1c6-425e-aecc-1846b36176a3</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>ac870239-8b6a-42d9-b257-f43a48775ca1</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>321b4ece-f4b2-4ffb-b47b-8bfc62cf34ab</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>88f30f0a-49b1-4c43-ab39-9a2327fddb84</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>4560690b-fcc0-40b4-9b0b-cb0b25f0cc22</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>48b97072-407b-4783-a690-b70eb5571060</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>878caeb6-cf0e-4494-8ec0-137f0875de55</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>b8acf8b4-7c24-4f28-b664-d20e5ee79f78</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>2bd530db-7e8b-427b-bc30-9e8615ed9e0e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e1284c36-d335-4ff8-9eba-3332f06478a1</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a06d8c94-9499-486e-8f1a-ca3267054a8b</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d0bef6e0-f1ed-4461-b7a3-ebb80c6d46a1</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>29be42ee-a27e-40c3-bd49-32b4f468df40</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>9d428acc-ccfb-4963-b624-4c4466457797</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>c4660b7b-8b5a-44d2-88ab-5453423f064d</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>7894da08-9dc7-478e-b865-77986a0c7222</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>eea9e91b-ad6c-45d0-9f28-c54c0fa2ee6a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>94aa2e61-dcc0-45ce-a68e-97bf7c51a5aa</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>818b402f-0240-4837-9451-08fc9458ff13</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>e1d8dd2e-e789-4a5f-9502-e334cd6f893e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>ff2e5dcd-c35a-478b-88fa-c6abadbc77ea</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>84cc7588-c694-4d15-b692-15941f29fdf9</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>3de4648c-3077-4b69-98ee-09f6be5e3f0a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d359273a-2199-4e77-8313-ed9a59fb1d1e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>75511de8-b184-4bba-94cb-8c421eae03cf</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d0d55628-b7f2-4543-a533-033b12df49bc</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>738c9ee0-923b-4a78-aa17-fbc8082d1695</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>ddaaa60e-196b-4d87-b42e-891d20ed729f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>3e2e62c7-c079-47d0-8531-f5d35a806319</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>ab226b9a-8232-477c-8ca7-6485ffe2f684</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>bc506a0c-baa2-4e09-a253-683ef8b27250</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>70900f3f-eafd-4336-81f9-fe43e94b3be7</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>08bda4f7-1f48-4e24-b51c-f08bd32e819f</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>56062fdd-16cd-4417-8751-2d961c7c62dc</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>55ad1c78-315e-41fb-aef1-dc312030d10e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d72ab0af-50c5-4c8e-8dff-ca9e0753637a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>7c8297b2-0627-4499-a959-559455860937</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>158324af-7479-4c1f-a4c4-c11152488a7c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>a73cf92b-17ae-4dc4-b9e3-b0d4fd5fa3cb</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>f07b7549-6dc7-4d27-845b-beee9ac1f735</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>0ee4924e-23b8-4e50-b5cb-aeec905e1089</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>edf9adee-134d-4cd6-aa3d-c0a1c2137546</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>bbb043a2-3b71-419f-98f4-afdd8f463b8c</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>fa7c6191-4a06-4310-a77c-8c13d515f3af</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>f2a38d9c-4dc9-4293-9b11-d47480b00d95</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>7c79c71b-9f44-4f6d-9ffc-b9333210d903</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>fe8a82af-68a3-46f9-94fe-0144d520b62e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>97278100-71c4-4aed-98fa-18812879959a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>c16ef023-5760-453d-a311-19155fa8421e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d377d5d1-9df9-46ae-bb42-26fbe87808d2</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>d04a207d-8d8d-4b40-9d16-f8f15bc5252a</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>07cbf182-0661-4b6e-b869-8c06c2f5ee97</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>12f8deac-3465-443a-a873-898030a5070e</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>93b3544a-c4e1-4ad1-8ad3-8e8abd55e9a8</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>07785313-c52a-459f-8600-aada2f6bc3a7</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>4d730cfe-0fb2-421c-8851-918e3cd60532</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

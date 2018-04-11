@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="657072bc-2519-497b-bed6-248c9260908f" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Get PrintOut for sales BI" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="657072bc-2519-497b-bed6-248c9260908ffileName">Get-PrintOut-for-sales-BI</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Get PrintOut receipt for sales BI" id="2b255876-4517-4cbd-8edd-b5f44ededb8a">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/sales/{id}/printOut" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Method 1 - Request 1" id="89a59e5f-2cdf-4e82-9bad-f8688ccefb02" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJDU1JfQXV0aHpQcm9maWxlIiwidmVyc2lvbiI6InYxIiwicGFydHlfaWQiOiIxMjMiLCJleHRlcm5hbF91c2VybmFtZSI6InU1Y2Y5NDM0My1iNDVmLTQ3OTEtYjk2OC0zNjUxZTZjYzhlYjMifX0.c065me5CTaBtbCvXPUc2q6t9avl8bh-3E2XKVnqIiHv9KqDKmDmEG0HKKcNo6r1t5AG1gdYpo21hkGVDefqC2bArM6fByITuTq21R8nlEm44Ygi4jxhUR2aBoAg0VyXx210tV7Ptl1BTMcdWl3XDJP7ZfGLQwjYwUSiXe7F6wr8"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="32"/>
+&lt;/xml-fragment></con:setting>
+          <con:setting id="RecordRequestRepresentations">false</con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#ExtEndpoint}</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/erms/retailManagement/v1/sales/731/printOut</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="id" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datagen" name="DataGen" id="64e80190-4f0a-43b0-8046-273af091bf2a">
+    <con:settings/>
+    <con:config xsi:type="con:DataGeneratorStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:property type="Script">
+        <con:configuration>
+          <script>def harResponse = context.expand( '${Get PrintOut receipt for sales BI#HarResponse#$[\'headers\'][1][\'value\']}' )
+return harResponse</script>
+        </con:configuration>
+        <con:name>contentDisposition</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+      <con:property type="Script">
+        <con:configuration>
+          <script>def harResponse = context.expand( '${Get PrintOut receipt for sales BI#HarResponse#$[\'headers\'][3][\'value\']}' )</script>
+        </con:configuration>
+        <con:name>contentType</con:name>
+        <con:mode>STEP</con:mode>
+        <con:shared>false</con:shared>
+      </con:property>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer for contentType contentDisposition" id="44466326-acd9-4c59-973b-5200038e6d82">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false" disabled="false">
+        <con:name>contentType</con:name>
+        <con:sourceType>contentType</con:sourceType>
+        <con:sourceStep>DataGen</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_contentType</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>XPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false" disabled="false">
+        <con:name>contentDisposition</con:name>
+        <con:sourceType>contentDisposition</con:sourceType>
+        <con:sourceStep>DataGen</con:sourceStep>
+        <con:sourcePath/>
+        <con:targetType>res_contentDisposition</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_contentType</con:name>
+      <con:value>application/octet-stream</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_contentDisposition</con:name>
+      <con:value>attachment; filename="Receipt.pdf"</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>44466326-acd9-4c59-973b-5200038e6d82</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>

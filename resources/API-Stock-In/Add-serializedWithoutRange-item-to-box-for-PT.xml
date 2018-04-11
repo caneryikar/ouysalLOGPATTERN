@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="1c430230-2eaf-437b-b432-966604694ac8" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Add serializedWithoutRange item to box for PT" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="1c430230-2eaf-437b-b432-966604694ac8fileName">Add-serializedWithoutRange-item-to-box-for-PT</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="Method 1 - Request 1" id="1fdae5cd-da22-4b4d-8340-e4bd3129282b">
+    <con:settings/>
+    <con:config service="ERMS API" resourcePath="/stockin/{biId}/item" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Method 1 - Request 1" id="c67a715d-1754-4d32-b488-58ad52c2a558" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJVTVMtUHJlZmlsdGVyLUNoZWNrQXV0aG9yaXplIiwic3ViIjoiVEVTVCIsImF1ZCI6IlJNIiwiaWF0IjoxNDg3MTYwOTc5LCJleHAiOjE1MTg3NTMxOTYsImF1dGhfdGltZSI6IjEzMTEyODA4NzAiLCJub25jZSI6Im4tMFM2X1d6QTJNaiIsIm5hbWUiOiJVTVMgVGVzdCBVc2VyIiwieF9kYnNzIjp7ImF1dGh6UHJvZmlsZU5hbWUiOiJFUk1TX0FETUlOX0F1dGh6UHJvZmlsZSIsInZlcnNpb24iOiJ2MSIsInBhcnR5X2lkIjoiMTIzIiwiZXh0ZXJuYWxfdXNlcm5hbWUiOiJTWVNVU1ItRVJNUyJ9fQ.BiWHZdfpHPJSv1YfROn3KhJ5TqEHIPPhvm0cWMiFKyLwhkhi30nIaGIzKQ9uzGNZkje3XDYPLeoglhln6B8LvKr9lrDaPisnhUe8O5sWEgSpa9JfRr8ei0_day6JMjfCrxu6BAAHD7lRX1qCLuxXTE500jPTKx3LFg5fxFxuHew"/>
+  &lt;con:entry key="ERICSSON.Sales-Organization-Role-Id" value="1"/>
+&lt;/xml-fragment></con:setting>
+        </con:settings>
+        <con:endpoint>${#Project#Endpoint}</con:endpoint>
+        <con:request>{  
+   "businessInteractionId":"${#TestCase#req_biId}",
+  //"parentBusinessInteractionItemId":"${#TestCase#req_itemId}",
+   "productInformation":{  
+      "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.ProductInformationDTO",
+      "productSpecification":{  
+         "id":2,
+         "code":"EXT-GALAXYNOTE4-1",
+         "article":"EXT-GALAXYNOTE4-1",
+         "externalReference":{  
+            "externalId":"EXT-GALAXYNOTE4-1"
+         },
+         "info":{  
+            "name":"Galaxy Note 4",
+            "description":"Galaxy Note 4"
+         },
+         "replicationInfo":{  
+            "isReplicated":false
+         },
+         "returnPeriod":{  
+            "value":1,
+            "unit":"Year"
+         },
+         "serialNumberFormat":"GN-XXXXXXXXXX",
+         "status":"Active",
+         "valueType":1,
+         "versionInfo":{  
+            "versionNumber":1000000
+         },
+         "warrantyPeriod":{  
+            "value":1,
+            "unit":"Year"
+         },
+         "productTrackingType":"SerializedWithoutRange",
+         "productSpecType":"Atomic",
+         "isSerialized":true,
+         "dynamicMap":{  
+
+         },
+         "type":"com.ericsson.bss.rm.erms.core.entity.dto.product.AtomicProductSpecDTO",
+         "characteristicList":[  
+            {  
+               "selectedValue":{  
+                  "name":"5.4",
+                  "id":2
+               },
+               "name":"Screen Size",
+               "id":1,
+               "specCharUseId":4,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"5.4",
+                     "id":2
+                  }
+               ]
+            },
+            {  
+               "selectedValue":{  
+                  "name":"32 GB",
+                  "id":5
+               },
+               "name":"Memory",
+               "id":2,
+               "specCharUseId":5,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"32 GB",
+                     "id":5
+                  },
+                  {  
+                     "name":"64 GB",
+                     "id":6
+                  },
+                  {  
+                     "name":"128 GB",
+                     "id":7
+                  }
+               ]
+            },
+            {  
+               "selectedValue":{  
+                  "name":"M10",
+                  "id":10
+               },
+               "name":"Processor",
+               "id":3,
+               "specCharUseId":6,
+               "charValueType":"LIST",
+               "values":[  
+                  {  
+                     "name":"M10",
+                     "id":10
+                  },
+                  {  
+                     "name":"M15",
+                     "id":11
+                  }
+               ]
+            }
+         ]
+      },
+      "parentProductSpecificationId":"${#TestCase#req_parentSpecId}",
+      "parentSerialNumberText":"${#TestCase#req_parentSerialText}",
+      "quantity":"${#TestCase#req_quantity}",
+      "startSerialNumber":"${#TestCase#req_startSerialNumber}",
+      "serialText":"${#TestCase#req_serialText}",
+      "endSerialNumber":"${#TestCase#req_endSerialNumber}",
+      "status":1,
+      "characteristicDescription":"5.4, 32 GB, M10",
+      "description":"Galaxy Note 4"
+   },
+   "vendorName":"eeee",
+   "batchId":"serializedWoRange123",
+   "toPartyRoleId":null,
+   "characteristicValues":[  
+      {  
+         "productSpecCharUse":{  
+            "id":4,
+            "productSpecCharacteristic":{  
+               "id":1,
+               "info":{  
+                  "name":"Screen Size"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":2,
+            "value":"5.4",
+            "productSpecChar":{  
+               "id":1
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      },
+      {  
+         "productSpecCharUse":{  
+            "id":5,
+            "productSpecCharacteristic":{  
+               "id":2,
+               "info":{  
+                  "name":"Memory"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":5,
+            "value":"32 GB",
+            "productSpecChar":{  
+               "id":2
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      },
+      {  
+         "productSpecCharUse":{  
+            "id":6,
+            "productSpecCharacteristic":{  
+               "id":3,
+               "info":{  
+                  "name":"Processor"
+               }
+            }
+         },
+         "productSpecCharacteristicValue":{  
+            "id":11,
+            "value":"M15",
+            "productSpecChar":{  
+               "id":3
+            }
+         },
+         "value":null,
+         "productCharacteristicValueType":"LIST"
+      }
+   ],
+ 
+   "type":"com.ericsson.bss.rm.erms.core.entity.dto.bi.gen2.stockin.CreateStockInBIItemDTO",
+   "toPlaceId": "${#TestCase#req_placeId}",
+   "userRoleId":"${#TestCase#req_userId}",
+   "salesOrganizationRoleId":"${#TestCase#req_soId}"
+}</con:request>
+        <con:originalUri>http://localhost/erms/v1/stockin/item</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <entry key="biId" value="${#TestCase#req_biId}" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="Property Transfer" id="1c408828-291c-4044-9f96-839a2627d40f">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_code</con:name>
+        <con:sourceType>HarResponse</con:sourceType>
+        <con:sourceStep>Method 1 - Request 1</con:sourceStep>
+        <con:sourcePath>$['status']</con:sourcePath>
+        <con:targetType>res_code</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>res_errorMessage</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Method 1 - Request 1</con:sourceStep>
+        <con:sourcePath>$['errorMessage']</con:sourcePath>
+        <con:targetType>res_errorMessage</con:targetType>
+        <con:targetStep>#TestCase#</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>req_biId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_itemId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_parentSpecId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_parentSerialText</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_quantity</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_startSerialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_serialText</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_endSerialNumber</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_placeId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_userId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>req_soId</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>res_code</con:name>
+      <con:value>404</con:value>
+    </con:property>
+    <con:property>
+      <con:name>res_errorMessage</con:name>
+      <con:value>404</con:value>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>1fdae5cd-da22-4b4d-8340-e4bd3129282b</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+</con:testCase>
