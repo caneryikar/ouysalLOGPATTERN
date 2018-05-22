@@ -7,7 +7,11 @@ import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,6 +25,8 @@ import com.x.testsuite.TestSuite;
 public class Main {
 	
 	private static List<TestCase> testCaseList;
+	private static List<HTTPRequest> allRequestList = new ArrayList<HTTPRequest>();
+	private static Map<TestCase, List<TestCaseCall>> callMap = new HashMap<TestCase, List<TestCaseCall>>();
 
 	public static TestCase loadTestCase(File file) throws Exception {
 
@@ -47,7 +53,8 @@ public class Main {
 
 		File settingsFile = new File(path + "/settings.xml");
 		if(!settingsFile.exists()){
-			throw new RuntimeException("//TODO:");
+			return null;
+			//throw new RuntimeException("//TODO:");
 		}
 
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -88,9 +95,9 @@ public class Main {
 
 		List<TestSuite> testSuiteList = new ArrayList<TestSuite>();
 		for (String directory : directories) {
-			if (directory.startsWith("Test")) {
-				//System.out.println(directory);
-				TestSuite testSuite = loadTestSuite(path + "/" + directory);
+			//System.out.println(directory);
+			TestSuite testSuite = loadTestSuite(path + "/" + directory);
+			if (testSuite != null) {
 				testSuiteList.add(testSuite);
 			}
 		}
@@ -99,29 +106,53 @@ public class Main {
 	}
 
 	private static boolean isTestCaseStart(String line) {
-		return line.contains("Running TestCase [");
+		return line.contains("| Running TestCase [");
 	}
 
 	private static boolean isTestCaseFinish(String line) {
-		return line.contains("Finished Running TestCase [");
+		return line.contains("| Finished Running TestCase [");
 	}
 
-	private static TestCase findTestCase(String line) {
+	private static boolean isTestCaseStatus(String line) {
+		return line.contains("| Finished running TestCase [");
+	}
+
+	private static boolean isHTTPRequest(String line) {
+		return line.endsWith("HTTP/1.1[\\r][\\n]\"");
+	}
+
+	private static String parseTestCase(String line) {
+		return line.substring(line.lastIndexOf("[") + 1, line.lastIndexOf("]"));
+	}
+
+	private static HTTPRequest parseHTTPRequest(String line) {
+		System.out.println(line);
+		String[] parts = line.substring(line.indexOf("\"")).replace("\"", "").split(" ");
+		HTTPRequest request = new HTTPRequest();
+		request.setMethod(parts[0]);
+		request.setRequestURI(parts[1]);
+		return request;
+	}
+
+	private static String parseTimeTaken(String line) {
+		return line.substring(line.indexOf("time taken:") + 12, line.indexOf("ms", line.indexOf("time taken:")));
+	}
+
+	private static String parseStatus(String line) {
+		return line.substring(line.lastIndexOf("status: ") + 8, line.length());
+	}
+
+	private static TestCase findTestCase(String name) {
 
 		TestCase found = null;
 		for (TestCase testCase : testCaseList) {
-			if (line.contains("Running TestCase [" + testCase.toString() + "]") || 
-				line.contains("Finished Running TestCase [" + testCase.toString() + "]")) {
+			if (testCase.toString().equals(name)) {
 				found = testCase;
 				break;
 			}
 		}
 
 		return found;
-	}
-
-	private static boolean isHTTPRequest(String line) {
-		return line.endsWith("HTTP/1.1[\\r][\\n]\"");
 	}
 
 	private static void readJunk(BufferedReader bufferedReader) throws Exception {
@@ -137,40 +168,56 @@ public class Main {
 		}
 	}
 
-	private static HTTPRequest parseHTTPRequest(String line) {
-		System.out.println(line);
-		String[] parts = line.substring(line.indexOf("\"")).replace("\"", "").split(" ");
-		HTTPRequest request = new HTTPRequest();
-		request.setMethod(parts[0]);
-		request.setMethod(parts[1]);
-		return request;
-	}
+	private static TestCaseCall readTestCase(TestCase testCase, BufferedReader bufferedReader) throws Exception {
 
-	private static TestCaseExecution readTestCase(TestCase testCase, BufferedReader bufferedReader) throws Exception {
+		TestCaseCall testCaseCall = new TestCaseCall();
+		testCaseCall.setTestCase(testCase);
 
-		TestCaseExecution testCaseExecution = new TestCaseExecution();
-		testCaseExecution.setTestCase(testCase);
+		List<TestCaseCall> callList = callMap.get(testCase);
+		if (callList == null) {
+			callList = new ArrayList<TestCaseCall>();
+			callMap.put(testCase, callList);
+		}
+		callList.add(testCaseCall);
+
 
 		String line;
 
 		while ((line = bufferedReader.readLine()) != null) {
 
-			if (isTestCaseFinish(line)) {
-				TestCase finishedTestCase =  findTestCase(line);
-				if (finishedTestCase == testCase) {
-					break;					
+			if (isTestCaseStart(line)) {
+				TestCase child = findTestCase(parseTestCase(line));
+				if (child == null) {
+					throw new RuntimeException("Test case not found!");
 				}
+				TestCaseCall childCall = readTestCase(child, bufferedReader);
+				testCaseCall.getChilds().add(childCall);
+				testCaseCall.getRequestList().addAll(childCall.getRequestList());
+
 			} else if (isHTTPRequest(line)) {
-				testCaseExecution.getRequestList().add(parseHTTPRequest(line));
+				testCaseCall.getRequestList().add(parseHTTPRequest(line));
+				allRequestList.add(parseHTTPRequest(line));
+
+			} else if (isTestCaseStatus(line)) {
+				if (parseTestCase(line).equals(testCase.getName())) {
+					testCaseCall.setTimeTaken(Integer.parseInt(parseTimeTaken(line)));
+					testCaseCall.setStatus(parseStatus(line));
+				}
+
+			} else if (isTestCaseFinish(line)) {
+				if (parseTestCase(line).equals(testCase.toString())) {
+					// TODO:
+					break;
+				}
 			}
 		}
 
-		return testCaseExecution;
+		return testCaseCall;
 	}
 
-	public static List<TestCaseExecution> readFromFile(String path) throws Exception {
+	public static List<TestCaseCall> readFromFile(String path) throws Exception {
 
-		List<TestCaseExecution> testCaseExecutionList = new ArrayList<TestCaseExecution>();
+		List<TestCaseCall> testCaseCallList = new ArrayList<TestCaseCall>();
 
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
 			String line;
@@ -180,12 +227,11 @@ public class Main {
 			while ((line = bufferedReader.readLine()) != null) {
 
 				if (isTestCaseStart(line)) {
-					TestCase testCase = findTestCase(line);
-					if (testCase == null) {
-						continue;
+					TestCase testCase = findTestCase(parseTestCase(line));
+					if (testCase != null) {
+						TestCaseCall testCaseCall = readTestCase(testCase, bufferedReader);
+						testCaseCallList.add(testCaseCall);
 					}
-					TestCaseExecution testCaseExecution = readTestCase(testCase, bufferedReader);
-					testCaseExecutionList.add(testCaseExecution);
 				}
 			}
 
@@ -197,13 +243,13 @@ public class Main {
 			e.printStackTrace();
 		}				
 
-		return testCaseExecutionList;
+		return testCaseCallList;
 	}
-	
+
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
-		String resourcesPath = "C:/Users/eoguuys/Desktop/caner/resources/resources";
+		String resourcesPath = "C:/Users/ealiyik/Desktop/JAVA/resources/resources";
 		List<TestSuite> testSuiteList = loadTestSuites(resourcesPath);
 	
 		testCaseList = new ArrayList<TestCase>();
@@ -217,18 +263,74 @@ public class Main {
 			System.out.println(testCase.toString());
 		}
 
-		// TODO:
-		
-		String outputPath = "C:/Users/eoguuys/Desktop/caner/consoleText.txt";
-		List<TestCaseExecution> testCaseExecutionList = readFromFile(outputPath);
+		String outputPath = "C:/Users/ealiyik/Desktop/JAVA/consoleText.txt";
+		List<TestCaseCall> testCaseCallList = readFromFile(outputPath);
+		System.out.println("Test Case size :" + testCaseCallList.size()); 
 
+		System.out.println("Request size:" + allRequestList.size());
+		
 		int counter = 0;
-		if (testCaseExecutionList != null) {
-			for (TestCaseExecution testCaseExecution : testCaseExecutionList) {
-				System.out.println(testCaseExecution.getTestCase().toString() + " - " + testCaseExecution.getRequestList().size());
-				counter += testCaseExecution.getRequestList().size();
-			}
-			System.out.println("request size:" + counter);
+		for (TestCaseCall testCaseCall : testCaseCallList) {
+			counter += testCaseCall.getRequestList().size();
+			System.out.println(testCaseCall.getTestCase().toString() + " - contains request count: " + testCaseCall.getRequestList().size());
 		}
+		
+		System.out.println("Request size:" + counter);
+		
+		
+		
+		System.out.println();
+		System.out.println();
+		System.out.println("------------------------------------------------------------------------");
+		
+		List<List<TestCaseCall>> callListList = new ArrayList<>(callMap.values());
+		Collections.sort(callListList, new Comparator<List<TestCaseCall>>(){
+		    public int compare(List<TestCaseCall> a1, List<TestCaseCall> a2) {
+		        return a2.size() - a1.size(); // assumes you want biggest to smallest
+		    }
+		});
+
+		
+		for (List<TestCaseCall> list : callListList) {
+			TestCase testCase = list.get(0).getTestCase();
+			Integer timeTaken = 0;
+			for (TestCaseCall testCaseCall : list) {
+				timeTaken += testCaseCall.getTimeTaken();
+			}
+			System.out.println(testCase.toString() + " [number of calls : " + list.size() + ",  time taken : " + timeTaken + "]");
+			for (HTTPRequest request : list.get(0).getRequestList()) {
+				System.out.println(request.toString());	
+			//	System.out.println(request.getRequestURI());
+			}
+			System.out.println();
+		}
+
+		System.out.println("------------------------------Filtered Results--------------------------");
+		
+		int min = 26;
+		int max = 27;
+		System.out.print("Occurence between ");
+		System.out.print(min+1);
+		System.out.print(" and ");
+		System.out.println(max);
+		
+		for (List<TestCaseCall> list : callListList) {
+			TestCase testCase = list.get(0).getTestCase();
+			Integer timeTaken = 0;
+			for (TestCaseCall testCaseCall : list) {
+				timeTaken += testCaseCall.getTimeTaken();
+			}
+			if (list.get(0).getRequestList().size() <= min || list.get(0).getRequestList().size() > max) {
+				continue;
+			}
+			System.out.println(testCase.toString() + " [number of calls : " + list.size() + ",  time taken : " + timeTaken + "]");
+			for (HTTPRequest request : list.get(0).getRequestList()) {
+				System.out.println(request.toString());				
+			}
+			System.out.println();
+		}
+
+		
+		
 	}
 }

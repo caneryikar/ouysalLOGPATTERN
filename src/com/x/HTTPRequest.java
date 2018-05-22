@@ -20,4 +20,9 @@ public class HTTPRequest {
 	public void setRequestURI(String requestURI) {
 		this.requestURI = requestURI;
 	}
+
+	@Override
+	public String toString() {
+		return method + " " + requestURI;
+	}
 }
